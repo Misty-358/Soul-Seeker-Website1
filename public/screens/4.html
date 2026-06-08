@@ -1,0 +1,408 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Soulseeker | Career Pivot Ritual</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            background-color: #091422;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(111, 91, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(37, 109, 255, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #d8e3f7;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(14, 30, 69, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .gold-border {
+            border: 1px solid #D4AF37;
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .divine-button-glow {
+            position: relative;
+        }
+
+        .divine-button-glow::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: #D4AF37;
+            filter: blur(15px);
+            opacity: 0.3;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .tarot-card-aspect {
+            aspect-ratio: 2 / 3.5;
+        }
+
+        .v-layout-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            position: relative;
+        }
+
+        .bridge-section {
+            grid-column: span 2;
+            margin-top: 40px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .path-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#919097",
+                        "on-tertiary": "#3c2f00",
+                        "on-primary": "#2c303f",
+                        "tertiary": "#e9c349",
+                        "surface-bright": "#2f3a49",
+                        "surface": "#091422",
+                        "nebula-purple": "#6F5BFF",
+                        "surface-container-lowest": "#040f1c",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary-fixed-variant": "#003fa5",
+                        "tertiary-fixed": "#ffe088",
+                        "secondary-fixed-dim": "#b3c5ff",
+                        "inverse-primary": "#5a5e6f",
+                        "primary-container": "#050816",
+                        "tertiary-container": "#0d0800",
+                        "glass-fill": "rgba(14, 30, 69, 0.6)",
+                        "primary": "#c3c5da",
+                        "on-surface-variant": "#c7c6cd",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-tint": "#c3c5da",
+                        "on-tertiary-container": "#937500",
+                        "primary-fixed": "#dfe1f6",
+                        "secondary": "#b3c5ff",
+                        "on-secondary": "#002a76",
+                        "surface-container": "#15202f",
+                        "surface-dim": "#091422",
+                        "on-primary-fixed-variant": "#434657",
+                        "on-secondary-fixed": "#00184a",
+                        "error-container": "#93000a",
+                        "background": "#091422",
+                        "on-secondary-container": "#e8ebff",
+                        "on-background": "#d8e3f7",
+                        "outline-variant": "#46464c",
+                        "surface-navy": "#091422",
+                        "primary-fixed-dim": "#c3c5da",
+                        "surface-container-highest": "#2b3545",
+                        "inverse-on-surface": "#263140",
+                        "nebula-blue": "#256DFF",
+                        "surface-variant": "#2b3545",
+                        "surface-container-high": "#202b39",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#75788a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-error": "#690005",
+                        "secondary-container": "#005ff1",
+                        "on-primary-fixed": "#171b2a",
+                        "inverse-surface": "#d8e3f7",
+                        "space-deep": "#050816",
+                        "surface-container-low": "#111c2a",
+                        "on-surface": "#d8e3f7",
+                        "gold-leaf": "#D4AF37"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "24px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "margin": "24px",
+                        "base": "16px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Cinzel"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Cinzel"],
+                        "display-lg": ["Cinzel"],
+                        "headline-lg-mobile": ["Cinzel"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Cinzel"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+<!-- Top Navigation -->
+<header class="bg-transparent text-gold-leaf font-headline-sm text-headline-sm w-full top-0 sticky backdrop-blur-xl border-b border-gold-leaf/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] z-50">
+<div class="flex items-center justify-between px-margin py-base w-full max-w-md mx-auto">
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-gold-leaf tracking-[0.2em] uppercase">Soulseeker</h1>
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+</div>
+</header>
+<main class="w-full max-w-md px-margin py-lg flex flex-col gap-lg pb-32">
+<!-- Ritual Introduction -->
+<section class="text-center space-y-sm">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-gold-leaf">The Crossroads</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[280px] mx-auto opacity-80">Navigate the divergence of your professional destiny through celestial guidance.</p>
+</section>
+<!-- The V Spread Layout -->
+<div class="relative mt-8">
+<!-- Central Divider Filigree (Decorative) -->
+<div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-gold-leaf/40 via-gold-leaf/10 to-transparent -translate-x-1/2 pointer-events-none"></div>
+<div class="grid grid-cols-2 gap-x-4 gap-y-12">
+<!-- PATH A (LEFT ARM) -->
+<div class="flex flex-col gap-8 items-center">
+<span class="font-label-caps text-label-caps text-gold-leaf tracking-widest bg-gold-leaf/5 px-2 py-1 rounded">Path A: The Known</span>
+<!-- Potential Card -->
+<div class="w-full group">
+<div class="tarot-card-aspect w-full glass-panel gold-border gold-glow rounded-lg relative overflow-hidden float-animation transition-transform duration-500 hover:scale-105 transition-all duration-700 opacity-100" style="animation-delay: 0s;">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity" data-alt="A mystical tarot card depicting the Ace of Pentacles in a celestial art style. A golden hand emerges from a nebular cloud holding a glowing coin engraved with cosmic runes. The background is a deep navy space with shimmering stardust and subtle gold filigree framing. The lighting is ethereal and focused on the central coin, creating a sense of new material beginnings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS3_FqoLX2sniZw4GTNPvESHEDIQXzCGAZtdrP0BEQc_XHRq5FfpA_XbJj05BsfClLfc5h4YOQmF3b4TDsv9DZjosk-uFcCnIqdFnSKwrp2UgCnkoonr8CiG_6fsGFviI0bmQ03GtCuC__p7br-Z1F4qK49m6_JyNtpEtFAVEmmo_Qfwu_rmQTDMwWVBmO0pm2lyPcuzTlPvHx6L_5CIdqjJXpdZ4PCiAROmHOUZUjNfANPYsxQiLxmUPaBpi2MZOL10sjvpmc2vw">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-navy via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 text-center">
+<p class="font-label-caps text-label-caps text-gold-leaf">Potential</p>
+</div>
+</div>
+</div>
+<!-- Challenges Card -->
+<div class="w-full group">
+<div class="tarot-card-aspect w-full glass-panel gold-border gold-glow rounded-lg relative overflow-hidden float-animation transition-transform duration-500 hover:scale-105 transition-all duration-700 opacity-100" style="animation-delay: 1.5s;">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity" data-alt="A spiritual tarot card illustration of the Eight of Swords. A central figure is surrounded by glowing golden swords that form a cage-like structure against a backdrop of a swirling violet nebula. The figure is draped in translucent, starry silk. The mood is restrictive yet beautiful, symbolizing mental blocks in a high-end celestial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4w0ZAOKL1MadYIknER2ivMG5B7qknbM2OPD8SR7j7npXYFMybtxZowphL3pYHVvIvmxoDCIdwjtUlKIHlzqhhPhFebnRZGIKOmAWD1m5m9Glwobfx_KIW4Ee3VtK76P5PAN1h-HEg--t6jPD0FC-nbryjPK8fH47-HJD4cmhoXYBpmBw5CboWGaiAHeXNlcHpCi6qbQEws_8URd-c1Dev-YXCteQWzw7wgn9Mg6S-U6SKew-KHURTclSdncbtcYAztXVgbAxMW6M">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-navy via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 text-center">
+<p class="font-label-caps text-label-caps text-gold-leaf">Challenges</p>
+</div>
+</div>
+</div>
+<!-- Outcome Card -->
+<div class="w-full group">
+<div class="tarot-card-aspect w-full glass-panel gold-border gold-glow rounded-lg relative overflow-hidden float-animation transition-transform duration-500 hover:scale-105 transition-all duration-700 opacity-100" style="animation-delay: 3s;">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity" data-alt="A mystical tarot card depicting the Ten of Cups. A golden arc of ten radiant cups hangs over a serene celestial landscape featuring a mirror-like lake reflecting a galaxy. The style is skeuomorphic with tactile gold textures and deep glass-like depth. The atmosphere is one of ultimate emotional and professional fulfillment in a cosmic paradise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf6DfmIWp_3X9YyDf0mdaeLDSUFtU8b3uYoHaC6q0TsOeMR35s_ICKcSJ2yGiG2IsdUd3cg3f7v0JykMqvzQfHenQUT6u_2gKNU45muL2INTRCGIJKyoL3x3UHk4wYwyLESLP9TeTanQnDUHy3MhA22oBmeKgmwk9MkD08P5qPBu4tbnOW9Qi0gCBkNg5utwDd8IJ16j2gTm8lF0EKZJZE6n5dIzBVpm2oTCHbN9qmYt_liODNPhz2A30v-Et18dcph-tC3wfxvsw">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-navy via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 text-center">
+<p class="font-label-caps text-label-caps text-gold-leaf">Outcome</p>
+</div>
+</div>
+</div>
+</div>
+<!-- PATH B (RIGHT ARM) -->
+<div class="flex flex-col gap-8 items-center">
+<span class="font-label-caps text-label-caps text-gold-leaf tracking-widest bg-gold-leaf/5 px-2 py-1 rounded">Path B: The Pivot</span>
+<!-- Potential Card -->
+<div class="w-full group">
+<div class="tarot-card-aspect w-full glass-panel gold-border gold-glow rounded-lg relative overflow-hidden float-animation transition-transform duration-500 hover:scale-105 transition-all duration-700 opacity-100" style="animation-delay: 0.75s;">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity" data-alt="The Fool tarot card reimagined as a celestial journeyer. A glowing silhouette stands at the edge of a starlit precipice about to step into a vibrant blue nebula. The silhouette carries a crystal staff that radiates soft white light. The aesthetic is high-end cosmic glassmorphism with intricate gold detailing along the card edges and corners." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA_CnQswXLQ8Q6e51whKuvgd_it8NXtFDwsfo_QTP1pcRP5Aiu834ZgC15QJY00UTuVKj_TOxPAuzq3VeZlX7Pmm4OCvbZSnvzHNqa4QUOvcxFnQjL7K6haWwPy5sw9q_x0do6vCyvz5HJSofoknZhBpjAy8huePP8Oe8FvqyqwXR2Jo1dByvmDzu9K-1m5o6ru_WWGUGiq7XiaEBXVV8XyBOkCiv0gVnVSzDRd4IrJOseWOvNKoReG2Py5EmDdkxv_jK5ZTBuL_Y">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-navy via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 text-center">
+<p class="font-label-caps text-label-caps text-gold-leaf">Potential</p>
+</div>
+</div>
+</div>
+<!-- Challenges Card -->
+<div class="w-full group">
+<div class="tarot-card-aspect w-full glass-panel gold-border gold-glow rounded-lg relative overflow-hidden float-animation transition-transform duration-500 hover:scale-105 transition-all duration-700 opacity-100" style="animation-delay: 2.25s; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity" data-alt="The Tower tarot card in a cosmic style. A crystalline spire is struck by a bolt of golden celestial lightning, causing iridescent shards to float away into a deep purple void. The lighting is dramatic and high-contrast, emphasizing the sudden transformation and breakdown of old structures. The mood is intense but carries a sense of divine necessity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcinAsiDutAkaQmzS_UiHOJ0kfjCRC2ZYVNUAHMHor2rZ8GP7E3FbfmShshXrZ_OcLpZOye7CSOmHkFYRLHL3eU2q6PTSe0iUKyjL9cpvdj2ILdg3rqxZibbo-RFYp3ZmjiIomVil4at9aLtW0h922wt7QevTIoLbU1Gj99EnQteBerxm401ZDGXbTI0r3Wcq1FbSJ9n66ViAfPHxh3xX2mGSuZ4BINgTM_8GcWFdCIq-qvKY8ZHSY-DoT6LN7m9bQc2sHy7CWTOo">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-navy via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 text-center">
+<p class="font-label-caps text-label-caps text-gold-leaf">Challenges</p>
+</div>
+</div>
+</div>
+<!-- Outcome Card -->
+<div class="w-full group">
+<div class="tarot-card-aspect w-full glass-panel gold-border gold-glow rounded-lg relative overflow-hidden float-animation transition-transform duration-500 hover:scale-105 transition-all duration-700 opacity-100" style="animation-delay: 3.75s; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity" data-alt="The Sun tarot card rendered as a majestic gold-rimmed star at the center of a celestial alignment. The star emanates warm, golden light across a series of glass-like planetary spheres. The design is luxurious and radiant, symbolizing clarity, success, and divine favor in a new career path. Intricate filigree patterns dance in the periphery of the star's glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE4lLKCBDCiu6zHysoh4l9zHH-opaTb7HzxbajJS_z-44b-NyVY7ezlD123mC7DR1uDKMCYzTY0jJ4-CDVFDNR74gqteov8RNQfWJ-MVopmdQslYpjMeyitMwn2l18f-UWHT-tQQ9PDZtprCUrPJx88LoiDhyKheIF-m10hwUmOo4QxWZL5IGyMucm_dCg8Xmas1Vyeng9RCFhCt2dGkCGLbfXp5V8uwQDyLm4ICtjwBbdWE3-9a26z8A4yPHNLPxsmTdHEEsukjw">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-navy via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 text-center">
+<p class="font-label-caps text-label-caps text-gold-leaf">Outcome</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- THE BRIDGE (ADVICE) -->
+<div class="bridge-section text-center relative pt-8">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gold-leaf/40"></div>
+<div class="mt-8 flex flex-col items-center">
+<div class="w-24 tarot-card-aspect glass-panel gold-border gold-glow rounded-lg relative overflow-hidden float-animation mb-6 transition-transform duration-500 hover:scale-110 transition-all duration-700 opacity-100" style="animation-delay: 4.5s; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-50" data-alt="The Hermit tarot card depicted as a lonely sage walking through a star-filled valley, holding a lantern containing a miniature sun. The lighting is soft and introspective, with the lantern as the primary light source casting long, elegant shadows. The style is moody and sophisticated, utilizing deep blues and warm gold highlights to represent internal wisdom and guidance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo6L5YFLuuUF2AFLqaUKBt3aDldMEV7C-NEMa6f3SLFyGZN7NZonnzMk_VN_aIWK9bjY--heI11HuCfpcB0kIVzE8ER1arfn9zsaWLI7FXyemPxNa3buNxhvP_NfKJuaciqZ34hrOAe-xomTylEjbiaSE-Z3u7nO8DjML0sLufDxHDCw-GWQ6HMAHXJZFeK0XoBOM7aTgyeZIoSyeU4dCdpOa-8IBJP5mdHGZ1EcAcxREC1UF8V7E6Tgah7WLaMAg8rDnIHReJEP4">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-navy via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-1 right-1 text-center">
+<p class="text-[8px] uppercase font-label-caps text-gold-leaf tracking-[0.1em]">The Bridge</p>
+</div>
+</div>
+<div class="glass-panel p-md rounded-xl text-left border border-gold-leaf/20 relative transition-all duration-700 opacity-100">
+
+<p class="font-body-md text-body-md text-primary mt-2 italic leading-relaxed">
+                            "Path A offers stability through structured mastery, yet Path B whispers of a transformation that aligns your soul with the cosmos. The bridge suggests a period of quiet contemplation—do not leap until the lantern of your intuition burns steady."
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interpretation Details -->
+<section class="space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-gold-leaf uppercase tracking-widest text-center">Deep Interpretation</h3>
+<div class="space-y-sm">
+<details class="glass-panel rounded-lg group transition-all duration-700 opacity-100">
+<summary class="flex justify-between items-center p-base cursor-pointer list-none">
+<span class="font-label-caps text-label-caps text-gold-leaf uppercase">Path A: The Current Trajectory</span>
+<span class="material-symbols-outlined text-gold-leaf transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-base pt-0 font-body-sm text-body-sm text-on-surface-variant/80 border-t border-gold-leaf/10 mt-2 space-y-2">
+<p class=""><strong class="text-gold-leaf/90">Potential:</strong> Solid financial growth and incremental advancement. You have already laid the groundwork.</p>
+<p class=""><strong class="text-gold-leaf/90">Challenges:</strong> The risk of stagnation or a "gilded cage" where comfort prevents necessary evolution.</p>
+<p class=""><strong class="text-gold-leaf/90">Outcome:</strong> Long-term security and professional respect, though perhaps lacking creative fire.</p>
+</div>
+</details>
+<details class="glass-panel rounded-lg group transition-all duration-700 opacity-100">
+<summary class="flex justify-between items-center p-base cursor-pointer list-none">
+<span class="font-label-caps text-label-caps text-gold-leaf uppercase">Path B: The Cosmic Pivot</span>
+<span class="material-symbols-outlined text-gold-leaf transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-base pt-0 font-body-sm text-body-sm text-on-surface-variant/80 border-t border-gold-leaf/10 mt-2 space-y-2">
+<p class=""><strong class="text-gold-leaf/90">Potential:</strong> Radical self-discovery and the chance to lead in a completely new domain.</p>
+<p class=""><strong class="text-gold-leaf/90">Challenges:</strong> Initial chaos and the deconstruction of your current professional ego.</p>
+<p class=""><strong class="text-gold-leaf/90">Outcome:</strong> A radiant state of flow where your vocation and your identity become one.</p>
+</div>
+</details>
+</div>
+</section>
+<!-- Divine Action Button -->
+<div class="mt-4 px-2">
+<button class="w-full py-base rounded-full border border-gold-leaf text-gold-leaf font-headline-sm text-headline-sm bg-transparent active:scale-95 transition-all duration-300 divine-button-glow hover:bg-gold-leaf/10">&nbsp;Save
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-full bg-glass-fill backdrop-blur-2xl border-t border-gold-leaf/20 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center px-gutter pb-8 pt-4 w-full max-w-md mx-auto">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf/80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="font-label-caps text-[10px] uppercase tracking-tighter">Tarot</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf/80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1">auto_fix_high</span>
+<span class="font-label-caps text-[10px] uppercase tracking-tighter">Customise</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gold-leaf relative after:content-[''] after:absolute after:-bottom-1 after:w-8 after:h-[2px] after:bg-gold-leaf after:shadow-[0_0_10px_#D4AF37] active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-caps text-[10px] uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf/80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1">bookmark</span>
+<span class="font-label-caps text-[10px] uppercase tracking-tighter">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf/80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-caps text-[10px] uppercase tracking-tighter">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions for card hover effects
+        document.querySelectorAll('.tarot-card-aspect').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+
+        // Simple visibility observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-panel').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(el);
+        });
+    </script>
+
+
+<a href="/" style="position:fixed;top:12px;right:12px;z-index:9999;background:rgba(212,175,55,0.15);border:1px solid #D4AF37;color:#e9c349;padding:6px 12px;border-radius:9999px;font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;backdrop-filter:blur(8px);">← All Screens</a></body></html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Soulseeker Tarot Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#002a76",
+                    "outline": "#919097",
+                    "on-primary-fixed": "#171b2a",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#434657",
+                    "on-background": "#d8e3f7",
+                    "surface-variant": "#2b3544",
+                    "tertiary": "#e9c349",
+                    "error-container": "#93000a",
+                    "secondary": "#b3c5ff",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-dim": "#091422",
+                    "tertiary-container": "#0d0800",
+                    "surface": "#091422",
+                    "on-tertiary-container": "#937500",
+                    "surface-tint": "#c3c5da",
+                    "surface-container-highest": "#2b3544",
+                    "surface-bright": "#2f3a49",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#111c2a",
+                    "surface-container-high": "#202b39",
+                    "surface-container": "#15202e",
+                    "secondary-container": "#005ff1",
+                    "on-secondary-fixed": "#00184a",
+                    "primary-fixed": "#dfe1f6",
+                    "on-primary-container": "#75788a",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-tertiary": "#3c2f00",
+                    "on-primary": "#2c303f",
+                    "inverse-primary": "#5a5e6f",
+                    "tertiary-fixed": "#ffe088",
+                    "on-secondary-container": "#e8ebff",
+                    "background": "#091422",
+                    "inverse-on-surface": "#263140",
+                    "on-error": "#690005",
+                    "primary": "#c3c5da",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#c3c5da",
+                    "outline-variant": "#46464c",
+                    "on-surface": "#d8e3f7",
+                    "inverse-surface": "#d8e3f7",
+                    "surface-container-lowest": "#040f1c",
+                    "primary-container": "#050816",
+                    "on-secondary-fixed-variant": "#003fa5",
+                    "secondary-fixed-dim": "#b3c5ff",
+                    "on-surface-variant": "#c7c6cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "lg": "40px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "md": "24px",
+                    "margin": "24px",
+                    "sm": "12px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Cinzel"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Cinzel"],
+                    "headline-sm": ["Cinzel"],
+                    "display-lg": ["Cinzel"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "headline-sm": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #050816;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(37, 109, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(111, 91, 255, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #d8e3f7;
+            min-height: 100dvh;
+        }
+
+        .glass-panel {
+            background: rgba(14, 30, 69, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(184, 195, 214, 0.2);
+        }
+
+        .gilded-border {
+            border: 1px solid #D4AF37;
+            position: relative;
+        }
+
+        .gilded-border::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            pointer-events: none;
+        }
+
+        .holographic-overlay {
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+            mix-blend-mode: overlay;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e9c349;
+            border-radius: 10px;
+        }
+
+        .celestial-glow {
+            box-shadow: 0 0 20px rgba(233, 195, 73, 0.2);
+        }
+
+        .active-tab-glow {
+            text-shadow: 0 0 8px rgba(233, 195, 73, 0.5);
+        }
+
+        .notification-dot {
+            position: relative;
+        }
+        .notification-dot::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background-color: #e9c349;
+            border-radius: 50%;
+            border: 2px solid #091422;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-tertiary/30 selection:text-tertiary">
+<!-- Top App Bar -->
+<header class="bg-surface/60 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/20 h-16">
+<div class="flex justify-between items-center px-gutter h-full w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-tertiary cursor-pointer active:scale-95 transition-transform" data-icon="menu">menu</span>
+<h1 class="font-headline-md text-headline-md text-tertiary tracking-widest uppercase">Soulseeker</h1>
+</div>
+<div class="hidden md:flex flex-1 max-w-md mx-xl px-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-sm focus:ring-1 focus:ring-tertiary/50 transition-all placeholder:text-outline/50" placeholder="Search sacred decks..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden sm:flex flex-col items-end mr-sm">
+<span class="font-label-caps text-label-caps text-tertiary leading-none">1,250 Points</span>
+<span class="text-[10px] text-outline uppercase tracking-tighter opacity-70">Master Rank</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-tertiary active:scale-95 transition-transform notification-dot" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-tertiary active:scale-95 transition-transform" data-icon="shopping_bag">shopping_bag</button>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-gutter max-w-7xl mx-auto space-y-xl">
+<!-- Marketplace Intro -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Sacred Marketplace</h2>
+<p class="text-on-surface-variant font-body-md max-w-xl mt-sm opacity-80">Discover unique divinatory tools crafted by the community's most enlightened creators.</p>
+</div>
+<div class="flex items-center gap-sm bg-tertiary/10 border border-tertiary/20 px-md py-sm rounded-xl">
+<span class="material-symbols-outlined text-tertiary" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+<span class="font-label-caps text-label-caps text-tertiary">3 Favorites active in your orbit</span>
+</div>
+</section>
+<!-- Top 10 Carousel -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-sm text-headline-sm text-tertiary uppercase flex items-center gap-base">
+<span class="material-symbols-outlined" data-icon="military_tech">military_tech</span>
+                    Top 10 Most Purchased
+                </h3>
+<div class="flex gap-sm">
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-variant hover:border-tertiary transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-variant hover:border-tertiary transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="flex gap-md overflow-x-auto pb-md custom-scrollbar -mx-gutter px-gutter">
+<!-- Rank 1 -->
+<div class="flex-shrink-0 w-80 glass-panel rounded-xl overflow-hidden gilded-border celestial-glow group cursor-pointer">
+<div class="relative h-48 overflow-hidden">
+<img alt="Nocturnal Dreams" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBYOhSF6cI0ANLe7XwNyYYZiWtJHBKXHJrUyHdNbOCH6kDTbkIbXSHOACcaQi2athSHJxn_MGilx2blxSBN2GoYTszg-VRX-T43bTR0zXCIA6FiJoRZzlroNSUAWNDs8yX-Ug1KXCk87wpSB-J-KUZKbQPKHB88J1PbFCga3lKGk9_0KWCBrrrGrqvG3uKJg4VCAegTTh5GKqrkgUYB7i4tSqmDI8QqrVScOMdcRnhVmqWatZTc9WCqrSQQeov7n9r5bHZCt4FW50">
+<div class="holographic-overlay absolute inset-0"></div>
+<div class="absolute top-sm left-sm bg-tertiary text-on-tertiary font-headline-sm px-3 py-1 rounded-sm shadow-lg">#1</div>
+</div>
+<div class="p-md space-y-sm">
+<h4 class="font-headline-md text-headline-md text-on-surface leading-tight truncate">Nocturnal Dreams</h4>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-outline">by <span class="text-tertiary">@Aetheria</span></span>
+<span class="font-headline-sm text-tertiary">£20</span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<button class="border border-tertiary py-2 font-label-caps text-[10px] text-tertiary hover:bg-tertiary/10 transition-all uppercase tracking-widest">Sample</button>
+<button class="bg-tertiary text-on-tertiary py-2 font-label-caps text-[10px] hover:brightness-110 transition-all uppercase tracking-widest">Buy</button>
+</div>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex-shrink-0 w-80 glass-panel rounded-xl overflow-hidden border border-outline-variant/30 group cursor-pointer">
+<div class="relative h-48 overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity">
+<img alt="Iron &amp; Ivy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuqpbP0tMOwxfWsobVSBt1czXTYQZtBwzzJ00NKYL0S6DKzCm4b3r0wmklWRwf0bCY8PDyNmTy40POmTUDNK859I0Tq3bhOHbL-7DjqouPe-g3vnzDpL3PeuUTRyFGlw_Wfl8nzzBBIhcYPgFc_jinwAuyIDgpcNO0Hm7UEIm8B6FfDBs1jVMSnwXhe4JdQpoA7a1iWRMqTo-X2PyuRF6EDwgg2Kb8_Nr_-Iaw9gc2VxRbfH1o1QVdJ5DNxJRoGF99RgL4m27I-us">
+<div class="absolute top-sm left-sm bg-surface-container-highest text-on-surface font-headline-sm px-3 py-1 rounded-sm shadow-lg">#2</div>
+</div>
+<div class="p-md space-y-sm">
+<h4 class="font-headline-md text-headline-md text-on-surface leading-tight truncate">Iron &amp; Ivy</h4>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-outline">by <span class="text-tertiary">@IronQuill</span></span>
+<span class="font-headline-sm text-tertiary">£20</span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<button class="border border-outline-variant py-2 font-label-caps text-[10px] text-outline hover:border-tertiary hover:text-tertiary transition-all uppercase tracking-widest">Sample</button>
+<button class="bg-outline-variant/50 text-on-surface py-2 font-label-caps text-[10px] hover:bg-tertiary hover:text-on-tertiary transition-all uppercase tracking-widest">Buy</button>
+</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="flex-shrink-0 w-80 glass-panel rounded-xl overflow-hidden border border-outline-variant/30 group cursor-pointer">
+<div class="relative h-48 overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity">
+<img alt="Primal Pulse" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVznwUpPI0XNWK_GxqfdsModbR8T4kYaSktZt6ZNAuwgaOkKB2X5nb1f3fd479GA71Y5evlTdFWVuAs4UCgnB0vyyLO7oKaq96Kq7wc6zVyStwoSh9CDqo573yHxiapKgvQPUo-M1tiZaB2ZADK6fZTK4Fj4mpuGrb1htOVlrLxKdSgc012sazPbhN2w6NYg1dB0c34IiayBemYwmszRtuq6cgizO6DuNoEiiXpMOoWGn4BiV-KghufHMre7rK_QiS0IgUEZXcSpU">
+<div class="absolute top-sm left-sm bg-surface-container-highest text-on-surface font-headline-sm px-3 py-1 rounded-sm shadow-lg">#3</div>
+</div>
+<div class="p-md space-y-sm">
+<h4 class="font-headline-md text-headline-md text-on-surface leading-tight truncate">Primal Pulse</h4>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-outline">by <span class="text-tertiary">@Lumina_Art</span></span>
+<span class="font-headline-sm text-tertiary">£20</span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<button class="border border-outline-variant py-2 font-label-caps text-[10px] text-outline hover:border-tertiary hover:text-tertiary transition-all uppercase tracking-widest">Sample</button>
+<button class="bg-outline-variant/50 text-on-surface py-2 font-label-caps text-[10px] hover:bg-tertiary hover:text-on-tertiary transition-all uppercase tracking-widest">Buy</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest Decks -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-sm text-headline-sm text-tertiary uppercase flex items-center gap-base">
+<span class="material-symbols-outlined" data-icon="new_releases">new_releases</span>
+                    Latest 3 New Decks
+                </h3>
+<button class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors uppercase">View Latest Arrivals</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="group relative aspect-[3/4] overflow-hidden rounded-xl gilded-border">
+<img alt="Alchemist's Mirror" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_lfqdy2Cerg3ja0zQgrAEsMM9iiXsGRBlRlkCpkslcxyeadHdz0jH2Mu340mk1rc8SSgKUOJJrPqgXpJoS2BTi_U_rUL8yYzQaxQ4ziiCImu88IA5pD2U57oyMiALAcDtkKsd4nyKWSHGpznkwY44qzlwnxKXFP6D7NzmySAI1EkSFOmtJzKcTbSl7YGX6197Gws-S7Tn-CT2WSFlKXrFweMtIqGDWmSGYzHKqMG6-_9IM5BQbsyrPHAeY86Xfm9LWZXlJEMDdc4">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+<div class="absolute bottom-md left-md right-md">
+<h4 class="font-headline-md text-on-surface">Alchemist's Mirror</h4>
+<p class="text-tertiary font-label-caps text-[10px] mt-1 uppercase">Just Released</p>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-xl border border-outline-variant/30">
+<img alt="Void Oracle" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkz0DjbGlk1L7M16fwNKcI8tF5yjhjlub4zhP4a7f4n8DhbA7x4Qt7k6F7yAn2J1Ua30I7AnDn__pHxNq7A1yyeQl3pDvRHWImaKAJlkOQErWuHj2x39GbG6Alg4HWgYE9cIIaOggTseAVU9hPJtWCO3t7IgsIc4GoH3uvugIpQCTYdgjVQO7yC0Ur0VazuZZzffd7X-P7bL-H0LFMhyb1gddvA3iof3PLTj47n9i783WrMgRCv9NUlQy6IBN9zbb56ziOna8qY4U">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+<div class="absolute bottom-md left-md right-md">
+<h4 class="font-headline-md text-on-surface">Void Oracle</h4>
+<p class="text-tertiary font-label-caps text-[10px] mt-1 uppercase">Emerging Now</p>
+</div>
+</div>
+<div class="group relative aspect-[3/4] overflow-hidden rounded-xl border border-outline-variant/30">
+<img alt="Stellar Origins" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjQGYX-jrCcnus1fJIH8dx5_IQf9gfAf62Xrdh6GAjoH4LHES_NGZEIiFgW8_RIjLnlZVHijq7jVlPFmlVTGsVCTtW5XhU-JkmIWoJLm_1W4Q-TgbzsUrEEe3vkUXMAbCrKh8BpcnQmn7uQ7ko_JHWy-XdTinO5Lns0qSzdILe49mUU0bwvaQ_C1yijvbcMsyEGyJuEP8Lxehrlk5mCHttXY0iisLkABq_-QKo_Ll5W_MoSrjQxAGZ36nQwJpk8DyTxtfV1l-DY1E">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+<div class="absolute bottom-md left-md right-md">
+<h4 class="font-headline-md text-on-surface">Stellar Origins</h4>
+<p class="text-tertiary font-label-caps text-[10px] mt-1 uppercase">Fresh Energy</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Browse by Theme -->
+<section class="space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-tertiary uppercase flex items-center gap-base">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+                Browse by Theme
+            </h3>
+<div class="flex flex-wrap items-center gap-sm">
+<button class="px-md py-2 rounded-full border border-tertiary bg-tertiary/10 text-tertiary font-label-caps text-label-caps active-tab-glow transition-all">#ALL</button>
+<button class="px-md py-2 rounded-full border border-outline-variant hover:border-tertiary/50 hover:text-tertiary text-outline font-label-caps text-label-caps transition-all">#Mythology</button>
+<button class="px-md py-2 rounded-full border border-outline-variant hover:border-tertiary/50 hover:text-tertiary text-outline font-label-caps text-label-caps transition-all">#Fantasy</button>
+<button class="px-md py-2 rounded-full border border-outline-variant hover:border-tertiary/50 hover:text-tertiary text-outline font-label-caps text-label-caps transition-all">#Nature</button>
+<button class="px-md py-2 rounded-full border border-outline-variant hover:border-tertiary/50 hover:text-tertiary text-outline font-label-caps text-label-caps transition-all">#Angels</button>
+<button class="px-md py-2 rounded-full border border-outline-variant hover:border-tertiary/50 hover:text-tertiary text-outline font-label-caps text-label-caps transition-all">#Gothic</button>
+<button class="px-md py-2 rounded-full border border-outline-variant hover:border-tertiary/50 hover:text-tertiary text-outline font-label-caps text-label-caps transition-all">#Celestial</button>
+<button class="px-md py-2 rounded-full border border-outline-variant hover:border-tertiary/50 hover:text-tertiary text-outline font-label-caps text-label-caps transition-all">#Abstract</button>
+</div>
+</section>
+<!-- Pricing & Volume -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="glass-panel p-lg rounded-2xl border border-tertiary/20">
+<h4 class="font-headline-md text-tertiary mb-sm uppercase">Individual Decks</h4>
+<p class="text-on-surface-variant mb-md">Secure a single masterpiece for your spiritual journey.</p>
+<div class="flex items-baseline gap-base">
+<span class="text-headline-lg font-headline-lg text-on-surface">£20</span>
+<span class="text-outline">per design</span>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant/20">
+<p class="text-body-sm text-outline italic">Pricing applies for 1-5 copies of the same design.</p>
+</div>
+</div>
+<div class="glass-panel p-lg rounded-2xl border border-tertiary/20">
+<h4 class="font-headline-md text-tertiary mb-sm uppercase">Business Licensing</h4>
+<p class="text-on-surface-variant mb-md">Expanded rights for practitioners and studios.</p>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-sm bg-surface-container-low rounded">
+<p class="text-outline text-xs uppercase">1 Copy</p>
+<p class="text-headline-sm font-headline-sm">£25</p>
+</div>
+<div class="p-sm bg-surface-container-low rounded">
+<p class="text-outline text-xs uppercase">3 Copies</p>
+<p class="text-headline-sm font-headline-sm">£75</p>
+</div>
+<div class="p-sm bg-surface-container-low rounded">
+<p class="text-outline text-xs uppercase">6 Copies</p>
+<p class="text-headline-sm font-headline-sm">£140</p>
+</div>
+<div class="p-sm bg-surface-container-low rounded">
+<p class="text-outline text-xs uppercase">12 Copies</p>
+<p class="text-headline-sm font-headline-sm">£280</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Rewards Info Banner -->
+<section class="glass-panel p-lg rounded-2xl border-l-4 border-l-tertiary relative overflow-hidden">
+<div class="relative z-10 grid md:grid-cols-3 gap-lg items-center">
+<div class="md:col-span-2 space-y-sm">
+<h3 class="font-headline-lg text-headline-lg text-tertiary">The Creator Path</h3>
+<p class="text-on-surface-variant font-body-lg">Every time a seeker acquires your deck, you receive <span class="text-tertiary font-bold">Creator Points</span>. These are the currency of our community.</p>
+<div class="flex flex-wrap gap-md mt-md">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-tertiary" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-body-sm text-outline">Get on the leader board&nbsp;</span>
+</div>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-tertiary" data-icon="local_shipping">local_shipping</span>
+<span class="font-body-sm text-outline">Free physical prints</span>
+</div>
+</div>
+</div>
+<div class="flex justify-center">
+<button class="px-xl py-md bg-tertiary text-on-tertiary font-headline-sm text-headline-sm hover:scale-105 active:scale-95 transition-all shadow-xl celestial-glow">
+                        START CREATING
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Sampling Modal (Hidden by Default) -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-gutter hidden" id="sample-modal">
+<div class="absolute inset-0 bg-background/80 backdrop-blur-md"></div>
+<div class="relative w-full max-w-sm glass-panel p-lg rounded-2xl gilded-border text-center space-y-md">
+<div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center mx-auto mb-md">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="info">info</span>
+</div>
+<h3 class="font-headline-md text-on-surface uppercase">Sample this Deck?</h3>
+<p class="text-on-surface-variant">Sampling this deck will replace your current digital deck for 24 hours. You can only have one active sample at a time.</p>
+<div class="flex flex-col gap-sm pt-md">
+<button class="bg-tertiary text-on-tertiary py-3 font-label-caps uppercase tracking-widest" onclick="document.getElementById('sample-modal').classList.add('hidden')">Confirm Sample</button>
+<button class="text-outline font-label-caps uppercase tracking-widest" onclick="document.getElementById('sample-modal').classList.add('hidden')">Cancel</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="bg-surface-container/90 backdrop-blur-2xl fixed bottom-0 w-full z-50 rounded-t-3xl border-t border-outline-variant/30 h-20">
+<div class="flex justify-around items-center h-full px-4">
+<a class="flex flex-col items-center justify-center text-outline opacity-70 hover:opacity-100 hover:text-tertiary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+<span class="font-label-caps text-[9px] mt-1 whitespace-nowrap">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline opacity-70 hover:opacity-100 hover:text-tertiary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group_work">group_work</span>
+<span class="font-label-caps text-[9px] mt-1 whitespace-nowrap">Soul Circle</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary drop-shadow-[0_0_8px_rgba(233,195,73,0.5)]" href="#">
+<span class="material-symbols-outlined" data-icon="storefront" style="font-variation-settings: &quot;FILL&quot; 1;">storefront</span>
+<span class="font-label-caps text-[9px] mt-1 whitespace-nowrap">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline opacity-70 hover:opacity-100 hover:text-tertiary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="font-label-caps text-[9px] mt-1 whitespace-nowrap">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline opacity-70 hover:opacity-100 hover:text-tertiary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-[9px] mt-1 whitespace-nowrap">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+    // Show sample modal logic
+    document.querySelectorAll('button').forEach(btn => {
+        if(btn.innerText.toLowerCase() === 'sample') {
+            btn.onclick = () => {
+                document.getElementById('sample-modal').classList.remove('hidden');
+            }
+        }
+    });
+
+    // Horizontal scroll micro-interaction
+    const scrollContainers = document.querySelectorAll('.custom-scrollbar');
+    scrollContainers.forEach(container => {
+        container.addEventListener('wheel', (evt) => {
+            evt.preventDefault();
+            container.scrollLeft += evt.deltaY;
+        });
+    });
+</script>
+
+
+<a href="/" style="position:fixed;top:12px;right:12px;z-index:9999;background:rgba(212,175,55,0.15);border:1px solid #D4AF37;color:#e9c349;padding:6px 12px;border-radius:9999px;font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;backdrop-filter:blur(8px);">← All Screens</a></body></html>
