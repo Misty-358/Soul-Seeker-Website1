@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Soulseeker Tarot - Ritual Reading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#263140",
+                        "surface-container-high": "#202b39",
+                        "on-tertiary": "#3c2f00",
+                        "background": "#091422",
+                        "primary": "#c3c5da",
+                        "outline": "#919097",
+                        "outline-variant": "#46464c",
+                        "surface-bright": "#2f3a49",
+                        "primary-fixed-dim": "#c3c5da",
+                        "tertiary": "#e9c349",
+                        "on-primary": "#2c303f",
+                        "surface-variant": "#2b3544",
+                        "surface-container-highest": "#2b3544",
+                        "on-secondary-fixed": "#00184a",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#002a76",
+                        "surface-dim": "#091422",
+                        "on-primary-fixed-variant": "#434657",
+                        "on-error": "#690005",
+                        "secondary-container": "#005ff1",
+                        "primary-container": "#050816",
+                        "inverse-primary": "#5a5e6f",
+                        "surface-tint": "#c3c5da",
+                        "surface-container-lowest": "#040f1c",
+                        "secondary-fixed": "#dbe1ff",
+                        "surface": "#091422",
+                        "secondary-fixed-dim": "#b3c5ff",
+                        "surface-container": "#15202e",
+                        "secondary": "#b3c5ff",
+                        "on-surface-variant": "#c7c6cd",
+                        "on-surface": "#d8e3f7",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-primary-fixed": "#171b2a",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-tertiary-container": "#937500",
+                        "on-background": "#d8e3f7",
+                        "on-primary-container": "#75788a",
+                        "tertiary-container": "#0d0800",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container-low": "#111c2a",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-secondary-fixed-variant": "#003fa5",
+                        "primary-fixed": "#dfe1f6",
+                        "inverse-surface": "#d8e3f7",
+                        "on-secondary-container": "#e8ebff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "sm": "12px",
+                        "margin": "24px",
+                        "base": "8px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Cinzel"],
+                        "headline-lg": ["Cinzel"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Cinzel"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Cinzel"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #050816;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            min-height: 100dvh;
+        }
+        body::-webkit-scrollbar { display: none; }
+
+        .mystical-bg {
+            background: radial-gradient(circle at 50% 30%, #0e1e45 0%, #050816 70%);
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+        }
+
+        .nebula {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 80% 20%, rgba(37, 109, 255, 0.15), transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(111, 91, 255, 0.15), transparent 50%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .tarot-card-container {
+            perspective: 1000px;
+        }
+
+        .tarot-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-revealed .tarot-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .tarot-card-front, .tarot-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #d4af37;
+        }
+
+        .tarot-card-back {
+            background: linear-gradient(135deg, #091422 0%, #15202e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .tarot-card-front {
+            transform: rotateY(180deg);
+        }
+
+        .card-glow-active {
+            box-shadow: 0 0 30px rgba(0, 95, 241, 0.9), 0 0 60px rgba(0, 95, 241, 0.5) !important;
+            border-color: #005ff1 !important;
+            transition: all 0.3s ease;
+        }
+
+        .light-burst {
+            animation: light-burst 1s ease-out;
+        }
+
+        @keyframes light-burst {
+            0% { box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0); }
+            50% { box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0); }
+        }
+
+        .fanned-deck {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 180px;
+            padding-bottom: 40px;
+            position: relative;
+        }
+
+        .deck-card {
+            width: 70px;
+            height: 110px;
+            margin-left: -45px;
+            transform-origin: bottom center;
+            cursor: pointer;
+            transition: transform 0.3s ease, margin 0.3s ease;
+            position: relative;
+        }
+
+        .deck-card:first-child { margin-left: 0; }
+        .deck-card:hover { transform: translateY(-10px) rotate(0deg) !important; z-index: 50; }
+
+        .shimmer {
+            background: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.05) 45%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.05) 55%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            background-size: 200% 200%;
+            animation: shimmer 4s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% -200%; }
+            100% { background-position: 200% 200%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+            50% { transform: translateY(-8px) rotate(var(--rot)); }
+        }
+
+        .floating { animation: float 4s ease-in-out infinite; }
+
+        .reading-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+            display: none;
+        }
+
+        .reading-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .divine-button {
+            border: 1px solid #d4af37;
+            background: transparent;
+            color: #ffe088;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .divine-button:hover {
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .glass-panel {
+            background: rgba(14, 30, 69, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(184, 195, 214, 0.1);
+        }
+
+        .success-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+        }
+        .success-toast.active { transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body class="text-on-surface font-body-md">
+<div class="mystical-bg"></div>
+<div class="nebula"></div>
+<!-- Success Toast -->
+<div class="success-toast glass-panel px-md py-sm rounded-full flex items-center gap-base border-tertiary/40" id="toast">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<span class="font-label-caps text-tertiary-fixed">Reading Saved to Journal</span>
+</div>
+<!-- Top AppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-surface to-transparent">
+<div class="flex justify-between items-center w-full px-margin py-sm max-w-7xl mx-auto h-16">
+<button class="material-symbols-outlined text-tertiary-fixed scale-95 active:scale-90 transition-transform">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-[0.1em] text-tertiary-fixed drop-shadow-[0_0_10px_rgba(233,195,73,0.5)]">Soulseeker Tarot</h1>
+<button class="material-symbols-outlined text-tertiary-fixed scale-95 active:scale-90 transition-transform">notifications</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin max-w-lg mx-auto overflow-y-auto">
+<!-- Spread Area -->
+<div class="grid grid-cols-3 gap-gutter mb-lg text-center relative" id="spread-container">
+<!-- Past -->
+<div class="flex flex-col items-center">
+<div class="tarot-card-container aspect-[2/3] w-full mb-base glass-panel flex items-center justify-center border-dashed border-outline-variant/40 border-2 rounded" id="slot-0">
+<span class="material-symbols-outlined text-outline-variant text-4xl">auto_awesome</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PAST</span>
+</div>
+<!-- Present -->
+<div class="flex flex-col items-center">
+<div class="tarot-card-container aspect-[2/3] w-full mb-base glass-panel flex items-center justify-center border-dashed border-outline-variant/40 border-2 rounded" id="slot-1">
+<span class="material-symbols-outlined text-outline-variant text-4xl">auto_awesome</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PRESENT</span>
+</div>
+<!-- Future -->
+<div class="flex flex-col items-center">
+<div class="tarot-card-container aspect-[2/3] w-full mb-base glass-panel flex items-center justify-center border-dashed border-outline-variant/40 border-2 rounded" id="slot-2">
+<span class="material-symbols-outlined text-outline-variant text-4xl">auto_awesome</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">FUTURE</span>
+</div>
+</div>
+<div class="text-center mb-lg" id="action-prompt">
+<p class="font-headline-sm text-headline-sm text-tertiary-fixed mb-xs">Choose Your Cards</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Focus your energy on the inquiry at hand...</p>
+</div>
+<!-- Interpretation Panel (Appears per card) -->
+<section class="reading-section space-y-md mb-lg" id="interpretation-panel">
+<div class="glass-panel p-md rounded-xl border-tertiary/10">
+<div class="flex items-center gap-md mb-base">
+<div class="w-12 h-16 rounded overflow-hidden flex-shrink-0 border border-tertiary/20">
+<img class="w-full h-full object-cover" id="detail-card-img" src=""/>
+</div>
+<div>
+<h3 class="font-headline-sm text-tertiary-fixed leading-tight" id="detail-card-name">The Seeker</h3>
+<p class="font-label-caps text-[10px] text-on-surface-variant mt-1" id="detail-card-keywords">INTUITION • JOURNEY • LIGHT</p>
+</div>
+</div>
+<div class="space-y-sm">
+<p class="font-body-sm text-on-surface italic" id="detail-card-meaning">"A call to inner wisdom and spiritual exploration."</p>
+<div class="pt-base border-t border-outline-variant/20">
+<p class="font-label-caps text-[10px] text-tertiary-fixed-dim mb-1 uppercase">Guidance</p>
+<p class="font-body-sm text-on-surface" id="detail-card-advice">Trust the path illuminated by your own inner light.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Summary Reveal -->
+<section class="reading-section space-y-md mb-xl" id="interpretation-summary">
+<div class="glass-panel p-md rounded-xl border-primary/10">
+<div class="flex justify-between items-start mb-base">
+<h2 class="font-headline-md text-headline-md text-tertiary-fixed">The Vision</h2>
+<div class="flex gap-xs">
+<button class="material-symbols-outlined text-tertiary scale-90 p-1 bg-tertiary/10 rounded-full">play_arrow</button>
+<button class="material-symbols-outlined text-tertiary scale-90 p-1 bg-tertiary/10 rounded-full">graphic_eq</button>
+</div>
+</div>
+<div class="space-y-md">
+<div>
+<p class="font-label-caps text-tertiary-fixed-dim mb-xs uppercase tracking-widest text-[10px]">Core Message</p>
+<p class="font-body-md text-on-surface leading-relaxed italic border-l-2 border-tertiary/30 pl-md py-1">"Your path is illuminated by the stars of ancestors. The transition you feel is the soul stretching into its true vessel."</p>
+</div>
+<div class="grid grid-cols-2 gap-md pt-base">
+<div>
+<p class="font-label-caps text-tertiary-fixed-dim mb-xs uppercase text-[10px]">Current Energy</p>
+<div class="flex items-center gap-base">
+<div class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_#005ff1]"></div>
+<span class="font-body-sm">Deep Intuition</span>
+</div>
+</div>
+<div>
+<p class="font-label-caps text-tertiary-fixed-dim mb-xs uppercase text-[10px]">Opportunity</p>
+<span class="font-body-sm">New Beginnings</span>
+</div>
+</div>
+<div class="pt-base">
+<p class="font-label-caps text-tertiary-fixed-dim mb-xs uppercase text-[10px]">The Reflection Question</p>
+<p class="font-body-md text-on-surface">What do I fear in absolute stillness?</p>
+</div>
+</div>
+</div>
+<div class="flex gap-md">
+<button class="divine-button flex-1 py-md flex items-center justify-center gap-base rounded-lg text-sm" id="save-reading-btn">
+<span class="material-symbols-outlined text-md" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+                    Save To Journal
+                </button>
+<button class="divine-button flex-1 py-md flex items-center justify-center gap-base rounded-lg text-sm">
+<span class="material-symbols-outlined text-md">share</span>
+                    Share Spread
+                </button>
+</div>
+</section>
+<!-- Deck Selector -->
+<div class="relative" id="deck-wrapper">
+<div class="fanned-deck" id="fanned-deck">
+<!-- JS will inject 22 cards here -->
+</div>
+<div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+</div>
+</main>
+<!-- Audio Player UI (Floating) -->
+<div class="fixed bottom-24 right-margin z-[60] group">
+<button class="w-14 h-14 rounded-full bg-surface-container border border-tertiary/40 shadow-xl flex items-center justify-center text-tertiary active:scale-95 transition-all overflow-hidden relative">
+<div class="absolute inset-0 bg-tertiary/10 animate-pulse"></div>
+<span class="material-symbols-outlined relative z-10 text-2xl">volume_up</span>
+</button>
+<div class="absolute bottom-full right-0 mb-sm opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity">
+<div class="glass-panel p-base rounded-xl border-tertiary/20 flex flex-col gap-xs min-w-[120px]">
+<p class="font-label-caps text-[9px] text-tertiary-fixed-dim text-center">VOICE: ORACLE</p>
+<div class="flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-sm">skip_previous</span>
+<span class="material-symbols-outlined">pause</span>
+<span class="material-symbols-outlined text-sm">skip_next</span>
+</div>
+</div>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter pb-safe h-20 bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-8px_30px_rgb(0,95,241,0.15)] rounded-t-full">
+<a class="flex flex-col items-center justify-center text-tertiary-fixed drop-shadow-[0_0_8px_rgba(0,95,241,0.8)] border-t-2 border-secondary-container pt-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">playing_cards</span>
+<span class="font-label-caps text-label-caps mt-1">TAROT</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 pt-1 hover:text-tertiary-fixed transition-all duration-300" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="font-label-caps text-label-caps mt-1">CUSTOMISE</span>
+</a>
+<div class="relative -mt-10">
+<div class="w-16 h-16 rounded-full bg-surface-container border border-tertiary/30 shadow-[0_0_20px_rgba(233,195,73,0.3)] flex items-center justify-center active:scale-95 transition-transform overflow-hidden">
+<img alt="Celestial Brand Icon" class="w-full h-full opacity-50 absolute" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDawo71YT62T4J5U6BUcHDItfbUmlsGtOKNMnueyOUt8R9r5rKso6blGbfDi6Yw54MJ8qtT-e58B0ybVVuv2uRcfCL_U8NcHsYNdj-xyAUuWGeOmbIa9dS05DVz9OjmJ5s_Wq2-30dvSerfUBA6US3YMnOHi2bEkv3dj47oHwBP0fQCHF2juvCgm-g23TFImT3JeISmtw96_F9rlN3o6I_AT575X9Pi_r5s89y4r1Bvu_Ky72CZYmFCPdJtUMsy5vEcUEDYfFFHIfo"/>
+<span class="material-symbols-outlined text-tertiary text-3xl relative z-10" style="font-variation-settings: 'FILL' 1;">brightness_5</span>
+</div>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 pt-1 hover:text-tertiary-fixed transition-all duration-300" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-caps text-label-caps mt-1">SAVED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 pt-1 hover:text-tertiary-fixed transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">PROFILE</span>
+</a>
+</nav>
+<script>
+        const cardsDrawn = [];
+        const slots = [
+            document.getElementById('slot-0'),
+            document.getElementById('slot-1'),
+            document.getElementById('slot-2')
+        ];
+        const deckEl = document.getElementById('fanned-deck');
+        const summarySection = document.getElementById('interpretation-summary');
+        const interpPanel = document.getElementById('interpretation-panel');
+        const actionPrompt = document.getElementById('action-prompt');
+        const toast = document.getElementById('toast');
+        const saveBtn = document.getElementById('save-reading-btn');
+
+        // Card Content Library
+        const cardData = [
+            { 
+                name: 'The Seeker', 
+                keywords: 'INTUITION • JOURNEY • LIGHT',
+                meaning: 'A call to inner wisdom and spiritual exploration.',
+                advice: 'Trust the path illuminated by your own inner light.',
+                imgId: 'https://lh3.googleusercontent.com/aida/AP1WRLsV2jwNLE77B2OclSBzJCQBjR419Yisg49eaaXwZOslyveHeky1g1Nrv5ImDKrIBbzjOZiPNyGG0XYjhfN7WkmNHJiLE7IPZ-o7616j7qNMRK3lB6jY4w8QE7qWC379uezwYIqphVLrCm1Tcyb6miLCua-rwUWJgaeS9KPR9jpU1WDiDnC3Alhadae0E82ROqxc4ienD0PcOJzsQ4K1TkHhxx8LGxWjg5l6-SMKwucte6heudm-iveiRA'
+            },
+            { 
+                name: 'The Starseed', 
+                keywords: 'HOPE • ORIGINS • COSMIC',
+                meaning: 'Recognition of your divine heritage and celestial purpose.',
+                advice: 'Your unique frequency is needed on earth right now.',
+                imgId: 'https://lh3.googleusercontent.com/aida/AP1WRLsV2jwNLE77B2OclSBzJCQBjR419Yisg49eaaXwZOslyveHeky1g1Nrv5ImDKrIBbzjOZiPNyGG0XYjhfN7WkmNHJiLE7IPZ-o7616j7qNMRK3lB6jY4w8QE7qWC379uezwYIqphVLrCm1Tcyb6miLCua-rwUWJgaeS9KPR9jpU1WDiDnC3Alhadae0E82ROqxc4ienD0PcOJzsQ4K1TkHhxx8LGxWjg5l6-SMKwucte6heudm-iveiRA'
+            },
+            { 
+                name: 'The Destiny', 
+                keywords: 'POWER • WILL • SOVEREIGNTY',
+                meaning: 'Mastery over your own kingdom and future path.',
+                advice: 'Stand tall with the strength of a lion; lead with heart.',
+                imgId: 'https://lh3.googleusercontent.com/aida/AP1WRLsV2jwNLE77B2OclSBzJCQBjR419Yisg49eaaXwZOslyveHeky1g1Nrv5ImDKrIBbzjOZiPNyGG0XYjhfN7WkmNHJiLE7IPZ-o7616j7qNMRK3lB6jY4w8QE7qWC379uezwYIqphVLrCm1Tcyb6miLCua-rwUWJgaeS9KPR9jpU1WDiDnC3Alhadae0E82ROqxc4ienD0PcOJzsQ4K1TkHhxx8LGxWjg5l6-SMKwucte6heudm-iveiRA'
+            }
+        ];
+
+        let isAnimating = false;
+
+        function initDeck() {
+            const count = 22;
+            for (let i = 0; i < count; i++) {
+                const card = document.createElement('div');
+                const rotation = (i - (count - 1) / 2) * 4;
+                card.className = 'deck-card floating tarot-card-container';
+                card.style.setProperty('--rot', `${rotation}deg`);
+                card.style.transform = `rotate(${rotation}deg)`;
+                card.style.zIndex = i;
+                card.style.animationDelay = `${i * 0.15}s`;
+                
+                card.innerHTML = `
+                    <div class="tarot-card-inner w-full h-full">
+                        <div class="tarot-card-back shimmer">
+                            <span class="material-symbols-outlined text-tertiary/30 text-xl">flare</span>
+                        </div>
+                    </div>
+                `;
+                
+                card.onclick = () => handleCardClick(card);
+                deckEl.appendChild(card);
+            }
+        }
+
+        async function handleCardClick(cardEl) {
+            if (isAnimating || cardsDrawn.length >= 3 || cardEl.classList.contains('picked')) return;
+            
+            isAnimating = true;
+            const slotIndex = cardsDrawn.length;
+            const targetSlot = slots[slotIndex];
+            
+            cardsDrawn.push(cardEl);
+            cardEl.classList.add('picked');
+
+            // 1. Selection Glow
+            const innerBack = cardEl.querySelector('.tarot-card-back');
+            innerBack.classList.add('card-glow-active');
+            
+            await new Promise(r => setTimeout(r, 300));
+
+            // 2. Glide Logic
+            const startRect = cardEl.getBoundingClientRect();
+            const endRect = targetSlot.getBoundingClientRect();
+
+            // Switch to fixed to allow free movement across screen
+            cardEl.style.position = 'fixed';
+            cardEl.style.top = `${startRect.top}px`;
+            cardEl.style.left = `${startRect.left}px`;
+            cardEl.style.margin = '0';
+            cardEl.style.zIndex = 1000;
+            cardEl.classList.remove('floating');
+
+            const deltaX = endRect.left - startRect.left;
+            const deltaY = endRect.top - startRect.top;
+
+            cardEl.style.transition = 'transform 2.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            cardEl.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.1) rotate(0deg)`;
+
+            // 3. Arrival & Reveal
+            setTimeout(async () => {
+                // Pause at slot
+                await new Promise(r => setTimeout(r, 1000));
+
+                // Prepare reveal content
+                const currentData = cardData[slotIndex];
+                targetSlot.innerHTML = `
+                    <div class="tarot-card-inner w-full h-full">
+                        <div class="tarot-card-back shimmer">
+                            <span class="material-symbols-outlined text-tertiary/30 text-xl">flare</span>
+                        </div>
+                        <div class="tarot-card-front bg-surface-container relative">
+                            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('${currentData.imgId}')"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 w-full p-xs">
+                                <p class="text-[9px] font-label-caps text-tertiary-fixed text-center">${currentData.name}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Flip animation
+                targetSlot.classList.add('card-revealed');
+                targetSlot.querySelector('.tarot-card-inner').classList.add('light-burst');
+                
+                // Hide the flying placeholder
+                cardEl.style.opacity = '0';
+
+                // Update Interpretation Panel
+                updateInterpPanel(currentData);
+
+                isAnimating = false;
+
+                if (cardsDrawn.length === 3) {
+                    finalizeReading();
+                }
+            }, 2500);
+        }
+
+        function updateInterpPanel(data) {
+            interpPanel.style.display = 'block';
+            setTimeout(() => interpPanel.classList.add('visible'), 50);
+            
+            document.getElementById('detail-card-img').src = data.imgId;
+            document.getElementById('detail-card-name').textContent = data.name;
+            document.getElementById('detail-card-keywords').textContent = data.keywords;
+            document.getElementById('detail-card-meaning').textContent = `"${data.meaning}"`;
+            document.getElementById('detail-card-advice').textContent = data.advice;
+        }
+
+        function finalizeReading() {
+            setTimeout(() => {
+                actionPrompt.style.display = 'none';
+                summarySection.classList.add('visible');
+                summarySection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Simulation of auto-journaling
+                console.log("Journal entry created for current reading spread.");
+            }, 1500);
+        }
+
+        saveBtn.onclick = () => {
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 3000);
+        };
+
+        initDeck();
+    </script>
+</body></html>

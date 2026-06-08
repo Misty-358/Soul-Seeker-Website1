@@ -1,0 +1,450 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Soulseeker Tarot - Subscription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#0d0800",
+                    "surface-container-low": "#111c2a",
+                    "outline-variant": "#46464c",
+                    "on-secondary-fixed": "#00184a",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-bright": "#2f3a49",
+                    "surface-container-highest": "#2b3544",
+                    "on-primary-container": "#75788a",
+                    "on-tertiary": "#3c2f00",
+                    "surface": "#091422",
+                    "on-secondary": "#002a76",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#5a5e6f",
+                    "tertiary": "#e9c349",
+                    "on-primary": "#2c303f",
+                    "background": "#091422",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-secondary-fixed-variant": "#003fa5",
+                    "primary-fixed": "#dfe1f6",
+                    "surface-container": "#15202e",
+                    "on-primary-fixed": "#171b2a",
+                    "on-background": "#d8e3f7",
+                    "surface-container-high": "#202b39",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#263140",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#2b3544",
+                    "surface-tint": "#c3c5da",
+                    "outline": "#919097",
+                    "on-surface": "#d8e3f7",
+                    "primary-fixed-dim": "#c3c5da",
+                    "on-secondary-container": "#e8ebff",
+                    "surface-dim": "#091422",
+                    "surface-container-lowest": "#040f1c",
+                    "secondary-container": "#005ff1",
+                    "on-surface-variant": "#c7c6cd",
+                    "on-tertiary-fixed": "#241a00",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed": "#ffe088",
+                    "primary": "#c3c5da",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "primary-container": "#050816",
+                    "on-tertiary-container": "#937500",
+                    "on-primary-fixed-variant": "#434657",
+                    "inverse-surface": "#d8e3f7",
+                    "secondary": "#b3c5ff",
+                    "secondary-fixed-dim": "#b3c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin": "24px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "base": "8px",
+                    "xl": "64px",
+                    "sm": "12px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Cinzel"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Cinzel"],
+                    "headline-sm": ["Cinzel"],
+                    "headline-lg": ["Cinzel"],
+                    "label-caps": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "headline-sm": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #091422;
+            color: #d8e3f7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .cosmic-bg {
+            background: radial-gradient(circle at 50% 0%, #111c2a 0%, #091422 100%);
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+        }
+        .nebula {
+            position: fixed;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: radial-gradient(circle at 20% 30%, rgba(179, 197, 255, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(233, 195, 73, 0.03) 0%, transparent 40%);
+            filter: blur(80px);
+            z-index: -1;
+            animation: nebula-float 30s ease-in-out infinite alternate;
+        }
+        .particle {
+            position: absolute;
+            background: #dfe1f6;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; transform: scale(0.8); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+        @keyframes nebula-float {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(3%, 4%) rotate(2deg); }
+        }
+        .premium-card {
+            background: #15202e;
+            border: 1px solid rgba(233, 195, 73, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-card:hover {
+            border-color: #e9c349;
+            box-shadow: 0 0 20px rgba(233, 195, 73, 0.2);
+            transform: translateY(-4px);
+        }
+        .gold-gradient-btn {
+            background: linear-gradient(135deg, #ffe088 0%, #e9c349 50%, #937500 100%);
+            box-shadow: 0 0 15px rgba(233, 195, 73, 0.3);
+            transition: all 0.3s ease;
+        }
+        .gold-gradient-btn:hover {
+            box-shadow: 0 0 25px rgba(233, 195, 73, 0.5);
+            filter: brightness(1.1);
+        }
+        .luxury-glow {
+            text-shadow: 0 0 10px rgba(233, 195, 73, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        select {
+            background-color: #111c2a;
+            border-color: #46464c;
+            color: #d8e3f7;
+        }
+        .animated-deluxe {
+            background: linear-gradient(135deg, #15202e 0%, #0d0800 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .animated-deluxe::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, transparent, #e9c349, transparent);
+            z-index: 0;
+            animation: border-flow 6s linear infinite;
+        }
+        @keyframes border-flow {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        .deluxe-content {
+            position: relative;
+            z-index: 1;
+            background: #15202e;
+            height: calc(100% - 2px);
+            margin: 1px;
+            border-radius: inherit;
+        }
+    </style>
+</head>
+<body class="font-body-md">
+<div class="cosmic-bg"></div>
+<div class="nebula"></div>
+<div class="particles-container fixed inset-0 pointer-events-none z-[-1]" id="particles"><div class="particle" style="width: 1.46099px; height: 1.46099px; left: 50.8666%; top: 28.8453%; --duration: 5.278206501669235s; animation-delay: 3.42597s;"></div><div class="particle" style="width: 1.11052px; height: 1.11052px; left: 75.9499%; top: 13.1985%; --duration: 3.256168946164968s; animation-delay: 0.159981s;"></div><div class="particle" style="width: 1.52599px; height: 1.52599px; left: 39.0216%; top: 28.5655%; --duration: 5.419738057825024s; animation-delay: 2.28996s;"></div><div class="particle" style="width: 1.03367px; height: 1.03367px; left: 15.0173%; top: 25.849%; --duration: 6.4101531100476485s; animation-delay: 2.86241s;"></div><div class="particle" style="width: 1.35785px; height: 1.35785px; left: 3.97385%; top: 86.1878%; --duration: 4.6240581301378665s; animation-delay: 0.0334345s;"></div><div class="particle" style="width: 1.75211px; height: 1.75211px; left: 44.009%; top: 7.94417%; --duration: 6.894303180691057s; animation-delay: 3.31085s;"></div><div class="particle" style="width: 1.14092px; height: 1.14092px; left: 43.7087%; top: 68.6699%; --duration: 3.4370520433567204s; animation-delay: 3.6062s;"></div><div class="particle" style="width: 0.565117px; height: 0.565117px; left: 7.9285%; top: 8.49022%; --duration: 4.097764994169215s; animation-delay: 3.6923s;"></div><div class="particle" style="width: 1.07767px; height: 1.07767px; left: 22.3667%; top: 38.9857%; --duration: 4.539362632754717s; animation-delay: 0.549819s;"></div><div class="particle" style="width: 0.909307px; height: 0.909307px; left: 48.5824%; top: 66.2698%; --duration: 6.409259639021035s; animation-delay: 0.0855188s;"></div><div class="particle" style="width: 1.27469px; height: 1.27469px; left: 68.9259%; top: 34.9694%; --duration: 3.82067418113934s; animation-delay: 0.0856782s;"></div><div class="particle" style="width: 0.957019px; height: 0.957019px; left: 66.8657%; top: 14.5613%; --duration: 4.8675197813416595s; animation-delay: 1.9117s;"></div><div class="particle" style="width: 0.976153px; height: 0.976153px; left: 41.3268%; top: 59.2171%; --duration: 6.353058861852723s; animation-delay: 0.0102481s;"></div><div class="particle" style="width: 0.605104px; height: 0.605104px; left: 40.9824%; top: 28.2639%; --duration: 3.2074551502879802s; animation-delay: 2.40129s;"></div><div class="particle" style="width: 1.16281px; height: 1.16281px; left: 9.18372%; top: 17.3954%; --duration: 3.732052648238027s; animation-delay: 4.81417s;"></div><div class="particle" style="width: 1.21223px; height: 1.21223px; left: 48.2181%; top: 41.7308%; --duration: 4.533251056987724s; animation-delay: 3.62001s;"></div><div class="particle" style="width: 1.83001px; height: 1.83001px; left: 49.1108%; top: 59.9771%; --duration: 5.348684254001838s; animation-delay: 3.44999s;"></div><div class="particle" style="width: 1.93458px; height: 1.93458px; left: 30.4942%; top: 81.517%; --duration: 6.33819407235274s; animation-delay: 2.32978s;"></div><div class="particle" style="width: 0.888927px; height: 0.888927px; left: 70.9085%; top: 19.4923%; --duration: 4.714073316005956s; animation-delay: 4.46594s;"></div><div class="particle" style="width: 1.58929px; height: 1.58929px; left: 87.2225%; top: 65.4794%; --duration: 3.4712190560761784s; animation-delay: 3.55744s;"></div><div class="particle" style="width: 1.31965px; height: 1.31965px; left: 17.095%; top: 16.33%; --duration: 4.042722471781304s; animation-delay: 2.89516s;"></div><div class="particle" style="width: 1.76906px; height: 1.76906px; left: 96.426%; top: 7.87541%; --duration: 6.561291890998416s; animation-delay: 3.81413s;"></div><div class="particle" style="width: 1.95064px; height: 1.95064px; left: 58.7847%; top: 84.3211%; --duration: 6.074870257579267s; animation-delay: 3.09944s;"></div><div class="particle" style="width: 1.49383px; height: 1.49383px; left: 16.5643%; top: 44.7976%; --duration: 4.877701870639658s; animation-delay: 0.293139s;"></div><div class="particle" style="width: 0.859489px; height: 0.859489px; left: 38.1222%; top: 69.2217%; --duration: 3.1264896978028536s; animation-delay: 3.18173s;"></div><div class="particle" style="width: 1.59653px; height: 1.59653px; left: 78.8585%; top: 69.461%; --duration: 4.488107743454972s; animation-delay: 0.201308s;"></div><div class="particle" style="width: 1.68117px; height: 1.68117px; left: 39.8184%; top: 3.74507%; --duration: 5.7924663357912625s; animation-delay: 4.67411s;"></div><div class="particle" style="width: 1.80099px; height: 1.80099px; left: 53.7677%; top: 48.415%; --duration: 3.6457242772621568s; animation-delay: 4.83492s;"></div><div class="particle" style="width: 1.67646px; height: 1.67646px; left: 71.9205%; top: 18.0636%; --duration: 3.5226223940773336s; animation-delay: 4.5103s;"></div><div class="particle" style="width: 1.82997px; height: 1.82997px; left: 75.62%; top: 50.36%; --duration: 5.371332207208335s; animation-delay: 3.18797s;"></div><div class="particle" style="width: 0.78961px; height: 0.78961px; left: 65.5445%; top: 94.7755%; --duration: 3.661847379605353s; animation-delay: 2.56524s;"></div><div class="particle" style="width: 1.67055px; height: 1.67055px; left: 75.5596%; top: 89.821%; --duration: 6.052600263942162s; animation-delay: 2.54565s;"></div><div class="particle" style="width: 1.98425px; height: 1.98425px; left: 96.9671%; top: 83.9036%; --duration: 5.967657182537785s; animation-delay: 3.64732s;"></div><div class="particle" style="width: 0.959839px; height: 0.959839px; left: 10.5793%; top: 75.6184%; --duration: 6.3664130486309345s; animation-delay: 4.29299s;"></div><div class="particle" style="width: 1.81739px; height: 1.81739px; left: 82.3697%; top: 24.4156%; --duration: 6.5584512538680375s; animation-delay: 4.70707s;"></div><div class="particle" style="width: 1.88723px; height: 1.88723px; left: 89.0472%; top: 12.226%; --duration: 4.051968083540787s; animation-delay: 4.55455s;"></div><div class="particle" style="width: 1.33305px; height: 1.33305px; left: 27.3869%; top: 46.7755%; --duration: 5.71794364701901s; animation-delay: 4.44699s;"></div><div class="particle" style="width: 0.938176px; height: 0.938176px; left: 25.3887%; top: 38.9356%; --duration: 4.690445689260678s; animation-delay: 1.90366s;"></div><div class="particle" style="width: 1.07695px; height: 1.07695px; left: 11.6159%; top: 69.2552%; --duration: 3.8757474785763533s; animation-delay: 4.08656s;"></div><div class="particle" style="width: 0.76702px; height: 0.76702px; left: 0.422879%; top: 56.7093%; --duration: 5.7782541748717s; animation-delay: 3.54214s;"></div><div class="particle" style="width: 1.37186px; height: 1.37186px; left: 40.668%; top: 23.1969%; --duration: 5.262713959763387s; animation-delay: 0.30818s;"></div><div class="particle" style="width: 1.08238px; height: 1.08238px; left: 94.867%; top: 5.60308%; --duration: 5.5469403043340515s; animation-delay: 3.34724s;"></div><div class="particle" style="width: 1.86645px; height: 1.86645px; left: 66.8662%; top: 5.56034%; --duration: 6.089183520516071s; animation-delay: 0.576832s;"></div><div class="particle" style="width: 1.511px; height: 1.511px; left: 54.1584%; top: 24.2442%; --duration: 6.003768210884202s; animation-delay: 3.63096s;"></div><div class="particle" style="width: 0.53051px; height: 0.53051px; left: 1.08451%; top: 17.4504%; --duration: 4.901626974829526s; animation-delay: 1.58537s;"></div><div class="particle" style="width: 0.719805px; height: 0.719805px; left: 77.6501%; top: 30.5432%; --duration: 6.685399534763997s; animation-delay: 1.59882s;"></div><div class="particle" style="width: 1.08531px; height: 1.08531px; left: 17.8808%; top: 60.6069%; --duration: 5.226556809301606s; animation-delay: 2.62152s;"></div><div class="particle" style="width: 1.88472px; height: 1.88472px; left: 28.3522%; top: 40.2412%; --duration: 5.333440208249671s; animation-delay: 1.49387s;"></div><div class="particle" style="width: 1.27582px; height: 1.27582px; left: 92.4496%; top: 20.7428%; --duration: 3.2285137006583935s; animation-delay: 4.81463s;"></div><div class="particle" style="width: 1.93172px; height: 1.93172px; left: 30.0892%; top: 51.1514%; --duration: 5.00077999752681s; animation-delay: 1.01824s;"></div><div class="particle" style="width: 1.31316px; height: 1.31316px; left: 97.5553%; top: 38.9753%; --duration: 6.718092788351287s; animation-delay: 3.97372s;"></div><div class="particle" style="width: 1.39487px; height: 1.39487px; left: 48.3316%; top: 9.43518%; --duration: 4.1248180839586075s; animation-delay: 2.34426s;"></div><div class="particle" style="width: 1.54192px; height: 1.54192px; left: 70.4577%; top: 7.97421%; --duration: 3.870413262758507s; animation-delay: 2.74973s;"></div><div class="particle" style="width: 0.858278px; height: 0.858278px; left: 4.97236%; top: 75.9731%; --duration: 4.993122205213075s; animation-delay: 3.6889s;"></div><div class="particle" style="width: 1.29084px; height: 1.29084px; left: 62.0966%; top: 49.4942%; --duration: 4.518924425962073s; animation-delay: 4.14344s;"></div><div class="particle" style="width: 1.7731px; height: 1.7731px; left: 8.53099%; top: 21.5619%; --duration: 3.674433656476267s; animation-delay: 1.5186s;"></div><div class="particle" style="width: 1.24596px; height: 1.24596px; left: 20.0535%; top: 66.6231%; --duration: 4.937888869958886s; animation-delay: 1.92049s;"></div><div class="particle" style="width: 1.11436px; height: 1.11436px; left: 74.1071%; top: 13.2877%; --duration: 3.5742315440693835s; animation-delay: 2.74658s;"></div><div class="particle" style="width: 1.59832px; height: 1.59832px; left: 10.0505%; top: 26.1506%; --duration: 4.4072311752065465s; animation-delay: 4.04419s;"></div><div class="particle" style="width: 1.12224px; height: 1.12224px; left: 18.0497%; top: 57.467%; --duration: 4.151437206250011s; animation-delay: 4.52401s;"></div></div>
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-outline-variant/20">
+<div class="flex justify-between items-center px-margin h-16 w-full max-w-7xl mx-auto">
+<button class="text-tertiary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-tertiary tracking-widest luxury-glow uppercase">
+                Soulseeker tarot</h1>
+<button class="text-tertiary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+</div>
+</header>
+<main class="pt-32 pb-40 px-margin max-w-7xl mx-auto min-h-screen">
+<!-- Hero Section -->
+<section class="text-center mb-xl">
+<h2 class="font-display-lg text-display-lg mb-sm text-tertiary luxury-glow uppercase">Elevate Your Journey</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto">
+                Unlock deeper cosmic insights and personalized divination through our sacred tiers.
+            </p>
+</section>
+<!-- Subscription Tiers Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-xl">
+<!-- Curious Tier (Free) -->
+<div class="premium-card p-md rounded-xl flex flex-col items-center text-center group">
+<div class="mb-md">
+<span class="material-symbols-outlined text-4xl text-outline mb-sm block">visibility</span>
+<h3 class="font-headline-sm text-headline-sm text-outline uppercase tracking-widest">Curious</h3>
+</div>
+<div class="mb-lg">
+<span class="font-headline-lg text-headline-lg text-on-surface">Free</span>
+<span class="text-label-caps block text-on-surface-variant mt-1">FOREVER</span>
+</div>
+<ul class="space-y-base text-left w-full mb-lg text-on-surface-variant font-body-sm">
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1">check</span> Daily 1-card spread</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1">check</span> Basic readings (1/theme)</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1">check</span> 4 in-depth readings /mo</li>
+</ul>
+<button class="mt-auto w-full py-sm px-md border border-outline text-outline font-label-caps rounded-sm hover:bg-outline/10 transition-colors uppercase">Current Plan</button>
+</div>
+<!-- Seeker Tier (£5.99) -->
+<div class="premium-card p-md rounded-xl flex flex-col items-center text-center group border-tertiary/30">
+<div class="mb-md">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-sm block luxury-glow">explore</span>
+<h3 class="font-headline-sm text-headline-sm text-tertiary uppercase tracking-widest">Seeker</h3>
+</div>
+<div class="mb-lg">
+<span class="font-headline-lg text-headline-lg text-on-surface">£5.99</span>
+<span class="text-label-caps block text-on-surface-variant mt-1">PER MOON</span>
+</div>
+<ul class="space-y-base text-left w-full mb-lg text-on-surface-variant font-body-sm">
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> Daily 3-card spread</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> Basic readings (1/theme/day)</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> 10 in-depth readings /mo</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> 2GB Save area</li>
+</ul>
+<button class="mt-auto w-full py-sm px-md gold-gradient-btn text-on-tertiary font-label-caps rounded-sm active:scale-95 uppercase">Begin Journey</button>
+</div>
+<!-- Pathfinder Tier (£12.99) -->
+<div class="premium-card p-md rounded-xl flex flex-col items-center text-center group border-secondary/30">
+<div class="mb-md">
+<span class="material-symbols-outlined text-4xl text-secondary mb-sm block">map</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">Pathfinder</h3>
+</div>
+<div class="mb-lg">
+<span class="font-headline-lg text-headline-lg text-on-surface">£12.99</span>
+<span class="text-label-caps block text-on-surface-variant mt-1">PER MOON</span>
+</div>
+<ul class="space-y-base text-left w-full mb-lg text-on-surface-variant font-body-sm">
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-secondary">check</span> Daily 3-card spread</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-secondary">check</span> Basic readings (1 theme/day)</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-secondary">check</span> 15 in-depth readings a month (1 theme a day)</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-secondary">check</span> 5GB Save area</li>
+</ul>
+<button class="mt-auto w-full py-sm px-md border border-secondary text-secondary font-label-caps rounded-sm hover:bg-secondary/10 transition-colors uppercase">Ascend Now</button>
+</div>
+<!-- Navigator Tier (Deluxe - £19.99) -->
+<div class="animated-deluxe rounded-xl group transition-all duration-500 shadow-2xl">
+<div class="deluxe-content p-md flex flex-col items-center text-center rounded-xl">
+<div class="mb-md">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-sm block luxury-glow">diamond</span>
+<h3 class="font-headline-sm text-headline-sm text-tertiary uppercase tracking-widest">Navigator</h3>
+</div>
+<div class="mb-lg">
+<span class="font-headline-lg text-headline-lg text-on-surface">£19.99</span>
+<span class="text-label-caps block text-on-surface-variant mt-1">PER MOON</span>
+</div>
+<ul class="space-y-base text-left w-full mb-lg text-on-surface-variant font-body-sm">
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> Daily 3-card spread</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> Basic readings (1 theme/day)</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> 20 in-depth readings a month (1/theme/day)</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-sm pt-1 text-tertiary">check</span> 10GB Save area</li>
+</ul>
+<button class="mt-auto w-full py-sm px-md gold-gradient-btn text-on-tertiary font-label-caps rounded-sm hover:scale-105 transition-transform uppercase">Eternal Access</button>
+</div>
+</div>
+</div>
+<!-- Soul Circle Membership Section -->
+<section class="mb-xl">
+<div class="premium-card p-lg rounded-xl border-l-4 border-tertiary relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 opacity-5 transition-transform group-hover:scale-110 duration-700">
+<span class="material-symbols-outlined text-[200px] text-tertiary">groups_3</span>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-lg relative z-10">
+<div class="flex flex-col md:flex-row items-center gap-md text-center md:text-left">
+<div class="bg-tertiary/10 p-md rounded-full border border-tertiary/20">
+<span class="material-symbols-outlined text-5xl text-tertiary">groups_3</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-on-surface uppercase tracking-widest mb-1">Soul Circle Membership</h3>
+<p class="font-body-md text-on-surface-variant max-w-xl">
+                            Join our sacred community. Engage in communal divination, share insights, and connect with fellow seekers.
+                        </p>
+<ul class="mt-md space-y-xs font-body-sm text-tertiary">
+<li class="flex items-center gap-xs justify-center md:justify-start"><span class="material-symbols-outlined text-sm">chat_bubble</span> Community chat, messages, &amp; notifications</li>
+<li class="flex items-center gap-xs justify-center md:justify-start"><span class="material-symbols-outlined text-sm">video_call</span> Video calls &amp; screen sharing for joint readings</li>
+</ul>
+</div>
+</div>
+<div class="text-center md:text-right shrink-0">
+<span class="block font-headline-lg text-tertiary mb-sm">£4.99/mo</span>
+<button class="gold-gradient-btn text-on-tertiary font-label-caps py-sm px-xl rounded-sm uppercase tracking-widest active:scale-95">Join Circle</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Business Section (Preserved) -->
+<section class="mt-xl">
+<div class="text-center mb-lg">
+<h3 class="font-headline-lg text-headline-lg text-tertiary luxury-glow uppercase">Business Use</h3>
+<p class="font-body-md text-on-surface-variant">Customizable card decks with exclusive volume pricing.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md items-start">
+<!-- Volume Pricing Table -->
+<div class="lg:col-span-1 premium-card rounded-xl overflow-hidden">
+<div class="bg-surface-container-high px-md py-sm border-b border-outline-variant/30">
+<h4 class="font-label-caps text-tertiary uppercase tracking-widest">Volume Pricing</h4>
+</div>
+<table class="w-full text-left font-body-sm">
+<tbody class="divide-y divide-outline-variant/10">
+<tr><td class="p-md text-on-surface">1 Deck</td><td class="p-md text-right font-bold">£25</td></tr>
+<tr><td class="p-md text-on-surface">3 Decks</td><td class="p-md text-right font-bold">£75</td></tr>
+<tr><td class="p-md text-on-surface">6 Decks</td><td class="p-md text-right font-bold">£140</td></tr>
+<tr class="bg-tertiary/5"><td class="p-md text-on-surface font-semibold text-tertiary">12 Decks</td><td class="p-md text-right font-bold text-tertiary">£280</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Order Widget -->
+<div class="lg:col-span-2 premium-card rounded-xl p-md border-t-2 border-tertiary">
+<h4 class="font-headline-sm mb-md flex items-center gap-xs uppercase tracking-wide">
+<span class="material-symbols-outlined text-tertiary">shopping_cart</span>
+                        Print Order Widget
+                    </h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-on-surface-variant uppercase text-[10px]">Choose Deck</label>
+<select class="rounded-sm p-sm focus:ring-1 focus:ring-tertiary outline-none font-body-sm">
+<option>Golden Dawn Custom</option>
+<option>Midnight Oracle</option>
+<option>Celestial Path</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-on-surface-variant uppercase text-[10px]">How Many Copies</label>
+<select class="rounded-sm p-sm focus:ring-1 focus:ring-tertiary outline-none font-body-sm">
+<option value="1">1 Copy</option>
+<option value="3">3 Copies (Bulk)</option>
+<option value="6">6 Copies (Bulk)</option>
+<option value="12">12 Copies (Bulk)</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-on-surface-variant uppercase text-[10px]">Multiples</label>
+<select class="rounded-sm p-sm focus:ring-1 focus:ring-tertiary outline-none font-body-sm">
+<option>1 Set</option>
+<option>2 Sets</option>
+<option>5 Sets</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-lowest/40 p-md rounded-xl border border-outline-variant/10">
+<div>
+<span class="font-label-caps text-on-surface-variant block text-[10px] uppercase">Estimated Total</span>
+<span class="font-headline-lg text-tertiary luxury-glow">£25.00</span>
+</div>
+<button class="w-full md:w-auto py-md px-xl gold-gradient-btn text-on-tertiary font-label-caps rounded-full active:scale-95 transition-all uppercase tracking-widest">
+                            Proceed to Checkout
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-low/80 backdrop-blur-2xl rounded-t-full border-t border-outline-variant/10 shadow-[0_-4px_20px_rgba(195,197,218,0.1)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary/80 transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="font-label-caps text-label-caps mt-1 uppercase">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary/80 transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="font-label-caps text-label-caps mt-1 uppercase">Custom</span>
+</a>
+<div class="relative -top-4">
+<div class="absolute inset-0 bg-tertiary blur-xl opacity-20"></div>
+<button class="relative bg-surface p-4 rounded-full border-2 border-tertiary flex items-center justify-center scale-110 active:scale-90 transition-transform gold-gradient-btn">
+<span class="material-symbols-outlined text-on-tertiary text-2xl" style="font-variation-settings: &quot;FILL&quot; 1;">card_membership</span>
+</button>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-caps text-[10px] text-tertiary uppercase tracking-tighter whitespace-nowrap">Membership</span>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary/80 transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">bookmark_heart</span>
+<span class="font-label-caps text-label-caps mt-1 uppercase">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary drop-shadow-[0_0_8px_rgba(233,195,73,0.5)] active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">person_pin</span>
+<span class="font-label-caps text-label-caps mt-1 uppercase">Profile</span>
+</a>
+</nav>
+<script>
+        // Particle Generation
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 60;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 1.5 + 0.5;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.setProperty('--duration', `${Math.random() * 4 + 3}s`);
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            particlesContainer.appendChild(particle);
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const nebula = document.querySelector('.nebula');
+            if (nebula) {
+                nebula.style.transform = `translateY(${scrollPos * 0.05}px) rotate(${scrollPos * 0.002}deg)`;
+            }
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Soulseeker Tarot - Sacred Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            background-color: #091422;
+            color: #d8e3f7;
+            overflow-x: hidden;
+        }
+
+        .nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(111, 91, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(37, 109, 255, 0.1) 0%, transparent 50%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .glass-panel {
+            background: rgba(14, 30, 69, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(rgba(14, 30, 69, 0.8), rgba(14, 30, 69, 0.8)) padding-box,
+                        linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.4)) border-box;
+        }
+
+        .filigree-corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.6);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .divine-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .premium-entry:hover {
+            background: rgba(212, 175, 55, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        /* Custom scrollbar for premium feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050816;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#15202f",
+                      "on-surface-variant": "#c7c6cd",
+                      "outline": "#919097",
+                      "on-primary": "#2c303f",
+                      "surface-container-low": "#111c2a",
+                      "on-primary-container": "#75788a",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#00184a",
+                      "nebula-purple": "#6F5BFF",
+                      "secondary": "#b3c5ff",
+                      "primary-fixed": "#dfe1f6",
+                      "surface": "#091422",
+                      "tertiary-container": "#0d0800",
+                      "on-surface": "#d8e3f7",
+                      "on-secondary-container": "#e8ebff",
+                      "on-error": "#690005",
+                      "surface-container-high": "#202b39",
+                      "glass-fill": "rgba(14, 30, 69, 0.6)",
+                      "surface-navy": "#091422",
+                      "tertiary-fixed": "#ffe088",
+                      "error-container": "#93000a",
+                      "outline-variant": "#46464c",
+                      "inverse-surface": "#d8e3f7",
+                      "on-primary-fixed-variant": "#434657",
+                      "tertiary": "#e9c349",
+                      "surface-dim": "#091422",
+                      "inverse-on-surface": "#263140",
+                      "space-deep": "#050816",
+                      "on-tertiary-container": "#937500",
+                      "secondary-fixed": "#dbe1ff",
+                      "primary-container": "#050816",
+                      "primary-fixed-dim": "#c3c5da",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "on-background": "#d8e3f7",
+                      "inverse-primary": "#5a5e6f",
+                      "surface-bright": "#2f3a49",
+                      "primary": "#c3c5da",
+                      "secondary-fixed-dim": "#b3c5ff",
+                      "on-secondary": "#002a76",
+                      "on-primary-fixed": "#171b2a",
+                      "on-tertiary": "#3c2f00",
+                      "surface-container-lowest": "#040f1c",
+                      "on-secondary-fixed-variant": "#003fa5",
+                      "surface-tint": "#c3c5da",
+                      "on-tertiary-fixed": "#241a00",
+                      "secondary-container": "#005ff1",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "nebula-blue": "#256DFF",
+                      "surface-container-highest": "#2b3545",
+                      "surface-variant": "#2b3545",
+                      "background": "#091422",
+                      "error": "#ffb4ab",
+                      "gold-leaf": "#D4AF37"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "lg": "40px",
+                      "margin": "24px",
+                      "gutter": "16px",
+                      "base": "16px",
+                      "xs": "4px",
+                      "sm": "12px",
+                      "xl": "64px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-lg": ["Cinzel"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Cinzel"],
+                      "headline-md": ["Cinzel"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Cinzel"],
+                      "headline-sm": ["Cinzel"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-sm": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.15em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body-md text-body-md min-h-screen">
+<div class="nebula-bg"></div>
+<!-- Header Section -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-glass-fill backdrop-blur-xl border-b border-gold-leaf/20 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-leaf cursor-pointer hover:scale-110 transition-transform">menu</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-gold-leaf tracking-widest">Sacred Archive</h1>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-leaf">auto_awesome</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin max-w-md mx-auto space-y-10">
+<!-- Search and Filter -->
+<section class="glass-panel rounded-xl p-4 gold-border-gradient divine-glow">
+<div class="flex items-center bg-space-deep/50 rounded-full px-4 py-2 border border-gold-leaf/10 mb-4">
+<span class="material-symbols-outlined text-gold-leaf/60 mr-2 text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-on-surface-variant/40 font-body-sm w-full" placeholder="Search your destiny..." type="text">
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-1.5 rounded-full border border-gold-leaf bg-gold-leaf/10 text-gold-leaf font-label-caps whitespace-nowrap">Career</button>
+<button class="px-4 py-1.5 rounded-full border border-gold-leaf/30 bg-transparent text-on-surface-variant font-label-caps whitespace-nowrap hover:border-gold-leaf/60 transition-colors">Relationships</button>
+<button class="px-4 py-1.5 rounded-full border border-gold-leaf/30 bg-transparent text-on-surface-variant font-label-caps whitespace-nowrap hover:border-gold-leaf/60 transition-colors">General</button>
+<button class="px-4 py-1.5 rounded-full border border-gold-leaf/30 bg-transparent text-on-surface-variant font-label-caps whitespace-nowrap hover:border-gold-leaf/60 transition-colors">Daily</button>
+</div>
+</section>
+<!-- Saved Readings Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-2">
+<h2 class="font-headline-sm text-headline-sm text-gold-leaf">Saved Readings</h2>
+<span class="font-label-caps text-on-surface-variant/60">24 Total</span>
+</div>
+<div class="space-y-3">
+<!-- Reading Entry 1 -->
+<div class="glass-panel relative rounded-lg p-4 premium-entry group cursor-pointer transition-all duration-300" style="transform: translateY(0px);">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-label-caps text-[10px] text-gold-leaf tracking-tighter mb-1 uppercase">Solstice Alignment</p>
+<h3 class="font-headline-sm text-on-surface">The Weaver of Fates</h3>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-gold-leaf/10 text-gold-leaf hover:bg-gold-leaf/20">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-gold-leaf/10 text-gold-leaf hover:bg-gold-leaf/20">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-leaf/60 text-[14px]">calendar_month</span>
+<span class="font-body-sm text-on-surface-variant text-[12px]">Oct 12, 2023</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-nebula-purple/20 text-nebula-purple font-label-caps text-[10px]">Career</span>
+</div>
+</div>
+</div>
+<!-- Reading Entry 2 -->
+<div class="glass-panel relative rounded-lg p-4 premium-entry group cursor-pointer transition-all duration-300">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-label-caps text-[10px] text-gold-leaf tracking-tighter mb-1 uppercase">Full Moon Ritual</p>
+<h3 class="font-headline-sm text-on-surface">Shadow &amp; Luminescence</h3>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-gold-leaf/10 text-gold-leaf hover:bg-gold-leaf/20">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-gold-leaf/10 text-gold-leaf hover:bg-gold-leaf/20">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-leaf/60 text-[14px]">calendar_month</span>
+<span class="font-body-sm text-on-surface-variant text-[12px]">Sep 28, 2023</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-nebula-blue/20 text-nebula-blue font-label-caps text-[10px]">Spirituality</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- My Custom Decks Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-2">
+<h2 class="font-headline-sm text-headline-sm text-gold-leaf">My Custom Decks</h2>
+<button class="flex items-center gap-1 text-gold-leaf/80 hover:text-gold-leaf transition-colors">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span class="font-label-caps text-[10px]">Create</span>
+</button>
+</div>
+<div class="space-y-3">
+<!-- Deck 1 -->
+<div class="glass-panel gold-border-gradient rounded-xl p-4 flex gap-4 items-center">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-shrink-0 relative group">
+<img alt="Celestial Deck Cover" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A macro shot of a single tarot card with intricate gold foil patterns representing cosmic constellations and alchemical symbols on a velvet midnight blue background. The card is framed with ornate filigree. Soft celestial lighting illuminates the textures of the card stock and the reflective gold ink. Professional studio photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDudq8gZQDcnDP5xM8uGWC6kHx7wxnQvQ1YRhKC378j7n_jC-u6CbQy-yCow-ONA0ZfVIarqQGO0_N-Shir4S9DrDE13f07POfVSOOjnsXCiZvNMkuD9bzuEmin0S9MxPeThbsXDU8ghO4GdB0If5k1nueb1IpubYn2dTLAPl8Z-fsnlIcA6Hcx5Sr5GTEN2lAfYGethBDMOZsysHgkE2DH3vvYCB0kaGQK9yCY4bfur4ahh0UAjJ4pWGqZiO8_AVJpOopB61G6kJM">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-gold-leaf">zoom_in</span>
+</div>
+</div>
+<div class="flex-grow space-y-2">
+<h4 class="font-headline-sm text-on-surface">Ethereal Oracle</h4>
+<div class="flex items-center gap-4 text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">auto_awesome</span> Astral</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">download</span> 1.2k</span>
+</div>
+<p class="font-body-sm text-[10px] text-on-surface-variant/60">Created Aug 14</p>
+<button class="w-full py-2 bg-gold-leaf/10 border border-gold-leaf/40 rounded-full font-label-caps text-[10px] text-gold-leaf hover:bg-gold-leaf/20 transition-all" onclick="showPreview('Ethereal Oracle')">Preview Cards</button>
+</div>
+</div>
+<!-- Deck 2 -->
+<div class="glass-panel gold-border-gradient rounded-xl p-4 flex gap-4 items-center">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-shrink-0 relative group">
+<img alt="Nebula Deck Cover" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Close up of a deck of tarot cards stacked on a dark wooden surface with wisps of incense smoke swirling around. The cards feature dark, Moody space nebula artwork with neon purple and deep blue hues. Gold gilded edges glint under a single spotlight. High-end mystical aesthetic, evocative and mysterious atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeiejk2PAT5mf2_Ez1jau4X3PTaNcTx0v2-vMXjVHo2uFyr7QqgLd5LyHMrJ1uIUlusr-iTBhalk8SOcerhJhiTnmJrOc61RODD-FDIc_2b_zV3wlGX4GLYKkkPCKIYz0D9xWp5wzaiTPM-d2qEg7Qw87qcEVqAJBBujbSdLALNr4aISQpFqtFX5_C44WkLAs8PJ6ECHiOsNsFJl0K6sYQiNCZAj0nOFMRjZpxYx7tFk6JXjEiYByiv-NypqWqAje-3-tQ74JKYgU">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-gold-leaf">zoom_in</span>
+</div>
+</div>
+<div class="flex-grow space-y-2">
+<h4 class="font-headline-sm text-on-surface">Neon Nebula</h4>
+<div class="flex items-center gap-4 text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">flare</span> Cyber</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">download</span> 450</span>
+</div>
+<p class="font-body-sm text-[10px] text-on-surface-variant/60">Created Jul 02</p>
+<button class="w-full py-2 bg-gold-leaf/10 border border-gold-leaf/40 rounded-full font-label-caps text-[10px] text-gold-leaf hover:bg-gold-leaf/20 transition-all" onclick="showPreview('Neon Nebula')">Preview Cards</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Modal for Preview (Micro-interaction) -->
+<div class="fixed inset-0 z-[100] hidden flex items-center justify-center p-md" id="preview-modal">
+<div class="absolute inset-0 bg-space-deep/90 backdrop-blur-md" onclick="hidePreview()"></div>
+<div class="glass-panel gold-border-gradient p-gutter rounded-2xl relative w-full max-w-xs transform scale-95 transition-transform duration-300" id="modal-content">
+<h3 class="font-headline-sm text-gold-leaf text-center mb-4" id="preview-title"></h3>
+<div class="aspect-[2/3.5] rounded-xl overflow-hidden shadow-2xl relative border-2 border-gold-leaf">
+<img class="w-full h-full object-cover" data-alt="A vertical tarot card layout featuring the 'Star' card in a celestial glassmorphism style. The central figure is a divine celestial being pouring light from two golden pitchers into a pool of shimmering cosmic water. The background is a rich navy blue nebula filled with sparkling diamond-like stars. Soft gold glowing borders and elegant sans-serif typography at the bottom." id="preview-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbzHHgT4HhyJ7Ruh8ZXWhHkxJgYDq_E-Bs6Flxq8-GRsVb27yhG0sOC6DhuhHlKT6POaCoQAwDZzwRyQwHQZzKoNS_rFERd6J3vEHhkcwKlY8--HFSHgRRVP57PMxYvqxGA3CLkJYstcbhHS6xRbtBmE2-MlJSPHSH17TOzKjAJpruYy-Fl8WJJF-_Az7UU5Nzife01sCR8GoPimEZA0pVYbrXTHyuzKH10YQcrkUS6Ax35lX5oy6r3_P5GuJjTqQ74VuT1WDWv5U">
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-space-deep to-transparent">
+<p class="font-label-caps text-gold-leaf text-center">The Star • Hope</p>
+</div>
+</div>
+<button class="mt-6 w-full py-3 bg-gold-leaf text-space-deep font-headline-sm rounded-full divine-glow uppercase tracking-wider text-[14px]" onclick="hidePreview()">Return to Vault</button>
+</div>
+</div>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-6 pt-3 bg-glass-fill backdrop-blur-2xl border-t border-gold-leaf/20 shadow-[0_-5px_20px_rgba(0,0,0,0.5)] rounded-t-full">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<!-- Tarot -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="font-label-caps text-[10px] mt-1">Tarot</span>
+</a>
+<!-- Saved (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-gold-leaf relative after:content-[''] after:absolute after:-bottom-1 after:w-8 after:h-0.5 after:bg-gold-leaf after:shadow-[0_0_10px_rgba(212,175,55,0.8)] transform scale-110 transition-transform duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories" style="font-variation-settings: &quot;FILL&quot; 1;">auto_stories</span>
+<span class="font-label-caps text-[10px] mt-1">Saved</span>
+</a>
+<!-- Circle -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group_work">group_work</span>
+<span class="font-label-caps text-[10px] mt-1">Circle</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-gold-leaf transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person_4">person_4</span>
+<span class="font-label-caps text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        function showPreview(title) {
+            const modal = document.getElementById('preview-modal');
+            const content = document.getElementById('modal-content');
+            document.getElementById('preview-title').innerText = title;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function hidePreview() {
+            const modal = document.getElementById('preview-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.add('scale-95');
+            content.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Add visual interest to saved reading entries
+        document.querySelectorAll('.premium-entry').forEach(entry => {
+            entry.addEventListener('mouseenter', () => {
+                entry.style.transform = 'translateY(-2px)';
+                entry.classList.add('shadow-[0_10px_30px_rgba(0,0,0,0.4)]');
+            });
+            entry.addEventListener('mouseleave', () => {
+                entry.style.transform = 'translateY(0)';
+                entry.classList.remove('shadow-[0_10px_30px_rgba(0,0,0,0.4)]');
+            });
+        });
+    </script>
+
+
+</body></html>
