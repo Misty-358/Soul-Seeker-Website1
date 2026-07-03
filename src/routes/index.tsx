@@ -10,14 +10,19 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const gold = "#d4af7a";
-const goldBright = "#e8c987";
-const bg = "#0a0a1e";
+// Soul Seeker brand tokens
+const midnight = "#050816";
+const deepSpace = "#091422";
+const gold = "#d4af37";
+const goldSoft = "#c9a75d";
+const goldBright = "#f1d27a";
+const ivory = "#d8e3f7";
+const mystic = "#c8b9e8";
+const bg = midnight;
+const iconGold = goldBright;
 
 const navItems = ["HOME", "FEATURES", "INTRODUCTION", "ABOUT", "CONTACT US"];
 
-const iconGold = "#f5d97a";
-const iconGoldSoft = "#e8b84a";
 
 const features = [
   {
@@ -167,11 +172,12 @@ function Home() {
     <div
       className="min-h-screen w-full relative overflow-hidden"
       style={{
-        background: `radial-gradient(ellipse at 50% 20%, #131338 0%, ${bg} 55%, #050512 100%)`,
-        color: "#e8dfc7",
+        background: `radial-gradient(ellipse at 50% 0%, #0d1930 0%, ${deepSpace} 45%, ${midnight} 100%)`,
+        color: ivory,
         fontFamily: "'Inter', sans-serif",
       }}
     >
+
       {/* starfield */}
       <div
         aria-hidden
