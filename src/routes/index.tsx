@@ -155,7 +155,7 @@ function Home() {
 
 
       {/* NAV */}
-      <header className="relative z-20 max-w-[1400px] mx-auto px-10 pt-6 flex items-center gap-8">
+      <header className="relative z-20 max-w-[1400px] mx-auto pl-4 pr-10 pt-6 flex items-center gap-8">
         <div className="flex items-center gap-4">
           <img src={logo} alt="Soul Seeker logo" width={72} height={72} className="drop-shadow-[0_0_12px_rgba(212,175,122,0.4)]" />
           <span
