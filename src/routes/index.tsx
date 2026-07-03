@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import cardImg from "@/assets/temperance-card.jpg";
+import cardAsset from "@/assets/temperance-card.jpg.asset.json";
+const cardImg = cardAsset.url;
 import nebulaLeft from "@/assets/nebula-left.jpg";
 import nebulaRight from "@/assets/nebula-right.jpg";
 import logoAsset from "@/assets/soul-seeker-icon.jpeg.asset.json";
