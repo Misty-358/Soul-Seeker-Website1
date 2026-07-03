@@ -425,11 +425,11 @@ function Home() {
               <a
                 href="#"
                 className="text-[11px] tracking-[0.25em] transition-colors hover:text-white"
-                style={{ color: "#c9c1a8" }}
+                style={{ color: ivory, opacity: 0.75 }}
               >
                 {l}
               </a>
-              {i < footerLinks.length - 1 && <Star size={7} className="text-[color:var(--gold)]" />}
+              {i < footerLinks.length - 1 && <Star size={7} style={{ color: goldSoft }} />}
             </li>
           ))}
         </ul>
@@ -440,9 +440,10 @@ function Home() {
             </a>
           ))}
         </div>
-        <p className="text-center text-[11px] tracking-[0.2em]" style={{ color: "#8a8371" }}>
+        <p className="text-center text-[11px] tracking-[0.2em]" style={{ color: ivory, opacity: 0.5 }}>
           © 2024 SOUL SEEKER. ALL RIGHTS RESERVED.
         </p>
+
       </footer>
     </div>
   );
