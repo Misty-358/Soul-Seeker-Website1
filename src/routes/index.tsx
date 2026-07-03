@@ -218,45 +218,58 @@ function Home() {
 
 
       {/* NAV */}
-      <header className="relative z-20 max-w-[1400px] mx-auto pl-4 pr-10 pt-6 flex items-center gap-8">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Soul Seeker logo" width={72} height={72} className="drop-shadow-[0_0_12px_rgba(212,175,122,0.4)]" />
-          <span
-            style={{
-              fontFamily: "'Cinzel', serif",
-              color: goldBright,
-              letterSpacing: "0.22em",
-              fontSize: 26,
-              fontWeight: 600,
-              textShadow: "0 0 18px rgba(232,201,135,0.35)",
-            }}
-          >
-            SOUL SEEKER
-          </span>
-        </div>
-        <nav className="ml-auto flex items-center gap-10">
-          {navItems.map((item, i) => (
-            <a
-              key={item}
-              href="#"
-              className="relative text-[13px] tracking-[0.28em] transition-colors"
-              style={{ color: i === 0 ? goldBright : "#c9c1a8", fontWeight: 500 }}
+      <header
+        className="fixed top-0 inset-x-0 z-30"
+        style={{
+          background: "rgba(5,8,22,0.55)",
+          backdropFilter: "blur(10px)",
+          borderBottom: `1px solid rgba(201,167,93,0.25)`,
+        }}
+      >
+        <div className="max-w-[1400px] mx-auto pl-6 pr-10 py-4 flex items-center gap-8">
+          <div className="flex items-center gap-4">
+            <img src={logo} alt="Soul Seeker logo" width={56} height={56} className="drop-shadow-[0_0_12px_rgba(241,210,122,0.35)]" />
+            <span
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                color: gold,
+                letterSpacing: "0.14em",
+                fontSize: 22,
+                fontWeight: 500,
+                textShadow: "0 0 18px rgba(241,210,122,0.25)",
+              }}
             >
-              {item}
-              {i === 0 && (
-                <span
-                  className="absolute left-1/2 -translate-x-1/2 -bottom-2 flex items-center gap-1"
-                  style={{ color: gold }}
-                >
-                  <span className="h-px w-3" style={{ background: gold }} />
-                  <Star size={7} />
-                  <span className="h-px w-3" style={{ background: gold }} />
-                </span>
-              )}
-            </a>
-          ))}
-        </nav>
+              SOUL SEEKER
+            </span>
+          </div>
+          <nav className="ml-auto flex items-center gap-10">
+            {navItems.map((item, i) => (
+              <a
+                key={item}
+                href="#"
+                className="relative text-[12px] tracking-[0.28em] transition-colors hover:text-[color:var(--ss-gold-light,#f1d27a)]"
+                style={{
+                  color: i === 0 ? goldBright : ivory,
+                  fontWeight: 500,
+                }}
+              >
+                {item}
+                {i === 0 && (
+                  <span
+                    aria-hidden
+                    className="absolute left-1/2 -translate-x-1/2 -bottom-2 block h-[2px] w-6 rounded-full"
+                    style={{
+                      background: goldBright,
+                      boxShadow: `0 0 10px ${goldBright}`,
+                    }}
+                  />
+                )}
+              </a>
+            ))}
+          </nav>
+        </div>
       </header>
+
 
       {/* HERO */}
       <section className="relative z-10 max-w-[1400px] mx-auto px-10 pt-16 pb-12 grid grid-cols-2 gap-10 items-center">
