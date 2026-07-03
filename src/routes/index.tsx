@@ -429,7 +429,7 @@ function Home() {
               >
                 {l}
               </a>
-              {i < footerLinks.length - 1 && <Star size={7} style={{ color: goldSoft }} />}
+              {i < footerLinks.length - 1 && <span style={{ color: goldSoft }}><Star size={7} /></span>}
             </li>
           ))}
         </ul>
