@@ -362,15 +362,18 @@ function Home() {
               <div
                 className="shrink-0 rounded-full flex items-center justify-center"
                 style={{
-                  width: 56,
-                  height: 56,
-                  border: `1px solid ${gold}`,
-                  color: goldBright,
-                  boxShadow: `0 0 15px rgba(212,175,122,0.2), inset 0 0 10px rgba(212,175,122,0.08)`,
+                  width: 60,
+                  height: 60,
+                  border: `1px solid ${iconGold}`,
+                  color: iconGold,
+                  background: "radial-gradient(circle, rgba(245,217,122,0.12), rgba(232,184,74,0.03))",
+                  boxShadow: `0 0 22px rgba(245,217,122,0.35), inset 0 0 14px rgba(245,217,122,0.15)`,
+                  filter: "drop-shadow(0 0 6px rgba(245,217,122,0.4))",
                 }}
               >
                 <svg width="40" height="40" viewBox="0 0 48 48">{f.icon}</svg>
               </div>
+
               <div>
                 <h3
                   style={{
