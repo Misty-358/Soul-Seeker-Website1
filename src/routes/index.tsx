@@ -130,14 +130,29 @@ function Home() {
         src={nebulaLeft}
         aria-hidden
         alt=""
-        className="absolute left-0 top-16 h-[720px] w-auto opacity-80 pointer-events-none mix-blend-screen"
+        className="absolute left-0 top-16 h-[720px] w-auto opacity-70 pointer-events-none mix-blend-screen"
+        style={{
+          filter: "blur(6px)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
+          maskImage:
+            "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
+        }}
       />
       <img
         src={nebulaRight}
         aria-hidden
         alt=""
-        className="absolute right-0 top-16 h-[720px] w-auto opacity-80 pointer-events-none mix-blend-screen"
+        className="absolute right-0 top-16 h-[720px] w-auto opacity-70 pointer-events-none mix-blend-screen"
+        style={{
+          filter: "blur(6px)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
+          maskImage:
+            "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
+        }}
       />
+
 
       {/* NAV */}
       <header className="relative z-20 max-w-[1400px] mx-auto px-10 pt-6 flex items-center gap-8">
@@ -253,7 +268,7 @@ function Home() {
           <div
             className="relative"
             style={{
-              filter: "drop-shadow(0 20px 60px rgba(100,80,200,0.4)) drop-shadow(0 0 40px rgba(232,201,135,0.25))",
+              filter: "drop-shadow(0 20px 60px rgba(10,10,30,0.7))",
             }}
           >
             <img
@@ -261,11 +276,12 @@ function Home() {
               alt="Temperance tarot card"
               width={420}
               height={620}
-              className="rounded-md"
-              style={{ width: 420, height: "auto" }}
+              className="rounded-md block"
+              style={{ width: 420, height: "auto", background: bg }}
             />
           </div>
         </div>
+
       </section>
 
       {/* FEATURES BAR */}
