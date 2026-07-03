@@ -16,14 +16,29 @@ const bg = "#0a0a1e";
 
 const navItems = ["HOME", "FEATURES", "INTRODUCTION", "ABOUT", "CONTACT US"];
 
+const iconGold = "#f5d97a";
+const iconGoldSoft = "#e8b84a";
+
 const features = [
   {
     title: "TAROT READINGS",
     body: "In-depth, intuitive readings to guide your path.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2">
-        <rect x="14" y="10" width="20" height="28" rx="1.5" />
-        <path d="M24 18l1.2 3.5H29l-2.9 2.1 1.1 3.5L24 25l-3.2 2.1 1.1-3.5-2.9-2.1h3.8z" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        {/* ornate card frame */}
+        <path d="M16 8h16a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" />
+        <path d="M17 11h14v26H17z" opacity="0.5" />
+        {/* corner flourishes */}
+        <path d="M17 13c2 0 3 1 3 3M31 13c-2 0-3 1-3 3M17 35c2 0 3-1 3-3M31 35c-2 0-3-1-3-3" />
+        {/* central star + rays */}
+        <circle cx="24" cy="24" r="4.5" />
+        <path d="M24 15v3M24 30v3M15 24h3M30 24h3M18 18l2 2M28 28l2 2M30 18l-2 2M18 30l2-2" />
+        <circle cx="24" cy="24" r="1.2" fill="currentColor" stroke="none" />
+        {/* moon dots */}
+        <circle cx="21" cy="12" r="0.6" fill="currentColor" stroke="none" />
+        <circle cx="27" cy="12" r="0.6" fill="currentColor" stroke="none" />
+        <circle cx="21" cy="36" r="0.6" fill="currentColor" stroke="none" />
+        <circle cx="27" cy="36" r="0.6" fill="currentColor" stroke="none" />
       </g>
     ),
   },
@@ -31,10 +46,17 @@ const features = [
     title: "CUSTOM DECKS",
     body: "Create and connect with your own unique deck.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2">
-        <path d="M24 12c2 4 6 6 10 6-4 0-8 2-10 6-2-4-6-6-10-6 4 0 8-2 10-6z" />
-        <path d="M24 20c1.5 3 4.5 4.5 7.5 4.5-3 0-6 1.5-7.5 4.5-1.5-3-4.5-4.5-7.5-4.5 3 0 6-1.5 7.5-4.5z" />
-        <path d="M24 30c1 2 3 3 5 3-2 0-4 1-5 3-1-2-3-3-5-3 2 0 4-1 5-3z" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        {/* fanned three cards */}
+        <path d="M13 32l4-16 8 2-4 16z" transform="rotate(-14 19 24)" />
+        <path d="M20 30l4-16 8 2-4 16z" />
+        <path d="M27 32l4-16 8 2-4 16z" transform="rotate(14 32 24)" />
+        {/* center card sigil */}
+        <circle cx="24" cy="24" r="3" />
+        <path d="M24 21v-3M24 27v3M21 24h-3M27 24h3" />
+        {/* small stars */}
+        <path d="M15 20l.4 1.1L16.5 21.5l-1.1.4L15 23l-.4-1.1L13.5 21.5l1.1-.4z" fill="currentColor" stroke="none" />
+        <path d="M33 28l.4 1.1L34.5 29.5l-1.1.4L33 31l-.4-1.1L31.5 29.5l1.1-.4z" fill="currentColor" stroke="none" />
       </g>
     ),
   },
@@ -42,15 +64,20 @@ const features = [
     title: "SAVE & REFLECT",
     body: "Keep your readings, insights and journey.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2">
-        <rect x="12" y="14" width="24" height="22" rx="1.5" />
-        <path d="M12 20h24" />
-        <path d="M18 12v5M30 12v5" />
-        <circle cx="19" cy="26" r="1" fill="currentColor" />
-        <circle cx="24" cy="26" r="1" fill="currentColor" />
-        <circle cx="29" cy="26" r="1" fill="currentColor" />
-        <circle cx="19" cy="31" r="1" fill="currentColor" />
-        <circle cx="24" cy="31" r="1" fill="currentColor" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        {/* ornate open book */}
+        <path d="M8 14c4-2 10-2 16 2 6-4 12-4 16-2v22c-4-2-10-2-16 2-6-4-12-4-16-2z" />
+        <path d="M24 16v22" />
+        {/* filigree corners */}
+        <path d="M10 16c2 0 3 1 4 2M38 16c-2 0-3 1-4 2M10 34c2 0 3-1 4-2M38 34c-2 0-3-1-4-2" />
+        {/* central sun/eye */}
+        <circle cx="24" cy="26" r="2.5" />
+        <path d="M24 20v2M24 30v2M18 26h2M28 26h2M20 22l1.4 1.4M27 30l1.4 1.4M28 22l-1.4 1.4M20 30l1.4-1.4" />
+        {/* text dots */}
+        <circle cx="14" cy="22" r="0.5" fill="currentColor" stroke="none" />
+        <circle cx="17" cy="22" r="0.5" fill="currentColor" stroke="none" />
+        <circle cx="34" cy="22" r="0.5" fill="currentColor" stroke="none" />
+        <circle cx="31" cy="22" r="0.5" fill="currentColor" stroke="none" />
       </g>
     ),
   },
@@ -58,10 +85,20 @@ const features = [
     title: "SOUL SEEKER INSIGHTS",
     body: "Receive summaries of your past readings and guidance tailored for you.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2">
-        <ellipse cx="24" cy="34" rx="10" ry="2" />
-        <circle cx="24" cy="22" r="10" />
-        <path d="M20 20c1-2 5-3 8-1" strokeLinecap="round" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        {/* all-seeing eye in a triangle */}
+        <path d="M24 8l16 28H8z" />
+        <path d="M24 11.5l13 22.5H11z" opacity="0.5" />
+        {/* eye */}
+        <path d="M16 28c3-4 13-4 16 0-3 4-13 4-16 0z" />
+        <circle cx="24" cy="28" r="2.4" fill="currentColor" stroke="none" />
+        <circle cx="25" cy="27" r="0.7" fill={iconGold} stroke="none" />
+        {/* rays */}
+        <path d="M24 14v-3M18 18l-2-2M30 18l2-2" />
+        {/* dots at triangle points */}
+        <circle cx="24" cy="8" r="0.9" fill="currentColor" stroke="none" />
+        <circle cx="8" cy="36" r="0.9" fill="currentColor" stroke="none" />
+        <circle cx="40" cy="36" r="0.9" fill="currentColor" stroke="none" />
       </g>
     ),
   },
@@ -69,13 +106,33 @@ const features = [
     title: "YEAR AHEAD READING",
     body: "Receive a personalised 12-month tarot forecast, exploring themes, opportunities and lessons for the year ahead.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2">
-        <path d="M24 8v32M8 24h32" />
-        <path d="M13 13l22 22M35 13L13 35" opacity="0.6" />
-        <circle cx="24" cy="24" r="3" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        {/* zodiac wheel */}
+        <circle cx="24" cy="24" r="16" />
+        <circle cx="24" cy="24" r="12" opacity="0.55" />
+        <circle cx="24" cy="24" r="3.5" />
+        {/* 12 spokes with dots */}
+        {Array.from({ length: 12 }).map((_, i) => {
+          const a = (i * Math.PI) / 6;
+          const x1 = 24 + Math.cos(a) * 12;
+          const y1 = 24 + Math.sin(a) * 12;
+          const x2 = 24 + Math.cos(a) * 16;
+          const y2 = 24 + Math.sin(a) * 16;
+          const dx = 24 + Math.cos(a) * 16;
+          const dy = 24 + Math.sin(a) * 16;
+          return (
+            <g key={i}>
+              <path d={`M${x1} ${y1}L${x2} ${y2}`} />
+              <circle cx={dx} cy={dy} r="0.7" fill="currentColor" stroke="none" />
+            </g>
+          );
+        })}
+        {/* crescent moon */}
+        <path d="M27 22a3.5 3.5 0 1 0 0 4 2.6 2.6 0 0 1 0-4z" fill="currentColor" stroke="none" />
       </g>
     ),
   },
+
 ];
 
 const footerLinks = [
@@ -305,15 +362,18 @@ function Home() {
               <div
                 className="shrink-0 rounded-full flex items-center justify-center"
                 style={{
-                  width: 56,
-                  height: 56,
-                  border: `1px solid ${gold}`,
-                  color: goldBright,
-                  boxShadow: `0 0 15px rgba(212,175,122,0.2), inset 0 0 10px rgba(212,175,122,0.08)`,
+                  width: 60,
+                  height: 60,
+                  border: `1px solid ${iconGold}`,
+                  color: iconGold,
+                  background: "radial-gradient(circle, rgba(245,217,122,0.12), rgba(232,184,74,0.03))",
+                  boxShadow: `0 0 22px rgba(245,217,122,0.35), inset 0 0 14px rgba(245,217,122,0.15)`,
+                  filter: "drop-shadow(0 0 6px rgba(245,217,122,0.4))",
                 }}
               >
                 <svg width="40" height="40" viewBox="0 0 48 48">{f.icon}</svg>
               </div>
+
               <div>
                 <h3
                   style={{
