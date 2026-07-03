@@ -132,6 +132,23 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* Soul Seeker brand tokens */
+:root {
+  --ss-midnight: #050816;
+  --ss-deep-space: #091422;
+  --ss-surface: #111c2a;
+  --ss-surface-elevated: #15202e;
+  --ss-gold: #d4af37;
+  --ss-gold-soft: #c9a75d;
+  --ss-gold-light: #f1d27a;
+  --ss-purple: #7c4dff;
+  --ss-violet: #9d6bff;
+  --ss-blue: #3f7cff;
+  --ss-glow: #bfa4ff;
+  --ss-ivory: #d8e3f7;
+  --ss-mystic: #c8b9e8;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -142,3 +159,4 @@
     color: var(--color-foreground);
   }
 }
+
