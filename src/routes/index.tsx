@@ -10,14 +10,19 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const gold = "#d4af7a";
-const goldBright = "#e8c987";
-const bg = "#0a0a1e";
+// Soul Seeker brand tokens
+const midnight = "#050816";
+const deepSpace = "#091422";
+const gold = "#d4af37";
+const goldSoft = "#c9a75d";
+const goldBright = "#f1d27a";
+const ivory = "#d8e3f7";
+const mystic = "#c8b9e8";
+const bg = midnight;
+const iconGold = goldBright;
 
 const navItems = ["HOME", "FEATURES", "INTRODUCTION", "ABOUT", "CONTACT US"];
 
-const iconGold = "#f5d97a";
-const iconGoldSoft = "#e8b84a";
 
 const features = [
   {
@@ -167,11 +172,12 @@ function Home() {
     <div
       className="min-h-screen w-full relative overflow-hidden"
       style={{
-        background: `radial-gradient(ellipse at 50% 20%, #131338 0%, ${bg} 55%, #050512 100%)`,
-        color: "#e8dfc7",
+        background: `radial-gradient(ellipse at 50% 0%, #0d1930 0%, ${deepSpace} 45%, ${midnight} 100%)`,
+        color: ivory,
         fontFamily: "'Inter', sans-serif",
       }}
     >
+
       {/* starfield */}
       <div
         aria-hidden
@@ -212,58 +218,71 @@ function Home() {
 
 
       {/* NAV */}
-      <header className="relative z-20 max-w-[1400px] mx-auto pl-4 pr-10 pt-6 flex items-center gap-8">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Soul Seeker logo" width={72} height={72} className="drop-shadow-[0_0_12px_rgba(212,175,122,0.4)]" />
-          <span
-            style={{
-              fontFamily: "'Cinzel', serif",
-              color: goldBright,
-              letterSpacing: "0.22em",
-              fontSize: 26,
-              fontWeight: 600,
-              textShadow: "0 0 18px rgba(232,201,135,0.35)",
-            }}
-          >
-            SOUL SEEKER
-          </span>
-        </div>
-        <nav className="ml-auto flex items-center gap-10">
-          {navItems.map((item, i) => (
-            <a
-              key={item}
-              href="#"
-              className="relative text-[13px] tracking-[0.28em] transition-colors"
-              style={{ color: i === 0 ? goldBright : "#c9c1a8", fontWeight: 500 }}
+      <header
+        className="fixed top-0 inset-x-0 z-30"
+        style={{
+          background: "rgba(5,8,22,0.55)",
+          backdropFilter: "blur(10px)",
+          borderBottom: `1px solid rgba(201,167,93,0.25)`,
+        }}
+      >
+        <div className="max-w-[1400px] mx-auto pl-6 pr-10 py-4 flex items-center gap-8">
+          <div className="flex items-center gap-4">
+            <img src={logo} alt="Soul Seeker logo" width={56} height={56} className="drop-shadow-[0_0_12px_rgba(241,210,122,0.35)]" />
+            <span
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                color: gold,
+                letterSpacing: "0.14em",
+                fontSize: 22,
+                fontWeight: 500,
+                textShadow: "0 0 18px rgba(241,210,122,0.25)",
+              }}
             >
-              {item}
-              {i === 0 && (
-                <span
-                  className="absolute left-1/2 -translate-x-1/2 -bottom-2 flex items-center gap-1"
-                  style={{ color: gold }}
-                >
-                  <span className="h-px w-3" style={{ background: gold }} />
-                  <Star size={7} />
-                  <span className="h-px w-3" style={{ background: gold }} />
-                </span>
-              )}
-            </a>
-          ))}
-        </nav>
+              SOUL SEEKER
+            </span>
+          </div>
+          <nav className="ml-auto flex items-center gap-10">
+            {navItems.map((item, i) => (
+              <a
+                key={item}
+                href="#"
+                className="relative text-[12px] tracking-[0.28em] transition-colors hover:text-[color:var(--ss-gold-light,#f1d27a)]"
+                style={{
+                  color: i === 0 ? goldBright : ivory,
+                  fontWeight: 500,
+                }}
+              >
+                {item}
+                {i === 0 && (
+                  <span
+                    aria-hidden
+                    className="absolute left-1/2 -translate-x-1/2 -bottom-2 block h-[2px] w-6 rounded-full"
+                    style={{
+                      background: goldBright,
+                      boxShadow: `0 0 10px ${goldBright}`,
+                    }}
+                  />
+                )}
+              </a>
+            ))}
+          </nav>
+        </div>
       </header>
 
+
       {/* HERO */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pt-16 pb-12 grid grid-cols-2 gap-10 items-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pt-40 pb-24 grid grid-cols-2 gap-12 items-center">
         <div className="pl-4">
           <h1
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              color: goldBright,
-              fontSize: 92,
+              color: gold,
+              fontSize: 96,
               lineHeight: 1,
               fontWeight: 500,
-              letterSpacing: "0.02em",
-              textShadow: "0 0 30px rgba(232,201,135,0.35)",
+              letterSpacing: "0.04em",
+              textShadow: "0 0 40px rgba(241,210,122,0.25)",
             }}
           >
             Soul Seeker
@@ -273,9 +292,9 @@ function Home() {
             className="italic text-center"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              color: "#d8cfae",
+              color: mystic,
               fontSize: 24,
-              lineHeight: 1.4,
+              lineHeight: 1.5,
               maxWidth: 480,
             }}
           >
@@ -286,32 +305,32 @@ function Home() {
           <Divider />
           <p
             className="text-center mx-auto"
-            style={{ color: "#bfb69a", fontSize: 16, lineHeight: 1.7, maxWidth: 440 }}
+            style={{ color: ivory, fontSize: 15, lineHeight: 1.8, maxWidth: 460, opacity: 0.85 }}
           >
             Soul Seeker is your sacred space for guidance, clarity and transformation. Explore tarot, intuition and ancient wisdom to illuminate your journey.
           </p>
-          <div className="mt-8 flex items-center gap-5 justify-center">
+          <div className="mt-10 flex items-center gap-5 justify-center">
             <button
-              className="group relative px-8 py-3 flex items-center gap-2 transition-all hover:scale-[1.02]"
+              className="group relative px-9 py-3.5 flex items-center gap-2 transition-all hover:scale-[1.02] rounded-full"
               style={{
                 border: `1px solid ${gold}`,
                 color: goldBright,
-                letterSpacing: "0.2em",
-                fontSize: 13,
+                letterSpacing: "0.22em",
+                fontSize: 12,
                 fontWeight: 500,
-                background: "rgba(212,175,122,0.05)",
-                boxShadow: "0 0 20px rgba(212,175,122,0.15), inset 0 0 20px rgba(212,175,122,0.05)",
+                background: "rgba(212,175,55,0.06)",
+                boxShadow: "0 0 30px rgba(241,210,122,0.18), inset 0 0 20px rgba(241,210,122,0.05)",
               }}
             >
-              <Star size={12} /> EXPLORE THE APP
+              <Star size={11} /> EXPLORE THE APP
             </button>
             <button
-              className="px-8 py-3 transition-all hover:scale-[1.02]"
+              className="px-9 py-3.5 transition-all hover:scale-[1.02] rounded-full"
               style={{
-                border: `1px solid ${gold}80`,
-                color: gold,
-                letterSpacing: "0.2em",
-                fontSize: 13,
+                border: `1px solid ${goldSoft}80`,
+                color: goldSoft,
+                letterSpacing: "0.22em",
+                fontSize: 12,
                 fontWeight: 500,
               }}
             >
@@ -325,7 +344,7 @@ function Home() {
           <div
             className="relative"
             style={{
-              filter: "drop-shadow(0 20px 60px rgba(10,10,30,0.7))",
+              filter: "drop-shadow(0 30px 80px rgba(124,77,255,0.25)) drop-shadow(0 0 40px rgba(5,8,22,0.9))",
             }}
           >
             <img
@@ -333,66 +352,69 @@ function Home() {
               alt="Temperance tarot card"
               width={420}
               height={620}
-              className="rounded-md block"
-              style={{ width: 420, height: "auto", background: bg }}
+              className="rounded-lg block"
+              style={{ width: 420, height: "auto", background: midnight }}
             />
           </div>
         </div>
 
       </section>
 
-      {/* FEATURES BAR */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pb-16">
+      {/* FEATURES PANEL */}
+      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pb-24">
         <div
-          className="rounded-sm px-8 py-8 grid grid-cols-5 gap-6"
+          className="px-10 py-10 grid grid-cols-5 gap-8"
           style={{
-            background: "linear-gradient(180deg, rgba(20,20,50,0.7), rgba(10,10,30,0.85))",
-            border: `1px solid ${gold}55`,
-            boxShadow: `0 0 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(212,175,122,0.05)`,
+            background: "rgba(9,20,34,0.6)",
+            border: `1px solid rgba(212,175,55,0.25)`,
+            borderRadius: 24,
+            backdropFilter: "blur(8px)",
+            boxShadow: `0 20px 60px rgba(0,0,0,0.5)`,
           }}
         >
           {features.map((f, i) => (
-            <div key={f.title} className="flex gap-4 relative">
+            <div key={f.title} className="flex flex-col items-center text-center gap-4 relative">
               {i > 0 && (
                 <span
-                  className="absolute -left-3 top-2 bottom-2 w-px"
-                  style={{ background: `linear-gradient(to bottom, transparent, ${gold}55, transparent)` }}
+                  aria-hidden
+                  className="absolute -left-4 top-4 bottom-4 w-px"
+                  style={{ background: `linear-gradient(to bottom, transparent, rgba(201,167,93,0.35), transparent)` }}
                 />
               )}
               <div
                 className="shrink-0 rounded-full flex items-center justify-center"
                 style={{
-                  width: 60,
-                  height: 60,
-                  border: `1px solid ${iconGold}`,
-                  color: iconGold,
-                  background: "radial-gradient(circle, rgba(245,217,122,0.12), rgba(232,184,74,0.03))",
-                  boxShadow: `0 0 22px rgba(245,217,122,0.35), inset 0 0 14px rgba(245,217,122,0.15)`,
-                  filter: "drop-shadow(0 0 6px rgba(245,217,122,0.4))",
+                  width: 64,
+                  height: 64,
+                  border: `1px solid ${goldBright}`,
+                  color: goldBright,
+                  background: "radial-gradient(circle, rgba(241,210,122,0.12), rgba(124,77,255,0.04))",
+                  boxShadow: `0 0 24px rgba(241,210,122,0.3), inset 0 0 14px rgba(241,210,122,0.12)`,
                 }}
               >
-                <svg width="40" height="40" viewBox="0 0 48 48">{f.icon}</svg>
+                <svg width="42" height="42" viewBox="0 0 48 48">{f.icon}</svg>
               </div>
 
               <div>
                 <h3
                   style={{
-                    fontFamily: "'Cinzel', serif",
-                    color: goldBright,
-                    fontSize: 13,
-                    letterSpacing: "0.15em",
-                    fontWeight: 600,
+                    fontFamily: "'Cormorant Garamond', serif",
+                    color: gold,
+                    fontSize: 15,
+                    letterSpacing: "0.12em",
+                    fontWeight: 500,
                   }}
                   className="mb-2"
                 >
                   {f.title}
                 </h3>
-                <p style={{ color: "#a9a189", fontSize: 12, lineHeight: 1.6 }}>{f.body}</p>
+                <p style={{ color: ivory, fontSize: 12, lineHeight: 1.7, opacity: 0.75 }}>{f.body}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
+
 
       {/* FOOTER */}
       <footer className="relative z-10 max-w-[1400px] mx-auto px-10 pb-10">
@@ -403,11 +425,11 @@ function Home() {
               <a
                 href="#"
                 className="text-[11px] tracking-[0.25em] transition-colors hover:text-white"
-                style={{ color: "#c9c1a8" }}
+                style={{ color: ivory, opacity: 0.75 }}
               >
                 {l}
               </a>
-              {i < footerLinks.length - 1 && <Star size={7} className="text-[color:var(--gold)]" />}
+              {i < footerLinks.length - 1 && <span style={{ color: goldSoft }}><Star size={7} /></span>}
             </li>
           ))}
         </ul>
@@ -418,9 +440,10 @@ function Home() {
             </a>
           ))}
         </div>
-        <p className="text-center text-[11px] tracking-[0.2em]" style={{ color: "#8a8371" }}>
+        <p className="text-center text-[11px] tracking-[0.2em]" style={{ color: ivory, opacity: 0.5 }}>
           © 2024 SOUL SEEKER. ALL RIGHTS RESERVED.
         </p>
+
       </footer>
     </div>
   );
