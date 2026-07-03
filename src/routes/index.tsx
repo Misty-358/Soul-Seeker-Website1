@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import cardImg from "@/assets/temperance-card.jpg";
 import nebulaLeft from "@/assets/nebula-left.jpg";
 import nebulaRight from "@/assets/nebula-right.jpg";
-import logo from "@/assets/soul-seeker-logo.png";
+import logoAsset from "@/assets/soul-seeker-icon.jpeg.asset.json";
+const logo = logoAsset.url;
 
 export const Route = createFileRoute("/")({
   component: Home,
