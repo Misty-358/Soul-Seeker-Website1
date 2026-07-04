@@ -368,7 +368,7 @@ function IntroductionPage() {
               "0 30px 80px rgba(0,0,0,0.4), inset 0 0 40px rgba(241,210,122,0.05)",
           }}
         >
-          <div className="grid grid-cols-[320px_1fr_190px] gap-8 items-center">
+          <div className="grid grid-cols-[280px_1fr_170px] gap-6 items-center">
             {/* Left copy */}
             <div>
               <div className="flex items-center gap-4 mb-4">
@@ -405,14 +405,14 @@ function IntroductionPage() {
             </div>
 
             {/* Fan of cards */}
-            <div className="relative" style={{ height: 340 }}>
+            <div className="relative" style={{ height: 300 }}>
               <div className="absolute inset-0 flex items-end justify-center pb-4">
                 {fanCards.map((c, i) => {
                   const total = fanCards.length;
                   const mid = (total - 1) / 2;
-                  const rot = (i - mid) * 12; // wider fan angle
-                  const x = (i - mid) * 92; // more horizontal spread
-                  const y = Math.abs(i - mid) * 14;
+                  const rot = (i - mid) * 11;
+                  const x = (i - mid) * 62;
+                  const y = Math.abs(i - mid) * 10;
                   return (
                     <img
                       key={c.name}
@@ -420,7 +420,7 @@ function IntroductionPage() {
                       alt={c.name}
                       className="absolute rounded-[10px]"
                       style={{
-                        width: 160,
+                        width: 120,
                         height: "auto",
                         transform: `translate(${x}px, ${y}px) rotate(${rot}deg)`,
                         transformOrigin: "50% 100%",
