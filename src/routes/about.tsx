@@ -246,97 +246,138 @@ function TripleMoonBackdrop() {
       className="absolute inset-0 w-full h-full pointer-events-none"
       aria-hidden
       preserveAspectRatio="xMidYMid slice"
-      style={{ opacity: 0.35 }}
+      style={{ opacity: 0.45 }}
     >
       <defs>
         <radialGradient id="bgHalo" cx="50%" cy="45%" r="55%">
-          <stop offset="0%" stopColor="#2a1a5e" stopOpacity="0.55" />
-          <stop offset="55%" stopColor="#0a0a1e" stopOpacity="0.25" />
+          <stop offset="0%" stopColor="#4a2a8e" stopOpacity="0.6" />
+          <stop offset="40%" stopColor="#1e2a7a" stopOpacity="0.35" />
+          <stop offset="75%" stopColor="#0a0a1e" stopOpacity="0.2" />
           <stop offset="100%" stopColor="#050816" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="bgGold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.9" />
+          <stop offset="0%" stopColor="#f6e0a3" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#e8c56a" stopOpacity="0.8" />
           <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.4" />
         </linearGradient>
+        {/* Prismatic blue → purple → pink → gold ribbon */}
+        <linearGradient id="bgPrism" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#5aa9ff" />
+          <stop offset="35%" stopColor="#9b6bff" />
+          <stop offset="70%" stopColor="#ff8fd0" />
+          <stop offset="100%" stopColor="#f1d27a" />
+        </linearGradient>
+        <linearGradient id="bgPrismSoft" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.55" />
+          <stop offset="45%" stopColor="#c48bff" stopOpacity="0.55" />
+          <stop offset="80%" stopColor="#ffa4d8" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#f1d27a" stopOpacity="0.7" />
+        </linearGradient>
         <radialGradient id="bgMoon" cx="35%" cy="35%" r="70%">
-          <stop offset="0%" stopColor="#d8c9ff" stopOpacity="0.9" />
-          <stop offset="60%" stopColor="#6a49c8" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="#e6f0ff" stopOpacity="0.95" />
+          <stop offset="35%" stopColor="#ffd4ec" stopOpacity="0.85" />
+          <stop offset="70%" stopColor="#7c5ad0" stopOpacity="0.6" />
           <stop offset="100%" stopColor="#1a1740" stopOpacity="0.2" />
+        </radialGradient>
+        <radialGradient id="bgAura" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.5" />
+          <stop offset="60%" stopColor="#5aa9ff" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#050816" stopOpacity="0" />
         </radialGradient>
       </defs>
 
       <circle cx="450" cy="450" r="380" fill="url(#bgHalo)" />
+      <circle cx="450" cy="450" r="200" fill="url(#bgAura)" />
 
-      <g stroke="url(#bgGold)" strokeWidth="0.9" fill="none">
-        {/* concentric rings */}
-        <circle cx="450" cy="450" r="240" opacity="0.75" />
-        <circle cx="450" cy="450" r="220" strokeDasharray="2 5" opacity="0.5" />
-        <circle cx="450" cy="450" r="260" strokeDasharray="1 8" opacity="0.4" />
+      <g fill="none">
+        {/* concentric prismatic rings */}
+        <circle cx="450" cy="450" r="240" stroke="url(#bgPrism)" strokeWidth="1.1" opacity="0.85" />
+        <circle cx="450" cy="450" r="220" stroke="url(#bgPrismSoft)" strokeWidth="0.8" strokeDasharray="2 5" opacity="0.7" />
+        <circle cx="450" cy="450" r="260" stroke="url(#bgGold)" strokeWidth="0.8" strokeDasharray="1 8" opacity="0.6" />
+        <circle cx="450" cy="450" r="300" stroke="url(#bgPrismSoft)" strokeWidth="0.6" strokeDasharray="3 9" opacity="0.45" />
 
         {/* sacred triangles (Metatron-inspired) */}
-        <path d="M450 220 L640 540 L260 540 Z" opacity="0.55" />
-        <path d="M450 680 L640 360 L260 360 Z" opacity="0.55" />
-        <path d="M450 260 L610 520 L290 520 Z" opacity="0.35" />
-        <path d="M450 640 L610 380 L290 380 Z" opacity="0.35" />
+        <path d="M450 220 L640 540 L260 540 Z" stroke="url(#bgPrism)" strokeWidth="0.9" opacity="0.7" />
+        <path d="M450 680 L640 360 L260 360 Z" stroke="url(#bgPrismSoft)" strokeWidth="0.9" opacity="0.65" />
+        <path d="M450 260 L610 520 L290 520 Z" stroke="url(#bgGold)" strokeWidth="0.7" opacity="0.45" />
+        <path d="M450 640 L610 380 L290 380 Z" stroke="url(#bgGold)" strokeWidth="0.7" opacity="0.45" />
 
-        {/* upward + downward arrows through center */}
-        <path d="M450 200 L450 700" opacity="0.35" strokeDasharray="4 6" />
-        <path d="M450 200 L438 226 L462 226 Z" fill="url(#bgGold)" opacity="0.7" />
-        <path d="M450 700 L438 674 L462 674 Z" fill="url(#bgGold)" opacity="0.7" />
+        {/* petal flourishes around center */}
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+          <path
+            key={a}
+            d="M450 450 C470 400 470 340 450 300 C430 340 430 400 450 450 Z"
+            fill="url(#bgPrismSoft)"
+            opacity="0.35"
+            transform={`rotate(${a} 450 450)`}
+          />
+        ))}
 
-        {/* orbit dots */}
+        {/* central axis */}
+        <path d="M450 200 L450 700" stroke="url(#bgGold)" strokeWidth="0.7" opacity="0.4" strokeDasharray="4 6" />
+        <path d="M450 200 L438 226 L462 226 Z" fill="url(#bgGold)" opacity="0.85" />
+        <path d="M450 700 L438 674 L462 674 Z" fill="url(#bgGold)" opacity="0.85" />
+
+        {/* orbit dots — alternating gold + prismatic */}
         {Array.from({ length: 24 }).map((_, i) => {
           const a = (i * 360) / 24;
           const r = 260;
           const x = 450 + Math.cos((a * Math.PI) / 180) * r;
           const y = 450 + Math.sin((a * Math.PI) / 180) * r;
-          return <circle key={i} cx={x} cy={y} r="1.5" fill="#f1d27a" opacity="0.55" />;
+          const palette = ["#f1d27a", "#9b6bff", "#ff8fd0", "#5aa9ff"];
+          return <circle key={i} cx={x} cy={y} r="1.8" fill={palette[i % 4]} opacity="0.8" />;
         })}
       </g>
 
       {/* central full moon */}
       <g>
+        <circle cx="450" cy="450" r="98" fill="url(#bgAura)" opacity="0.7" />
         <circle cx="450" cy="450" r="90" fill="url(#bgMoon)" />
-        <circle cx="450" cy="450" r="90" fill="none" stroke="url(#bgGold)" strokeWidth="1" />
-        {/* craters */}
-        <circle cx="430" cy="430" r="10" fill="#3a2a7a" opacity="0.55" />
-        <circle cx="470" cy="470" r="7" fill="#3a2a7a" opacity="0.45" />
-        <circle cx="465" cy="425" r="5" fill="#3a2a7a" opacity="0.5" />
-        <circle cx="425" cy="470" r="4" fill="#3a2a7a" opacity="0.4" />
+        <circle cx="450" cy="450" r="90" fill="none" stroke="url(#bgPrism)" strokeWidth="1.2" />
+        <circle cx="450" cy="450" r="94" fill="none" stroke="url(#bgGold)" strokeWidth="0.5" opacity="0.7" />
+        {/* craters with lavender + pink tint */}
+        <circle cx="430" cy="430" r="10" fill="#7c5ad0" opacity="0.55" />
+        <circle cx="470" cy="470" r="7" fill="#ff8fd0" opacity="0.4" />
+        <circle cx="465" cy="425" r="5" fill="#5aa9ff" opacity="0.5" />
+        <circle cx="425" cy="470" r="4" fill="#c48bff" opacity="0.45" />
       </g>
 
-      {/* waxing crescent (left) */}
+      {/* waxing crescent (left) — blue-purple tint */}
       <g transform="translate(210 450)">
+        <circle r="64" fill="url(#bgAura)" opacity="0.6" />
         <circle r="60" fill="url(#bgMoon)" />
         <circle cx="18" r="55" fill="#050816" />
-        <circle r="60" fill="none" stroke="url(#bgGold)" strokeWidth="0.9" />
+        <circle r="60" fill="none" stroke="url(#bgPrism)" strokeWidth="1" />
       </g>
 
-      {/* waning crescent (right) */}
+      {/* waning crescent (right) — pink-gold tint */}
       <g transform="translate(690 450)">
+        <circle r="64" fill="url(#bgAura)" opacity="0.6" />
         <circle r="60" fill="url(#bgMoon)" />
         <circle cx="-18" r="55" fill="#050816" />
-        <circle r="60" fill="none" stroke="url(#bgGold)" strokeWidth="0.9" />
+        <circle r="60" fill="none" stroke="url(#bgPrism)" strokeWidth="1" />
       </g>
 
-      {/* tiny sparkles */}
+      {/* colorful sparkles */}
       {[
-        [150, 200],
-        [780, 220],
-        [120, 620],
-        [820, 640],
-        [450, 140],
-        [450, 780],
-        [320, 300],
-        [580, 300],
-        [320, 600],
-        [580, 600],
-      ].map(([x, y], i) => (
+        [150, 200, "#5aa9ff"],
+        [780, 220, "#ff8fd0"],
+        [120, 620, "#9b6bff"],
+        [820, 640, "#f1d27a"],
+        [450, 140, "#f1d27a"],
+        [450, 780, "#c48bff"],
+        [320, 300, "#ff8fd0"],
+        [580, 300, "#5aa9ff"],
+        [320, 600, "#f1d27a"],
+        [580, 600, "#9b6bff"],
+        [230, 720, "#ffa4d8"],
+        [670, 730, "#5aa9ff"],
+      ].map(([x, y, c], i) => (
         <path
           key={i}
-          d={`M${x} ${y - 6} L${x + 1.5} ${y - 1} L${x + 6} ${y} L${x + 1.5} ${y + 1} L${x} ${y + 6} L${x - 1.5} ${y + 1} L${x - 6} ${y} L${x - 1.5} ${y - 1} Z`}
-          fill="#f1d27a"
-          opacity="0.75"
+          d={`M${x} ${(y as number) - 7} L${(x as number) + 1.6} ${(y as number) - 1.2} L${(x as number) + 7} ${y} L${(x as number) + 1.6} ${(y as number) + 1.2} L${x} ${(y as number) + 7} L${(x as number) - 1.6} ${(y as number) + 1.2} L${(x as number) - 7} ${y} L${(x as number) - 1.6} ${(y as number) - 1.2} Z`}
+          fill={c as string}
+          opacity="0.85"
         />
       ))}
     </svg>
@@ -406,44 +447,81 @@ function AboutPage() {
             <svg viewBox="0 0 300 420" className="w-full h-full" aria-hidden>
               <defs>
                 <linearGradient id="leftGold" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.9" />
+                  <stop offset="0%" stopColor="#f6e0a3" stopOpacity="0.95" />
                   <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.3" />
                 </linearGradient>
-                <radialGradient id="leftMoonGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#e8dcff" />
-                  <stop offset="60%" stopColor="#7c5ad0" />
+                <linearGradient id="leftPrism" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#5aa9ff" />
+                  <stop offset="40%" stopColor="#9b6bff" />
+                  <stop offset="75%" stopColor="#ff8fd0" />
+                  <stop offset="100%" stopColor="#f1d27a" />
+                </linearGradient>
+                <linearGradient id="leftPrismSoft" x1="1" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.6" />
+                  <stop offset="50%" stopColor="#c48bff" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#ffa4d8" stopOpacity="0.6" />
+                </linearGradient>
+                <radialGradient id="leftMoonGrad" cx="45%" cy="40%" r="60%">
+                  <stop offset="0%" stopColor="#e6f0ff" />
+                  <stop offset="45%" stopColor="#ffd4ec" />
+                  <stop offset="80%" stopColor="#7c5ad0" />
                   <stop offset="100%" stopColor="#1a1740" />
                 </radialGradient>
+                <radialGradient id="leftAura" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.55" />
+                  <stop offset="60%" stopColor="#5aa9ff" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="#050816" stopOpacity="0" />
+                </radialGradient>
               </defs>
-              <g stroke="url(#leftGold)" strokeWidth="0.9" fill="none">
-                <circle cx="150" cy="120" r="70" />
-                <circle cx="150" cy="120" r="90" strokeDasharray="2 5" opacity="0.6" />
-                <circle cx="150" cy="120" r="55" fill="url(#leftMoonGrad)" />
-                <circle cx="130" cy="105" r="6" fill="#3a2a7a" opacity="0.5" />
-                <circle cx="165" cy="130" r="4" fill="#3a2a7a" opacity="0.5" />
-                {/* trailing vines */}
-                <path d="M150 200 C120 230 110 280 130 320 C140 340 150 360 150 400" opacity="0.7" />
-                <path d="M150 220 C170 250 190 270 200 300" opacity="0.6" />
-                <path d="M150 240 C130 260 118 280 118 300" opacity="0.6" />
-                {/* leaves */}
-                <path d="M150 260 C140 258 132 262 128 270 C136 272 146 268 150 260 Z" fill="url(#leftGold)" opacity="0.7" />
-                <path d="M150 300 C162 298 172 302 176 310 C168 314 156 310 150 300 Z" fill="url(#leftGold)" opacity="0.7" />
-                <path d="M140 340 C130 340 124 346 122 354 C132 356 140 350 140 340 Z" fill="url(#leftGold)" opacity="0.65" />
+
+              {/* moon aura */}
+              <circle cx="150" cy="120" r="110" fill="url(#leftAura)" />
+
+              <g fill="none">
+                <circle cx="150" cy="120" r="90" stroke="url(#leftPrismSoft)" strokeWidth="0.9" strokeDasharray="2 5" opacity="0.85" />
+                <circle cx="150" cy="120" r="70" stroke="url(#leftPrism)" strokeWidth="1.1" />
+                <circle cx="150" cy="120" r="100" stroke="url(#leftGold)" strokeWidth="0.5" strokeDasharray="1 6" opacity="0.7" />
+                <circle cx="150" cy="120" r="55" fill="url(#leftMoonGrad)" stroke="url(#leftPrism)" strokeWidth="0.7" />
+                <circle cx="130" cy="105" r="6" fill="#7c5ad0" opacity="0.55" />
+                <circle cx="165" cy="130" r="4" fill="#ff8fd0" opacity="0.55" />
+                <circle cx="140" cy="140" r="3" fill="#5aa9ff" opacity="0.5" />
+
+                {/* trailing vines — prismatic + gold pair */}
+                <path d="M150 200 C120 230 110 280 130 320 C140 340 150 360 150 400" stroke="url(#leftPrism)" strokeWidth="1.1" opacity="0.85" />
+                <path d="M150 220 C170 250 190 270 200 300 C205 330 195 360 180 380" stroke="url(#leftPrismSoft)" strokeWidth="0.9" opacity="0.7" />
+                <path d="M150 240 C130 260 118 280 118 300 C118 330 128 360 140 380" stroke="url(#leftGold)" strokeWidth="0.8" opacity="0.75" />
+                <path d="M150 210 C165 230 175 250 178 275" stroke="url(#leftPrismSoft)" strokeWidth="0.7" opacity="0.6" />
+
+                {/* leaves — mix of gold + prismatic */}
+                <path d="M150 260 C140 258 132 262 128 270 C136 272 146 268 150 260 Z" fill="url(#leftGold)" opacity="0.85" />
+                <path d="M150 300 C162 298 172 302 176 310 C168 314 156 310 150 300 Z" fill="url(#leftPrismSoft)" opacity="0.85" />
+                <path d="M140 340 C130 340 124 346 122 354 C132 356 140 350 140 340 Z" fill="url(#leftGold)" opacity="0.75" />
+                <path d="M175 250 C182 246 190 250 192 258 C186 262 178 258 175 250 Z" fill="url(#leftPrism)" opacity="0.7" />
+                <path d="M118 290 C110 292 106 300 108 308 C116 306 120 300 118 290 Z" fill="url(#leftPrismSoft)" opacity="0.75" />
+                <path d="M160 375 C170 372 178 378 178 386 C170 388 162 384 160 375 Z" fill="url(#leftGold)" opacity="0.8" />
+
+                {/* tiny buds */}
+                <circle cx="182" cy="260" r="2" fill="#ff8fd0" opacity="0.9" />
+                <circle cx="120" cy="320" r="1.8" fill="#5aa9ff" opacity="0.9" />
+                <circle cx="150" cy="400" r="2.2" fill="#f1d27a" opacity="0.95" />
               </g>
-              {/* sparkles */}
+
+              {/* colorful sparkles */}
               {[
-                [80, 60],
-                [230, 70],
-                [70, 180],
-                [240, 200],
-                [100, 380],
-                [220, 360],
-              ].map(([x, y], i) => (
+                [80, 60, "#5aa9ff"],
+                [230, 70, "#ff8fd0"],
+                [70, 180, "#9b6bff"],
+                [240, 200, "#f1d27a"],
+                [100, 380, "#ffa4d8"],
+                [220, 360, "#5aa9ff"],
+                [55, 100, "#f1d27a"],
+                [250, 130, "#c48bff"],
+              ].map(([x, y, c], i) => (
                 <path
                   key={i}
-                  d={`M${x} ${y - 5} L${x + 1} ${y - 1} L${x + 5} ${y} L${x + 1} ${y + 1} L${x} ${y + 5} L${x - 1} ${y + 1} L${x - 5} ${y} L${x - 1} ${y - 1} Z`}
-                  fill="#f1d27a"
-                  opacity="0.75"
+                  d={`M${x} ${(y as number) - 6} L${(x as number) + 1.2} ${(y as number) - 1} L${(x as number) + 6} ${y} L${(x as number) + 1.2} ${(y as number) + 1} L${x} ${(y as number) + 6} L${(x as number) - 1.2} ${(y as number) + 1} L${(x as number) - 6} ${y} L${(x as number) - 1.2} ${(y as number) - 1} Z`}
+                  fill={c as string}
+                  opacity="0.9"
                 />
               ))}
             </svg>
