@@ -22,7 +22,7 @@ const navItems: NavItem[] = [
   { label: "ABOUT", to: "/about" },
   { label: "TERMS", to: "/terms" },
   { label: "PRIVACY", to: "/privacy" },
-  { label: "CONTACT US", hash: "contact" },
+  { label: "CONTACT US", to: "/contact" },
 ];
 
 function GoldUnderline() {
@@ -298,7 +298,7 @@ const footerLinks: FooterLink[] = [
   { label: "TERMS & CONDITIONS", to: "/terms" },
   { label: "PRIVACY POLICY", to: "/privacy" },
   { label: "COOKIES POLICY", href: "#" },
-  { label: "CONTACT US", href: "#contact" },
+  { label: "CONTACT US", to: "/contact" },
 ];
 
 function SocialIcon({ name }: { name: string }) {
