@@ -627,9 +627,18 @@ function AboutPage() {
             </p>
           </div>
 
-          {/* Right custom art — triple moon flourish */}
+          {/* Right custom art — lotus arch */}
           <div className="relative hidden lg:block h-[520px]">
-            <TripleMoonBackdrop />
+            <img
+              src={lotusArchArt}
+              alt=""
+              aria-hidden
+              loading="lazy"
+              className="w-full h-full object-contain ss-aura-pulse"
+              style={{
+                filter: "drop-shadow(0 0 50px rgba(155,107,255,0.35))",
+              }}
+            />
           </div>
         </section>
 
