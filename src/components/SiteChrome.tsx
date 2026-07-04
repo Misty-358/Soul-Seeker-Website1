@@ -1,7 +1,5 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import nebulaLeft from "@/assets/nebula-left.jpg";
-import nebulaRight from "@/assets/nebula-right.jpg";
 import logoAsset from "@/assets/soul-seeker-icon.jpeg.asset.json";
 
 const logo = logoAsset.url;
