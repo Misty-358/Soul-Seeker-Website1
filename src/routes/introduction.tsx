@@ -390,6 +390,7 @@ function IntroductionPage() {
               <img
                 src={aceAsset.url}
                 alt="Ace of Swords tarot card"
+                title="Soul Seeker card"
                 className="rounded-[10px]"
                 style={{
                   width: 200,
