@@ -1,0 +1,13 @@
+# Soul Seeker Tarot
+
+> Soul Seeker is a mystical tarot experience — draw cards, explore their meanings, and reflect on your journey through a cosmic, hand-crafted interface.
+
+## Pages
+
+- [Home](/): Landing page introducing the Soul Seeker Tarot experience.
+- [Introduction](/introduction): Overview of the Soul Seeker app and how the cards work.
+- [Features](/features): What the Soul Seeker Tarot app offers.
+- [About](/about): The story and philosophy behind Soul Seeker Tarot.
+- [Contact Us](/contact): Get in touch with the Soul Seeker team.
+- [Terms & Conditions](/terms): Legal terms for using Soul Seeker Tarot.
+- [Privacy Policy](/privacy): How we handle your data.
