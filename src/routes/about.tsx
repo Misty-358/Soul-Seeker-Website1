@@ -237,17 +237,184 @@ function ChaliceEmblem() {
   );
 }
 
-/* ---------- Background: triple-moon sacred geometry ---------- */
+/* ---------- Background: sacred lotus mandala (blended) ---------- */
 
 function TripleMoonBackdrop() {
+  // Build 16 lotus petals radially.
+  const petals = Array.from({ length: 16 }).map((_, i) => (i * 360) / 16);
+  // Inner petals (offset)
+  const petalsInner = Array.from({ length: 12 }).map((_, i) => (i * 360) / 12 + 15);
+
   return (
     <svg
       viewBox="0 0 900 900"
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="absolute -inset-16 w-[calc(100%+8rem)] h-[calc(100%+8rem)] pointer-events-none"
       aria-hidden
       preserveAspectRatio="xMidYMid slice"
-      style={{ opacity: 0.45 }}
+      style={{
+        opacity: 0.75,
+        mixBlendMode: "screen",
+        filter: "drop-shadow(0 0 40px rgba(155,107,255,0.25))",
+      }}
     >
+      <defs>
+        <radialGradient id="lotusAura" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.55" />
+          <stop offset="45%" stopColor="#5aa9ff" stopOpacity="0.22" />
+          <stop offset="80%" stopColor="#1a1740" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#050816" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="lotusPrism" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.95" />
+          <stop offset="35%" stopColor="#ff8fd0" stopOpacity="0.85" />
+          <stop offset="70%" stopColor="#c48bff" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#5aa9ff" stopOpacity="0.9" />
+        </linearGradient>
+        <linearGradient id="lotusPrismSoft" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.5" />
+          <stop offset="50%" stopColor="#c48bff" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#ffa4d8" stopOpacity="0.5" />
+        </linearGradient>
+        <linearGradient id="lotusGold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#fbe6a3" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="#e8c56a" stopOpacity="0.75" />
+          <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.35" />
+        </linearGradient>
+        <radialGradient id="lotusCore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fff5d6" stopOpacity="1" />
+          <stop offset="40%" stopColor="#f1d27a" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* Outer aura */}
+      <circle cx="450" cy="450" r="440" fill="url(#lotusAura)" className="ss-aura-pulse" />
+
+      {/* Concentric mandala rings — rotating slowly */}
+      <g className="ss-swirl-slow">
+        <g fill="none">
+          <circle cx="450" cy="450" r="410" stroke="url(#lotusPrismSoft)" strokeWidth="0.6" strokeDasharray="1 12" opacity="0.55" />
+          <circle cx="450" cy="450" r="360" stroke="url(#lotusGold)" strokeWidth="0.5" strokeDasharray="2 10" opacity="0.55" />
+          <circle cx="450" cy="450" r="310" stroke="url(#lotusPrism)" strokeWidth="0.7" strokeDasharray="1 6" opacity="0.6" />
+          {/* Radiating spokes */}
+          {Array.from({ length: 32 }).map((_, i) => {
+            const a = (i * 360) / 32;
+            const rad = (a * Math.PI) / 180;
+            const x2 = 450 + Math.cos(rad) * 420;
+            const y2 = 450 + Math.sin(rad) * 420;
+            const x1 = 450 + Math.cos(rad) * 310;
+            const y1 = 450 + Math.sin(rad) * 310;
+            return (
+              <line
+                key={i}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="url(#lotusGold)"
+                strokeWidth="0.4"
+                opacity="0.45"
+              />
+            );
+          })}
+        </g>
+      </g>
+
+      {/* Counter-rotating sacred geometry — Metatron-style triangles */}
+      <g className="ss-swirl-rev" style={{ animationDuration: "160s" }}>
+        <g fill="none" stroke="url(#lotusPrismSoft)" strokeWidth="0.7" opacity="0.55">
+          <path d="M450 180 L680 570 L220 570 Z" />
+          <path d="M450 720 L680 330 L220 330 Z" />
+          <circle cx="450" cy="450" r="250" strokeDasharray="4 8" />
+        </g>
+      </g>
+
+      {/* Outer lotus petals */}
+      <g>
+        {petals.map((a) => (
+          <path
+            key={`p1-${a}`}
+            d="M450 450
+               C 500 340, 500 220, 450 130
+               C 400 220, 400 340, 450 450 Z"
+            fill="url(#lotusPrism)"
+            opacity="0.35"
+            stroke="url(#lotusGold)"
+            strokeWidth="0.6"
+            transform={`rotate(${a} 450 450)`}
+          />
+        ))}
+      </g>
+
+      {/* Middle lotus petals */}
+      <g>
+        {petalsInner.map((a) => (
+          <path
+            key={`p2-${a}`}
+            d="M450 450
+               C 490 370, 490 280, 450 210
+               C 410 280, 410 370, 450 450 Z"
+            fill="url(#lotusPrismSoft)"
+            opacity="0.45"
+            stroke="url(#lotusPrism)"
+            strokeWidth="0.5"
+            transform={`rotate(${a} 450 450)`}
+          />
+        ))}
+      </g>
+
+      {/* Inner lotus (8 petals) */}
+      <g>
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+          <path
+            key={`p3-${a}`}
+            d="M450 450
+               C 478 400, 478 340, 450 300
+               C 422 340, 422 400, 450 450 Z"
+            fill="url(#lotusGold)"
+            opacity="0.55"
+            transform={`rotate(${a} 450 450)`}
+          />
+        ))}
+      </g>
+
+      {/* Central bindu / core moon */}
+      <g>
+        <circle cx="450" cy="450" r="70" fill="url(#lotusCore)" className="ss-aura-pulse" style={{ animationDuration: "5s" }} />
+        <circle cx="450" cy="450" r="34" fill="url(#lotusGold)" opacity="0.9" />
+        <circle cx="450" cy="450" r="18" fill="#fff5d6" opacity="0.9" />
+        <circle cx="450" cy="450" r="70" fill="none" stroke="url(#lotusPrism)" strokeWidth="0.8" />
+      </g>
+
+      {/* Twinkling accent stars around the lotus */}
+      {[
+        [150, 200, "#5aa9ff", 0],
+        [780, 220, "#ff8fd0", 1.2],
+        [120, 640, "#9b6bff", 2.1],
+        [820, 660, "#f1d27a", 0.6],
+        [450, 90, "#f1d27a", 3.4],
+        [450, 820, "#c48bff", 1.7],
+        [260, 760, "#ffa4d8", 2.8],
+        [660, 760, "#5aa9ff", 0.9],
+        [80, 420, "#c48bff", 3.9],
+        [830, 430, "#f1d27a", 2.4],
+      ].map(([x, y, c, d], i) => (
+        <path
+          key={i}
+          d={`M${x} ${(y as number) - 8} L${(x as number) + 1.8} ${(y as number) - 1.4} L${(x as number) + 8} ${y} L${(x as number) + 1.8} ${(y as number) + 1.4} L${x} ${(y as number) + 8} L${(x as number) - 1.8} ${(y as number) + 1.4} L${(x as number) - 8} ${y} L${(x as number) - 1.8} ${(y as number) - 1.4} Z`}
+          fill={c as string}
+          className="ss-twinkle"
+          style={{
+            animationDelay: `${d}s`,
+            animationDuration: "4.5s",
+            filter: `drop-shadow(0 0 6px ${c})`,
+          }}
+        />
+      ))}
+    </svg>
+  );
+}
+
       <defs>
         <radialGradient id="bgHalo" cx="50%" cy="45%" r="55%">
           <stop offset="0%" stopColor="#4a2a8e" stopOpacity="0.6" />
