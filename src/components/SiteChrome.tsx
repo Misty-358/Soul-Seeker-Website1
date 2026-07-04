@@ -21,7 +21,7 @@ const navItems: NavItem[] = [
   { label: "HOME", to: "/" },
   { label: "FEATURES", to: "/features" },
   { label: "INTRODUCTION", to: "/introduction" },
-  { label: "ABOUT", hash: "about" },
+  { label: "ABOUT", to: "/about" },
   { label: "CONTACT US", hash: "contact" },
 ];
 
