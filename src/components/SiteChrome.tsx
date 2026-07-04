@@ -17,8 +17,8 @@ type NavItem = { label: string; to?: string; hash?: string };
 
 const navItems: NavItem[] = [
   { label: "HOME", to: "/" },
-  { label: "FEATURES", to: "/features" },
   { label: "INTRODUCTION", to: "/introduction" },
+  { label: "FEATURES", to: "/features" },
   { label: "ABOUT", to: "/about" },
   { label: "TERMS", to: "/terms" },
   { label: "PRIVACY", to: "/privacy" },
@@ -124,10 +124,10 @@ export function StarfieldBackdrop() {
       const x = Math.sin(seed) * 43758.5453;
       return x - Math.floor(x);
     };
-    return Array.from({ length: 110 }).map((_, i) => ({
+    return Array.from({ length: 140 }).map((_, i) => ({
       cx: +(rand(i * 1.1 + 1) * 100).toFixed(2),
       cy: +(rand(i * 2.3 + 7) * 100).toFixed(2),
-      r: +(0.35 + rand(i * 3.7 + 11) * 1.1).toFixed(2),
+      r: +(0.2 + rand(i * 3.7 + 11) * 0.55).toFixed(2),
       delay: +(rand(i * 4.9 + 3) * 6).toFixed(2),
       dur: +(3 + rand(i * 5.1 + 5) * 5).toFixed(2),
       color:
@@ -233,13 +233,13 @@ export function StarfieldBackdrop() {
             key={i}
             cx={s.cx}
             cy={s.cy}
-            r={s.r * 0.12}
+            r={s.r * 0.07}
             fill={s.color}
             className="ss-twinkle"
             style={{
               animationDelay: `${s.delay}s`,
               animationDuration: `${s.dur}s`,
-              filter: `drop-shadow(0 0 ${s.r * 0.6}px ${s.color})`,
+              filter: `drop-shadow(0 0 ${s.r * 1.4}px ${s.color}) drop-shadow(0 0 ${s.r * 0.7}px ${s.color})`,
             }}
           />
         ))}

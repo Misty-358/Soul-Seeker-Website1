@@ -90,7 +90,7 @@ function HomePage() {
           <img
             src={cardImg}
             alt="Featured tarot card"
-            title="Soul Seeker Card"
+            title="Soul Seeker Tarot card"
             className="w-full h-auto rounded-[14px]"
             style={{
               boxShadow:
@@ -135,18 +135,6 @@ function HomePage() {
               }}
             >
               EXPLORE FEATURES
-            </Link>
-            <Link
-              to="/features"
-              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-colors"
-              style={{
-                color: goldBright,
-                border: `1px solid ${goldBright}`,
-                borderRadius: 999,
-                fontWeight: 500,
-              }}
-            >
-              LEARN MORE
             </Link>
           </div>
         </div>
