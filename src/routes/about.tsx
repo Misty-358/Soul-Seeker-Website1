@@ -542,7 +542,7 @@ function AboutPage() {
             </h1>
             <Divider width={90} />
             <p
-              className="mx-auto max-w-[540px] text-[16px] leading-relaxed"
+              className="mx-auto max-w-[620px] text-[22px] leading-relaxed"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 color: ivory,
