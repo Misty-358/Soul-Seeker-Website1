@@ -301,6 +301,7 @@ function IntroductionPage() {
                 aria-hidden
                 className="w-full h-auto"
                 style={{
+                  opacity: 0.55,
                   filter: "drop-shadow(0 10px 30px rgba(241,210,122,0.25))",
                   WebkitMaskImage:
                     "radial-gradient(ellipse 70% 80% at 50% 50%, black 55%, transparent 90%)",
