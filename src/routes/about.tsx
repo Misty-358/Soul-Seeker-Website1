@@ -237,152 +237,185 @@ function ChaliceEmblem() {
   );
 }
 
-/* ---------- Background: triple-moon sacred geometry ---------- */
+/* ---------- Background: sacred lotus mandala (blended) ---------- */
 
 function TripleMoonBackdrop() {
+  // Build 16 lotus petals radially.
+  const petals = Array.from({ length: 16 }).map((_, i) => (i * 360) / 16);
+  // Inner petals (offset)
+  const petalsInner = Array.from({ length: 12 }).map((_, i) => (i * 360) / 12 + 15);
+
   return (
     <svg
       viewBox="0 0 900 900"
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="absolute -inset-16 w-[calc(100%+8rem)] h-[calc(100%+8rem)] pointer-events-none"
       aria-hidden
       preserveAspectRatio="xMidYMid slice"
-      style={{ opacity: 0.45 }}
+      style={{
+        opacity: 0.75,
+        mixBlendMode: "screen",
+        filter: "drop-shadow(0 0 40px rgba(155,107,255,0.25))",
+      }}
     >
       <defs>
-        <radialGradient id="bgHalo" cx="50%" cy="45%" r="55%">
-          <stop offset="0%" stopColor="#4a2a8e" stopOpacity="0.6" />
-          <stop offset="40%" stopColor="#1e2a7a" stopOpacity="0.35" />
-          <stop offset="75%" stopColor="#0a0a1e" stopOpacity="0.2" />
+        <radialGradient id="lotusAura" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.55" />
+          <stop offset="45%" stopColor="#5aa9ff" stopOpacity="0.22" />
+          <stop offset="80%" stopColor="#1a1740" stopOpacity="0.1" />
           <stop offset="100%" stopColor="#050816" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="bgGold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#f6e0a3" stopOpacity="0.95" />
-          <stop offset="50%" stopColor="#e8c56a" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.4" />
+        <linearGradient id="lotusPrism" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.95" />
+          <stop offset="35%" stopColor="#ff8fd0" stopOpacity="0.85" />
+          <stop offset="70%" stopColor="#c48bff" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#5aa9ff" stopOpacity="0.9" />
         </linearGradient>
-        {/* Prismatic blue → purple → pink → gold ribbon */}
-        <linearGradient id="bgPrism" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#5aa9ff" />
-          <stop offset="35%" stopColor="#9b6bff" />
-          <stop offset="70%" stopColor="#ff8fd0" />
-          <stop offset="100%" stopColor="#f1d27a" />
+        <linearGradient id="lotusPrismSoft" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.5" />
+          <stop offset="50%" stopColor="#c48bff" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#ffa4d8" stopOpacity="0.5" />
         </linearGradient>
-        <linearGradient id="bgPrismSoft" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.55" />
-          <stop offset="45%" stopColor="#c48bff" stopOpacity="0.55" />
-          <stop offset="80%" stopColor="#ffa4d8" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#f1d27a" stopOpacity="0.7" />
+        <linearGradient id="lotusGold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#fbe6a3" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="#e8c56a" stopOpacity="0.75" />
+          <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.35" />
         </linearGradient>
-        <radialGradient id="bgMoon" cx="35%" cy="35%" r="70%">
-          <stop offset="0%" stopColor="#e6f0ff" stopOpacity="0.95" />
-          <stop offset="35%" stopColor="#ffd4ec" stopOpacity="0.85" />
-          <stop offset="70%" stopColor="#7c5ad0" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#1a1740" stopOpacity="0.2" />
-        </radialGradient>
-        <radialGradient id="bgAura" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.5" />
-          <stop offset="60%" stopColor="#5aa9ff" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="#050816" stopOpacity="0" />
+        <radialGradient id="lotusCore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fff5d6" stopOpacity="1" />
+          <stop offset="40%" stopColor="#f1d27a" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0" />
         </radialGradient>
       </defs>
 
-      <circle cx="450" cy="450" r="380" fill="url(#bgHalo)" />
-      <circle cx="450" cy="450" r="200" fill="url(#bgAura)" />
+      {/* Outer aura */}
+      <circle cx="450" cy="450" r="440" fill="url(#lotusAura)" className="ss-aura-pulse" />
 
-      <g fill="none">
-        {/* concentric prismatic rings */}
-        <circle cx="450" cy="450" r="240" stroke="url(#bgPrism)" strokeWidth="1.1" opacity="0.85" />
-        <circle cx="450" cy="450" r="220" stroke="url(#bgPrismSoft)" strokeWidth="0.8" strokeDasharray="2 5" opacity="0.7" />
-        <circle cx="450" cy="450" r="260" stroke="url(#bgGold)" strokeWidth="0.8" strokeDasharray="1 8" opacity="0.6" />
-        <circle cx="450" cy="450" r="300" stroke="url(#bgPrismSoft)" strokeWidth="0.6" strokeDasharray="3 9" opacity="0.45" />
+      {/* Concentric mandala rings — rotating slowly */}
+      <g className="ss-swirl-slow">
+        <g fill="none">
+          <circle cx="450" cy="450" r="410" stroke="url(#lotusPrismSoft)" strokeWidth="0.6" strokeDasharray="1 12" opacity="0.55" />
+          <circle cx="450" cy="450" r="360" stroke="url(#lotusGold)" strokeWidth="0.5" strokeDasharray="2 10" opacity="0.55" />
+          <circle cx="450" cy="450" r="310" stroke="url(#lotusPrism)" strokeWidth="0.7" strokeDasharray="1 6" opacity="0.6" />
+          {/* Radiating spokes */}
+          {Array.from({ length: 32 }).map((_, i) => {
+            const a = (i * 360) / 32;
+            const rad = (a * Math.PI) / 180;
+            const x2 = 450 + Math.cos(rad) * 420;
+            const y2 = 450 + Math.sin(rad) * 420;
+            const x1 = 450 + Math.cos(rad) * 310;
+            const y1 = 450 + Math.sin(rad) * 310;
+            return (
+              <line
+                key={i}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="url(#lotusGold)"
+                strokeWidth="0.4"
+                opacity="0.45"
+              />
+            );
+          })}
+        </g>
+      </g>
 
-        {/* sacred triangles (Metatron-inspired) */}
-        <path d="M450 220 L640 540 L260 540 Z" stroke="url(#bgPrism)" strokeWidth="0.9" opacity="0.7" />
-        <path d="M450 680 L640 360 L260 360 Z" stroke="url(#bgPrismSoft)" strokeWidth="0.9" opacity="0.65" />
-        <path d="M450 260 L610 520 L290 520 Z" stroke="url(#bgGold)" strokeWidth="0.7" opacity="0.45" />
-        <path d="M450 640 L610 380 L290 380 Z" stroke="url(#bgGold)" strokeWidth="0.7" opacity="0.45" />
+      {/* Counter-rotating sacred geometry — Metatron-style triangles */}
+      <g className="ss-swirl-rev" style={{ animationDuration: "160s" }}>
+        <g fill="none" stroke="url(#lotusPrismSoft)" strokeWidth="0.7" opacity="0.55">
+          <path d="M450 180 L680 570 L220 570 Z" />
+          <path d="M450 720 L680 330 L220 330 Z" />
+          <circle cx="450" cy="450" r="250" strokeDasharray="4 8" />
+        </g>
+      </g>
 
-        {/* petal flourishes around center */}
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+      {/* Outer lotus petals */}
+      <g>
+        {petals.map((a) => (
           <path
-            key={a}
-            d="M450 450 C470 400 470 340 450 300 C430 340 430 400 450 450 Z"
-            fill="url(#bgPrismSoft)"
+            key={`p1-${a}`}
+            d="M450 450
+               C 500 340, 500 220, 450 130
+               C 400 220, 400 340, 450 450 Z"
+            fill="url(#lotusPrism)"
             opacity="0.35"
+            stroke="url(#lotusGold)"
+            strokeWidth="0.6"
             transform={`rotate(${a} 450 450)`}
           />
         ))}
-
-        {/* central axis */}
-        <path d="M450 200 L450 700" stroke="url(#bgGold)" strokeWidth="0.7" opacity="0.4" strokeDasharray="4 6" />
-        <path d="M450 200 L438 226 L462 226 Z" fill="url(#bgGold)" opacity="0.85" />
-        <path d="M450 700 L438 674 L462 674 Z" fill="url(#bgGold)" opacity="0.85" />
-
-        {/* orbit dots — alternating gold + prismatic */}
-        {Array.from({ length: 24 }).map((_, i) => {
-          const a = (i * 360) / 24;
-          const r = 260;
-          const x = 450 + Math.cos((a * Math.PI) / 180) * r;
-          const y = 450 + Math.sin((a * Math.PI) / 180) * r;
-          const palette = ["#f1d27a", "#9b6bff", "#ff8fd0", "#5aa9ff"];
-          return <circle key={i} cx={x} cy={y} r="1.8" fill={palette[i % 4]} opacity="0.8" />;
-        })}
       </g>
 
-      {/* central full moon */}
+      {/* Middle lotus petals */}
       <g>
-        <circle cx="450" cy="450" r="98" fill="url(#bgAura)" opacity="0.7" />
-        <circle cx="450" cy="450" r="90" fill="url(#bgMoon)" />
-        <circle cx="450" cy="450" r="90" fill="none" stroke="url(#bgPrism)" strokeWidth="1.2" />
-        <circle cx="450" cy="450" r="94" fill="none" stroke="url(#bgGold)" strokeWidth="0.5" opacity="0.7" />
-        {/* craters with lavender + pink tint */}
-        <circle cx="430" cy="430" r="10" fill="#7c5ad0" opacity="0.55" />
-        <circle cx="470" cy="470" r="7" fill="#ff8fd0" opacity="0.4" />
-        <circle cx="465" cy="425" r="5" fill="#5aa9ff" opacity="0.5" />
-        <circle cx="425" cy="470" r="4" fill="#c48bff" opacity="0.45" />
+        {petalsInner.map((a) => (
+          <path
+            key={`p2-${a}`}
+            d="M450 450
+               C 490 370, 490 280, 450 210
+               C 410 280, 410 370, 450 450 Z"
+            fill="url(#lotusPrismSoft)"
+            opacity="0.45"
+            stroke="url(#lotusPrism)"
+            strokeWidth="0.5"
+            transform={`rotate(${a} 450 450)`}
+          />
+        ))}
       </g>
 
-      {/* waxing crescent (left) — blue-purple tint */}
-      <g transform="translate(210 450)">
-        <circle r="64" fill="url(#bgAura)" opacity="0.6" />
-        <circle r="60" fill="url(#bgMoon)" />
-        <circle cx="18" r="55" fill="#050816" />
-        <circle r="60" fill="none" stroke="url(#bgPrism)" strokeWidth="1" />
+      {/* Inner lotus (8 petals) */}
+      <g>
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+          <path
+            key={`p3-${a}`}
+            d="M450 450
+               C 478 400, 478 340, 450 300
+               C 422 340, 422 400, 450 450 Z"
+            fill="url(#lotusGold)"
+            opacity="0.55"
+            transform={`rotate(${a} 450 450)`}
+          />
+        ))}
       </g>
 
-      {/* waning crescent (right) — pink-gold tint */}
-      <g transform="translate(690 450)">
-        <circle r="64" fill="url(#bgAura)" opacity="0.6" />
-        <circle r="60" fill="url(#bgMoon)" />
-        <circle cx="-18" r="55" fill="#050816" />
-        <circle r="60" fill="none" stroke="url(#bgPrism)" strokeWidth="1" />
+      {/* Central bindu / core moon */}
+      <g>
+        <circle cx="450" cy="450" r="70" fill="url(#lotusCore)" className="ss-aura-pulse" style={{ animationDuration: "5s" }} />
+        <circle cx="450" cy="450" r="34" fill="url(#lotusGold)" opacity="0.9" />
+        <circle cx="450" cy="450" r="18" fill="#fff5d6" opacity="0.9" />
+        <circle cx="450" cy="450" r="70" fill="none" stroke="url(#lotusPrism)" strokeWidth="0.8" />
       </g>
 
-      {/* colorful sparkles */}
+      {/* Twinkling accent stars around the lotus */}
       {[
-        [150, 200, "#5aa9ff"],
-        [780, 220, "#ff8fd0"],
-        [120, 620, "#9b6bff"],
-        [820, 640, "#f1d27a"],
-        [450, 140, "#f1d27a"],
-        [450, 780, "#c48bff"],
-        [320, 300, "#ff8fd0"],
-        [580, 300, "#5aa9ff"],
-        [320, 600, "#f1d27a"],
-        [580, 600, "#9b6bff"],
-        [230, 720, "#ffa4d8"],
-        [670, 730, "#5aa9ff"],
-      ].map(([x, y, c], i) => (
+        [150, 200, "#5aa9ff", 0],
+        [780, 220, "#ff8fd0", 1.2],
+        [120, 640, "#9b6bff", 2.1],
+        [820, 660, "#f1d27a", 0.6],
+        [450, 90, "#f1d27a", 3.4],
+        [450, 820, "#c48bff", 1.7],
+        [260, 760, "#ffa4d8", 2.8],
+        [660, 760, "#5aa9ff", 0.9],
+        [80, 420, "#c48bff", 3.9],
+        [830, 430, "#f1d27a", 2.4],
+      ].map(([x, y, c, d], i) => (
         <path
           key={i}
-          d={`M${x} ${(y as number) - 7} L${(x as number) + 1.6} ${(y as number) - 1.2} L${(x as number) + 7} ${y} L${(x as number) + 1.6} ${(y as number) + 1.2} L${x} ${(y as number) + 7} L${(x as number) - 1.6} ${(y as number) + 1.2} L${(x as number) - 7} ${y} L${(x as number) - 1.6} ${(y as number) - 1.2} Z`}
+          d={`M${x} ${(y as number) - 8} L${(x as number) + 1.8} ${(y as number) - 1.4} L${(x as number) + 8} ${y} L${(x as number) + 1.8} ${(y as number) + 1.4} L${x} ${(y as number) + 8} L${(x as number) - 1.8} ${(y as number) + 1.4} L${(x as number) - 8} ${y} L${(x as number) - 1.8} ${(y as number) - 1.4} Z`}
           fill={c as string}
-          opacity="0.85"
+          className="ss-twinkle"
+          style={{
+            animationDelay: `${d}s`,
+            animationDuration: "4.5s",
+            filter: `drop-shadow(0 0 6px ${c})`,
+          }}
         />
       ))}
     </svg>
   );
 }
+
+
 
 /* ---------- Small pieces ---------- */
 

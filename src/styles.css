@@ -160,3 +160,43 @@
   }
 }
 
+/* ---------- Cosmic background animations (all pages) ---------- */
+@keyframes ss-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.85); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+@keyframes ss-twinkle-soft {
+  0%, 100% { opacity: 0.05; }
+  50%      { opacity: 0.75; }
+}
+@keyframes ss-swirl-rotate {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+@keyframes ss-swirl-rotate-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg);   }
+}
+@keyframes ss-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -14px, 0); }
+}
+@keyframes ss-aura-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1);    }
+  50%      { opacity: 0.7;  transform: scale(1.08); }
+}
+
+.ss-twinkle       { animation: ss-twinkle 4.5s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+.ss-twinkle-soft  { animation: ss-twinkle-soft 6s ease-in-out infinite; }
+.ss-swirl-slow    { animation: ss-swirl-rotate 90s linear infinite;   transform-origin: center; transform-box: fill-box; }
+.ss-swirl-rev     { animation: ss-swirl-rotate-reverse 120s linear infinite; transform-origin: center; transform-box: fill-box; }
+.ss-drift         { animation: ss-drift 12s ease-in-out infinite; }
+.ss-aura-pulse    { animation: ss-aura-pulse 7s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-twinkle, .ss-twinkle-soft, .ss-swirl-slow, .ss-swirl-rev, .ss-drift, .ss-aura-pulse {
+    animation: none !important;
+  }
+}
+
+

@@ -1,7 +1,5 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import nebulaLeft from "@/assets/nebula-left.jpg";
-import nebulaRight from "@/assets/nebula-right.jpg";
 import logoAsset from "@/assets/soul-seeker-icon.jpeg.asset.json";
 
 const logo = logoAsset.url;
@@ -118,40 +116,132 @@ export function SiteNav() {
 }
 
 export function StarfieldBackdrop() {
+  // Deterministic pseudo-random star positions so SSR + client match.
+  const stars = React.useMemo(() => {
+    const rand = (seed: number) => {
+      const x = Math.sin(seed) * 43758.5453;
+      return x - Math.floor(x);
+    };
+    return Array.from({ length: 110 }).map((_, i) => ({
+      cx: +(rand(i * 1.1 + 1) * 100).toFixed(2),
+      cy: +(rand(i * 2.3 + 7) * 100).toFixed(2),
+      r: +(0.35 + rand(i * 3.7 + 11) * 1.1).toFixed(2),
+      delay: +(rand(i * 4.9 + 3) * 6).toFixed(2),
+      dur: +(3 + rand(i * 5.1 + 5) * 5).toFixed(2),
+      color:
+        i % 7 === 0
+          ? "#f1d27a"
+          : i % 5 === 0
+            ? "#c48bff"
+            : i % 3 === 0
+              ? "#a9c7ff"
+              : "#ffffff",
+    }));
+  }, []);
+
   return (
     <>
+      {/* Nebula wash */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-60"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage:
-            "radial-gradient(1px 1px at 20% 30%, #fff8, transparent), radial-gradient(1px 1px at 70% 80%, #fff6, transparent), radial-gradient(1px 1px at 40% 60%, #fff5, transparent), radial-gradient(1px 1px at 85% 15%, #fff7, transparent), radial-gradient(1px 1px at 10% 80%, #fff4, transparent), radial-gradient(2px 2px at 60% 40%, #fff3, transparent), radial-gradient(1px 1px at 90% 55%, #fff5, transparent)",
-          backgroundSize:
-            "400px 400px, 500px 500px, 350px 350px, 450px 450px, 600px 600px, 700px 700px, 500px 500px",
+          background:
+            "radial-gradient(ellipse 90% 70% at 20% 20%, rgba(124,77,255,0.18), transparent 60%), radial-gradient(ellipse 80% 60% at 85% 30%, rgba(63,124,255,0.14), transparent 60%), radial-gradient(ellipse 100% 80% at 50% 100%, rgba(212,175,55,0.08), transparent 70%)",
         }}
       />
-      <img
-        src={nebulaLeft}
+
+      {/* Glowing swirls */}
+      <svg
         aria-hidden
-        alt=""
-        className="absolute left-0 top-16 h-[640px] w-auto opacity-60 pointer-events-none mix-blend-screen"
-        style={{
-          filter: "blur(8px)",
-          WebkitMaskImage: "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
-          maskImage: "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
-        }}
-      />
-      <img
-        src={nebulaRight}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 1600 1200"
+        preserveAspectRatio="xMidYMid slice"
+        style={{ opacity: 0.55 }}
+      >
+        <defs>
+          <radialGradient id="ss-swirl-glow-a" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.35" />
+            <stop offset="60%" stopColor="#5aa9ff" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#050816" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="ss-swirl-glow-b" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ff8fd0" stopOpacity="0.3" />
+            <stop offset="60%" stopColor="#f1d27a" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#050816" stopOpacity="0" />
+          </radialGradient>
+          <linearGradient id="ss-swirl-stroke" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.55" />
+            <stop offset="45%" stopColor="#9b6bff" stopOpacity="0.6" />
+            <stop offset="80%" stopColor="#ff8fd0" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#f1d27a" stopOpacity="0.7" />
+          </linearGradient>
+          <linearGradient id="ss-swirl-stroke-2" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.5" />
+            <stop offset="55%" stopColor="#c48bff" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#5aa9ff" stopOpacity="0.45" />
+          </linearGradient>
+        </defs>
+
+        {/* Left swirl cluster */}
+        <g transform="translate(280 380)">
+          <circle r="260" fill="url(#ss-swirl-glow-a)" className="ss-aura-pulse" />
+        </g>
+        <g transform="translate(280 380)" className="ss-swirl-slow">
+          <g fill="none" stroke="url(#ss-swirl-stroke)" strokeWidth="0.9">
+            <path d="M0 0 C 60 -40, 140 -60, 200 -20 S 260 120, 180 180 S -20 220, -80 140 S -60 -20, 0 0 Z" opacity="0.7" />
+            <path d="M0 0 C 40 -25, 90 -35, 130 -10 S 170 80, 120 120 S -10 140, -50 90 S -40 -10, 0 0 Z" opacity="0.55" />
+            <circle r="180" strokeDasharray="1 8" opacity="0.4" />
+            <circle r="220" strokeDasharray="2 12" opacity="0.3" />
+          </g>
+        </g>
+
+        {/* Right swirl cluster */}
+        <g transform="translate(1280 780)">
+          <circle r="300" fill="url(#ss-swirl-glow-b)" className="ss-aura-pulse" style={{ animationDelay: "3s" }} />
+        </g>
+        <g transform="translate(1280 780)" className="ss-swirl-rev">
+          <g fill="none" stroke="url(#ss-swirl-stroke-2)" strokeWidth="0.9">
+            <path d="M0 0 C -70 -50, -160 -70, -230 -20 S -300 140, -210 210 S 20 250, 90 160 S 70 -20, 0 0 Z" opacity="0.6" />
+            <path d="M0 0 C -45 -30, -105 -40, -150 -10 S -195 95, -140 140 S 15 165, 60 105 S 45 -10, 0 0 Z" opacity="0.5" />
+            <circle r="200" strokeDasharray="1 9" opacity="0.4" />
+            <circle r="250" strokeDasharray="2 14" opacity="0.28" />
+          </g>
+        </g>
+
+        {/* Top-center soft ribbon swirl */}
+        <g transform="translate(820 220)" className="ss-swirl-slow" style={{ animationDuration: "140s" }}>
+          <g fill="none" stroke="url(#ss-swirl-stroke)" strokeWidth="0.6" opacity="0.55">
+            <circle r="140" strokeDasharray="3 10" />
+            <circle r="90" strokeDasharray="1 6" />
+            <path d="M0 0 C 40 -30, 90 -25, 110 20 S 60 90, 10 70 S -50 10, 0 0 Z" />
+          </g>
+        </g>
+      </svg>
+
+      {/* Twinkling stars */}
+      <svg
         aria-hidden
-        alt=""
-        className="absolute right-0 top-16 h-[640px] w-auto opacity-60 pointer-events-none mix-blend-screen"
-        style={{
-          filter: "blur(8px)",
-          WebkitMaskImage: "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
-          maskImage: "radial-gradient(ellipse 60% 70% at 50% 50%, black 30%, transparent 75%)",
-        }}
-      />
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        {stars.map((s, i) => (
+          <circle
+            key={i}
+            cx={s.cx}
+            cy={s.cy}
+            r={s.r * 0.12}
+            fill={s.color}
+            className="ss-twinkle"
+            style={{
+              animationDelay: `${s.delay}s`,
+              animationDuration: `${s.dur}s`,
+              filter: `drop-shadow(0 0 ${s.r * 0.6}px ${s.color})`,
+            }}
+          />
+        ))}
+      </svg>
     </>
   );
 }
