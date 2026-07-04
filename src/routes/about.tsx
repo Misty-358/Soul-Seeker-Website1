@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import moonValleyArt from "@/assets/about-moon-valley.jpg";
+import lotusArchArt from "@/assets/about-lotus-arch.jpg";
 import {
   SiteNav,
   StarfieldBackdrop,
