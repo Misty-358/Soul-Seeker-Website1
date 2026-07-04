@@ -72,29 +72,135 @@ function SectionEmblem({ children }: { children: React.ReactNode }) {
 
 function OrbIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
       <defs>
-        <radialGradient id="orb" cx="40%" cy="35%">
+        <radialGradient id="orbFill" cx="38%" cy="32%" r="70%">
           <stop offset="0%" stopColor="#fff8dc" />
-          <stop offset="55%" stopColor="#c9a75d" stopOpacity="0.55" />
+          <stop offset="30%" stopColor="#f6d97a" stopOpacity="0.85" />
+          <stop offset="70%" stopColor="#a5793a" stopOpacity="0.55" />
           <stop offset="100%" stopColor="#050816" stopOpacity="0" />
         </radialGradient>
+        <linearGradient id="orbStroke" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#fff2c2" />
+          <stop offset="50%" stopColor="#f1d27a" />
+          <stop offset="100%" stopColor="#8a6323" />
+        </linearGradient>
+        <radialGradient id="orbShine" cx="30%" cy="25%" r="30%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+        </radialGradient>
       </defs>
-      <circle cx="16" cy="16" r="9" fill="url(#orb)" stroke="#f1d27a" strokeWidth="0.8" />
-      <path d="M16 3l0.7 3.5L20 7l-3.3 0.7L16 11l-0.7-3.3L12 7l3.3-.5z" fill="#f1d27a" />
-      <circle cx="16" cy="26" r="1" fill="#f1d27a" />
+      {/* filigree crescent */}
+      <path
+        d="M8 24c0-8.8 7.2-16 16-16 3 0 5.7.8 8 2.2C26.8 8.7 22.3 12 20 17.5c-2.8 6.6 0.4 14 7 17 1.9.8 3.9 1.2 5.8 1.1C29.9 38.4 26.1 40 22 40c-8.8 0-14-7.2-14-16z"
+        fill="url(#orbStroke)"
+        opacity="0.18"
+      />
+      {/* orb */}
+      <circle cx="24" cy="24" r="11" fill="url(#orbFill)" stroke="url(#orbStroke)" strokeWidth="1.1" />
+      <circle cx="24" cy="24" r="11" fill="url(#orbShine)" />
+      {/* base stand */}
+      <path d="M17 34c1.5 2 4 3 7 3s5.5-1 7-3" stroke="url(#orbStroke)" strokeWidth="1.1" strokeLinecap="round" />
+      <path d="M20 36l4 3 4-3" stroke="url(#orbStroke)" strokeWidth="1" strokeLinecap="round" fill="none" />
+      <circle cx="24" cy="40" r="1.4" fill="#f1d27a" />
+      {/* sparkles */}
+      <path d="M40 10l.7 2.4L43 13l-2.3.7L40 16l-.7-2.3L37 13l2.3-.6z" fill="#f1d27a" />
+      <path d="M9 12l.5 1.6L11 14l-1.5.5L9 16l-.5-1.5L7 14l1.5-.4z" fill="#fff3c4" />
+      <path d="M42 30l.4 1.4L44 32l-1.6.4L42 34l-.4-1.6L40 32l1.6-.4z" fill="#f1d27a" />
+      <circle cx="14" cy="34" r="0.9" fill="#fff3c4" />
+      <circle cx="36" cy="42" r="0.9" fill="#f1d27a" />
     </svg>
   );
 }
 
 function LotusIcon() {
   return (
-    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#f1d27a" strokeWidth="1.1">
-      <path d="M17 24c-6 0-9-4-9-4s3-6 9-6 9 6 9 6-3 4-9 4z" fill="rgba(241,210,122,0.12)" />
-      <path d="M17 24V10" />
-      <path d="M17 12c-2-3-6-3-6-3s0 5 3 7" />
-      <path d="M17 12c2-3 6-3 6-3s0 5-3 7" />
-      <circle cx="17" cy="24" r="1.5" fill="#f1d27a" />
+    <svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+      <defs>
+        <linearGradient id="petalGold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff2c2" />
+          <stop offset="55%" stopColor="#f1d27a" />
+          <stop offset="100%" stopColor="#7c561f" />
+        </linearGradient>
+        <linearGradient id="petalGoldSoft" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#f7e2a2" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#8a6323" stopOpacity="0.85" />
+        </linearGradient>
+        <radialGradient id="petalGlow" cx="50%" cy="60%" r="60%">
+          <stop offset="0%" stopColor="#fff5cc" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#f1d27a" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      {/* soft aura */}
+      <ellipse cx="24" cy="30" rx="20" ry="10" fill="url(#petalGlow)" />
+      {/* water line */}
+      <path d="M4 36c4 1.5 8 1.5 12 0s8-1.5 12 0 8 1.5 12 0" stroke="#f1d27a" strokeWidth="0.7" opacity="0.55" fill="none" />
+      <path d="M6 39c4 1.2 7 1.2 11 0s8-1.2 12 0 6 1.2 11 0" stroke="#f1d27a" strokeWidth="0.5" opacity="0.35" fill="none" />
+
+      {/* outer back petals */}
+      <path
+        d="M24 32c-8-1-13-6-13-12 0 0 5 0 8 3 3 3 5 6 5 9z"
+        fill="url(#petalGoldSoft)"
+        stroke="#f1d27a"
+        strokeWidth="0.8"
+      />
+      <path
+        d="M24 32c8-1 13-6 13-12 0 0-5 0-8 3-3 3-5 6-5 9z"
+        fill="url(#petalGoldSoft)"
+        stroke="#f1d27a"
+        strokeWidth="0.8"
+      />
+
+      {/* mid petals */}
+      <path
+        d="M24 33c-6-1-10-5-11-11 0 0 4 1 7 4s4 5 4 7z"
+        fill="url(#petalGold)"
+        stroke="#fff3c4"
+        strokeWidth="0.5"
+        opacity="0.95"
+      />
+      <path
+        d="M24 33c6-1 10-5 11-11 0 0-4 1-7 4s-4 5-4 7z"
+        fill="url(#petalGold)"
+        stroke="#fff3c4"
+        strokeWidth="0.5"
+        opacity="0.95"
+      />
+
+      {/* inner side petals */}
+      <path
+        d="M24 34c-4-.5-7-4-7-9 2 1 4 3 5 5s2 3 2 4z"
+        fill="url(#petalGold)"
+        stroke="#fff3c4"
+        strokeWidth="0.5"
+      />
+      <path
+        d="M24 34c4-.5 7-4 7-9-2 1-4 3-5 5s-2 3-2 4z"
+        fill="url(#petalGold)"
+        stroke="#fff3c4"
+        strokeWidth="0.5"
+      />
+
+      {/* center petal */}
+      <path
+        d="M24 34c-2.6 0-4.5-2.2-4.5-6 0-3 2-6.5 4.5-9 2.5 2.5 4.5 6 4.5 9 0 3.8-1.9 6-4.5 6z"
+        fill="url(#petalGold)"
+        stroke="#fff3c4"
+        strokeWidth="0.6"
+      />
+      {/* pistil dot */}
+      <circle cx="24" cy="24" r="1.2" fill="#fff8dc" />
+
+      {/* filigree tendrils */}
+      <path d="M11 20c-1-2-1-4 0-6" stroke="#f1d27a" strokeWidth="0.6" fill="none" opacity="0.7" />
+      <path d="M37 20c1-2 1-4 0-6" stroke="#f1d27a" strokeWidth="0.6" fill="none" opacity="0.7" />
+
+      {/* sparkles */}
+      <path d="M24 6l.6 2L26.5 8.5l-1.9.5L24 11l-.6-2L21.5 8.5l1.9-.5z" fill="#fff3c4" />
+      <path d="M8 10l.4 1.4L9.8 12l-1.4.4L8 14l-.4-1.6L6.2 12l1.4-.4z" fill="#f1d27a" />
+      <path d="M40 10l.4 1.4L41.8 12l-1.4.4L40 14l-.4-1.6L38.2 12l1.4-.4z" fill="#f1d27a" />
+      <circle cx="14" cy="16" r="0.7" fill="#fff3c4" />
+      <circle cx="34" cy="16" r="0.7" fill="#fff3c4" />
     </svg>
   );
 }
