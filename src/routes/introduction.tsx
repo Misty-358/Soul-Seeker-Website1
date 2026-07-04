@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import aceAsset from "@/assets/ace-of-swords.jpg.asset.json";
+import aceOfCupsAsset from "@/assets/ace-of-cups.png.asset.json";
 import chariotAsset from "@/assets/the-chariot.jpg.asset.json";
 import strengthAsset from "@/assets/strength.jpg.asset.json";
 import temperanceAsset from "@/assets/temperance-tarot.jpg.asset.json";
@@ -42,7 +43,7 @@ export const Route = createFileRoute("/introduction")({
 });
 
 const fanCards = [
-  { src: aceAsset.url, name: "ACE OF SWORDS" },
+  { src: aceOfCupsAsset.url, name: "ACE OF CUPS" },
   { src: chariotAsset.url, name: "THE CHARIOT" },
   { src: strengthAsset.url, name: "STRENGTH" },
   { src: temperanceAsset.url, name: "TEMPERANCE" },
