@@ -475,90 +475,223 @@ function AboutPage() {
       <main className="relative z-10 max-w-[1400px] mx-auto px-8 pt-32 pb-16">
         {/* Hero */}
         <section className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] gap-8 items-center min-h-[520px]">
-          {/* Left flourish */}
-          <div className="relative hidden lg:block h-[420px]">
-            <svg viewBox="0 0 300 420" className="w-full h-full" aria-hidden>
+          {/* Left flourish — golden lotus under crescent arch */}
+          <div className="relative hidden lg:block h-[520px]">
+            <svg viewBox="0 0 320 520" className="w-full h-full" aria-hidden>
               <defs>
                 <linearGradient id="leftGold" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#f6e0a3" stopOpacity="0.95" />
-                  <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.3" />
+                  <stop offset="0%" stopColor="#fbe6a3" stopOpacity="1" />
+                  <stop offset="55%" stopColor="#e8c56a" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.55" />
                 </linearGradient>
-                <linearGradient id="leftPrism" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#5aa9ff" />
-                  <stop offset="40%" stopColor="#9b6bff" />
-                  <stop offset="75%" stopColor="#ff8fd0" />
-                  <stop offset="100%" stopColor="#f1d27a" />
+                <linearGradient id="leftGoldBright" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#fff2c2" />
+                  <stop offset="60%" stopColor="#f1d27a" />
+                  <stop offset="100%" stopColor="#b8892c" />
                 </linearGradient>
-                <linearGradient id="leftPrismSoft" x1="1" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.6" />
-                  <stop offset="50%" stopColor="#c48bff" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#ffa4d8" stopOpacity="0.6" />
+                <linearGradient id="leftLotusOuter" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#c48bff" stopOpacity="0.95" />
+                  <stop offset="55%" stopColor="#9b6bff" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#4a2a8e" stopOpacity="0.85" />
                 </linearGradient>
-                <radialGradient id="leftMoonGrad" cx="45%" cy="40%" r="60%">
-                  <stop offset="0%" stopColor="#e6f0ff" />
-                  <stop offset="45%" stopColor="#ffd4ec" />
-                  <stop offset="80%" stopColor="#7c5ad0" />
-                  <stop offset="100%" stopColor="#1a1740" />
+                <linearGradient id="leftLotusInner" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#ffd9b0" />
+                  <stop offset="45%" stopColor="#ff9fd0" />
+                  <stop offset="100%" stopColor="#7c4dff" />
+                </linearGradient>
+                <radialGradient id="leftLotusCore" cx="50%" cy="45%" r="55%">
+                  <stop offset="0%" stopColor="#fff5d6" />
+                  <stop offset="60%" stopColor="#f1d27a" />
+                  <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0" />
                 </radialGradient>
-                <radialGradient id="leftAura" cx="50%" cy="50%" r="50%">
+                <radialGradient id="leftMoonAura" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.55" />
-                  <stop offset="60%" stopColor="#5aa9ff" stopOpacity="0.2" />
+                  <stop offset="70%" stopColor="#5aa9ff" stopOpacity="0.15" />
                   <stop offset="100%" stopColor="#050816" stopOpacity="0" />
                 </radialGradient>
               </defs>
 
-              {/* moon aura */}
-              <circle cx="150" cy="120" r="110" fill="url(#leftAura)" />
-
-              <g fill="none">
-                <circle cx="150" cy="120" r="90" stroke="url(#leftPrismSoft)" strokeWidth="0.9" strokeDasharray="2 5" opacity="0.85" />
-                <circle cx="150" cy="120" r="70" stroke="url(#leftPrism)" strokeWidth="1.1" />
-                <circle cx="150" cy="120" r="100" stroke="url(#leftGold)" strokeWidth="0.5" strokeDasharray="1 6" opacity="0.7" />
-                <circle cx="150" cy="120" r="55" fill="url(#leftMoonGrad)" stroke="url(#leftPrism)" strokeWidth="0.7" />
-                <circle cx="130" cy="105" r="6" fill="#7c5ad0" opacity="0.55" />
-                <circle cx="165" cy="130" r="4" fill="#ff8fd0" opacity="0.55" />
-                <circle cx="140" cy="140" r="3" fill="#5aa9ff" opacity="0.5" />
-
-                {/* trailing vines — prismatic + gold pair */}
-                <path d="M150 200 C120 230 110 280 130 320 C140 340 150 360 150 400" stroke="url(#leftPrism)" strokeWidth="1.1" opacity="0.85" />
-                <path d="M150 220 C170 250 190 270 200 300 C205 330 195 360 180 380" stroke="url(#leftPrismSoft)" strokeWidth="0.9" opacity="0.7" />
-                <path d="M150 240 C130 260 118 280 118 300 C118 330 128 360 140 380" stroke="url(#leftGold)" strokeWidth="0.8" opacity="0.75" />
-                <path d="M150 210 C165 230 175 250 178 275" stroke="url(#leftPrismSoft)" strokeWidth="0.7" opacity="0.6" />
-
-                {/* leaves — mix of gold + prismatic */}
-                <path d="M150 260 C140 258 132 262 128 270 C136 272 146 268 150 260 Z" fill="url(#leftGold)" opacity="0.85" />
-                <path d="M150 300 C162 298 172 302 176 310 C168 314 156 310 150 300 Z" fill="url(#leftPrismSoft)" opacity="0.85" />
-                <path d="M140 340 C130 340 124 346 122 354 C132 356 140 350 140 340 Z" fill="url(#leftGold)" opacity="0.75" />
-                <path d="M175 250 C182 246 190 250 192 258 C186 262 178 258 175 250 Z" fill="url(#leftPrism)" opacity="0.7" />
-                <path d="M118 290 C110 292 106 300 108 308 C116 306 120 300 118 290 Z" fill="url(#leftPrismSoft)" opacity="0.75" />
-                <path d="M160 375 C170 372 178 378 178 386 C170 388 162 384 160 375 Z" fill="url(#leftGold)" opacity="0.8" />
-
-                {/* tiny buds */}
-                <circle cx="182" cy="260" r="2" fill="#ff8fd0" opacity="0.9" />
-                <circle cx="120" cy="320" r="1.8" fill="#5aa9ff" opacity="0.9" />
-                <circle cx="150" cy="400" r="2.2" fill="#f1d27a" opacity="0.95" />
+              {/* Crescent moon + starburst — top */}
+              <g>
+                <circle cx="160" cy="110" r="95" fill="url(#leftMoonAura)" className="ss-aura-pulse" />
+                {/* Crescent */}
+                <g transform="translate(160 110)">
+                  <path
+                    d="M -40 -55
+                       A 55 55 0 1 0 -40 55
+                       A 42 42 0 1 1 -40 -55 Z"
+                    fill="url(#leftGoldBright)"
+                    stroke="url(#leftGold)"
+                    strokeWidth="0.6"
+                  />
+                  {/* Star to the right of crescent */}
+                  <g transform="translate(45 -10)" className="ss-twinkle" style={{ animationDuration: "3.6s" }}>
+                    <path
+                      d="M 0 -14 L 3 -3 L 14 0 L 3 3 L 0 14 L -3 3 L -14 0 L -3 -3 Z"
+                      fill="url(#leftGoldBright)"
+                    />
+                    <circle r="2" fill="#fff5d6" />
+                  </g>
+                </g>
+                {/* Dotted orbital arcs around moon */}
+                <circle cx="160" cy="110" r="88" fill="none" stroke="url(#leftGold)" strokeWidth="0.5" strokeDasharray="1 5" opacity="0.75" />
+                <circle cx="160" cy="110" r="102" fill="none" stroke="url(#leftGold)" strokeWidth="0.4" strokeDasharray="1 8" opacity="0.5" />
+                {/* Tiny hanging dot below crescent */}
+                <line x1="160" y1="200" x2="160" y2="230" stroke="url(#leftGold)" strokeWidth="0.6" strokeDasharray="1 3" opacity="0.7" />
+                <circle cx="160" cy="234" r="2" fill="#f1d27a" />
               </g>
 
-              {/* colorful sparkles */}
+              {/* Golden lotus — bottom center */}
+              <g transform="translate(160 400)">
+                {/* Radiating light behind lotus */}
+                <g className="ss-aura-pulse" style={{ animationDuration: "6s" }}>
+                  {Array.from({ length: 18 }).map((_, i) => {
+                    const a = (i * 360) / 18;
+                    const rad = (a * Math.PI) / 180;
+                    const x2 = Math.cos(rad) * 110;
+                    const y2 = Math.sin(rad) * 110;
+                    return (
+                      <line
+                        key={i}
+                        x1={0}
+                        y1={0}
+                        x2={x2}
+                        y2={y2}
+                        stroke="url(#leftGold)"
+                        strokeWidth="0.4"
+                        opacity="0.55"
+                      />
+                    );
+                  })}
+                </g>
+
+                {/* Outer petals (5 - back row) */}
+                <g>
+                  {[-70, -35, 0, 35, 70].map((a) => (
+                    <path
+                      key={`outer-${a}`}
+                      d="M 0 0
+                         C 22 -30, 22 -70, 0 -90
+                         C -22 -70, -22 -30, 0 0 Z"
+                      fill="url(#leftLotusOuter)"
+                      stroke="url(#leftGoldBright)"
+                      strokeWidth="0.9"
+                      opacity="0.9"
+                      transform={`rotate(${a})`}
+                    />
+                  ))}
+                </g>
+
+                {/* Middle petals (4) */}
+                <g>
+                  {[-52, -18, 18, 52].map((a) => (
+                    <path
+                      key={`mid-${a}`}
+                      d="M 0 0
+                         C 18 -25, 18 -60, 0 -74
+                         C -18 -60, -18 -25, 0 0 Z"
+                      fill="url(#leftLotusInner)"
+                      stroke="url(#leftGoldBright)"
+                      strokeWidth="0.8"
+                      opacity="0.95"
+                      transform={`rotate(${a})`}
+                    />
+                  ))}
+                </g>
+
+                {/* Front center petal */}
+                <path
+                  d="M 0 0
+                     C 14 -22, 14 -55, 0 -66
+                     C -14 -55, -14 -22, 0 0 Z"
+                  fill="url(#leftLotusCore)"
+                  stroke="url(#leftGoldBright)"
+                  strokeWidth="1"
+                />
+
+                {/* Base water line */}
+                <path
+                  d="M -80 6 Q 0 14 80 6"
+                  fill="none"
+                  stroke="url(#leftGoldBright)"
+                  strokeWidth="0.9"
+                  opacity="0.85"
+                />
+                <path
+                  d="M -95 14 Q 0 22 95 14"
+                  fill="none"
+                  stroke="url(#leftGold)"
+                  strokeWidth="0.6"
+                  strokeDasharray="2 4"
+                  opacity="0.7"
+                />
+                {/* Little ripple dots */}
+                {[-60, -30, 0, 30, 60].map((x) => (
+                  <circle key={x} cx={x} cy={22} r="1.4" fill="#f1d27a" opacity="0.85" />
+                ))}
+              </g>
+
+              {/* Botanical laurels down each side */}
+              <g stroke="url(#leftGold)" strokeWidth="0.9" fill="none" opacity="0.85">
+                <path d="M 28 260 C 40 300 44 350 40 420" />
+                <path d="M 292 260 C 280 300 276 350 280 420" />
+              </g>
+              {/* Left laurel leaves */}
+              {[280, 310, 340, 370, 400].map((y, i) => (
+                <g key={`ll-${y}`}>
+                  <path
+                    d={`M 40 ${y} C 22 ${y - 6}, 12 ${y + 4}, 8 ${y + 14} C 24 ${y + 12}, 36 ${y + 6}, 40 ${y} Z`}
+                    fill="url(#leftGold)"
+                    opacity={0.85 - i * 0.06}
+                  />
+                  <path
+                    d={`M 40 ${y + 6} C 56 ${y + 2}, 66 ${y + 12}, 68 ${y + 22} C 54 ${y + 20}, 44 ${y + 14}, 40 ${y + 6} Z`}
+                    fill="url(#leftGoldBright)"
+                    opacity={0.8 - i * 0.05}
+                  />
+                </g>
+              ))}
+              {/* Right laurel leaves (mirrored) */}
+              {[280, 310, 340, 370, 400].map((y, i) => (
+                <g key={`rl-${y}`}>
+                  <path
+                    d={`M 280 ${y} C 298 ${y - 6}, 308 ${y + 4}, 312 ${y + 14} C 296 ${y + 12}, 284 ${y + 6}, 280 ${y} Z`}
+                    fill="url(#leftGold)"
+                    opacity={0.85 - i * 0.06}
+                  />
+                  <path
+                    d={`M 280 ${y + 6} C 264 ${y + 2}, 254 ${y + 12}, 252 ${y + 22} C 266 ${y + 20}, 276 ${y + 14}, 280 ${y + 6} Z`}
+                    fill="url(#leftGoldBright)"
+                    opacity={0.8 - i * 0.05}
+                  />
+                </g>
+              ))}
+
+              {/* Twinkling sparkles */}
               {[
-                [80, 60, "#5aa9ff"],
-                [230, 70, "#ff8fd0"],
-                [70, 180, "#9b6bff"],
-                [240, 200, "#f1d27a"],
-                [100, 380, "#ffa4d8"],
-                [220, 360, "#5aa9ff"],
-                [55, 100, "#f1d27a"],
-                [250, 130, "#c48bff"],
-              ].map(([x, y, c], i) => (
+                [55, 60, "#f1d27a", 0],
+                [265, 70, "#c48bff", 1.1],
+                [40, 180, "#5aa9ff", 2.2],
+                [280, 200, "#ff8fd0", 0.6],
+                [90, 300, "#f1d27a", 1.8],
+                [230, 310, "#9b6bff", 2.6],
+                [160, 490, "#f1d27a", 0.4],
+              ].map(([x, y, c, d], i) => (
                 <path
                   key={i}
-                  d={`M${x} ${(y as number) - 6} L${(x as number) + 1.2} ${(y as number) - 1} L${(x as number) + 6} ${y} L${(x as number) + 1.2} ${(y as number) + 1} L${x} ${(y as number) + 6} L${(x as number) - 1.2} ${(y as number) + 1} L${(x as number) - 6} ${y} L${(x as number) - 1.2} ${(y as number) - 1} Z`}
+                  d={`M${x} ${(y as number) - 7} L${(x as number) + 1.4} ${(y as number) - 1.1} L${(x as number) + 7} ${y} L${(x as number) + 1.4} ${(y as number) + 1.1} L${x} ${(y as number) + 7} L${(x as number) - 1.4} ${(y as number) + 1.1} L${(x as number) - 7} ${y} L${(x as number) - 1.4} ${(y as number) - 1.1} Z`}
                   fill={c as string}
-                  opacity="0.9"
+                  className="ss-twinkle"
+                  style={{
+                    animationDelay: `${d}s`,
+                    animationDuration: "4.2s",
+                    filter: `drop-shadow(0 0 5px ${c})`,
+                  }}
                 />
               ))}
             </svg>
           </div>
+
 
           {/* Center headline */}
           <div className="text-center">
