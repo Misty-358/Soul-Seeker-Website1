@@ -353,7 +353,7 @@ function IntroductionPage() {
                 <SectionEmblem>
                   <OrbIcon />
                 </SectionEmblem>
-                <h3
+                <h2
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
                     color: gold,
@@ -365,7 +365,7 @@ function IntroductionPage() {
                   Personalised Insights
                   <br />
                   Tailored to You
-                </h3>
+                </h2>
               </div>
               <Divider width={40} />
               <p
@@ -483,7 +483,7 @@ function IntroductionPage() {
                 <SectionEmblem>
                   <LotusIcon />
                 </SectionEmblem>
-                <h3
+                <h2
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
                     color: gold,
@@ -495,7 +495,7 @@ function IntroductionPage() {
                   Create Your
                   <br />
                   Tarot Masterpiece
-                </h3>
+                </h2>
               </div>
               <Divider width={40} />
               <p
