@@ -240,43 +240,22 @@ function ChaliceEmblem() {
 /* ---------- Right: ornate filigree lotus mandala ---------- */
 
 function TripleMoonBackdrop() {
-  const outerPetals = Array.from({ length: 24 }).map((_, i) => (i * 360) / 24);
-  const midPetals = Array.from({ length: 16 }).map((_, i) => (i * 360) / 16 + 11.25);
-  const innerPetals = Array.from({ length: 12 }).map((_, i) => (i * 360) / 12);
+  // Zodiac wheel signs (unicode)
+  const zodiac = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
 
-  // Filigree scroll — a single reusable curl
-  const Scroll = ({ rotate }: { rotate: number }) => (
-    <g transform={`rotate(${rotate} 450 450)`}>
-      <path
-        d="M 450 60
-           C 470 90, 495 100, 520 92
-           C 545 84, 555 60, 545 46
-           C 536 34, 520 38, 518 52
-           C 516 62, 526 66, 532 60"
-        fill="none"
-        stroke="url(#filGold)"
-        strokeWidth="0.9"
-        opacity="0.85"
-      />
-      <path
-        d="M 450 60
-           C 430 90, 405 100, 380 92
-           C 355 84, 345 60, 355 46
-           C 364 34, 380 38, 382 52
-           C 384 62, 374 66, 368 60"
-        fill="none"
-        stroke="url(#filGold)"
-        strokeWidth="0.9"
-        opacity="0.85"
-      />
-      <circle cx="450" cy="42" r="2.2" fill="url(#filGoldBright)" />
-      <path
-        d="M 442 46 L 450 30 L 458 46 Z"
-        fill="url(#filGoldBright)"
-        opacity="0.9"
-      />
-    </g>
-  );
+  // Deterministic mini-stars for constellation dust
+  const dust = Array.from({ length: 60 }).map((_, i) => {
+    const r = (s: number) => {
+      const x = Math.sin(s) * 43758.5453;
+      return x - Math.floor(x);
+    };
+    return {
+      x: 80 + r(i * 1.3 + 1) * 740,
+      y: 80 + r(i * 2.7 + 5) * 740,
+      s: 0.6 + r(i * 3.1 + 9) * 1.4,
+      d: r(i * 4.5 + 3) * 5,
+    };
+  });
 
   return (
     <svg
@@ -285,191 +264,232 @@ function TripleMoonBackdrop() {
       aria-hidden
       preserveAspectRatio="xMidYMid slice"
       style={{
-        opacity: 0.85,
+        opacity: 0.9,
         mixBlendMode: "screen",
         filter: "drop-shadow(0 0 40px rgba(155,107,255,0.28))",
       }}
     >
       <defs>
-        <radialGradient id="lotusAura" cx="50%" cy="50%" r="55%">
-          <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.55" />
+        <radialGradient id="tmAura" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stopColor="#7cc7ff" stopOpacity="0.6" />
           <stop offset="45%" stopColor="#5aa9ff" stopOpacity="0.22" />
           <stop offset="80%" stopColor="#1a1740" stopOpacity="0.1" />
           <stop offset="100%" stopColor="#050816" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="lotusPrism" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.95" />
-          <stop offset="35%" stopColor="#ff8fd0" stopOpacity="0.85" />
-          <stop offset="70%" stopColor="#c48bff" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#5aa9ff" stopOpacity="0.9" />
+        <linearGradient id="tmBlueInk" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#cfeaff" />
+          <stop offset="55%" stopColor="#5aa9ff" />
+          <stop offset="100%" stopColor="#1e4d8a" />
         </linearGradient>
-        <linearGradient id="lotusPrismSoft" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#5aa9ff" stopOpacity="0.55" />
-          <stop offset="50%" stopColor="#c48bff" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#ffa4d8" stopOpacity="0.55" />
+        <linearGradient id="tmRoseGold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#fbe6a3" />
+          <stop offset="55%" stopColor="#e8b8a4" />
+          <stop offset="100%" stopColor="#8f6b1e" />
         </linearGradient>
-        <linearGradient id="filGold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#fbe6a3" stopOpacity="0.95" />
-          <stop offset="55%" stopColor="#e8c56a" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.5" />
-        </linearGradient>
-        <linearGradient id="filGoldBright" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="tmGoldBright" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#fff5d6" />
           <stop offset="60%" stopColor="#f1d27a" />
           <stop offset="100%" stopColor="#b8892c" />
         </linearGradient>
-        <radialGradient id="lotusCore" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#fff5d6" stopOpacity="1" />
-          <stop offset="40%" stopColor="#f1d27a" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0" />
+        <radialGradient id="tmMoonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+          <stop offset="45%" stopColor="#dfeaff" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#5aa9ff" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="tmSideMoon" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#cfeaff" />
+          <stop offset="70%" stopColor="#5aa9ff" />
+          <stop offset="100%" stopColor="#1e4d8a" />
         </radialGradient>
       </defs>
 
-      {/* Outer aura */}
-      <circle cx="450" cy="450" r="440" fill="url(#lotusAura)" className="ss-aura-pulse" />
+      {/* Outer cosmic aura */}
+      <circle cx="450" cy="450" r="440" fill="url(#tmAura)" className="ss-aura-pulse" />
 
-      {/* Filigree scroll wreath — 8 rotational scrolls forming an ornate frame */}
-      <g className="ss-swirl-slow" style={{ animationDuration: "180s" }}>
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((r) => (
-          <Scroll key={r} rotate={r} />
-        ))}
-      </g>
-
-      {/* Concentric mandala rings */}
-      <g className="ss-swirl-slow">
-        <g fill="none">
-          <circle cx="450" cy="450" r="410" stroke="url(#filGold)" strokeWidth="0.5" strokeDasharray="1 12" opacity="0.55" />
-          <circle cx="450" cy="450" r="380" stroke="url(#lotusPrismSoft)" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.55" />
-          <circle cx="450" cy="450" r="340" stroke="url(#filGoldBright)" strokeWidth="0.6" opacity="0.5" />
-          <circle cx="450" cy="450" r="310" stroke="url(#lotusPrism)" strokeWidth="0.7" strokeDasharray="1 6" opacity="0.6" />
-          {/* Radiating spokes */}
-          {Array.from({ length: 48 }).map((_, i) => {
-            const a = (i * 360) / 48;
-            const rad = (a * Math.PI) / 180;
-            const x2 = 450 + Math.cos(rad) * 420;
-            const y2 = 450 + Math.sin(rad) * 420;
-            const x1 = 450 + Math.cos(rad) * 340;
-            const y1 = 450 + Math.sin(rad) * 340;
-            return (
-              <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="url(#filGold)" strokeWidth="0.35" opacity="0.42" />
-            );
-          })}
-          {/* Dotted bead ring */}
-          {Array.from({ length: 36 }).map((_, i) => {
-            const a = (i * 360) / 36;
-            const rad = (a * Math.PI) / 180;
-            const cx = 450 + Math.cos(rad) * 355;
-            const cy = 450 + Math.sin(rad) * 355;
-            return <circle key={`b-${i}`} cx={cx} cy={cy} r="1.4" fill="#f1d27a" opacity="0.85" />;
-          })}
-        </g>
-      </g>
-
-      {/* Counter-rotating sacred geometry — Metatron-style triangles + hexagram */}
-      <g className="ss-swirl-rev" style={{ animationDuration: "160s" }}>
-        <g fill="none" stroke="url(#lotusPrismSoft)" strokeWidth="0.7" opacity="0.6">
-          <path d="M450 180 L680 570 L220 570 Z" />
-          <path d="M450 720 L680 330 L220 330 Z" />
-          <circle cx="450" cy="450" r="250" strokeDasharray="4 8" />
-          <circle cx="450" cy="450" r="210" strokeDasharray="1 4" opacity="0.7" />
-        </g>
-      </g>
-
-      {/* Filigree corner scrolls fixed at diagonals — baroque flourish */}
-      <g fill="none" stroke="url(#filGoldBright)" strokeWidth="0.8" opacity="0.75">
-        {[45, 135, 225, 315].map((r) => (
-          <g key={`corner-${r}`} transform={`rotate(${r} 450 450) translate(0 -300)`}>
-            <path d="M 0 0 C -18 12, -36 8, -46 -6 C -52 -18, -42 -30, -30 -26 C -22 -22, -22 -14, -30 -12" />
-            <path d="M 0 0 C 18 12, 36 8, 46 -6 C 52 -18, 42 -30, 30 -26 C 22 -22, 22 -14, 30 -12" />
-            <circle cx="0" cy="-8" r="2" fill="url(#filGoldBright)" />
-          </g>
-        ))}
-      </g>
-
-      {/* Outer lotus petals — 24 */}
-      <g>
-        {outerPetals.map((a) => (
-          <path
-            key={`p1-${a}`}
-            d="M450 450
-               C 500 340, 500 220, 450 130
-               C 400 220, 400 340, 450 450 Z"
-            fill="url(#lotusPrism)"
-            opacity="0.3"
-            stroke="url(#filGoldBright)"
-            strokeWidth="0.5"
-            transform={`rotate(${a} 450 450)`}
-          />
-        ))}
-      </g>
-
-      {/* Middle lotus petals — 16 */}
-      <g>
-        {midPetals.map((a) => (
-          <path
-            key={`p2-${a}`}
-            d="M450 450
-               C 490 370, 490 280, 450 210
-               C 410 280, 410 370, 450 450 Z"
-            fill="url(#lotusPrismSoft)"
-            opacity="0.45"
-            stroke="url(#lotusPrism)"
-            strokeWidth="0.55"
-            transform={`rotate(${a} 450 450)`}
-          />
-        ))}
-      </g>
-
-      {/* Inner lotus petals — 12 gold */}
-      <g>
-        {innerPetals.map((a) => (
-          <path
-            key={`p3-${a}`}
-            d="M450 450
-               C 478 400, 478 340, 450 300
-               C 422 340, 422 400, 450 450 Z"
-            fill="url(#filGoldBright)"
-            opacity="0.6"
-            stroke="url(#filGold)"
-            strokeWidth="0.4"
-            transform={`rotate(${a} 450 450)`}
-          />
-        ))}
-      </g>
-
-      {/* Tiny ornament between each inner petal */}
-      <g>
-        {Array.from({ length: 12 }).map((_, i) => {
-          const a = (i * 360) / 12 + 15;
+      {/* Zodiac wheel — outer rotating ring */}
+      <g className="ss-swirl-slow" style={{ animationDuration: "200s" }}>
+        <circle cx="450" cy="450" r="380" fill="none" stroke="url(#tmRoseGold)" strokeWidth="0.6" />
+        <circle cx="450" cy="450" r="356" fill="none" stroke="url(#tmRoseGold)" strokeWidth="0.4" strokeDasharray="1 6" />
+        {zodiac.map((sign, i) => {
+          const a = (i * 360) / 12 - 90;
           const rad = (a * Math.PI) / 180;
-          const cx = 450 + Math.cos(rad) * 275;
-          const cy = 450 + Math.sin(rad) * 275;
+          const cx = 450 + Math.cos(rad) * 368;
+          const cy = 450 + Math.sin(rad) * 368;
           return (
-            <path
-              key={`orn-${i}`}
-              d={`M ${cx} ${cy - 4} L ${cx + 1} ${cy - 1} L ${cx + 4} ${cy} L ${cx + 1} ${cy + 1} L ${cx} ${cy + 4} L ${cx - 1} ${cy + 1} L ${cx - 4} ${cy} L ${cx - 1} ${cy - 1} Z`}
-              fill="url(#filGoldBright)"
-              opacity="0.9"
+            <g key={sign}>
+              <text
+                x={cx}
+                y={cy + 6}
+                textAnchor="middle"
+                fill="url(#tmGoldBright)"
+                fontSize="16"
+                style={{ fontFamily: "serif" }}
+                opacity="0.9"
+              >
+                {sign}
+              </text>
+            </g>
+          );
+        })}
+        {/* Segment dividers */}
+        {Array.from({ length: 12 }).map((_, i) => {
+          const a = ((i * 360) / 12 - 90 + 15) * (Math.PI / 180);
+          return (
+            <line
+              key={i}
+              x1={450 + Math.cos(a) * 356}
+              y1={450 + Math.sin(a) * 356}
+              x2={450 + Math.cos(a) * 380}
+              y2={450 + Math.sin(a) * 380}
+              stroke="url(#tmRoseGold)"
+              strokeWidth="0.5"
+              opacity="0.7"
             />
           );
         })}
       </g>
 
-      {/* Central bindu / core with filigree crown */}
-      <g>
-        <circle cx="450" cy="450" r="80" fill="url(#lotusCore)" className="ss-aura-pulse" style={{ animationDuration: "5s" }} />
-        <circle cx="450" cy="450" r="40" fill="url(#filGoldBright)" opacity="0.95" />
-        <circle cx="450" cy="450" r="22" fill="#fff5d6" opacity="0.95" />
-        {/* Filigree crown ring */}
-        <circle cx="450" cy="450" r="80" fill="none" stroke="url(#lotusPrism)" strokeWidth="0.9" />
-        <circle cx="450" cy="450" r="88" fill="none" stroke="url(#filGold)" strokeWidth="0.4" strokeDasharray="1 4" />
-        {/* Tiny gems on the crown */}
-        {Array.from({ length: 8 }).map((_, i) => {
-          const a = (i * 360) / 8;
+      {/* Moon-phase arc (top) */}
+      <g className="ss-aura-pulse" style={{ animationDuration: "9s" }}>
+        {Array.from({ length: 9 }).map((_, i) => {
+          const a = -140 + (i * 280) / 8;
           const rad = (a * Math.PI) / 180;
-          const cx = 450 + Math.cos(rad) * 80;
-          const cy = 450 + Math.sin(rad) * 80;
-          return <circle key={`g-${i}`} cx={cx} cy={cy} r="2" fill="url(#filGoldBright)" />;
+          const cx = 450 + Math.cos(rad) * 320;
+          const cy = 450 + Math.sin(rad) * 320;
+          // Phase: 0 new, 4 full, 8 new
+          const phase = i / 8;
+          const illum = Math.sin(phase * Math.PI); // 0..1..0
+          return (
+            <g key={i} transform={`translate(${cx} ${cy})`}>
+              <circle r="9" fill="#0a1128" stroke="url(#tmRoseGold)" strokeWidth="0.6" />
+              <path
+                d={`M 0 -9 A 9 9 0 0 ${i < 4 ? 1 : 0} 0 9 A ${9 * (1 - illum * 2 + (illum > 0.5 ? 2 : 0))} 9 0 0 ${i < 4 ? 0 : 1} 0 -9 Z`}
+                fill="url(#tmGoldBright)"
+                opacity="0.9"
+              />
+            </g>
+          );
+        })}
+      </g>
+
+      {/* Constellation dust */}
+      <g>
+        {dust.map((p, i) => (
+          <circle
+            key={i}
+            cx={p.x}
+            cy={p.y}
+            r={p.s * 0.7}
+            fill="#f1d27a"
+            className="ss-twinkle"
+            style={{ animationDelay: `${p.d}s`, filter: `drop-shadow(0 0 3px #f1d27a)` }}
+          />
+        ))}
+        {/* A few constellation line clusters */}
+        <g stroke="url(#tmRoseGold)" strokeWidth="0.4" fill="none" opacity="0.6">
+          <path d="M120 210 L165 240 L210 220 L240 275" />
+          <path d="M690 200 L720 245 L770 235 L790 285" />
+          <path d="M140 700 L190 720 L230 690 L280 720" />
+          <path d="M660 720 L710 700 L755 730 L790 705" />
+        </g>
+      </g>
+
+      {/* Triple-moon: side crescents + central full moon */}
+      {/* Left crescent (waxing, opens right) */}
+      <g transform="translate(280 450)">
+        <path
+          d="M 0 -110
+             A 110 110 0 1 0 0 110
+             A 84 110 0 1 1 0 -110 Z"
+          fill="url(#tmSideMoon)"
+          stroke="url(#tmGoldBright)"
+          strokeWidth="1"
+          opacity="0.95"
+        />
+        {/* Tribal filigree swirls on crescent */}
+        <g fill="none" stroke="url(#tmGoldBright)" strokeWidth="0.8" opacity="0.85">
+          <path d="M -34 -70 C -60 -50, -70 -20, -50 0 C -30 20, -60 40, -34 70" />
+          <path d="M -20 -50 C -40 -30, -40 30, -20 50" />
+          <path d="M -46 -30 C -30 -18, -30 18, -46 30" />
+          <circle cx="-58" cy="0" r="2.4" fill="url(#tmGoldBright)" />
+        </g>
+      </g>
+
+      {/* Right crescent (waning, opens left) */}
+      <g transform="translate(620 450)">
+        <path
+          d="M 0 -110
+             A 110 110 0 1 1 0 110
+             A 84 110 0 1 0 0 -110 Z"
+          fill="url(#tmSideMoon)"
+          stroke="url(#tmGoldBright)"
+          strokeWidth="1"
+          opacity="0.95"
+        />
+        <g fill="none" stroke="url(#tmGoldBright)" strokeWidth="0.8" opacity="0.85">
+          <path d="M 34 -70 C 60 -50, 70 -20, 50 0 C 30 20, 60 40, 34 70" />
+          <path d="M 20 -50 C 40 -30, 40 30, 20 50" />
+          <path d="M 46 -30 C 30 -18, 30 18, 46 30" />
+          <circle cx="58" cy="0" r="2.4" fill="url(#tmGoldBright)" />
+        </g>
+      </g>
+
+      {/* Central full moon with pentacle */}
+      <g transform="translate(450 450)">
+        <circle r="130" fill="url(#tmMoonGlow)" opacity="0.4" className="ss-aura-pulse" />
+        <circle r="108" fill="#0a1a2e" stroke="url(#tmGoldBright)" strokeWidth="1.2" />
+        <circle r="102" fill="none" stroke="url(#tmBlueInk)" strokeWidth="0.5" strokeDasharray="1 4" opacity="0.8" />
+        <circle r="94" fill="none" stroke="url(#tmGoldBright)" strokeWidth="0.4" strokeDasharray="2 6" opacity="0.7" />
+
+        {/* Pentacle */}
+        <g stroke="url(#tmGoldBright)" strokeWidth="1.3" fill="none">
+          <circle r="72" />
+          {(() => {
+            const pts = Array.from({ length: 5 }).map((_, i) => {
+              const a = (-90 + i * 72) * (Math.PI / 180);
+              return [Math.cos(a) * 72, Math.sin(a) * 72];
+            });
+            const order = [0, 2, 4, 1, 3, 0];
+            const d = order.map((idx, k) => `${k === 0 ? "M" : "L"} ${pts[idx][0]} ${pts[idx][1]}`).join(" ");
+            return <path d={d} />;
+          })()}
+        </g>
+        {/* Pentacle point gems */}
+        {Array.from({ length: 5 }).map((_, i) => {
+          const a = (-90 + i * 72) * (Math.PI / 180);
+          return <circle key={i} cx={Math.cos(a) * 72} cy={Math.sin(a) * 72} r="2.6" fill="url(#tmGoldBright)" />;
+        })}
+        <circle r="4" fill="url(#tmGoldBright)" />
+      </g>
+
+      {/* Tribal ornamental leaves at corners of triple moon */}
+      <g fill="none" stroke="url(#tmBlueInk)" strokeWidth="0.9" opacity="0.85">
+        {/* Top swirl cluster */}
+        <g transform="translate(450 250)">
+          <path d="M -80 0 C -60 -30, -30 -40, 0 -30 C 30 -40, 60 -30, 80 0" />
+          <path d="M -60 -10 C -50 -26, -30 -30, -14 -20" />
+          <path d="M 60 -10 C 50 -26, 30 -30, 14 -20" />
+          <path d="M -14 -20 C -6 -30, 6 -30, 14 -20" fill="url(#tmBlueInk)" opacity="0.7" />
+          <circle cx="0" cy="-32" r="2.2" fill="url(#tmGoldBright)" />
+        </g>
+        {/* Bottom swirl cluster */}
+        <g transform="translate(450 660)">
+          <path d="M -90 0 C -60 30, -30 40, 0 30 C 30 40, 60 30, 90 0" />
+          <path d="M -60 10 C -46 30, -22 34, -6 22" />
+          <path d="M 60 10 C 46 30, 22 34, 6 22" />
+          <path d="M -14 20 C -6 30, 6 30, 14 20" fill="url(#tmBlueInk)" opacity="0.7" />
+          <circle cx="0" cy="32" r="2.2" fill="url(#tmGoldBright)" />
+        </g>
+      </g>
+
+      {/* Rose-gold beaded outer ring */}
+      <g>
+        {Array.from({ length: 60 }).map((_, i) => {
+          const a = (i * 360) / 60;
+          const rad = (a * Math.PI) / 180;
+          const cx = 450 + Math.cos(rad) * 410;
+          const cy = 450 + Math.sin(rad) * 410;
+          return <circle key={i} cx={cx} cy={cy} r="1.4" fill="url(#tmGoldBright)" opacity="0.75" />;
         })}
       </g>
 
@@ -481,10 +501,6 @@ function TripleMoonBackdrop() {
         [820, 660, "#f1d27a", 0.6],
         [450, 90, "#f1d27a", 3.4],
         [450, 820, "#c48bff", 1.7],
-        [260, 760, "#ffa4d8", 2.8],
-        [660, 760, "#5aa9ff", 0.9],
-        [80, 420, "#c48bff", 3.9],
-        [830, 430, "#f1d27a", 2.4],
       ].map(([x, y, c, d], i) => (
         <path
           key={i}
@@ -562,252 +578,197 @@ function AboutPage() {
       <main className="relative z-10 max-w-[1400px] mx-auto px-8 pt-32 pb-16">
         {/* Hero */}
         <section className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] gap-8 items-center min-h-[520px]">
-          {/* Left flourish — filigree ornate arch with golden lotus */}
+          {/* Left flourish — golden crescent cradling a tree of life, moon-phase crown, geometric pendant */}
           <div className="relative hidden lg:block h-[520px]">
             <svg viewBox="0 0 320 520" className="w-full h-full" aria-hidden>
               <defs>
                 <linearGradient id="leftGold" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#fbe6a3" stopOpacity="1" />
-                  <stop offset="55%" stopColor="#e8c56a" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0.55" />
+                  <stop offset="0%" stopColor="#fbe6a3" />
+                  <stop offset="55%" stopColor="#e8c56a" />
+                  <stop offset="100%" stopColor="#8f6b1e" />
                 </linearGradient>
                 <linearGradient id="leftGoldBright" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#fff2c2" />
                   <stop offset="60%" stopColor="#f1d27a" />
                   <stop offset="100%" stopColor="#b8892c" />
                 </linearGradient>
-                <linearGradient id="leftLotusOuter" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#c48bff" stopOpacity="0.95" />
-                  <stop offset="55%" stopColor="#9b6bff" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#4a2a8e" stopOpacity="0.85" />
-                </linearGradient>
-                <linearGradient id="leftLotusInner" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#ffd9b0" />
-                  <stop offset="45%" stopColor="#ff9fd0" />
-                  <stop offset="100%" stopColor="#7c4dff" />
-                </linearGradient>
-                <radialGradient id="leftLotusCore" cx="50%" cy="45%" r="55%">
-                  <stop offset="0%" stopColor="#fff5d6" />
-                  <stop offset="60%" stopColor="#f1d27a" />
-                  <stop offset="100%" stopColor="#8f6b1e" stopOpacity="0" />
-                </radialGradient>
                 <radialGradient id="leftMoonAura" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#9b6bff" stopOpacity="0.6" />
-                  <stop offset="70%" stopColor="#5aa9ff" stopOpacity="0.15" />
+                  <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.55" />
+                  <stop offset="70%" stopColor="#9b6bff" stopOpacity="0.12" />
                   <stop offset="100%" stopColor="#050816" stopOpacity="0" />
                 </radialGradient>
-                <radialGradient id="leftInnerGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#c48bff" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#050816" stopOpacity="0" />
-                </radialGradient>
+                <linearGradient id="leftCrescent" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#fff2c2" />
+                  <stop offset="45%" stopColor="#e8c56a" />
+                  <stop offset="100%" stopColor="#6a4a12" />
+                </linearGradient>
               </defs>
 
-              {/* Ornate filigree arch frame around whole composition */}
-              <g fill="none" stroke="url(#leftGold)" strokeWidth="0.9" opacity="0.9">
-                {/* Pointed gothic arch outline */}
+              {/* Aura wash behind whole piece */}
+              <ellipse cx="160" cy="230" rx="140" ry="180" fill="url(#leftMoonAura)" className="ss-aura-pulse" />
+
+              {/* Moon-phase crown arc (top) */}
+              <g className="ss-aura-pulse" style={{ animationDuration: "8s" }}>
+                {(() => {
+                  // 7 phases along arc across top
+                  const phases = [0, 0.15, 0.35, 0.5, 0.65, 0.85, 1];
+                  const cxBase = 160;
+                  const cyBase = 60;
+                  const radius = 90;
+                  return phases.map((p, i) => {
+                    const a = -160 + (i * 140) / (phases.length - 1);
+                    const rad = (a * Math.PI) / 180;
+                    const cx = cxBase + Math.cos(rad) * radius;
+                    const cy = cyBase + 90 + Math.sin(rad) * radius;
+                    const r = i === 3 ? 9 : 6.5;
+                    // illumination width
+                    const illum = Math.sin(p * Math.PI);
+                    return (
+                      <g key={i} transform={`translate(${cx} ${cy})`}>
+                        <circle r={r} fill="#0a1128" stroke="url(#leftGoldBright)" strokeWidth="0.7" />
+                        <path
+                          d={`M 0 -${r} A ${r} ${r} 0 0 ${p < 0.5 ? 1 : 0} 0 ${r} A ${Math.max(0.2, r * (1 - illum * 2 + (p > 0.5 ? 2 : 0)))} ${r} 0 0 ${p < 0.5 ? 0 : 1} 0 -${r} Z`}
+                          fill="url(#leftGoldBright)"
+                          opacity="0.95"
+                        />
+                      </g>
+                    );
+                  });
+                })()}
+              </g>
+
+              {/* Beaded arc chain above crescent */}
+              <path
+                d="M 60 170 A 110 110 0 0 1 260 170"
+                fill="none"
+                stroke="url(#leftGold)"
+                strokeWidth="0.5"
+                strokeDasharray="1 5"
+                opacity="0.85"
+              />
+
+              {/* Central golden crescent moon opening right, cradling the tree */}
+              <g transform="translate(160 230)">
                 <path
-                  d="M 40 500
-                     L 40 200
-                     C 40 100, 120 40, 160 40
-                     C 200 40, 280 100, 280 200
-                     L 280 500 Z"
+                  d="M -6 -105
+                     A 105 105 0 1 0 -6 105
+                     A 78 105 0 1 1 -6 -105 Z"
+                  fill="url(#leftCrescent)"
+                  stroke="url(#leftGoldBright)"
+                  strokeWidth="1.2"
                 />
-                {/* Inner arch echo */}
+                {/* Beaded rim */}
                 <path
-                  d="M 54 490
-                     L 54 205
-                     C 54 112, 126 54, 160 54
-                     C 194 54, 266 112, 266 205
-                     L 266 490"
+                  d="M -6 -105 A 105 105 0 1 0 -6 105"
+                  fill="none"
+                  stroke="url(#leftGoldBright)"
                   strokeWidth="0.5"
                   strokeDasharray="1 4"
-                  opacity="0.7"
-                />
-                {/* Beaded outer arc */}
-                <path
-                  d="M 40 200 C 40 100, 120 40, 160 40 C 200 40, 280 100, 280 200"
-                  strokeDasharray="1 6"
-                  strokeWidth="0.5"
-                  opacity="0.8"
-                />
-              </g>
-
-              {/* Baroque scroll flourishes at top corners of arch */}
-              <g fill="none" stroke="url(#leftGoldBright)" strokeWidth="0.9" opacity="0.9">
-                <path d="M 40 200 C 22 190, 14 170, 20 152 C 26 138, 42 138, 46 152 C 48 162, 40 168, 34 162" />
-                <path d="M 280 200 C 298 190, 306 170, 300 152 C 294 138, 278 138, 274 152 C 272 162, 280 168, 286 162" />
-                {/* Keystone flourish at arch peak */}
-                <path d="M 160 40 C 148 28, 148 12, 160 6 C 172 12, 172 28, 160 40 Z" fill="url(#leftGoldBright)" opacity="0.9" />
-                <circle cx="160" cy="20" r="1.8" fill="#050816" />
-              </g>
-
-              {/* Inner glow inside arch */}
-              <ellipse cx="160" cy="260" rx="115" ry="220" fill="url(#leftInnerGlow)" />
-
-              {/* Crescent moon + starburst — inside arch top */}
-              <g>
-                <circle cx="160" cy="130" r="90" fill="url(#leftMoonAura)" className="ss-aura-pulse" />
-                {/* Crescent */}
-                <g transform="translate(160 130)">
-                  <path
-                    d="M -38 -52
-                       A 52 52 0 1 0 -38 52
-                       A 40 40 0 1 1 -38 -52 Z"
-                    fill="url(#leftGoldBright)"
-                    stroke="url(#leftGold)"
-                    strokeWidth="0.6"
-                  />
-                  {/* Star inside crescent hollow */}
-                  <g transform="translate(30 -6)" className="ss-twinkle" style={{ animationDuration: "3.6s" }}>
-                    <path
-                      d="M 0 -12 L 2.6 -2.6 L 12 0 L 2.6 2.6 L 0 12 L -2.6 2.6 L -12 0 L -2.6 -2.6 Z"
-                      fill="url(#leftGoldBright)"
-                    />
-                    <circle r="1.6" fill="#fff5d6" />
-                  </g>
-                </g>
-                {/* Dotted orbital arcs around moon */}
-                <circle cx="160" cy="130" r="86" fill="none" stroke="url(#leftGold)" strokeWidth="0.5" strokeDasharray="1 5" opacity="0.75" />
-                <circle cx="160" cy="130" r="100" fill="none" stroke="url(#leftGold)" strokeWidth="0.4" strokeDasharray="1 8" opacity="0.5" />
-                {/* Hanging pendant chain */}
-                <line x1="160" y1="218" x2="160" y2="252" stroke="url(#leftGold)" strokeWidth="0.6" strokeDasharray="1 3" opacity="0.75" />
-                <path
-                  d="M 154 252 C 154 258, 166 258, 166 252 C 166 262, 156 268, 160 274 C 164 268, 154 262, 154 252 Z"
-                  fill="url(#leftGoldBright)"
                   opacity="0.9"
                 />
-                <circle cx="160" cy="260" r="1.6" fill="#050816" />
+                {/* Inner echo ring */}
+                <path
+                  d="M -6 -95 A 95 95 0 1 0 -6 95"
+                  fill="none"
+                  stroke="url(#leftGold)"
+                  strokeWidth="0.4"
+                  strokeDasharray="2 5"
+                  opacity="0.6"
+                />
               </g>
 
-              {/* Golden lotus — bottom center */}
-              <g transform="translate(160 410)">
-                {/* Radiating light behind lotus */}
-                <g className="ss-aura-pulse" style={{ animationDuration: "6s" }}>
-                  {Array.from({ length: 24 }).map((_, i) => {
-                    const a = (i * 360) / 24;
-                    const rad = (a * Math.PI) / 180;
-                    const x2 = Math.cos(rad) * 115;
-                    const y2 = Math.sin(rad) * 115;
-                    return (
-                      <line key={i} x1={0} y1={0} x2={x2} y2={y2} stroke="url(#leftGold)" strokeWidth="0.35" opacity="0.55" />
-                    );
-                  })}
-                </g>
-
-                {/* Outer petals */}
-                <g>
-                  {[-80, -50, -25, 0, 25, 50, 80].map((a) => (
-                    <path
-                      key={`outer-${a}`}
-                      d="M 0 0
-                         C 22 -30, 22 -70, 0 -92
-                         C -22 -70, -22 -30, 0 0 Z"
-                      fill="url(#leftLotusOuter)"
-                      stroke="url(#leftGoldBright)"
-                      strokeWidth="0.9"
-                      opacity="0.9"
-                      transform={`rotate(${a})`}
-                    />
-                  ))}
-                </g>
-
-                {/* Middle petals */}
-                <g>
-                  {[-62, -34, -12, 12, 34, 62].map((a) => (
-                    <path
-                      key={`mid-${a}`}
-                      d="M 0 0
-                         C 18 -25, 18 -60, 0 -76
-                         C -18 -60, -18 -25, 0 0 Z"
-                      fill="url(#leftLotusInner)"
-                      stroke="url(#leftGoldBright)"
-                      strokeWidth="0.8"
-                      opacity="0.95"
-                      transform={`rotate(${a})`}
-                    />
-                  ))}
-                </g>
-
-                {/* Front center petal */}
-                <path
-                  d="M 0 0
-                     C 14 -22, 14 -55, 0 -66
-                     C -14 -55, -14 -22, 0 0 Z"
-                  fill="url(#leftLotusCore)"
-                  stroke="url(#leftGoldBright)"
-                  strokeWidth="1"
-                />
-                {/* Tiny gem on lotus */}
-                <circle cx="0" cy="-46" r="2.2" fill="url(#leftGoldBright)" />
-                <circle cx="0" cy="-46" r="0.8" fill="#050816" />
-
-                {/* Base water — layered ripples */}
-                <path d="M -85 6 Q 0 16 85 6" fill="none" stroke="url(#leftGoldBright)" strokeWidth="0.9" opacity="0.9" />
-                <path d="M -100 14 Q 0 24 100 14" fill="none" stroke="url(#leftGold)" strokeWidth="0.6" strokeDasharray="2 4" opacity="0.75" />
-                <path d="M -108 22 Q 0 30 108 22" fill="none" stroke="url(#leftGold)" strokeWidth="0.4" strokeDasharray="1 5" opacity="0.55" />
-                {[-70, -40, -14, 14, 40, 70].map((x) => (
-                  <circle key={x} cx={x} cy={22} r="1.4" fill="#f1d27a" opacity="0.85" />
+              {/* Tree of Life sitting inside the crescent */}
+              <g transform="translate(160 315)" stroke="url(#leftGoldBright)" strokeWidth="1.6" fill="none" strokeLinecap="round">
+                {/* Trunk */}
+                <path d="M 0 0 C -2 -20, 4 -40, 0 -70" strokeWidth="3" />
+                {/* Main branches — bare tree silhouette */}
+                <path d="M 0 -60 C -20 -66, -40 -72, -58 -90" />
+                <path d="M 0 -62 C 20 -68, 40 -74, 58 -92" />
+                <path d="M 0 -75 C -14 -88, -26 -100, -38 -118" />
+                <path d="M 0 -75 C 14 -88, 26 -100, 38 -118" />
+                <path d="M 0 -85 C -6 -100, -4 -115, -8 -130" />
+                <path d="M 0 -85 C 6 -100, 4 -115, 8 -130" />
+                {/* Secondary twigs */}
+                <path d="M -20 -80 C -30 -92, -40 -96, -50 -108" strokeWidth="1" />
+                <path d="M 20 -80 C 30 -92, 40 -96, 50 -108" strokeWidth="1" />
+                <path d="M -14 -95 C -22 -108, -30 -112, -38 -122" strokeWidth="1" />
+                <path d="M 14 -95 C 22 -108, 30 -112, 38 -122" strokeWidth="1" />
+                <path d="M -30 -100 C -38 -108, -46 -110, -54 -120" strokeWidth="0.8" />
+                <path d="M 30 -100 C 38 -108, 46 -110, 54 -120" strokeWidth="0.8" />
+                {/* Root system */}
+                <path d="M 0 0 C -14 6, -30 8, -46 4" />
+                <path d="M 0 0 C 14 6, 30 8, 46 4" />
+                <path d="M 0 0 C -8 10, -18 14, -28 12" strokeWidth="1" />
+                <path d="M 0 0 C 8 10, 18 14, 28 12" strokeWidth="1" />
+                {/* Tiny leaf gems */}
+                {[
+                  [-50, -110], [50, -110], [-38, -122], [38, -122],
+                  [-8, -132], [8, -132], [-24, -100], [24, -100],
+                ].map(([x, y], i) => (
+                  <circle key={i} cx={x} cy={y} r="1.3" fill="url(#leftGoldBright)" stroke="none" />
                 ))}
               </g>
 
-              {/* Filigree scroll pillars framing sides of arch */}
-              <g fill="none" stroke="url(#leftGold)" strokeWidth="0.9" opacity="0.9">
-                {/* Left pillar */}
-                <path d="M 40 260 C 30 300, 30 360, 42 420" />
-                <path d="M 40 260 C 24 280, 18 300, 24 322 C 30 340, 44 336, 40 322" />
-                <path d="M 42 320 C 26 340, 22 360, 30 380 C 40 396, 52 386, 46 372" />
-                <path d="M 42 380 C 26 400, 24 420, 34 438 C 46 452, 56 442, 50 428" />
-                {/* Right pillar (mirrored) */}
-                <path d="M 280 260 C 290 300, 290 360, 278 420" />
-                <path d="M 280 260 C 296 280, 302 300, 296 322 C 290 340, 276 336, 280 322" />
-                <path d="M 278 320 C 294 340, 298 360, 290 380 C 280 396, 268 386, 274 372" />
-                <path d="M 278 380 C 294 400, 296 420, 286 438 C 274 452, 264 442, 270 428" />
+              {/* Dot chain descending from crescent to pendant */}
+              {[352, 362, 372, 382].map((y, i) => (
+                <circle key={y} cx="160" cy={y} r={1.6 - i * 0.15} fill="url(#leftGoldBright)" />
+              ))}
+
+              {/* Geometric pendant — circle + inscribed diamond + triangle chain */}
+              <g transform="translate(160 415)" stroke="url(#leftGoldBright)" strokeWidth="1" fill="none">
+                {/* Outer ring */}
+                <circle r="28" />
+                {/* Beaded outer */}
+                <circle r="32" strokeWidth="0.5" strokeDasharray="1 4" opacity="0.85" />
+                {/* Inner ring */}
+                <circle r="18" strokeWidth="0.7" />
+                {/* Inscribed diamond */}
+                <path d="M 0 -18 L 18 0 L 0 18 L -18 0 Z" />
+                {/* Center gem */}
+                <circle r="3" fill="url(#leftGoldBright)" stroke="none" />
+                {/* Cardinal points */}
+                {[[0, -28], [28, 0], [0, 28], [-28, 0]].map(([x, y], i) => (
+                  <circle key={i} cx={x} cy={y} r="1.8" fill="url(#leftGoldBright)" stroke="none" />
+                ))}
               </g>
 
-              {/* Ornamental leaves along pillars */}
-              {[290, 330, 370, 410, 448].map((y, i) => (
-                <g key={`ll-${y}`} opacity={0.9 - i * 0.05}>
-                  <path
-                    d={`M 40 ${y} C 22 ${y - 6}, 12 ${y + 4}, 8 ${y + 14} C 24 ${y + 12}, 36 ${y + 6}, 40 ${y} Z`}
-                    fill="url(#leftGold)"
-                  />
-                  <path
-                    d={`M 40 ${y + 6} C 56 ${y + 2}, 66 ${y + 12}, 68 ${y + 22} C 54 ${y + 20}, 44 ${y + 14}, 40 ${y + 6} Z`}
-                    fill="url(#leftGoldBright)"
-                  />
-                </g>
-              ))}
-              {[290, 330, 370, 410, 448].map((y, i) => (
-                <g key={`rl-${y}`} opacity={0.9 - i * 0.05}>
-                  <path
-                    d={`M 280 ${y} C 298 ${y - 6}, 308 ${y + 4}, 312 ${y + 14} C 296 ${y + 12}, 284 ${y + 6}, 280 ${y} Z`}
-                    fill="url(#leftGold)"
-                  />
-                  <path
-                    d={`M 280 ${y + 6} C 264 ${y + 2}, 254 ${y + 12}, 252 ${y + 22} C 266 ${y + 20}, 276 ${y + 14}, 280 ${y + 6} Z`}
-                    fill="url(#leftGoldBright)"
-                  />
-                </g>
-              ))}
+              {/* Small diamond drop below pendant */}
+              <g transform="translate(160 460)" stroke="url(#leftGoldBright)" strokeWidth="0.9" fill="none">
+                <path d="M 0 -8 L 8 0 L 0 12 L -8 0 Z" fill="url(#leftGold)" opacity="0.85" />
+                <path d="M 0 -8 L 0 12 M -8 0 L 8 0" strokeWidth="0.4" opacity="0.7" />
+                <circle cx="0" cy="18" r="1.6" fill="url(#leftGoldBright)" />
+                <circle cx="0" cy="24" r="1" fill="url(#leftGoldBright)" opacity="0.85" />
+              </g>
 
-              {/* Bottom baseline flourish under arch */}
+              {/* Baroque filigree flourishes flanking the crescent */}
+              <g fill="none" stroke="url(#leftGold)" strokeWidth="0.9" opacity="0.9">
+                {/* Left flourish */}
+                <path d="M 50 230 C 30 220, 18 200, 24 178 C 30 160, 48 158, 52 176 C 54 188, 42 194, 36 186" />
+                <path d="M 46 260 C 22 258, 10 280, 18 300 C 26 318, 46 314, 44 298" />
+                <path d="M 48 300 C 28 306, 20 328, 32 344 C 44 358, 58 348, 52 336" />
+                {/* Right flourish (mirrored) */}
+                <path d="M 270 230 C 290 220, 302 200, 296 178 C 290 160, 272 158, 268 176 C 266 188, 278 194, 284 186" />
+                <path d="M 274 260 C 298 258, 310 280, 302 300 C 294 318, 274 314, 276 298" />
+                <path d="M 272 300 C 292 306, 300 328, 288 344 C 276 358, 262 348, 268 336" />
+              </g>
+
+              {/* Bottom baseline flourish */}
               <g fill="none" stroke="url(#leftGoldBright)" strokeWidth="0.9" opacity="0.9">
-                <path d="M 40 500 Q 160 490 280 500" />
-                <path d="M 60 508 Q 160 500 260 508" strokeWidth="0.5" strokeDasharray="1 4" />
-                <path d="M 150 500 C 150 490, 170 490, 170 500 C 170 508, 160 510, 160 502 C 160 510, 150 508, 150 500 Z" fill="url(#leftGoldBright)" />
+                <path d="M 60 495 Q 160 485 260 495" />
+                <path d="M 80 502 Q 160 494 240 502" strokeWidth="0.5" strokeDasharray="1 4" />
               </g>
 
               {/* Twinkling sparkles */}
               {[
                 [55, 60, "#f1d27a", 0],
                 [265, 70, "#c48bff", 1.1],
-                [40, 180, "#5aa9ff", 2.2],
-                [280, 200, "#ff8fd0", 0.6],
-                [90, 300, "#f1d27a", 1.8],
-                [230, 310, "#9b6bff", 2.6],
+                [40, 200, "#5aa9ff", 2.2],
+                [280, 220, "#ff8fd0", 0.6],
+                [70, 320, "#f1d27a", 1.8],
+                [250, 330, "#9b6bff", 2.6],
                 [160, 490, "#f1d27a", 0.4],
-                [80, 100, "#ff8fd0", 3.1],
-                [240, 130, "#5aa9ff", 1.5],
+                [80, 130, "#ff8fd0", 3.1],
+                [240, 150, "#5aa9ff", 1.5],
               ].map(([x, y, c, d], i) => (
                 <path
                   key={i}
@@ -823,6 +784,7 @@ function AboutPage() {
               ))}
             </svg>
           </div>
+
 
 
 
