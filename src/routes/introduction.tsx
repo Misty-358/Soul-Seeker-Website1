@@ -176,16 +176,16 @@ function IntroductionPage() {
         src={moonAsset.url}
         alt=""
         aria-hidden
-        className="pointer-events-none select-none absolute left-0 top-24 z-[1]"
+        className="pointer-events-none select-none absolute left-0 top-24 z-0"
         style={{
           width: 360,
           height: "auto",
-          opacity: 0.75,
+          opacity: 0.35,
           WebkitMaskImage:
-            "linear-gradient(to right, black 45%, transparent 92%), linear-gradient(to bottom, black 80%, transparent 100%)",
+            "linear-gradient(to right, black 35%, transparent 88%), linear-gradient(to bottom, black 80%, transparent 100%)",
           WebkitMaskComposite: "source-in",
           maskImage:
-            "linear-gradient(to right, black 45%, transparent 92%), linear-gradient(to bottom, black 80%, transparent 100%)",
+            "linear-gradient(to right, black 35%, transparent 88%), linear-gradient(to bottom, black 80%, transparent 100%)",
           maskComposite: "intersect",
           mixBlendMode: "screen",
         }}
