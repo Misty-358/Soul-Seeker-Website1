@@ -404,27 +404,27 @@ function IntroductionPage() {
             </div>
 
             {/* Fan of cards */}
-            <div className="relative" style={{ height: 260 }}>
-              <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative" style={{ height: 340 }}>
+              <div className="absolute inset-0 flex items-end justify-center pb-4">
                 {fanCards.map((c, i) => {
                   const total = fanCards.length;
                   const mid = (total - 1) / 2;
-                  const rot = (i - mid) * 8; // fan angle
-                  const x = (i - mid) * 46;
-                  const y = Math.abs(i - mid) * 6;
+                  const rot = (i - mid) * 12; // wider fan angle
+                  const x = (i - mid) * 92; // more horizontal spread
+                  const y = Math.abs(i - mid) * 14;
                   return (
                     <img
                       key={c.name}
                       src={c.src}
                       alt={c.name}
-                      className="absolute rounded-[8px]"
+                      className="absolute rounded-[10px]"
                       style={{
-                        width: 130,
+                        width: 160,
                         height: "auto",
                         transform: `translate(${x}px, ${y}px) rotate(${rot}deg)`,
-                        transformOrigin: "50% 90%",
+                        transformOrigin: "50% 100%",
                         boxShadow:
-                          "0 18px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(241,210,122,0.4)",
+                          "0 22px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(241,210,122,0.5), 0 0 30px rgba(241,210,122,0.15)",
                         zIndex: 10 - Math.abs(i - mid),
                       }}
                     />
