@@ -20,7 +20,7 @@ type NavItem = { label: string; to?: string; hash?: string };
 const navItems: NavItem[] = [
   { label: "HOME", to: "/" },
   { label: "FEATURES", to: "/features" },
-  { label: "INTRODUCTION", hash: "introduction" },
+  { label: "INTRODUCTION", to: "/introduction" },
   { label: "ABOUT", hash: "about" },
   { label: "CONTACT US", hash: "contact" },
 ];

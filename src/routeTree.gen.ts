@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IntroductionRouteImport } from './routes/introduction'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as IndexRouteImport } from './routes/index'
 
+const IntroductionRoute = IntroductionRouteImport.update({
+  id: '/introduction',
+  path: '/introduction',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeaturesRoute = FeaturesRouteImport.update({
   id: '/features',
   path: '/features',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/features': typeof FeaturesRoute
+  '/introduction': typeof IntroductionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/features': typeof FeaturesRoute
+  '/introduction': typeof IntroductionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/features': typeof FeaturesRoute
+  '/introduction': typeof IntroductionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/features'
+  fullPaths: '/' | '/features' | '/introduction'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/features'
-  id: '__root__' | '/' | '/features'
+  to: '/' | '/features' | '/introduction'
+  id: '__root__' | '/' | '/features' | '/introduction'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FeaturesRoute: typeof FeaturesRoute
+  IntroductionRoute: typeof IntroductionRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/introduction': {
+      id: '/introduction'
+      path: '/introduction'
+      fullPath: '/introduction'
+      preLoaderRoute: typeof IntroductionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/features': {
       id: '/features'
       path: '/features'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FeaturesRoute: FeaturesRoute,
+  IntroductionRoute: IntroductionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
