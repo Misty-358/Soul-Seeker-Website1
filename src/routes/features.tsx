@@ -408,7 +408,7 @@ function FeaturesPage() {
                 </svg>
               </div>
               <div>
-                <h3
+                <h2
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
                     color: gold,
@@ -419,7 +419,7 @@ function FeaturesPage() {
                   className="mb-2"
                 >
                   {f.title}
-                </h3>
+                </h2>
                 <p style={{ color: ivory, fontSize: 13, lineHeight: 1.75, opacity: 0.8 }}>
                   {f.body}
                 </p>
