@@ -20,6 +20,8 @@ const navItems: NavItem[] = [
   { label: "FEATURES", to: "/features" },
   { label: "INTRODUCTION", to: "/introduction" },
   { label: "ABOUT", to: "/about" },
+  { label: "TERMS", to: "/terms" },
+  { label: "PRIVACY", to: "/privacy" },
   { label: "CONTACT US", hash: "contact" },
 ];
 
@@ -289,13 +291,14 @@ export function Flourish({ label }: { label: string }) {
   );
 }
 
-const footerLinks = [
-  "INTRODUCTION TO SOUL SEEKER",
-  "FEATURES",
-  "TERMS & CONDITIONS",
-  "PRIVACY POLICY",
-  "COOKIES POLICY",
-  "CONTACT US",
+type FooterLink = { label: string; to?: string; href?: string };
+const footerLinks: FooterLink[] = [
+  { label: "INTRODUCTION TO SOUL SEEKER", to: "/introduction" },
+  { label: "FEATURES", to: "/features" },
+  { label: "TERMS & CONDITIONS", to: "/terms" },
+  { label: "PRIVACY POLICY", to: "/privacy" },
+  { label: "COOKIES POLICY", href: "#" },
+  { label: "CONTACT US", href: "#contact" },
 ];
 
 function SocialIcon({ name }: { name: string }) {
@@ -344,22 +347,29 @@ export function SiteFooter() {
   return (
     <footer className="relative z-10 max-w-[1400px] mx-auto px-10 pb-10">
       <ul className="flex flex-wrap justify-center items-center gap-6 mb-6">
-        {footerLinks.map((l, i) => (
-          <li key={l} className="flex items-center gap-6">
-            <a
-              href="#"
-              className="text-[11px] tracking-[0.25em] transition-colors hover:text-white"
-              style={{ color: ivory, opacity: 0.75 }}
-            >
-              {l}
-            </a>
-            {i < footerLinks.length - 1 && (
-              <span style={{ color: goldSoft }}>
-                <Star size={7} />
-              </span>
-            )}
-          </li>
-        ))}
+        {footerLinks.map((l, i) => {
+          const className =
+            "text-[11px] tracking-[0.25em] transition-colors hover:text-white";
+          const style: React.CSSProperties = { color: ivory, opacity: 0.75 };
+          return (
+            <li key={l.label} className="flex items-center gap-6">
+              {l.to ? (
+                <Link to={l.to} className={className} style={style}>
+                  {l.label}
+                </Link>
+              ) : (
+                <a href={l.href} className={className} style={style}>
+                  {l.label}
+                </a>
+              )}
+              {i < footerLinks.length - 1 && (
+                <span style={{ color: goldSoft }}>
+                  <Star size={7} />
+                </span>
+              )}
+            </li>
+          );
+        })}
       </ul>
       <div className="flex justify-center gap-6 mb-4" style={{ color: goldBright }}>
         {["instagram", "facebook", "twitter", "mail"].map((n) => (
