@@ -90,6 +90,7 @@ function HomePage() {
           <img
             src={cardImg}
             alt="Featured tarot card"
+            title="Soul Seeker Card"
             className="w-full h-auto rounded-[14px]"
             style={{
               boxShadow:
