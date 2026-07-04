@@ -176,16 +176,16 @@ function IntroductionPage() {
         src={moonAsset.url}
         alt=""
         aria-hidden
-        className="pointer-events-none select-none absolute left-0 top-24 z-[1]"
+        className="pointer-events-none select-none absolute left-0 top-24 z-0"
         style={{
           width: 360,
           height: "auto",
-          opacity: 0.75,
+          opacity: 0.35,
           WebkitMaskImage:
-            "linear-gradient(to right, black 45%, transparent 92%), linear-gradient(to bottom, black 80%, transparent 100%)",
+            "linear-gradient(to right, black 35%, transparent 88%), linear-gradient(to bottom, black 80%, transparent 100%)",
           WebkitMaskComposite: "source-in",
           maskImage:
-            "linear-gradient(to right, black 45%, transparent 92%), linear-gradient(to bottom, black 80%, transparent 100%)",
+            "linear-gradient(to right, black 35%, transparent 88%), linear-gradient(to bottom, black 80%, transparent 100%)",
           maskComposite: "intersect",
           mixBlendMode: "screen",
         }}
@@ -301,6 +301,7 @@ function IntroductionPage() {
                 aria-hidden
                 className="w-full h-auto"
                 style={{
+                  opacity: 0.55,
                   filter: "drop-shadow(0 10px 30px rgba(241,210,122,0.25))",
                   WebkitMaskImage:
                     "radial-gradient(ellipse 70% 80% at 50% 50%, black 55%, transparent 90%)",
