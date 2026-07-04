@@ -37,86 +37,290 @@ export const Route = createFileRoute("/features")({
   component: FeaturesPage,
 });
 
+// Reusable defs for a shiny gold gradient + soft glow.
+// Each icon gets a unique id prefix so gradients don't collide when rendered together.
+function GoldDefs({ id }: { id: string }) {
+  return (
+    <defs>
+      <linearGradient id={`${id}-stroke`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#fff2c2" />
+        <stop offset="45%" stopColor="#f1d27a" />
+        <stop offset="100%" stopColor="#b8892f" />
+      </linearGradient>
+      <linearGradient id={`${id}-fill`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#fbe6a3" />
+        <stop offset="60%" stopColor="#e4bf5e" />
+        <stop offset="100%" stopColor="#a87a26" />
+      </linearGradient>
+      <radialGradient id={`${id}-glow`} cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#f1d27a" stopOpacity="0.45" />
+        <stop offset="70%" stopColor="#f1d27a" stopOpacity="0.05" />
+        <stop offset="100%" stopColor="#f1d27a" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id={`${id}-shine`} cx="35%" cy="30%" r="55%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
+        <stop offset="60%" stopColor="#ffffff" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+  );
+}
+
+// Micro sparkle helper
+function Sparkle({ cx, cy, r = 1, id }: { cx: number; cy: number; r?: number; id: string }) {
+  return (
+    <path
+      d={`M${cx} ${cy - r * 1.6}l${r * 0.4} ${r}l${r} ${r * 0.4}l-${r} ${r * 0.4}l-${r * 0.4} ${r}l-${r * 0.4}-${r}l-${r}-${r * 0.4}l${r}-${r * 0.4}z`}
+      fill={`url(#${id}-fill)`}
+      stroke="none"
+    />
+  );
+}
+
 const features = [
   {
     title: "INTUITIVE READINGS",
     body: "Choose from a variety of spreads or create your own. Get in-depth, personalised insights that speak to your unique path.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 34l4-18 8 2-4 18z" transform="rotate(-14 20 24)" />
-        <path d="M20 32l4-18 8 2-4 18z" />
-        <path d="M26 34l4-18 8 2-4 18z" transform="rotate(14 32 24)" />
-        <path d="M24 22l.6 1.8L26.4 24l-1.8.6L24 26.4l-.6-1.8L21.6 24l1.8-.6z" fill="currentColor" stroke="none" />
-        <circle cx="24" cy="27" r="0.6" fill="currentColor" stroke="none" />
-        <circle cx="24" cy="19" r="0.6" fill="currentColor" stroke="none" />
-      </g>
+      <>
+        <GoldDefs id="i1" />
+        <circle cx="24" cy="24" r="20" fill="url(#i1-glow)" />
+        <g
+          fill="none"
+          stroke="url(#i1-stroke)"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* left card */}
+          <g transform="rotate(-22 24 30)">
+            <rect x="11" y="14" width="10" height="18" rx="1.6" fill="rgba(241,210,122,0.08)" />
+            <path d="M13 17h6M13 29h6" opacity="0.7" />
+          </g>
+          {/* right card */}
+          <g transform="rotate(22 24 30)">
+            <rect x="27" y="14" width="10" height="18" rx="1.6" fill="rgba(241,210,122,0.08)" />
+            <path d="M29 17h6M29 29h6" opacity="0.7" />
+          </g>
+          {/* center card */}
+          <rect x="19" y="10" width="10" height="22" rx="1.8" fill="url(#i1-fill)" fillOpacity="0.18" />
+          <path d="M21 14h6M21 28h6" opacity="0.85" />
+          {/* center star emblem */}
+          <path
+            d="M24 17l1 3 3 1-3 1L24 25l-1-3-3-1 3-1z"
+            fill="url(#i1-fill)"
+            stroke="none"
+          />
+          <circle cx="24" cy="27" r="0.7" fill="url(#i1-fill)" stroke="none" />
+        </g>
+        {/* highlight shine */}
+        <circle cx="24" cy="24" r="18" fill="url(#i1-shine)" opacity="0.35" />
+      </>
     ),
   },
   {
     title: "CUSTOM DECK CREATION",
     body: "Design your own tarot decks with AI-powered creation. Bring your vision to life and make it truly yours.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M24 34c0-6 4-10 10-10-2 6-6 10-10 10z" />
-        <path d="M24 34c0-6-4-10-10-10 2 6 6 10 10 10z" />
-        <path d="M24 34c0-7 3-12 6-14-1 6-3 11-6 14z" />
-        <path d="M24 34c0-7-3-12-6-14 1 6 3 11 6 14z" />
-        <path d="M24 34c0-8 0-14 0-16 0 2 0 8 0 16z" />
-        <path d="M18 34h12" />
-        <circle cx="24" cy="16" r="0.8" fill="currentColor" stroke="none" />
-      </g>
+      <>
+        <GoldDefs id="i2" />
+        <circle cx="24" cy="24" r="20" fill="url(#i2-glow)" />
+        <g
+          fill="none"
+          stroke="url(#i2-stroke)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* stacked deck — three offset cards */}
+          <g transform="rotate(-10 24 26)">
+            <rect x="12" y="18" width="18" height="16" rx="2" fill="rgba(241,210,122,0.08)" />
+          </g>
+          <g transform="rotate(-3 24 26)">
+            <rect x="14" y="16" width="18" height="16" rx="2" fill="rgba(241,210,122,0.10)" />
+          </g>
+          <rect x="16" y="14" width="18" height="16" rx="2" fill="url(#i2-fill)" fillOpacity="0.16" />
+          {/* card frame */}
+          <rect x="18" y="16" width="14" height="12" rx="1" opacity="0.7" />
+          {/* magic wand */}
+          <path d="M34 8l-14 14" strokeWidth="1.3" />
+          <path d="M32 6l4 4" />
+        </g>
+        {/* sparkles from wand tip */}
+        <path
+          d="M35 7l.6 1.9 1.9.6-1.9.6L35 12l-.6-1.9L32.5 9.5l1.9-.6z"
+          fill="url(#i2-fill)"
+          stroke="none"
+        />
+        <Sparkle id="i2" cx={38} cy={12} r={0.9} />
+        <Sparkle id="i2" cx={22} cy={22} r={1.1} />
+        <circle cx="26" cy="22" r="0.7" fill="url(#i2-fill)" stroke="none" />
+        <circle cx="24" cy="26" r="0.5" fill="url(#i2-fill)" stroke="none" opacity="0.8" />
+        <circle cx="24" cy="24" r="18" fill="url(#i2-shine)" opacity="0.3" />
+      </>
     ),
   },
   {
     title: "SAVE & REFLECT",
     body: "Save your readings, decks and notes in your personal space and reflect on your growth over time.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 30a6 6 0 0 1 4-10 8 8 0 0 1 15 2 5 5 0 0 1-2 10H16a5 5 0 0 1-2-2z" />
-        <path d="M24 34v-8M20 30l4-4 4 4" />
-        <circle cx="16" cy="16" r="0.6" fill="currentColor" stroke="none" />
-        <circle cx="34" cy="18" r="0.6" fill="currentColor" stroke="none" />
-      </g>
+      <>
+        <GoldDefs id="i3" />
+        <circle cx="24" cy="24" r="20" fill="url(#i3-glow)" />
+        <g
+          fill="none"
+          stroke="url(#i3-stroke)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* orbit arcs — reflection */}
+          <path d="M9 24a15 15 0 0 1 6-12" opacity="0.55" />
+          <path d="M39 24a15 15 0 0 0-6-12" opacity="0.55" />
+          {/* ornate bookmark / lotus-heart */}
+          <path d="M24 36s-9-6-9-14a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 8-9 14-9 14z" fill="url(#i3-fill)" fillOpacity="0.14" />
+          {/* inner crescent detail */}
+          <path d="M19 20a4 4 0 0 0 5 5" opacity="0.75" />
+        </g>
+        {/* central sparkle star */}
+        <path
+          d="M24 20l1.1 3.2 3.2 1.1-3.2 1.1L24 28.6l-1.1-3.2-3.2-1.1 3.2-1.1z"
+          fill="url(#i3-fill)"
+          stroke="none"
+        />
+        <Sparkle id="i3" cx={12} cy={14} r={0.9} />
+        <Sparkle id="i3" cx={36} cy={14} r={0.9} />
+        <circle cx="24" cy="14" r="0.6" fill="url(#i3-fill)" stroke="none" opacity="0.9" />
+        <circle cx="24" cy="24" r="18" fill="url(#i3-shine)" opacity="0.3" />
+      </>
     ),
   },
   {
     title: "CALENDAR & JOURNAL",
     body: "Track your daily readings, moods and milestones. Your journey, beautifully organised.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="10" y="12" width="28" height="26" rx="3" />
-        <path d="M10 20h28" />
-        <path d="M16 10v6M32 10v6" />
-        <path d="M28 30a5 5 0 1 1-5-5 4 4 0 0 0 5 5z" fill="currentColor" stroke="none" opacity="0.9" />
-      </g>
+      <>
+        <GoldDefs id="i4" />
+        <circle cx="24" cy="24" r="20" fill="url(#i4-glow)" />
+        <g
+          fill="none"
+          stroke="url(#i4-stroke)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* open journal */}
+          <path d="M8 14c5-2 10-2 15 1v22c-5-3-10-3-15-1z" fill="rgba(241,210,122,0.08)" />
+          <path d="M40 14c-5-2-10-2-15 1v22c5-3 10-3 15-1z" fill="rgba(241,210,122,0.08)" />
+          <path d="M24 15v22" opacity="0.7" />
+          {/* left page lines */}
+          <path d="M12 20h8M12 24h8M12 28h6" opacity="0.55" />
+          {/* right page — calendar grid */}
+          <rect x="27" y="19" width="10" height="10" rx="1" opacity="0.75" />
+          <path d="M27 22h10M30 19v10M34 19v10" opacity="0.55" />
+        </g>
+        {/* crescent moon on left page */}
+        <path
+          d="M20 26a3.4 3.4 0 1 1-3.4-3.4A2.8 2.8 0 0 0 20 26z"
+          fill="url(#i4-fill)"
+          stroke="none"
+          opacity="0.95"
+        />
+        {/* marked date */}
+        <circle cx="32" cy="25.5" r="1.4" fill="url(#i4-fill)" stroke="none" />
+        <Sparkle id="i4" cx={36} cy={12} r={0.9} />
+        <Sparkle id="i4" cx={12} cy={12} r={0.8} />
+        <circle cx="24" cy="24" r="18" fill="url(#i4-shine)" opacity="0.3" />
+      </>
     ),
   },
   {
     title: "SOUL SEEKER INSIGHTS",
     body: "Receive summaries of your past readings, recurring themes and personalised guidance tailored for you.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="24" cy="22" r="10" />
-        <path d="M16 34h16M14 34c2-3 5-4 10-4s8 1 10 4" />
-        <path d="M24 18l.6 1.8L26.4 20l-1.8.6L24 22.4l-.6-1.8L21.6 20l1.8-.6z" fill={iconGold} stroke="none" />
-        <circle cx="20" cy="24" r="0.7" fill="currentColor" stroke="none" />
-        <circle cx="28" cy="25" r="0.7" fill="currentColor" stroke="none" />
-        <circle cx="26" cy="16" r="0.5" fill="currentColor" stroke="none" />
-      </g>
+      <>
+        <GoldDefs id="i5" />
+        <circle cx="24" cy="24" r="20" fill="url(#i5-glow)" />
+        <g
+          fill="none"
+          stroke="url(#i5-stroke)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* crystal orb */}
+          <circle cx="24" cy="20" r="9" fill="url(#i5-fill)" fillOpacity="0.14" />
+          {/* orb inner highlight */}
+          <path d="M18 16a6 6 0 0 1 4-3" opacity="0.85" />
+          {/* ornate stand */}
+          <path d="M15 32c2-3 5-4 9-4s7 1 9 4" />
+          <path d="M13 32h22" />
+          <path d="M15 36h18" />
+          <path d="M18 32v4M30 32v4" opacity="0.75" />
+        </g>
+        {/* inner cosmos */}
+        <path
+          d="M24 15l1 3 3 1-3 1L24 23l-1-3-3-1 3-1z"
+          fill="url(#i5-fill)"
+          stroke="none"
+        />
+        <circle cx="20" cy="23" r="0.8" fill="url(#i5-fill)" stroke="none" />
+        <circle cx="28" cy="24" r="0.7" fill="url(#i5-fill)" stroke="none" opacity="0.85" />
+        <circle cx="26" cy="17" r="0.5" fill="url(#i5-fill)" stroke="none" opacity="0.85" />
+        {/* stand jewel */}
+        <circle cx="24" cy="34" r="1" fill="url(#i5-fill)" stroke="none" />
+        <circle cx="24" cy="20" r="9" fill="url(#i5-shine)" opacity="0.55" />
+      </>
     ),
   },
   {
     title: "YEAR AHEAD READING",
     body: "Receive a personalised 12-month tarot forecast, exploring themes, opportunities and lessons for the year ahead.",
     icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M24 10l1.6 6.4L32 18l-6.4 1.6L24 26l-1.6-6.4L16 18l6.4-1.6z" fill={iconGold} stroke="none" />
-        <path d="M13 14l.6 1.8L15.4 16.4l-1.8.6L13 18.8l-.6-1.8L10.6 16.4l1.8-.6z" fill="currentColor" stroke="none" />
-        <path d="M35 14l.6 1.8L37.4 16.4l-1.8.6L35 18.8l-.6-1.8L32.6 16.4l1.8-.6z" fill="currentColor" stroke="none" />
-        <path d="M14 32l.6 1.8L16.4 34.4l-1.8.6L14 36.8l-.6-1.8L11.6 34.4l1.8-.6z" fill="currentColor" stroke="none" />
-        <path d="M34 32l.6 1.8L36.4 34.4l-1.8.6L34 36.8l-.6-1.8L31.6 34.4l1.8-.6z" fill="currentColor" stroke="none" />
-        <path d="M24 36l.4 1.2L25.6 37.6l-1.2.4L24 39.2l-.4-1.2L22.4 37.6l1.2-.4z" fill="currentColor" stroke="none" />
-      </g>
+      <>
+        <GoldDefs id="i6" />
+        <circle cx="24" cy="24" r="20" fill="url(#i6-glow)" />
+        <g
+          fill="none"
+          stroke="url(#i6-stroke)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* zodiac wheel — outer and inner rings */}
+          <circle cx="24" cy="24" r="13" opacity="0.9" />
+          <circle cx="24" cy="24" r="9" opacity="0.55" />
+          <circle cx="24" cy="24" r="5" opacity="0.4" />
+          {/* 12 tick rays for the months */}
+          {Array.from({ length: 12 }).map((_, i) => {
+            const a = ((i * 30 - 90) * Math.PI) / 180;
+            const inner = 13;
+            const outer = 15.5;
+            const x1 = 24 + Math.cos(a) * inner;
+            const y1 = 24 + Math.sin(a) * inner;
+            const x2 = 24 + Math.cos(a) * outer;
+            const y2 = 24 + Math.sin(a) * outer;
+            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
+          })}
+        </g>
+        {/* central 8-point compass star */}
+        <path
+          d="M24 15l1.4 5.6 5.6 1.4-5.6 1.4L24 29l-1.4-5.6-5.6-1.4 5.6-1.4z"
+          fill="url(#i6-fill)"
+          stroke="none"
+        />
+        <path
+          d="M24 18.5l.6 3.9 3.9.6-3.9.6L24 27.5l-.6-3.9-3.9-.6 3.9-.6z"
+          fill="#fff8dc"
+          stroke="none"
+          opacity="0.6"
+        />
+        {/* orbiting sparkles */}
+        <Sparkle id="i6" cx={12} cy={12} r={0.9} />
+        <Sparkle id="i6" cx={36} cy={12} r={0.9} />
+        <Sparkle id="i6" cx={12} cy={36} r={0.9} />
+        <Sparkle id="i6" cx={36} cy={36} r={0.9} />
+        <circle cx="24" cy="24" r="18" fill="url(#i6-shine)" opacity="0.3" />
+      </>
     ),
   },
 ];
