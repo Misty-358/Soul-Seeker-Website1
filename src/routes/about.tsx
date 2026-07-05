@@ -218,6 +218,43 @@ function CrystalBallEmblem() {
   );
 }
 
+function QuillScrollEmblem() {
+  return (
+    <svg viewBox="0 0 60 60" width={54} height={54}>
+      {goldDefs("qs")}
+      <g>
+        {/* Unfurled scroll */}
+        <path
+          d="M12 38 C12 34 16 32 20 32 L44 32 C48 32 50 34 50 38 C50 42 46 44 42 44 L18 44 C14 44 12 42 12 38 Z"
+          fill="#1a1740"
+          stroke="url(#qs-gold)"
+          strokeWidth="0.9"
+        />
+        <path d="M18 38 L42 38" stroke="url(#qs-gold)" strokeWidth="0.5" opacity="0.7" />
+        <path d="M20 41 L38 41" stroke="url(#qs-gold)" strokeWidth="0.4" opacity="0.5" />
+        <circle cx="14" cy="38" r="2.2" fill="none" stroke="url(#qs-gold)" strokeWidth="0.8" />
+        <circle cx="48" cy="38" r="2.2" fill="none" stroke="url(#qs-gold)" strokeWidth="0.8" />
+        {/* Quill feather */}
+        <g transform="rotate(-32 32 22)">
+          <path
+            d="M32 8 C36 12 38 18 38 24 C38 28 36 32 32 34 C30 32 28 28 28 24 C28 18 30 12 32 8 Z"
+            fill="url(#qs-gold)"
+            opacity="0.95"
+            stroke="url(#qs-gold)"
+            strokeWidth="0.6"
+          />
+          <path d="M32 12 L36 14 M32 16 L37 18 M32 20 L37 22 M32 24 L36 26 M32 28 L34 30" stroke="#1a1740" strokeWidth="0.5" opacity="0.7" />
+          <path d="M32 34 L32 40 L30 42 L34 42 L32 40" fill="url(#qs-gold)" stroke="url(#qs-gold)" strokeWidth="0.5" />
+        </g>
+        {/* Sparkle stars */}
+        <path d="M14 20 L14.6 22 L16.6 22.6 L14.6 23.2 L14 25.2 L13.4 23.2 L11.4 22.6 L13.4 22 Z" fill="url(#qs-gold)" />
+        <circle cx="46" cy="16" r="0.9" fill="#f1d27a" />
+        <circle cx="50" cy="24" r="0.6" fill="#f1d27a" />
+      </g>
+    </svg>
+  );
+}
+
 function ChaliceEmblem() {
   return (
     <svg viewBox="0 0 60 60" width={52} height={52}>
@@ -690,7 +727,7 @@ function AboutPage() {
               body="We blend ancient guidance with intelligent technology to deliver accurate, intuitive and deeply personalised experiences."
             />
             <PillarCard
-              icon={<StarBurstEmblem />}
+              icon={<QuillScrollEmblem />}
               title="MADE FOR YOU"
               body="Every reading, insight and feature is designed to support your unique journey, at your pace, in your way."
             />
