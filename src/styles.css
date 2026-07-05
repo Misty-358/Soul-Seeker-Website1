@@ -199,4 +199,43 @@
   }
 }
 
+/* Golden shine — Download button */
+@keyframes ss-gold-shine {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(241,210,122,0.35),
+      0 0 40px rgba(241,210,122,0.2),
+      0 10px 30px rgba(212,175,55,0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(241,210,122,0.75),
+      0 0 80px rgba(241,210,122,0.45),
+      0 0 120px rgba(212,175,55,0.35),
+      0 10px 30px rgba(212,175,55,0.4);
+  }
+}
+@keyframes ss-gold-sweep {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%)  skewX(-20deg); }
+}
+.ss-gold-button {
+  position: relative;
+  overflow: hidden;
+  animation: ss-gold-shine 3.5s ease-in-out infinite;
+}
+.ss-gold-button::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  animation: ss-gold-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ss-gold-button, .ss-gold-button::after { animation: none !important; }
+}
+
+
 

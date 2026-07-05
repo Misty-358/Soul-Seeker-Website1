@@ -122,7 +122,7 @@ function HomePage() {
             soul already knows. Whether you seek clarity, direction, or a moment of stillness,
             you are welcome here.
           </p>
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               to="/features"
               className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all"
@@ -136,7 +136,23 @@ function HomePage() {
             >
               EXPLORE FEATURES
             </Link>
+            <Link
+              to="/download"
+              className="ss-gold-button inline-flex items-center justify-center px-9 py-3.5 text-[12px] tracking-[0.28em] transition-transform hover:scale-[1.03]"
+              style={{
+                color: midnight,
+                background: `linear-gradient(135deg, #ffe9a8 0%, ${goldBright} 45%, ${gold} 100%)`,
+                borderRadius: 999,
+                fontWeight: 700,
+                border: "1px solid rgba(255,236,180,0.7)",
+              }}
+            >
+              <span style={{ position: "relative", zIndex: 1 }}>
+                DOWNLOAD SOUL SEEKER APP
+              </span>
+            </Link>
           </div>
+
         </div>
       </section>
 
