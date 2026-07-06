@@ -340,10 +340,10 @@ function FeaturesPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pt-36 pb-8 text-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-36 ss-top-mobile pb-8 text-center">
         <Flourish label="FEATURES" />
         <h1
-          className="mt-4"
+          className="mt-4 ss-h1-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: gold,
@@ -358,7 +358,7 @@ function FeaturesPage() {
         </h1>
         <Divider width={90} />
         <p
-          className="mx-auto italic"
+          className="mx-auto italic ss-lead-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: mystic,
@@ -373,8 +373,8 @@ function FeaturesPage() {
         </p>
       </section>
 
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pb-20 grid grid-cols-[minmax(280px,360px)_1fr] gap-14 items-center">
-        <div className="relative">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-20 grid grid-cols-[minmax(280px,360px)_1fr] gap-8 md:gap-14 items-center">
+        <div className="relative ss-decor-mobile">
           <img
             src={archImg}
             alt="Mystic arch with moon and lotus"
@@ -390,7 +390,7 @@ function FeaturesPage() {
           />
         </div>
 
-        <div className="grid grid-cols-3 gap-x-10 gap-y-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-10 gap-y-10 lg:gap-y-14">
           {features.map((f) => (
             <div key={f.title} className="flex items-start gap-5">
               <div
@@ -409,7 +409,7 @@ function FeaturesPage() {
                   {f.icon}
                 </svg>
               </div>
-              <div>
+              <div className="min-w-0">
                 <h2
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
@@ -431,7 +431,7 @@ function FeaturesPage() {
         </div>
       </section>
 
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pb-16 text-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-16 text-center">
         <div
           className="mx-auto h-px mb-8"
           style={{
@@ -440,7 +440,7 @@ function FeaturesPage() {
           }}
         />
         <p
-          className="italic mx-auto"
+          className="italic mx-auto ss-lead-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: ivory,
@@ -455,6 +455,7 @@ function FeaturesPage() {
           <Divider width={60} />
         </div>
       </section>
+
 
       <SiteFooter />
     </div>
