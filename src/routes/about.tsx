@@ -698,14 +698,14 @@ function AboutPage() {
           <div className="text-center">
             <h1
               style={{
-                fontFamily: "'Cinzel', serif",
+                fontFamily: "'Cormorant Garamond', serif",
                 color: goldBright,
                 fontSize: 68,
-                letterSpacing: "0.14em",
+                letterSpacing: "0.02em",
                 textShadow: "0 0 30px rgba(241,210,122,0.35)",
               }}
             >
-              ABOUT
+              About
             </h1>
             <Divider width={90} />
             <p
