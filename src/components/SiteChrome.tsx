@@ -1,8 +1,6 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import logoAsset from "@/assets/soul-seeker-icon.jpeg.asset.json";
-
-const logo = logoAsset.url;
+const logo = "/images/soul-seeker-icon.jpeg";
 
 // Brand tokens
 export const midnight = "#050816";

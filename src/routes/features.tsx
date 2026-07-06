@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import archAsset from "@/assets/mystic-arch.png.asset.json";
+
 import {
   SiteNav,
   StarfieldBackdrop,
