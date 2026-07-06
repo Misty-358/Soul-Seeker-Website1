@@ -447,9 +447,7 @@ function FeaturesPage() {
             maxWidth: 900,
           }}
         >
-          Whether you seek answers, clarity, healing or growth,
-          <br />
-          Soul Seeker has everything you need to walk your path with confidence.
+          Explore Tarot. Create Your Cards. Discover Yourself.
         </p>
         <div className="mt-6">
           <Divider width={60} />
