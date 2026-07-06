@@ -130,7 +130,7 @@ function ContactPage() {
                 textShadow: "0 0 24px rgba(241,210,122,0.25)",
               }}
             >
-              CONTACT US
+              Contact Us
             </h1>
             <Divider />
             <p
