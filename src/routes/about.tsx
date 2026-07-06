@@ -754,7 +754,7 @@ function AboutPage() {
             <PillarCard
               icon={<StarBurstEmblem />}
               title="OUR MISSION"
-              body="To empower you with intuitive tools, personalised insights and meaningful connections that illuminate your path and inspire growth."
+              body="To help you explore self-reflection, gain insight, and support your personal and spiritual growth."
             />
             <PillarCard
               icon={<LotusEyeEmblem />}
