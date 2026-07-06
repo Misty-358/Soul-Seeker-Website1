@@ -424,23 +424,34 @@ function IntroductionPage() {
           {/* Take-away summary + guidance below card */}
           <div className="grid grid-cols-[1fr_260px] gap-10 mt-8 pl-[380px]">
             <div>
-              <p
-                className="uppercase mb-2"
+              <div
+                className="rounded-[14px] p-6"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  color: goldBright,
-                  letterSpacing: "0.28em",
-                  fontSize: 12,
+                  background:
+                    "linear-gradient(180deg, rgba(241,210,122,0.08) 0%, rgba(9,20,34,0.55) 100%)",
+                  border: `1px solid ${goldSoft}`,
+                  boxShadow:
+                    "0 10px 40px rgba(0,0,0,0.45), inset 0 0 22px rgba(241,210,122,0.10), 0 0 24px rgba(241,210,122,0.15)",
                 }}
               >
-                ✦ Take-Away Summary from the Last 3 Days
-              </p>
-              <p style={{ color: ivory, fontSize: 12.5, lineHeight: 1.75, opacity: 0.8 }}>
-                You have successfully ignited the engines of destiny, moving from a long winter of
-                stagnation into a season of rapid, unstoppable momentum fueled by your own
-                hard-earned mastery. The path forward now asks you to leave your fortress behind and
-                step bravely into the unknown with an open heart.
-              </p>
+                <p
+                  className="uppercase mb-3"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    color: goldBright,
+                    letterSpacing: "0.28em",
+                    fontSize: 13,
+                  }}
+                >
+                  ✦ Example Heading for the Take-away Summary from the last 3 days
+                </p>
+                <p style={{ color: ivory, fontSize: 12.5, lineHeight: 1.75, opacity: 0.85 }}>
+                  You have successfully ignited the engines of destiny, moving from a long winter of
+                  stagnation into a season of rapid, unstoppable momentum fueled by your own
+                  hard-earned mastery. The path forward now asks you to leave your fortress behind and
+                  step bravely into the unknown with an open heart.
+                </p>
+              </div>
 
               <p
                 className="uppercase mt-6 mb-2"
