@@ -79,7 +79,7 @@ function Sparkle({ cx, cy, r = 1, id }: { cx: number; cy: number; r?: number; id
 const features = [
   {
     title: "INTUITIVE READINGS",
-    body: "Choose from a variety of spreads or create your own. Get in-depth, personalised insights that speak to your unique path.",
+    body: "Choose from a variety of spreads. Get in-depth, personalised insights.",
     icon: (
       <>
         <GoldDefs id="i1" />
