@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { toast } from "sonner";
 const logo = "/images/soul-seeker-icon.jpeg";
 
 // Brand tokens
@@ -407,6 +408,44 @@ function SocialIcon({ name }: { name: string }) {
 }
 
 export function SiteFooter() {
+  const handleShare = async (network: "instagram" | "facebook" | "twitter" | "mail") => {
+    if (typeof window === "undefined") return;
+    const url = window.location.href;
+    const title = document.title || "Soul Seeker";
+    const openPopup = (shareUrl: string) => {
+      window.open(shareUrl, "_blank", "noopener,noreferrer,width=600,height=600");
+    };
+    if (network === "facebook") {
+      openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      return;
+    }
+    if (network === "twitter") {
+      openPopup(
+        `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+      );
+      return;
+    }
+    if (network === "mail") {
+      window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+      return;
+    }
+    // instagram — no web share URL
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      try {
+        await navigator.share({ url, title });
+        return;
+      } catch {
+        // fall through to clipboard
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success("Link copied — paste into Instagram to share");
+    } catch {
+      toast.error("Couldn't copy link. Please copy the page URL manually.");
+    }
+  };
+
   return (
     <footer className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-10">
       <ul className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 mb-6">
@@ -435,10 +474,16 @@ export function SiteFooter() {
         })}
       </ul>
       <div className="flex justify-center gap-6 mb-4" style={{ color: goldBright }}>
-        {["instagram", "facebook", "twitter", "mail"].map((n) => (
-          <a key={n} href="#" aria-label={n} className="opacity-80 hover:opacity-100">
+        {(["instagram", "facebook", "twitter", "mail"] as const).map((n) => (
+          <button
+            key={n}
+            type="button"
+            aria-label={`Share this page on ${n}`}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            onClick={() => handleShare(n)}
+          >
             <SocialIcon name={n} />
-          </a>
+          </button>
         ))}
       </div>
       <p
