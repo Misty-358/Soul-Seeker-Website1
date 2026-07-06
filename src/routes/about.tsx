@@ -276,6 +276,66 @@ function ChaliceEmblem() {
   );
 }
 
+function CompassEmblem() {
+  return (
+    <svg viewBox="0 0 60 60" width={54} height={54}>
+      {goldDefs("cp")}
+      <g stroke="url(#cp-gold)" strokeWidth="0.9" fill="none">
+        {/* outer ring */}
+        <circle cx="30" cy="30" r="20" fill="#1a1740" />
+        <circle cx="30" cy="30" r="20" />
+        <circle cx="30" cy="30" r="16" strokeWidth="0.5" opacity="0.7" />
+        {/* cardinal ticks */}
+        <path d="M30 10 L30 14 M30 46 L30 50 M10 30 L14 30 M46 30 L50 30" strokeWidth="1" />
+        {/* diagonal ticks */}
+        <path d="M16 16 L18.5 18.5 M41.5 41.5 L44 44 M44 16 L41.5 18.5 M18.5 41.5 L16 44" strokeWidth="0.5" opacity="0.7" />
+        {/* compass needle */}
+        <path d="M30 14 L34 30 L30 46 L26 30 Z" fill="url(#cp-gold)" opacity="0.95" />
+        <path d="M30 14 L34 30 L26 30 Z" fill="#f1d27a" />
+        {/* center pivot */}
+        <circle cx="30" cy="30" r="1.6" fill="url(#cp-gold)" />
+        {/* sparkles */}
+        <path d="M8 12 L8.6 14 L10.6 14.6 L8.6 15.2 L8 17.2 L7.4 15.2 L5.4 14.6 L7.4 14 Z" fill="url(#cp-gold)" />
+        <circle cx="52" cy="14" r="0.7" fill="#f1d27a" />
+      </g>
+    </svg>
+  );
+}
+
+function PaletteEmblem() {
+  return (
+    <svg viewBox="0 0 60 60" width={54} height={54}>
+      {goldDefs("pl")}
+      <g>
+        {/* palette body */}
+        <path
+          d="M14 30 C14 20 22 12 32 12 C42 12 48 18 48 26 C48 32 42 34 38 33 C34 32 32 34 33 37 C34 40 32 44 27 44 C19 44 14 38 14 30 Z"
+          fill="#1a1740"
+          stroke="url(#pl-gold)"
+          strokeWidth="0.9"
+        />
+        {/* thumb hole */}
+        <ellipse cx="22" cy="34" rx="2.6" ry="3.4" fill="#050816" stroke="url(#pl-gold)" strokeWidth="0.5" />
+        {/* paint dots */}
+        <circle cx="24" cy="22" r="2" fill="url(#pl-gold)" />
+        <circle cx="32" cy="19" r="2" fill="#f1d27a" opacity="0.9" />
+        <circle cx="40" cy="22" r="2" fill="url(#pl-gold)" opacity="0.8" />
+        <circle cx="38" cy="29" r="1.6" fill="#f1d27a" opacity="0.7" />
+        {/* paintbrush */}
+        <g transform="rotate(28 44 42)">
+          <path d="M44 38 L58 38 L58 42 L44 42 Z" fill="url(#pl-gold)" stroke="url(#pl-gold)" strokeWidth="0.5" />
+          <path d="M40 39 L44 38 L44 42 L40 41 Z" fill="#f1d27a" />
+          <path d="M36 40 L40 39 L40 41 Z" fill="url(#pl-gold)" />
+        </g>
+        {/* sparkles */}
+        <path d="M12 14 L12.6 16 L14.6 16.6 L12.6 17.2 L12 19.2 L11.4 17.2 L9.4 16.6 L11.4 16 Z" fill="url(#pl-gold)" />
+        <circle cx="52" cy="10" r="0.8" fill="#f1d27a" />
+      </g>
+    </svg>
+  );
+}
+
+
 /* ---------- Right: ornate filigree lotus mandala ---------- */
 
 function TripleMoonBackdrop() {
