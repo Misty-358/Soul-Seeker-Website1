@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { toast } from "sonner";
 const logo = "/images/soul-seeker-icon.jpeg";
 
 // Brand tokens
