@@ -697,6 +697,7 @@ function AboutPage() {
           {/* Center headline */}
           <div className="text-center">
             <h1
+              className="ss-h1-mobile"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 color: goldBright,
@@ -709,7 +710,7 @@ function AboutPage() {
             </h1>
             <Divider width={90} />
             <p
-              className="mx-auto max-w-[620px] text-[22px] leading-relaxed"
+              className="mx-auto max-w-[620px] text-[22px] leading-relaxed ss-lead-mobile"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 color: ivory,

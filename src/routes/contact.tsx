@@ -116,7 +116,7 @@ function ContactPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <main className="relative z-10 pt-32 pb-20 px-6">
+      <main className="relative z-10 pt-32 ss-top-mobile pb-20 px-4 sm:px-6">
         <div className="max-w-[1100px] mx-auto">
           <div id="contact" className="text-center mb-10">
             <Flourish label="REACH OUT" />
@@ -152,7 +152,7 @@ function ContactPage() {
           <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] mt-12">
             {/* Details panel */}
             <aside
-              className="rounded-2xl p-8 backdrop-blur-md"
+              className="rounded-2xl p-5 sm:p-8 backdrop-blur-md"
               style={{
                 background: "rgba(9,20,34,0.55)",
                 border: `1px solid rgba(212,175,55,0.28)`,
@@ -285,7 +285,7 @@ function ContactPage() {
             <form
               onSubmit={onSubmit}
               noValidate
-              className="rounded-2xl p-8 backdrop-blur-md"
+              className="rounded-2xl p-5 sm:p-8 backdrop-blur-md"
               style={{
                 background: "rgba(9,20,34,0.55)",
                 border: `1px solid rgba(212,175,55,0.28)`,
