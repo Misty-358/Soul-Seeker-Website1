@@ -759,7 +759,7 @@ function AboutPage() {
             <PillarCard
               icon={<LotusEyeEmblem />}
               title="OUR VISION"
-              body="A world where ancient wisdom and modern technology come together to help every soul discover their truth and purpose."
+              body="A world where traditional wisdom and modern innovation come together to inspire self-discovery, reflection, and personal growth."
             />
             <PillarCard
               icon={<HeartFlameEmblem />}
