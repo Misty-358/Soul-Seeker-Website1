@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import archAsset from "@/assets/mystic-arch.png.asset.json";
+
 import {
   SiteNav,
   StarfieldBackdrop,
@@ -15,7 +15,7 @@ import {
   mystic,
 } from "@/components/SiteChrome";
 
-const archImg = archAsset.url;
+const archImg = "/images/mystic-arch.png";
 const iconGold = goldBright;
 
 export const Route = createFileRoute("/features")({

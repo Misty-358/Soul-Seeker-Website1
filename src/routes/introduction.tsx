@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import aceAsset from "@/assets/ace-of-swords.jpg.asset.json";
-import aceOfCupsAsset from "@/assets/ace-of-cups.png.asset.json";
-import chariotAsset from "@/assets/the-chariot.jpg.asset.json";
-import strengthAsset from "@/assets/strength.jpg.asset.json";
-import temperanceAsset from "@/assets/temperance-tarot.jpg.asset.json";
-import justiceAsset from "@/assets/justice.jpg.asset.json";
-import starAsset from "@/assets/the-star.jpg.asset.json";
-import moonAsset from "@/assets/moon-mountains.png.asset.json";
-import flourishAsset from "@/assets/mystic-flourish.jpg.asset.json";
+const aceAsset = { url: "/images/ace-of-swords.jpg" };
+const aceOfCupsAsset = { url: "/images/ace-of-cups.png" };
+const chariotAsset = { url: "/images/the-chariot.jpg" };
+const strengthAsset = { url: "/images/strength.jpg" };
+const temperanceAsset = { url: "/images/temperance-tarot.jpg" };
+const justiceAsset = { url: "/images/justice.jpg" };
+const starAsset = { url: "/images/the-star.jpg" };
+const moonAsset = { url: "/images/moon-mountains.png" };
+const flourishAsset = { url: "/images/mystic-flourish.jpg" };
 import {
   SiteNav,
   StarfieldBackdrop,

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import cardAsset from "@/assets/temperance-card.jpg.asset.json";
+
 import {
   SiteNav,
   StarfieldBackdrop,
@@ -14,7 +14,7 @@ import {
   mystic,
 } from "@/components/SiteChrome";
 
-const cardImg = cardAsset.url;
+const cardImg = "/images/temperance-card.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
