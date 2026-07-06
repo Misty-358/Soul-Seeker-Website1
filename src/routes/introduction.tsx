@@ -601,9 +601,9 @@ function IntroductionPage() {
               opacity: 0.9,
             }}
           >
-            Whether you seek answers, clarity, healing or growth,{" "}
-            <span style={{ color: goldBright }}>Soul Seeker</span> has everything you need to walk
-            your path with confidence.
+            Whether you seek insight, clarity, or personal growth,{" "}
+            <span style={{ color: goldBright }}>Soul Seeker</span> is designed to support and guide
+            you on your journey of self-discovery.
           </p>
           <span aria-hidden>✦</span>
           <span
