@@ -234,12 +234,20 @@ const features = [
     ),
   },
   {
-    title: "SOUL SEEKER INSIGHTS",
-    body: "Receive summaries of your past readings, recurring themes and personalised guidance tailored for you.",
+    title: "MONTHLY SUMMARIES",
+    body: "Navigator members receive a tailored monthly overview, helping you track your progress, recognise patterns, and reflect on your personal journey.",
     icon: (
       <>
         <GoldDefs id="i5" />
         <circle cx="24" cy="24" r="20" fill="url(#i5-glow)" />
+        <circle
+          cx="24"
+          cy="24"
+          r="16"
+          fill="none"
+          stroke="url(#i5-stroke)"
+          strokeWidth="1.2"
+        />
         <g
           fill="none"
           stroke="url(#i5-stroke)"
@@ -247,31 +255,25 @@ const features = [
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          {/* crystal orb */}
-          <circle cx="24" cy="20" r="9" fill="url(#i5-fill)" fillOpacity="0.14" />
-          {/* orb inner highlight */}
-          <path d="M18 16a6 6 0 0 1 4-3" opacity="0.85" />
-          {/* ornate stand */}
-          <path d="M15 32c2-3 5-4 9-4s7 1 9 4" />
-          <path d="M13 32h22" />
-          <path d="M15 36h18" />
-          <path d="M18 32v4M30 32v4" opacity="0.75" />
+          {/* calendar body */}
+          <rect x="14" y="16" width="20" height="18" rx="2" fill="rgba(241,210,122,0.10)" />
+          {/* header bar */}
+          <path d="M14 21h20" />
+          {/* rings */}
+          <path d="M19 14v4M29 14v4" />
+          {/* grid lines */}
+          <path d="M19 25h10M19 29h10" opacity="0.65" />
+          <path d="M24 22v10" opacity="0.4" />
         </g>
-        {/* inner cosmos */}
-        <path
-          d="M24 15l1 3 3 1-3 1L24 23l-1-3-3-1 3-1z"
-          fill="url(#i5-fill)"
-          stroke="none"
-        />
-        <circle cx="20" cy="23" r="0.8" fill="url(#i5-fill)" stroke="none" />
-        <circle cx="28" cy="24" r="0.7" fill="url(#i5-fill)" stroke="none" opacity="0.85" />
-        <circle cx="26" cy="17" r="0.5" fill="url(#i5-fill)" stroke="none" opacity="0.85" />
-        {/* stand jewel */}
-        <circle cx="24" cy="34" r="1" fill="url(#i5-fill)" stroke="none" />
-        <circle cx="24" cy="20" r="9" fill="url(#i5-shine)" opacity="0.55" />
+        {/* marked date */}
+        <circle cx="24" cy="29" r="1.6" fill="url(#i5-fill)" stroke="none" />
+        <Sparkle id="i5" cx={12} cy={12} r={0.9} />
+        <Sparkle id="i5" cx={36} cy={12} r={0.9} />
+        <circle cx="24" cy="24" r="18" fill="url(#i5-shine)" opacity="0.3" />
       </>
     ),
   },
+
   {
     title: "YEAR AHEAD READING",
     body: "Receive a personalised 12-month tarot forecast, exploring themes, opportunities and lessons for the year ahead.",
