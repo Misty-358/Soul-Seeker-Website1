@@ -809,10 +809,8 @@ function AboutPage() {
               textShadow: "0 0 18px rgba(241,210,122,0.2)",
             }}
           >
-            Whether you seek answers, clarity, healing or growth,
-            <br />
             <span style={{ color: goldBright }}>
-              Soul Seeker has everything you need to walk your path with confidence.
+              Soul Seeker offers personalised readings, custom card creation, and intuitive tools to support your journey of self-discovery.
             </span>
           </p>
           <Divider width={120} />
