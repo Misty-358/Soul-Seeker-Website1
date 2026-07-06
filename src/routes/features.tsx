@@ -276,7 +276,7 @@ const features = [
 
   {
     title: "YEAR AHEAD READING",
-    body: "Receive a personalised 12-month tarot forecast, exploring themes, opportunities and lessons for the year ahead.",
+    body: "Seeker members can receive a personalised 12-month tarot forecast, exploring themes, opportunities and lessons for the year ahead.",
     icon: (
       <>
         <GoldDefs id="i6" />
