@@ -514,7 +514,7 @@ function IntroductionPage() {
                 className="mt-4"
                 style={{ color: ivory, fontSize: 14, lineHeight: 1.8, opacity: 0.85 }}
               >
-                Unleash your creativity in the App Builder and design your very own Tarot deck.
+                Unleash your creativity in the App "Card Customisation" area and design your very own Tarot deck.
               </p>
               <ul className="mt-4 space-y-2" style={{ color: ivory, fontSize: 13.5, opacity: 0.9 }}>
                 <li><BulletStar />Use your deck in the app for your readings</li>
