@@ -443,7 +443,7 @@ function IntroductionPage() {
                     fontSize: 13,
                   }}
                 >
-                  ✦ Example Heading for the Take-away Summary from the last 3 days
+                  ✦ Example Take-away Summary from the last 3 days
                 </p>
                 <p style={{ color: ivory, fontSize: 12.5, lineHeight: 1.75, opacity: 0.85 }}>
                   You have successfully ignited the engines of destiny, moving from a long winter of
@@ -451,25 +451,26 @@ function IntroductionPage() {
                   hard-earned mastery. The path forward now asks you to leave your fortress behind and
                   step bravely into the unknown with an open heart.
                 </p>
-              </div>
 
-              <p
-                className="uppercase mt-6 mb-2"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  color: goldBright,
-                  letterSpacing: "0.28em",
-                  fontSize: 12,
-                }}
-              >
-                ✦ Most Recent Guidance
-              </p>
-              <p style={{ color: ivory, fontSize: 12.5, lineHeight: 1.75, opacity: 0.8 }}>
-                You are standing at a threshold where the universe is finally matching your pace —
-                inviting you to tend to your clarity as you release the heavy attachment to how
-                things used to be.
-              </p>
+                <p
+                  className="uppercase mt-6 mb-2"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    color: goldBright,
+                    letterSpacing: "0.28em",
+                    fontSize: 12,
+                  }}
+                >
+                  ✦ Most Recent Guidance
+                </p>
+                <p style={{ color: ivory, fontSize: 12.5, lineHeight: 1.75, opacity: 0.8 }}>
+                  You are standing at a threshold where the universe is finally matching your pace —
+                  inviting you to tend to your clarity as you release the heavy attachment to how
+                  things used to be.
+                </p>
+              </div>
             </div>
+
             <div />
           </div>
         </div>
