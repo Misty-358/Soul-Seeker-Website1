@@ -49,10 +49,10 @@ function HomePage() {
       <SiteNav />
 
       {/* BANNER HEADER (matches Features page style) */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pt-36 pb-8 text-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-36 ss-top-mobile pb-8 text-center">
         <Flourish label="WELCOME" />
         <h1
-          className="mt-4"
+          className="mt-4 ss-h1-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: gold,
@@ -69,7 +69,7 @@ function HomePage() {
         </h1>
         <Divider width={90} />
         <p
-          className="mx-auto italic"
+          className="mx-auto italic ss-lead-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: mystic,
@@ -83,6 +83,48 @@ function HomePage() {
           crafted for the seeker in you.
         </p>
       </section>
+
+      {/* HERO CONTENT — Tarot card + intro */}
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-24 grid grid-cols-[minmax(260px,340px)_1fr] gap-8 md:gap-16 items-center">
+        <div className="relative mx-auto md:mx-0 max-w-[280px] md:max-w-none">
+          <img
+            src={cardImg}
+            alt="Featured tarot card"
+            title="Soul Seeker Tarot card"
+            className="w-full h-auto rounded-[14px]"
+            style={{
+              boxShadow:
+                "0 30px 80px rgba(124,77,255,0.35), 0 0 0 1px rgba(241,210,122,0.35)",
+              filter: "drop-shadow(0 30px 80px rgba(124,77,255,0.25))",
+            }}
+          />
+        </div>
+
+        <div className="text-center md:text-left">
+          <h2
+            className="ss-h2-mobile"
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              color: gold,
+              fontSize: 44,
+              lineHeight: 1.1,
+              fontWeight: 500,
+              letterSpacing: "0.02em",
+            }}
+          >
+            Your journey of discovery begins here.
+          </h2>
+          <p
+            className="mt-6 mx-auto md:mx-0"
+            style={{ color: ivory, fontSize: 15, lineHeight: 1.85, opacity: 0.85, maxWidth: 560 }}
+          >
+            Soul Seeker brings the timeless art of tarot into a beautifully modern space —
+            intuitive readings, a personal journal, and tools crafted to reveal what your
+            soul already knows. Whether you seek clarity, direction, or a moment of stillness,
+            you are welcome here.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4 items-center justify-center md:justify-start">
+
 
       {/* HERO CONTENT — Tarot card + intro */}
       <section className="relative z-10 max-w-[1400px] mx-auto px-10 pb-24 grid grid-cols-[minmax(260px,340px)_1fr] gap-16 items-center">
