@@ -63,9 +63,9 @@ function HomePage() {
             textShadow: "0 0 40px rgba(241,210,122,0.2)",
           }}
         >
-          Where Ancient Wisdom
+          A Modern Path to
           <br />
-          Meets Modern Intuition
+          Timeless Wisdom
         </h1>
         <Divider width={90} />
         <p
