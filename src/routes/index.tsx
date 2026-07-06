@@ -124,47 +124,6 @@ function HomePage() {
             you are welcome here.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 items-center justify-center md:justify-start">
-
-
-      {/* HERO CONTENT — Tarot card + intro */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pb-24 grid grid-cols-[minmax(260px,340px)_1fr] gap-16 items-center">
-        <div className="relative">
-          <img
-            src={cardImg}
-            alt="Featured tarot card"
-            title="Soul Seeker Tarot card"
-            className="w-full h-auto rounded-[14px]"
-            style={{
-              boxShadow:
-                "0 30px 80px rgba(124,77,255,0.35), 0 0 0 1px rgba(241,210,122,0.35)",
-              filter: "drop-shadow(0 30px 80px rgba(124,77,255,0.25))",
-            }}
-          />
-        </div>
-
-        <div>
-          <h2
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              color: gold,
-              fontSize: 44,
-              lineHeight: 1.1,
-              fontWeight: 500,
-              letterSpacing: "0.02em",
-            }}
-          >
-            Your journey of discovery begins here.
-          </h2>
-          <p
-            className="mt-6"
-            style={{ color: ivory, fontSize: 15, lineHeight: 1.85, opacity: 0.85, maxWidth: 560 }}
-          >
-            Soul Seeker brings the timeless art of tarot into a beautifully modern space —
-            intuitive readings, a personal journal, and tools crafted to reveal what your
-            soul already knows. Whether you seek clarity, direction, or a moment of stillness,
-            you are welcome here.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               to="/features"
               className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all"
@@ -194,9 +153,9 @@ function HomePage() {
               </span>
             </Link>
           </div>
-
         </div>
       </section>
+
 
       <SiteFooter />
     </div>
