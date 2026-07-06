@@ -283,7 +283,7 @@ function IntroductionPage() {
         src={moonAsset.url}
         alt=""
         aria-hidden
-        className="pointer-events-none select-none absolute left-0 top-24 z-0"
+        className="ss-decor-mobile pointer-events-none select-none absolute left-0 top-24 z-0"
         style={{
           width: 360,
           height: "auto",
@@ -301,10 +301,10 @@ function IntroductionPage() {
       <SiteNav />
 
       {/* BANNER HEADER */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pt-36 pb-6 text-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-36 ss-top-mobile pb-6 text-center">
         <Flourish label="WELCOME" />
         <h1
-          className="mt-4"
+          className="mt-4 ss-h1-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: gold,
@@ -319,7 +319,7 @@ function IntroductionPage() {
         </h1>
         <Divider width={90} />
         <p
-          className="mx-auto italic"
+          className="mx-auto italic ss-lead-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: mystic,
@@ -333,6 +333,7 @@ function IntroductionPage() {
           your sacred space for insight, creativity and transformation.
         </p>
       </section>
+
 
       {/* SECTION 1 — Personalised Insights */}
       <section className="relative z-10 max-w-[1300px] mx-auto px-10 mt-10">
