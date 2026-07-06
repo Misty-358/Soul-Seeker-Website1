@@ -782,15 +782,16 @@ function AboutPage() {
               body="Rooted in traditional tarot wisdom, Soul Seeker blends the timeless symbolism and archetypes of tarot with modern AI, helping you explore meaningful insights while creating a more personal and immersive reading experience."
             />
             <PillarCard
-              icon={<QuillScrollEmblem />}
+              icon={<CompassEmblem />}
               title="SIMPLE AND INTUITIVE"
               body="The app is designed to be intuitive with simple navigation, making it easy to explore readings, track your journey, create custom cards, and access insights whenever you need them."
             />
             <PillarCard
-              icon={<ChaliceEmblem />}
+              icon={<PaletteEmblem />}
               title="CRAFTED CREATIVITY"
               body="Using AI-powered design tools, bring your ideas to life and build a personalised deck that reflects your own vision and style."
             />
+
           </div>
         </section>
 
