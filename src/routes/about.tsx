@@ -717,10 +717,12 @@ function AboutPage() {
                 fontStyle: "italic",
               }}
             >
-              Soul Seeker was born from a deep love of tarot, intuition and the
-              transformative power of self-awareness. Our mission is to make
-              ancient wisdom accessible, personal and empowering for everyone on
-              their unique journey.
+              Soul Seeker was born from a deep love of tarot, intuition, and
+              the transformative power of self-awareness. Our mission is to
+              make ancient wisdom accessible by blending traditional tarot
+              knowledge with modern technology, creating a space where seekers
+              can explore self-reflection, gain meaningful insight, and nurture
+              their personal and spiritual journey.
             </p>
           </div>
 
@@ -752,7 +754,7 @@ function AboutPage() {
             <PillarCard
               icon={<StarBurstEmblem />}
               title="OUR MISSION"
-              body="To empower you with intuitive tools, personalised insights and meaningful connections that illuminate your path and inspire growth."
+              body="To help you explore self-reflection, gain insight, and support your personal and spiritual growth."
             />
             <PillarCard
               icon={<LotusEyeEmblem />}
