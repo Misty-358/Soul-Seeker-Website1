@@ -410,8 +410,8 @@ function SocialIcon({ name }: { name: string }) {
 export function SiteFooter() {
   const handleShare = async (network: "instagram" | "facebook" | "twitter" | "mail") => {
     if (typeof window === "undefined") return;
-    const url = "https://www.soulseeker.com";
-    const title = "Soul Seeker";
+    const url = "https://www.soulseekertarot.com";
+    const title = "Soul Seeker Tarot";
 
     const openPopup = (shareUrl: string) => {
       window.open(shareUrl, "_blank", "noopener,noreferrer,width=600,height=600");
