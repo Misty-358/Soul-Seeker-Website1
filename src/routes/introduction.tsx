@@ -283,7 +283,7 @@ function IntroductionPage() {
         src={moonAsset.url}
         alt=""
         aria-hidden
-        className="pointer-events-none select-none absolute left-0 top-24 z-0"
+        className="ss-decor-mobile pointer-events-none select-none absolute left-0 top-24 z-0"
         style={{
           width: 360,
           height: "auto",
@@ -301,10 +301,10 @@ function IntroductionPage() {
       <SiteNav />
 
       {/* BANNER HEADER */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pt-36 pb-6 text-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-36 ss-top-mobile pb-6 text-center">
         <Flourish label="WELCOME" />
         <h1
-          className="mt-4"
+          className="mt-4 ss-h1-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: gold,
@@ -319,7 +319,7 @@ function IntroductionPage() {
         </h1>
         <Divider width={90} />
         <p
-          className="mx-auto italic"
+          className="mx-auto italic ss-lead-mobile"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             color: mystic,
@@ -334,10 +334,11 @@ function IntroductionPage() {
         </p>
       </section>
 
+
       {/* SECTION 1 — Personalised Insights */}
-      <section className="relative z-10 max-w-[1300px] mx-auto px-10 mt-10">
+      <section className="relative z-10 max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-10 mt-10">
         <div
-          className="relative rounded-[18px] p-10"
+          className="relative rounded-[18px] p-5 sm:p-8 lg:p-10"
           style={{
             background:
               "linear-gradient(180deg, rgba(9,20,34,0.55) 0%, rgba(5,8,22,0.6) 100%)",
@@ -477,9 +478,9 @@ function IntroductionPage() {
       </section>
 
       {/* SECTION 2 — Create Your Tarot Masterpiece */}
-      <section className="relative z-10 max-w-[1300px] mx-auto px-10 mt-10 mb-16">
+      <section className="relative z-10 max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-10 mt-10 mb-16">
         <div
-          className="relative rounded-[18px] p-10"
+          className="relative rounded-[18px] p-5 sm:p-8 lg:p-10"
           style={{
             background:
               "linear-gradient(180deg, rgba(9,20,34,0.55) 0%, rgba(5,8,22,0.6) 100%)",
@@ -585,7 +586,7 @@ function IntroductionPage() {
       </section>
 
       {/* Closing line */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-10 pb-10 text-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-10 text-center">
         <div className="flex items-center justify-center gap-4" style={{ color: goldSoft }}>
           <span
             className="h-px flex-1 max-w-[140px]"

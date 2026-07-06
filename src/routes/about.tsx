@@ -674,7 +674,7 @@ function AboutPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <main className="relative z-10 max-w-[1400px] mx-auto px-8 pt-32 pb-16">
+      <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-32 ss-top-mobile pb-16">
         {/* Hero */}
         <section className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] gap-8 items-center min-h-[520px]">
           {/* Left flourish — golden crescent cradling a tree of life, moon-phase crown, geometric pendant */}
@@ -697,6 +697,7 @@ function AboutPage() {
           {/* Center headline */}
           <div className="text-center">
             <h1
+              className="ss-h1-mobile"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 color: goldBright,
@@ -709,7 +710,7 @@ function AboutPage() {
             </h1>
             <Divider width={90} />
             <p
-              className="mx-auto max-w-[620px] text-[22px] leading-relaxed"
+              className="mx-auto max-w-[620px] text-[22px] leading-relaxed ss-lead-mobile"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 color: ivory,
@@ -743,7 +744,7 @@ function AboutPage() {
 
         {/* Mission / Vision / Values */}
         <section
-          className="relative mt-14 rounded-2xl px-10 py-10"
+          className="relative mt-14 rounded-2xl px-5 sm:px-8 lg:px-10 py-8 lg:py-10"
           style={{
             background: "rgba(9,20,34,0.55)",
             border: "1px solid rgba(201,167,93,0.25)",
@@ -771,7 +772,7 @@ function AboutPage() {
 
         {/* Pillars grid */}
         <section
-          className="relative mt-10 rounded-2xl px-10 py-10"
+          className="relative mt-10 rounded-2xl px-5 sm:px-8 lg:px-10 py-8 lg:py-10"
           style={{
             background: "rgba(9,20,34,0.55)",
             border: "1px solid rgba(201,167,93,0.25)",

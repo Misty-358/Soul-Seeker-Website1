@@ -35,8 +35,65 @@ function GoldUnderline() {
 
 export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  // Local active for headings without dedicated routes
   const [clickedHash, setClickedHash] = React.useState<string | null>(null);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  React.useEffect(() => {
+    if (typeof document === "undefined") return;
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const renderLink = (item: NavItem, onClick?: () => void) => {
+    const isRouteActive =
+      !!item.to && (item.to === "/" ? pathname === "/" : pathname.startsWith(item.to));
+    const isHashActive = !!item.hash && clickedHash === item.hash;
+    const isActive = isRouteActive || isHashActive;
+    const style: React.CSSProperties = {
+      color: isActive ? goldBright : ivory,
+      fontWeight: 500,
+      textShadow: isActive ? "0 0 12px rgba(241,210,122,0.45)" : undefined,
+    };
+    const className = "relative text-[12px] tracking-[0.28em] transition-colors";
+    if (item.to) {
+      return (
+        <Link
+          key={item.label}
+          to={item.to}
+          className={className}
+          style={style}
+          onClick={() => {
+            setClickedHash(null);
+            onClick?.();
+          }}
+        >
+          {item.label}
+          {isActive && <GoldUnderline />}
+        </Link>
+      );
+    }
+    return (
+      <a
+        key={item.label}
+        href={`#${item.hash}`}
+        className={className}
+        style={style}
+        onClick={() => {
+          setClickedHash(item.hash!);
+          onClick?.();
+        }}
+      >
+        {item.label}
+        {isActive && <GoldUnderline />}
+      </a>
+    );
+  };
 
   return (
     <header
@@ -47,21 +104,22 @@ export function SiteNav() {
         borderBottom: `1px solid rgba(201,167,93,0.25)`,
       }}
     >
-      <div className="max-w-[1400px] mx-auto pl-6 pr-10 py-4 flex items-center gap-8">
-        <Link to="/" className="flex items-center gap-4" onClick={() => setClickedHash(null)}>
+      <div className="max-w-[1400px] mx-auto pl-4 pr-4 sm:pl-6 sm:pr-10 py-3 sm:py-4 flex items-center gap-4 sm:gap-8">
+        <Link to="/" className="flex items-center gap-3 sm:gap-4 min-w-0" onClick={() => setClickedHash(null)}>
           <img
             src={logo}
             alt="Soul Seeker logo"
             width={56}
             height={56}
-            className="drop-shadow-[0_0_12px_rgba(241,210,122,0.35)]"
+            className="w-10 h-10 sm:w-14 sm:h-14 shrink-0 drop-shadow-[0_0_12px_rgba(241,210,122,0.35)]"
           />
           <span
+            className="truncate"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               color: gold,
               letterSpacing: "0.14em",
-              fontSize: 22,
+              fontSize: "clamp(16px, 4vw, 22px)",
               fontWeight: 500,
               textShadow: "0 0 18px rgba(241,210,122,0.25)",
             }}
@@ -69,51 +127,58 @@ export function SiteNav() {
             SOUL SEEKER
           </span>
         </Link>
-        <nav className="ml-auto flex items-center gap-10">
-          {navItems.map((item) => {
-            const isRouteActive =
-              !!item.to && (item.to === "/" ? pathname === "/" : pathname.startsWith(item.to));
-            const isHashActive = !!item.hash && clickedHash === item.hash;
-            const isActive = isRouteActive || isHashActive;
-            const baseStyle: React.CSSProperties = {
-              color: isActive ? goldBright : ivory,
-              fontWeight: 500,
-              textShadow: isActive ? "0 0 12px rgba(241,210,122,0.45)" : undefined,
-            };
-            const className = "relative text-[12px] tracking-[0.28em] transition-colors";
 
-            if (item.to) {
-              return (
-                <Link
-                  key={item.label}
-                  to={item.to}
-                  className={className}
-                  style={baseStyle}
-                  onClick={() => setClickedHash(null)}
-                >
-                  {item.label}
-                  {isActive && <GoldUnderline />}
-                </Link>
-              );
-            }
-            return (
-              <a
-                key={item.label}
-                href={`#${item.hash}`}
-                className={className}
-                style={baseStyle}
-                onClick={() => setClickedHash(item.hash!)}
-              >
-                {item.label}
-                {isActive && <GoldUnderline />}
-              </a>
-            );
-          })}
+        <nav className="ml-auto hidden lg:flex items-center gap-8 xl:gap-10">
+          {navItems.map((item) => renderLink(item))}
         </nav>
+
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          className="ml-auto lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md"
+          style={{ color: goldBright, border: `1px solid rgba(201,167,93,0.35)` }}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+            {open ? (
+              <>
+                <path d="M6 6l12 12" />
+                <path d="M18 6L6 18" />
+              </>
+            ) : (
+              <>
+                <path d="M4 7h16" />
+                <path d="M4 12h16" />
+                <path d="M4 17h16" />
+              </>
+            )}
+          </svg>
+        </button>
       </div>
+
+      {open && (
+        <div
+          className="lg:hidden absolute inset-x-0 top-full"
+          style={{
+            background: "rgba(5,8,22,0.98)",
+            backdropFilter: "blur(12px)",
+            borderBottom: `1px solid rgba(201,167,93,0.25)`,
+          }}
+        >
+          <nav className="flex flex-col gap-1 px-6 py-6">
+            {navItems.map((item) => (
+              <div key={item.label} className="py-3 border-b" style={{ borderColor: "rgba(201,167,93,0.12)" }}>
+                {renderLink(item, () => setOpen(false))}
+              </div>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
+
 
 export function StarfieldBackdrop() {
   // Deterministic pseudo-random star positions so SSR + client match.
@@ -343,14 +408,14 @@ function SocialIcon({ name }: { name: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-10 max-w-[1400px] mx-auto px-10 pb-10">
-      <ul className="flex flex-wrap justify-center items-center gap-6 mb-6">
+    <footer className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-10">
+      <ul className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 mb-6">
         {footerLinks.map((l, i) => {
           const className =
-            "text-[11px] tracking-[0.25em] transition-colors hover:text-white";
+            "text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.25em] transition-colors hover:text-white";
           const style: React.CSSProperties = { color: ivory, opacity: 0.75 };
           return (
-            <li key={l.label} className="flex items-center gap-6">
+            <li key={l.label} className="flex items-center gap-3 sm:gap-6">
               {l.to ? (
                 <Link to={l.to} className={className} style={style}>
                   {l.label}
@@ -361,7 +426,7 @@ export function SiteFooter() {
                 </a>
               )}
               {i < footerLinks.length - 1 && (
-                <span style={{ color: goldSoft }}>
+                <span style={{ color: goldSoft }} className="hidden sm:inline">
                   <Star size={7} />
                 </span>
               )}
@@ -377,7 +442,7 @@ export function SiteFooter() {
         ))}
       </div>
       <p
-        className="text-center text-[11px] tracking-[0.2em]"
+        className="text-center text-[10px] sm:text-[11px] tracking-[0.2em]"
         style={{ color: ivory, opacity: 0.5 }}
       >
         © 2024 Soul Seeker. All rights reserved.
