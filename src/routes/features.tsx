@@ -15,7 +15,7 @@ import {
   mystic,
 } from "@/components/SiteChrome";
 
-const archImg = archAsset.url;
+const archImg = "/images/mystic-arch.png";
 const iconGold = goldBright;
 
 export const Route = createFileRoute("/features")({
