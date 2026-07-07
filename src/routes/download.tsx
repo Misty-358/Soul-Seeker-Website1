@@ -207,9 +207,16 @@ function DownloadPage() {
                 />
               </Field>
 
+              {error && (
+                <p className="mt-4 text-sm" style={{ color: "#ff9c9c" }}>
+                  {error}
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="mt-6 w-full inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all hover:scale-[1.01]"
+                disabled={busy}
+                className="mt-6 w-full inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all hover:scale-[1.01] disabled:opacity-60"
                 style={{
                   color: midnight,
                   background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
@@ -218,7 +225,7 @@ function DownloadPage() {
                   boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
                 }}
               >
-                SUBMIT
+                {busy ? "SUBMITTING…" : "SUBMIT"}
               </button>
             </>
           )}
