@@ -1,5 +1,6 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
 import {
   SiteNav,
   StarfieldBackdrop,
@@ -41,10 +42,25 @@ function DownloadPage() {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
+  const [busy, setBusy] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) return;
+    setError(null);
+    setBusy(true);
+    const { error } = await supabase.from("signups").insert({
+      name: name.trim() || null,
+      email: trimmedEmail,
+      choice,
+    });
+    setBusy(false);
+    if (error) {
+      setError("Sorry, we couldn't save that. Please try again.");
+      return;
+    }
     setSubmitted(true);
   };
 
