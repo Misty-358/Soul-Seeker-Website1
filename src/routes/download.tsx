@@ -1,5 +1,6 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
 import {
   SiteNav,
   StarfieldBackdrop,
@@ -41,10 +42,25 @@ function DownloadPage() {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
+  const [busy, setBusy] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) return;
+    setError(null);
+    setBusy(true);
+    const { error } = await supabase.from("signups").insert({
+      name: name.trim() || null,
+      email: trimmedEmail,
+      choice,
+    });
+    setBusy(false);
+    if (error) {
+      setError("Sorry, we couldn't save that. Please try again.");
+      return;
+    }
     setSubmitted(true);
   };
 
@@ -191,9 +207,16 @@ function DownloadPage() {
                 />
               </Field>
 
+              {error && (
+                <p className="mt-4 text-sm" style={{ color: "#ff9c9c" }}>
+                  {error}
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="mt-6 w-full inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all hover:scale-[1.01]"
+                disabled={busy}
+                className="mt-6 w-full inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all hover:scale-[1.01] disabled:opacity-60"
                 style={{
                   color: midnight,
                   background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
@@ -202,7 +225,7 @@ function DownloadPage() {
                   boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
                 }}
               >
-                SUBMIT
+                {busy ? "SUBMITTING…" : "SUBMIT"}
               </button>
             </>
           )}
