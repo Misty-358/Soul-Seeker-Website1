@@ -335,21 +335,29 @@ function OptionCard({
           </button>
         )}
         {href && (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={async () => {
+              try {
+                await supabase.auth.signOut();
+              } catch {
+                /* ignore */
+              }
+              window.open(href, "_blank", "noopener,noreferrer");
+            }}
             className="inline-flex items-center justify-center px-5 py-2 text-[11px] tracking-[0.24em] transition-all hover:scale-[1.02]"
             style={{
               color: midnight,
               background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
+              border: "none",
               borderRadius: 999,
               fontWeight: 700,
               boxShadow: "0 8px 22px rgba(241,210,122,0.25)",
+              cursor: "pointer",
             }}
           >
             {hrefLabel ?? "OPEN"}
-          </a>
+          </button>
         )}
       </div>
     </div>
