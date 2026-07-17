@@ -121,11 +121,13 @@ function DownloadPage() {
             active={choice === "beta"}
             title="Option 2 — Try the Beta Preview"
             body="Explore the preview version now and help shape Soul Seeker before launch."
-            actionLabel={choice === "beta" ? "SELECTED" : "CHOOSE"}
+            actionLabel=""
             onSelect={() => setChoice("beta")}
-            href="https://app.soulseekertarot.com"
+            hideSelectButton
+            href="https://app.soulseekertarot.com/auth"
             hrefLabel="TRY THE PREVIEW APP"
           />
+
         </div>
 
         {/* Form */}
