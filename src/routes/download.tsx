@@ -339,7 +339,7 @@ function OptionCard({
             type="button"
             onClick={async () => {
               try {
-                await supabase.auth.signOut();
+                await supabase.auth.signOut({ scope: "global" });
               } catch {
                 /* ignore */
               }
