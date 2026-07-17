@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
 
 import {
   SiteNav,
@@ -211,10 +212,20 @@ function HomePage() {
             feedback to help improve the experience.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 items-center justify-center">
-            <a
-              href="https://app.soulseekertarot.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  await supabase.auth.signOut();
+                } catch {
+                  /* ignore */
+                }
+                window.open(
+                  "https://app.soulseekertarot.com/auth",
+                  "_blank",
+                  "noopener,noreferrer",
+                );
+              }}
               className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-transform hover:scale-[1.03]"
               style={{
                 color: midnight,
@@ -223,10 +234,11 @@ function HomePage() {
                 fontWeight: 700,
                 border: "1px solid rgba(255,236,180,0.7)",
                 boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
+                cursor: "pointer",
               }}
             >
               TRY THE PREVIEW APP
-            </a>
+            </button>
             <a
               href="mailto:admin@soulseekertarot.com?subject=Soul%20Seeker%20Beta%20Feedback"
               className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all"
