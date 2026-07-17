@@ -112,11 +112,37 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function BetaBanner() {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        background: "linear-gradient(90deg, #d4af37, #f1d27a, #d4af37)",
+        color: "#050816",
+        textAlign: "center",
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 12,
+        letterSpacing: "0.14em",
+        fontWeight: 600,
+        padding: "6px 12px",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.35)",
+      }}
+    >
+      BETA VERSION — Thank you for helping test Soul Seeker Tarot.
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <BetaBanner />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />

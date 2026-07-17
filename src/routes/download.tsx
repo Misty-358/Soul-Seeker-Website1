@@ -119,10 +119,12 @@ function DownloadPage() {
           />
           <OptionCard
             active={choice === "beta"}
-            title="Option 2 — Beta Testing"
-            body="Join beta testing and help shape Soul Seeker before launch."
+            title="Option 2 — Try the Beta Preview"
+            body="Explore the preview version now and help shape Soul Seeker before launch."
             actionLabel={choice === "beta" ? "SELECTED" : "CHOOSE"}
             onSelect={() => setChoice("beta")}
+            href="https://app.soulseekertarot.com"
+            hrefLabel="TRY THE PREVIEW APP"
           />
         </div>
 
@@ -275,12 +277,16 @@ function OptionCard({
   body,
   actionLabel,
   onSelect,
+  href,
+  hrefLabel,
 }: {
   active: boolean;
   title: string;
   body: string;
   actionLabel: string;
   onSelect: () => void;
+  href?: string;
+  hrefLabel?: string;
 }) {
   return (
     <div
@@ -305,22 +311,41 @@ function OptionCard({
       <p style={{ color: ivory, fontSize: 14, lineHeight: 1.6, opacity: 0.85, marginTop: 8 }}>
         {body}
       </p>
-      <button
-        type="button"
-        onClick={onSelect}
-        className="mt-4 inline-flex items-center justify-center px-5 py-2 text-[11px] tracking-[0.24em] transition-all"
-        style={{
-          color: active ? midnight : goldBright,
-          background: active
-            ? `linear-gradient(135deg, ${goldBright}, ${gold})`
-            : "transparent",
-          border: `1px solid ${goldBright}`,
-          borderRadius: 999,
-          fontWeight: 600,
-        }}
-      >
-        {actionLabel}
-      </button>
+      <div className="mt-4 flex flex-wrap gap-3 items-center">
+        <button
+          type="button"
+          onClick={onSelect}
+          className="inline-flex items-center justify-center px-5 py-2 text-[11px] tracking-[0.24em] transition-all"
+          style={{
+            color: active ? midnight : goldBright,
+            background: active
+              ? `linear-gradient(135deg, ${goldBright}, ${gold})`
+              : "transparent",
+            border: `1px solid ${goldBright}`,
+            borderRadius: 999,
+            fontWeight: 600,
+          }}
+        >
+          {actionLabel}
+        </button>
+        {href && (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-5 py-2 text-[11px] tracking-[0.24em] transition-all hover:scale-[1.02]"
+            style={{
+              color: midnight,
+              background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
+              borderRadius: 999,
+              fontWeight: 700,
+              boxShadow: "0 8px 22px rgba(241,210,122,0.25)",
+            }}
+          >
+            {hrefLabel ?? "OPEN"}
+          </a>
+        )}
+      </div>
     </div>
   );
 }
