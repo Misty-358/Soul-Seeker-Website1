@@ -121,11 +121,13 @@ function DownloadPage() {
             active={choice === "beta"}
             title="Option 2 — Try the Beta Preview"
             body="Explore the preview version now and help shape Soul Seeker before launch."
-            actionLabel={choice === "beta" ? "SELECTED" : "CHOOSE"}
+            actionLabel=""
             onSelect={() => setChoice("beta")}
-            href="https://app.soulseekertarot.com"
+            hideSelectButton
+            href="https://app.soulseekertarot.com/auth"
             hrefLabel="TRY THE PREVIEW APP"
           />
+
         </div>
 
         {/* Form */}
@@ -279,6 +281,7 @@ function OptionCard({
   onSelect,
   href,
   hrefLabel,
+  hideSelectButton,
 }: {
   active: boolean;
   title: string;
@@ -287,6 +290,7 @@ function OptionCard({
   onSelect: () => void;
   href?: string;
   hrefLabel?: string;
+  hideSelectButton?: boolean;
 }) {
   return (
     <div
@@ -312,22 +316,24 @@ function OptionCard({
         {body}
       </p>
       <div className="mt-4 flex flex-wrap gap-3 items-center">
-        <button
-          type="button"
-          onClick={onSelect}
-          className="inline-flex items-center justify-center px-5 py-2 text-[11px] tracking-[0.24em] transition-all"
-          style={{
-            color: active ? midnight : goldBright,
-            background: active
-              ? `linear-gradient(135deg, ${goldBright}, ${gold})`
-              : "transparent",
-            border: `1px solid ${goldBright}`,
-            borderRadius: 999,
-            fontWeight: 600,
-          }}
-        >
-          {actionLabel}
-        </button>
+        {!hideSelectButton && (
+          <button
+            type="button"
+            onClick={onSelect}
+            className="inline-flex items-center justify-center px-5 py-2 text-[11px] tracking-[0.24em] transition-all"
+            style={{
+              color: active ? midnight : goldBright,
+              background: active
+                ? `linear-gradient(135deg, ${goldBright}, ${gold})`
+                : "transparent",
+              border: `1px solid ${goldBright}`,
+              borderRadius: 999,
+              fontWeight: 600,
+            }}
+          >
+            {actionLabel}
+          </button>
+        )}
         {href && (
           <a
             href={href}
