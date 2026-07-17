@@ -119,10 +119,12 @@ function DownloadPage() {
           />
           <OptionCard
             active={choice === "beta"}
-            title="Option 2 — Beta Testing"
-            body="Join beta testing and help shape Soul Seeker before launch."
+            title="Option 2 — Try the Beta Preview"
+            body="Explore the preview version now and help shape Soul Seeker before launch."
             actionLabel={choice === "beta" ? "SELECTED" : "CHOOSE"}
             onSelect={() => setChoice("beta")}
+            href="https://app.soulseekertarot.com"
+            hrefLabel="TRY THE PREVIEW APP"
           />
         </div>
 
