@@ -25,12 +25,14 @@ export const Route = createFileRoute("/")({
         content:
           "A luxury tarot and self-discovery platform. Personalised readings, custom decks and a journal for your journey.",
       },
-      { property: "og:title", content: "Soul Seeker" },
+      { property: "og:title", content: "Soul Seeker — Where Ancient Wisdom Meets Modern Intuition" },
       {
         property: "og:description",
-        content: "Where ancient wisdom meets modern intuition.",
+        content: "Where ancient wisdom meets modern intuition. Personalised tarot readings, custom decks and a journal for your soul's journey.",
       },
+      { property: "og:url", content: "https://glee-construct-lab.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://glee-construct-lab.lovable.app/" }],
   }),
   component: HomePage,
 });
