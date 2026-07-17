@@ -634,7 +634,7 @@ function PillarCard({
     <div className="flex items-start gap-4">
       <EmblemFrame size={92}>{icon}</EmblemFrame>
       <div>
-        <h2
+        <h3
           style={{
             fontFamily: "'Cinzel', serif",
             color: goldBright,
@@ -644,7 +644,7 @@ function PillarCard({
           }}
         >
           {title}
-        </h2>
+        </h3>
         <p
           className="mt-2 text-[13px] leading-relaxed"
           style={{

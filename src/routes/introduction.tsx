@@ -315,7 +315,7 @@ function IntroductionPage() {
             textShadow: "0 0 40px rgba(241,210,122,0.25)",
           }}
         >
-          Introduction
+          Soul Seeker — Your Introduction to Modern Tarot
         </h1>
         <Divider width={90} />
         <p

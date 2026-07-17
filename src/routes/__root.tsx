@@ -83,6 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Soul Seeker" },
       { property: "og:description", content: "Seek the soul. Reveal the path. Awaken the wisdom within." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Soul Seeker" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -90,6 +91,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Soul Seeker",
+              url: "https://glee-construct-lab.lovable.app",
+              logo: "https://glee-construct-lab.lovable.app/images/soul-seeker-icon.jpeg",
+            },
+            {
+              "@type": "WebSite",
+              name: "Soul Seeker",
+              url: "https://glee-construct-lab.lovable.app",
+            },
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
