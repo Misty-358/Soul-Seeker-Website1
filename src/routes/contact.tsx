@@ -60,7 +60,7 @@ const contactSchema = z.object({
 const PHONE_DISPLAY = "07340 544159";
 const PHONE_TEL = "+447340544159";
 const EMAIL = "admin@soulseekertarot.com";
-const SUPPORT_EMAIL = "soulseekertarot29@gmail.com";
+
 
 function GoldGlyph() {
   return (
@@ -224,19 +224,9 @@ function ContactPage() {
                     >
                       {EMAIL}
                     </a>
-                    <span
-                      style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: 15,
-                        color: mystic,
-                        fontStyle: "italic",
-                        marginLeft: 8,
-                      }}
-                    >
-                      (coming soon)
-                    </span>
                   </div>
                 </li>
+
 
                 <li>
                   <div
@@ -383,44 +373,8 @@ function ContactPage() {
               </div>
             </form>
           </div>
-          <div
-            className="mt-14 mx-auto max-w-3xl rounded-2xl p-6 backdrop-blur-md text-center"
-            style={{
-              background: "rgba(9,20,34,0.55)",
-              border: `1px solid rgba(212,175,55,0.28)`,
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: 12,
-                letterSpacing: "0.3em",
-                color: goldSoft,
-                marginBottom: 10,
-              }}
-            >
-              ADMIN EMAIL
-            </div>
-            <p
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 17,
-                lineHeight: 1.6,
-                color: ivory,
-                opacity: 0.9,
-              }}
-            >
-              This mailbox is currently being configured and is not yet monitored.
-              For support, account enquiries, or feedback, please contact{" "}
-              <a
-                href={`mailto:${SUPPORT_EMAIL}`}
-                style={{ color: goldBright, textDecoration: "underline" }}
-              >
-                {SUPPORT_EMAIL}
-              </a>
-              .
-            </p>
-          </div>
+
+
         </div>
       </main>
 
