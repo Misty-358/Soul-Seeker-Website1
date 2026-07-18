@@ -194,7 +194,7 @@ function HomePage() {
               letterSpacing: "0.02em",
             }}
           >
-            Soul Seeker Tarot is currently in beta testing.
+            Preview Temporarily Unavailable — Maintenance Mode
           </h2>
           <Divider width={70} />
           <p
@@ -207,38 +207,26 @@ function HomePage() {
               maxWidth: 640,
             }}
           >
-            You are welcome to explore the preview version and experience the app before the
-            official launch. Features, content and pricing may change during testing. We welcome
-            feedback to help improve the experience.
+            Soul Seeker is currently undergoing a major content update. We are refreshing all
+            card artwork and interpretations. Preview testing will reopen shortly. Thank you
+            for your patience.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 items-center justify-center">
-            <button
-              type="button"
-              onClick={async () => {
-                try {
-                  await supabase.auth.signOut({ scope: "global" });
-                } catch {
-                  /* ignore */
-                }
-                window.open(
-                  "https://app.soulseekertarot.com/auth",
-                  "_blank",
-                  "noopener,noreferrer",
-                );
-              }}
-              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-transform hover:scale-[1.03]"
+            <span
+              aria-disabled="true"
+              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em]"
               style={{
-                color: midnight,
-                background: `linear-gradient(135deg, #ffe9a8 0%, ${goldBright} 45%, ${gold} 100%)`,
+                color: mystic,
+                background: "rgba(9,20,34,0.6)",
+                border: `1px dashed rgba(201,167,93,0.5)`,
                 borderRadius: 999,
-                fontWeight: 700,
-                border: "1px solid rgba(255,236,180,0.7)",
-                boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
-                cursor: "pointer",
+                fontWeight: 600,
+                cursor: "not-allowed",
+                opacity: 0.75,
               }}
             >
-              TRY THE PREVIEW APP
-            </button>
+              PREVIEW APP — UNAVAILABLE
+            </span>
             <a
               href="mailto:admin@soulseekertarot.com?subject=Soul%20Seeker%20Beta%20Feedback"
               className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all"
