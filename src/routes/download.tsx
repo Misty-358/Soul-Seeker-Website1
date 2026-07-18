@@ -118,14 +118,13 @@ function DownloadPage() {
             onSelect={() => setChoice("waitlist")}
           />
           <OptionCard
-            active={choice === "beta"}
-            title="Option 2 — Try the Beta Preview"
-            body="Explore the preview version now and help shape Soul Seeker before launch."
+            active={false}
+            title="Option 2 — Beta Preview (Maintenance Mode)"
+            body="Soul Seeker is currently undergoing a major content update. We are refreshing all card artwork and interpretations. Preview testing will reopen shortly. Thank you for your patience."
             actionLabel=""
-            onSelect={() => setChoice("beta")}
+            onSelect={() => { /* disabled during maintenance */ }}
             hideSelectButton
-            href="https://app.soulseekertarot.com/auth"
-            hrefLabel="TRY THE PREVIEW APP"
+            maintenanceLabel="PREVIEW APP — UNAVAILABLE"
           />
 
         </div>
@@ -282,6 +281,7 @@ function OptionCard({
   href,
   hrefLabel,
   hideSelectButton,
+  maintenanceLabel,
 }: {
   active: boolean;
   title: string;
@@ -291,6 +291,7 @@ function OptionCard({
   href?: string;
   hrefLabel?: string;
   hideSelectButton?: boolean;
+  maintenanceLabel?: string;
 }) {
   return (
     <div
@@ -334,7 +335,24 @@ function OptionCard({
             {actionLabel}
           </button>
         )}
-        {href && (
+        {maintenanceLabel && (
+          <span
+            aria-disabled="true"
+            className="inline-flex items-center justify-center px-5 py-2 text-[11px] tracking-[0.24em]"
+            style={{
+              color: mystic,
+              background: "rgba(9,20,34,0.6)",
+              border: `1px dashed rgba(201,167,93,0.5)`,
+              borderRadius: 999,
+              fontWeight: 600,
+              cursor: "not-allowed",
+              opacity: 0.8,
+            }}
+          >
+            {maintenanceLabel}
+          </span>
+        )}
+        {href && !maintenanceLabel && (
           <button
             type="button"
             onClick={async () => {
