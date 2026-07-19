@@ -194,7 +194,7 @@ function HomePage() {
               letterSpacing: "0.02em",
             }}
           >
-            Preview Temporarily Unavailable — Maintenance Mode
+            Try the Beta Preview
           </h2>
           <Divider width={70} />
           <p
@@ -207,28 +207,34 @@ function HomePage() {
               maxWidth: 640,
             }}
           >
-            Soul Seeker is currently undergoing a major content update. We are refreshing all
-            card artwork and interpretations. Preview testing will reopen shortly. Thank you
-            for your patience.
+            Soul Seeker is currently in development and testing. Be among the first to
+            experience the app and help shape its future.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 items-center justify-center">
-            <span
-              aria-disabled="true"
-              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em]"
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  await supabase.auth.signOut({ scope: "global" });
+                } catch {
+                  /* ignore */
+                }
+                window.open("https://app.soulseekertarot.com", "_blank", "noopener,noreferrer");
+              }}
+              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all hover:scale-[1.02]"
               style={{
-                color: mystic,
-                background: "rgba(9,20,34,0.6)",
-                border: `1px dashed rgba(201,167,93,0.5)`,
+                color: midnight,
+                background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
                 borderRadius: 999,
-                fontWeight: 600,
-                cursor: "not-allowed",
-                opacity: 0.75,
+                fontWeight: 700,
+                boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
+                cursor: "pointer",
               }}
             >
-              PREVIEW APP — UNAVAILABLE
-            </span>
-            <a
-              href="mailto:admin@soulseekertarot.com?subject=Soul%20Seeker%20Beta%20Feedback"
+              TRY THE BETA PREVIEW
+            </button>
+            <Link
+              to="/download"
               className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all"
               style={{
                 color: goldBright,
@@ -238,8 +244,8 @@ function HomePage() {
                 fontWeight: 600,
               }}
             >
-              SEND FEEDBACK
-            </a>
+              JOIN WAITING LIST
+            </Link>
           </div>
         </div>
       </section>
