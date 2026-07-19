@@ -48,6 +48,18 @@ function downloadPdf(doc: LegalDoc, fileName: string) {
   writeLines(`Last Updated: ${doc.lastUpdated}`, 10);
   y += 12;
 
+  for (const block of doc.intro ?? []) {
+    if (block.type === "p") {
+      writeLines(block.text, 11);
+      y += 4;
+    } else {
+      for (const item of block.items) {
+        writeLines(`•  ${item}`, 11, false, 14);
+      }
+      y += 4;
+    }
+  }
+
   for (const section of doc.sections) {
     y += 8;
     writeLines(section.heading, 13, true);
