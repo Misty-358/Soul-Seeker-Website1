@@ -15,304 +15,379 @@ export type LegalDoc = {
 };
 
 export const termsDoc: LegalDoc = {
-  title: "Soul Seeker Terms & Conditions",
-  lastUpdated: "2 July 2026",
-  intro: [],
+  title: "Terms and Conditions",
+  lastUpdated: "19 July 2026",
+  intro: [
+    {
+      type: "p",
+      text: 'Welcome to Soul Seeker Tarot, owned and operated by Sovereign Entity Ltd ("Soul Seeker Tarot", "we", "our" or "us").',
+    },
+    {
+      type: "p",
+      text: "These Terms and Conditions govern your use of the Soul Seeker Tarot website, web application and any related services.",
+    },
+    {
+      type: "p",
+      text: "By creating an account or using Soul Seeker Tarot, you agree to these Terms.",
+    },
+  ],
   sections: [
     {
-      heading: "1. Introduction",
-      blocks: [
-        { type: "p", text: 'Welcome to Soul Seeker ("the App", "we", "our", "us").' },
-        {
-          type: "p",
-          text: "By accessing or using Soul Seeker, you agree to be bound by these Terms & Conditions. If you do not agree with these terms, please do not use the App.",
-        },
-        {
-          type: "p",
-          text: "You must be at least 18 years old, or have the permission of a parent or guardian where permitted by local law, to use the App.",
-        },
-      ],
-    },
-    {
-      heading: "2. Entertainment and Personal Reflection Disclaimer",
+      heading: "1. About Soul Seeker Tarot",
       blocks: [
         {
           type: "p",
-          text: "Soul Seeker provides tarot readings, interpretations, insights, and related content for entertainment, self-reflection, and personal development purposes only.",
-        },
-        { type: "p", text: "Tarot readings and AI-generated interpretations:" },
-        {
-          type: "ul",
-          items: [
-            "Are not professional advice.",
-            "Should not be relied upon as financial, legal, medical, psychological, or relationship advice.",
-            "Should not replace consultation with qualified professionals.",
-          ],
-        },
-        {
-          type: "p",
-          text: "You remain solely responsible for any decisions you make based on information provided through the App.",
-        },
-      ],
-    },
-    {
-      heading: "3. User Accounts",
-      blocks: [
-        { type: "p", text: "To access certain features, you may need to create an account." },
-        { type: "p", text: "You agree to:" },
-        {
-          type: "ul",
-          items: [
-            "Provide accurate information.",
-            "Keep your login credentials secure.",
-            "Notify us of any unauthorised access to your account.",
-          ],
-        },
-        { type: "p", text: "You are responsible for all activity that occurs under your account." },
-      ],
-    },
-    {
-      heading: "4. Subscription Services",
-      blocks: [
-        { type: "p", text: "Soul Seeker offers both free and paid subscription plans." },
-        {
-          type: "p",
-          text: "Subscription features, limits, pricing, and benefits are described within the App and may be updated from time to time.",
-        },
-        { type: "p", text: "By purchasing a subscription:" },
-        {
-          type: "ul",
-          items: [
-            "You authorise recurring payments through the applicable app store.",
-            "Your subscription automatically renews unless cancelled.",
-            "Cancellation must be completed through the relevant app store account.",
-          ],
-        },
-        { type: "p", text: "No refunds are provided except where required by applicable law." },
-      ],
-    },
-    {
-      heading: "5. AI-Generated Content",
-      blocks: [
-        { type: "p", text: "Soul Seeker may generate:" },
-        {
-          type: "ul",
-          items: [
-            "Tarot interpretations",
-            "Reading summaries",
-            "Personal insights",
-            "Custom tarot card artwork",
-            "Custom tarot deck content",
-          ],
-        },
-        {
-          type: "p",
-          text: "AI-generated content may occasionally contain inaccuracies, omissions, or unexpected results.",
-        },
-        {
-          type: "p",
-          text: "We do not guarantee the accuracy, completeness, or suitability of AI-generated content.",
-        },
-      ],
-    },
-    {
-      heading: "6. Custom Tarot Deck Creation",
-      blocks: [
-        {
-          type: "p",
-          text: "Users may create custom tarot cards and decks using text prompts, uploaded images, or other content.",
-        },
-        {
-          type: "p",
-          text: "You agree that you will not upload, create, request, or distribute content that:",
+          text: "Soul Seeker Tarot is an AI-assisted Tarot platform designed to encourage:",
         },
         {
           type: "ul",
           items: [
-            "Is unlawful.",
-            "Is defamatory.",
-            "Is abusive or harassing.",
-            "Contains hate speech.",
-            "Contains sexually explicit material.",
-            "Promotes violence or illegal activities.",
-            "Infringes the intellectual property rights of others.",
+            "Personal reflection",
+            "Self-awareness",
+            "Spiritual exploration",
+            "Creativity",
+            "Entertainment",
           ],
         },
-        { type: "p", text: "We reserve the right to remove content that violates these terms." },
+        {
+          type: "p",
+          text: "The application provides AI-generated interpretations of Tarot cards together with optional custom Tarot deck creation and related services.",
+        },
       ],
     },
     {
-      heading: "7. User Content",
+      heading: "2. Eligibility",
       blocks: [
-        { type: "p", text: "You retain ownership of content that you create within Soul Seeker." },
         {
           type: "p",
-          text: "By uploading or creating content within the App, you grant Soul Seeker a non-exclusive licence to:",
+          text: "You must meet the minimum age shown on the platform from which you access Soul Seeker Tarot.",
         },
+        {
+          type: "p",
+          text: "If you are under the age at which you can legally enter into contracts in your country, you should only use Soul Seeker Tarot with the involvement or permission of a parent or legal guardian where required.",
+        },
+      ],
+    },
+    {
+      heading: "3. Creating an Account",
+      blocks: [
+        { type: "p", text: "You are responsible for:" },
         {
           type: "ul",
           items: [
-            "Store your content.",
-            "Process your content.",
-            "Display your content within the App.",
-            "Provide requested services.",
+            "Keeping your login details secure.",
+            "Providing accurate information.",
+            "Maintaining the confidentiality of your account.",
+            "All activity carried out using your account.",
           ],
         },
         {
           type: "p",
-          text: "We do not claim ownership of your custom tarot decks or uploaded content.",
+          text: "You must notify us immediately if you believe your account has been accessed without permission.",
         },
       ],
     },
     {
-      heading: "8. Marketplace and Printed Products",
-      blocks: [
-        {
-          type: "p",
-          text: "Where available, users may purchase printed tarot cards, decks, or other products.",
-        },
-        { type: "p", text: "Product images shown within the App are illustrative." },
-        { type: "p", text: "Minor differences in colour, printing, or material may occur." },
-        {
-          type: "p",
-          text: "Custom products may not be refundable unless defective or required by consumer law.",
-        },
-      ],
-    },
-    {
-      heading: "9. Acceptable Use",
+      heading: "4. Acceptable Use",
       blocks: [
         { type: "p", text: "You agree not to:" },
         {
           type: "ul",
           items: [
-            "Attempt to disrupt the App.",
-            "Access accounts belonging to others.",
-            "Reverse engineer the App.",
-            "Use automated systems to abuse services.",
-            "Circumvent subscription limits.",
+            "Use the service unlawfully.",
+            "Attempt to access another user's account.",
+            "Reverse engineer or interfere with the application.",
             "Upload malicious software.",
+            "Abuse, harass or threaten other users or our staff.",
+            "Use automated tools to misuse the platform.",
+            "Circumvent subscription or payment systems.",
           ],
         },
-        {
-          type: "p",
-          text: "Violation of these terms may result in suspension or termination of your account.",
-        },
+        { type: "p", text: "We may suspend or terminate accounts that breach these Terms." },
       ],
     },
     {
-      heading: "10. Intellectual Property",
+      heading: "5. Artificial Intelligence",
       blocks: [
         {
           type: "p",
-          text: "The Soul Seeker name, branding, logos, designs, text, software, and original content remain the property of Soul Seeker and its licensors.",
+          text: "Soul Seeker Tarot uses Artificial Intelligence to generate personalised Tarot interpretations.",
         },
+        { type: "p", text: "The AI is intended to provide:" },
         {
-          type: "p",
-          text: "You may not reproduce, copy, sell, or distribute Soul Seeker content without permission.",
+          type: "ul",
+          items: ["Guidance", "Reflection", "Personal insight", "Entertainment"],
         },
-      ],
-    },
-    {
-      heading: "11. Availability of Service",
-      blocks: [
-        {
-          type: "p",
-          text: "We aim to provide uninterrupted access but do not guarantee that the App will always be available.",
-        },
-        { type: "p", text: "We may:" },
+        { type: "p", text: "AI-generated readings:" },
         {
           type: "ul",
           items: [
-            "Update the App.",
-            "Modify features.",
-            "Remove features.",
-            "Suspend services for maintenance.",
+            "are not facts;",
+            "are not guaranteed to be accurate;",
+            "do not predict the future with certainty;",
+            "should not replace your own judgement;",
+            "are not professional advice.",
+          ],
+        },
+        { type: "p", text: "Soul Seeker Tarot should never be relied upon for:" },
+        {
+          type: "ul",
+          items: [
+            "Medical advice",
+            "Mental health treatment",
+            "Financial advice",
+            "Legal advice",
+            "Emergency situations",
+          ],
+        },
+        {
+          type: "p",
+          text: "Important life decisions should always be made using your own judgement and, where appropriate, professional advice.",
+        },
+      ],
+    },
+    {
+      heading: "6. Responsible AI",
+      blocks: [
+        { type: "p", text: "Our AI has been designed to:" },
+        {
+          type: "ul",
+          items: [
+            "Encourage free will.",
+            "Promote self-awareness.",
+            "Avoid certainty about future events.",
+            "Provide balanced guidance.",
+            "Respect individual beliefs.",
+          ],
+        },
+        {
+          type: "p",
+          text: "The AI does not make decisions on your behalf and does not produce legal or similarly significant automated decisions.",
+        },
+      ],
+    },
+    {
+      heading: "7. Subscriptions",
+      blocks: [
+        { type: "p", text: "Soul Seeker Tarot offers optional subscription plans." },
+        { type: "p", text: "Subscription features and prices are displayed before purchase." },
+        {
+          type: "p",
+          text: "Subscriptions renew automatically unless cancelled through the platform used to purchase them.",
+        },
+        { type: "p", text: "Subscription management is handled by:" },
+        {
+          type: "ul",
+          items: [
+            "Google Play",
+            "Apple App Store (where applicable)",
+            "Stripe",
+            "Other authorised payment providers",
           ],
         },
       ],
     },
     {
-      heading: "12. Limitation of Liability",
+      heading: "8. Purchases",
+      blocks: [
+        { type: "p", text: "Optional purchases may include:" },
+        {
+          type: "ul",
+          items: [
+            "Reading credits",
+            "Deck credits",
+            "Printed Tarot decks",
+            "Future digital products",
+          ],
+        },
+        { type: "p", text: "Prices are shown before purchase." },
+      ],
+    },
+    {
+      heading: "9. Payments",
+      blocks: [
+        {
+          type: "p",
+          text: "Payments are securely processed by trusted payment providers including Stripe.",
+        },
+        { type: "p", text: "We never store your payment card details." },
+      ],
+    },
+    {
+      heading: "10. Refunds",
+      blocks: [
+        { type: "p", text: "Refunds are handled in accordance with:" },
+        {
+          type: "ul",
+          items: [
+            "UK consumer law",
+            "Google Play policies",
+            "Apple App Store policies",
+            "Stripe payment policies",
+          ],
+        },
+        {
+          type: "p",
+          text: "Digital content that has already been accessed may not be eligible for a refund where permitted by law.",
+        },
+      ],
+    },
+    {
+      heading: "11. Custom Tarot Decks",
+      blocks: [
+        {
+          type: "p",
+          text: "Users may create personalised Tarot decks using the Soul Seeker Tarot platform.",
+        },
+        { type: "p", text: "You confirm that any content you upload:" },
+        {
+          type: "ul",
+          items: ["belongs to you; or", "you have permission to use."],
+        },
+        { type: "p", text: "You remain responsible for all uploaded content." },
+        {
+          type: "p",
+          text: "We reserve the right to refuse to print or process material that is unlawful, abusive or infringes another person's intellectual property rights.",
+        },
+      ],
+    },
+    {
+      heading: "12. Intellectual Property",
+      blocks: [
+        {
+          type: "p",
+          text: "The Soul Seeker Tarot application, artwork, branding, software, AI prompts, written content and original materials remain the intellectual property of Sovereign Entity Ltd unless stated otherwise.",
+        },
+        {
+          type: "p",
+          text: "You may not copy, reproduce or distribute our content without permission.",
+        },
+        {
+          type: "p",
+          text: "You retain ownership of content that you personally create or upload, subject to any licences necessary for us to provide the service.",
+        },
+      ],
+    },
+    {
+      heading: "13. Availability",
+      blocks: [
+        { type: "p", text: "We aim to keep Soul Seeker Tarot available at all times." },
+        { type: "p", text: "However, we cannot guarantee uninterrupted availability." },
+        { type: "p", text: "We may suspend access temporarily for:" },
+        {
+          type: "ul",
+          items: ["Maintenance", "Security updates", "Technical issues", "Improvements"],
+        },
+      ],
+    },
+    {
+      heading: "14. Limitation of Liability",
       blocks: [
         { type: "p", text: "To the fullest extent permitted by law:" },
-        { type: "p", text: "Soul Seeker shall not be liable for:" },
+        { type: "p", text: 'Soul Seeker Tarot is provided on an "as available" basis.' },
+        { type: "p", text: "We are not liable for decisions made based upon AI-generated readings." },
+        {
+          type: "p",
+          text: "Nothing in these Terms excludes liability that cannot legally be excluded under UK law.",
+        },
+      ],
+    },
+    {
+      heading: "15. Privacy",
+      blocks: [
+        { type: "p", text: "Your use of Soul Seeker Tarot is also governed by our:" },
+        {
+          type: "ul",
+          items: ["Privacy Policy", "Cookie Policy"],
+        },
+        {
+          type: "p",
+          text: "These documents explain how we collect, use and protect your personal information.",
+        },
+        {
+          type: "p",
+          text: "Our Cookie Policy is available at https://www.soulseekertarot.com/cookies.",
+        },
+      ],
+    },
+    {
+      heading: "16. Account Suspension and Termination",
+      blocks: [
+        { type: "p", text: "We may suspend or terminate accounts where:" },
         {
           type: "ul",
           items: [
-            "Loss of profits.",
-            "Loss of data.",
-            "Business interruption.",
-            "Personal decisions made based on readings or interpretations.",
-            "Indirect or consequential damages.",
+            "These Terms are breached.",
+            "Fraud is suspected.",
+            "Illegal activity occurs.",
+            "The security of the platform is threatened.",
           ],
         },
-        { type: "p", text: "Your use of the App is at your own risk." },
+        {
+          type: "p",
+          text: "You may delete your account at any time using the account settings within the application.",
+        },
       ],
     },
     {
-      heading: "13. Termination",
+      heading: "17. Changes to the Service",
       blocks: [
-        { type: "p", text: "We may suspend or terminate accounts that:" },
+        {
+          type: "p",
+          text: "We may improve, update or modify Soul Seeker Tarot from time to time.",
+        },
+        {
+          type: "p",
+          text: "Where significant changes affect these Terms, we will publish an updated version.",
+        },
+      ],
+    },
+    {
+      heading: "18. Changes to these Terms",
+      blocks: [
+        { type: "p", text: "These Terms may be updated periodically." },
+        { type: "p", text: "The latest version will always be available on our website." },
+        {
+          type: "p",
+          text: "Your continued use of Soul Seeker Tarot after changes take effect constitutes acceptance of the updated Terms.",
+        },
+      ],
+    },
+    {
+      heading: "19. Governing Law",
+      blocks: [
+        { type: "p", text: "These Terms are governed by the laws of England and Wales." },
+        {
+          type: "p",
+          text: "Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales unless applicable consumer law provides otherwise.",
+        },
+      ],
+    },
+    {
+      heading: "20. Spiritual Guidance Disclaimer",
+      blocks: [
+        { type: "p", text: "We wish to make it clear that:" },
         {
           type: "ul",
           items: [
-            "Breach these Terms.",
-            "Abuse the platform.",
-            "Create prohibited content.",
-            "Engage in unlawful activity.",
+            "Tarot is intended as a tool for reflection.",
+            "Readings are open to personal interpretation.",
+            "The app encourages self-awareness rather than certainty.",
+            "Users remain responsible for their own choices and actions.",
           ],
         },
-        { type: "p", text: "You may stop using the App at any time." },
       ],
     },
     {
-      heading: "14. Privacy",
+      heading: "21. Contact Us",
       blocks: [
         {
           type: "p",
-          text: "Your use of Soul Seeker is also governed by our Privacy Policy, which explains how personal information is collected, stored, and processed.",
+          text: "If you have any questions regarding these Terms, please contact:",
         },
-        {
-          type: "p",
-          text: "Our use of cookies and similar technologies is described in our Cookie Policy at https://www.soulseekertarot.com/cookies.",
-        },
-      ],
-    },
-    {
-      heading: "15. Changes to These Terms",
-      blocks: [
-        { type: "p", text: "We may update these Terms from time to time." },
-        {
-          type: "p",
-          text: "Where material changes occur, we will notify users through the App or other appropriate means.",
-        },
-        {
-          type: "p",
-          text: "Continued use of Soul Seeker after changes take effect constitutes acceptance of the updated Terms.",
-        },
-      ],
-    },
-    {
-      heading: "16. Governing Law",
-      blocks: [
-        {
-          type: "p",
-          text: "These Terms shall be governed by and interpreted in accordance with the laws of England and Wales.",
-        },
-        {
-          type: "p",
-          text: "Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.",
-        },
-      ],
-    },
-    {
-      heading: "17. Contact",
-      blocks: [
-        { type: "p", text: "For questions regarding these Terms & Conditions, please contact:" },
-        { type: "p", text: "Soul Seeker Support" },
-        { type: "p", text: "Email: soulseekertarot29@gmail.com" },
-        { type: "p", text: "Website: soulseekertarot.com" },
+        { type: "p", text: "Sovereign Entity Ltd" },
+        { type: "p", text: "Website: https://www.soulseekertarot.com" },
+        { type: "p", text: "Email: admin@soulseekertarot.com" },
       ],
     },
   ],
