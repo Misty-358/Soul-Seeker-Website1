@@ -362,7 +362,7 @@ const footerLinks: FooterLink[] = [
   { label: "FEATURES", to: "/features" },
   { label: "TERMS & CONDITIONS", to: "/terms" },
   { label: "PRIVACY POLICY", to: "/privacy" },
-  { label: "COOKIES POLICY", href: "#" },
+  { label: "COOKIE POLICY", to: "/cookies" },
   { label: "CONTACT US", to: "/contact" },
 ];
 

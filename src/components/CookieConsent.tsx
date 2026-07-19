@@ -102,11 +102,12 @@ export function CookieConsent() {
           <p style={{ margin: 0 }}>
             We use essential cookies to run the site and, with your permission, Google Analytics
             to understand how visitors use Soul Seeker. Analytics cookies are only set if you
-            accept.{" "}
-            <a
-              href="/privacy"
-              style={{ color: "#e9c349", textDecoration: "underline" }}
-            >
+            accept. Read our{" "}
+            <a href="/cookies" style={{ color: "#e9c349", textDecoration: "underline" }}>
+              Cookie Policy
+            </a>{" "}
+            and{" "}
+            <a href="/privacy" style={{ color: "#e9c349", textDecoration: "underline" }}>
               Privacy Policy
             </a>
             .

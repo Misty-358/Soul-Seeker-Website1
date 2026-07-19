@@ -48,6 +48,18 @@ function downloadPdf(doc: LegalDoc, fileName: string) {
   writeLines(`Last Updated: ${doc.lastUpdated}`, 10);
   y += 12;
 
+  for (const block of doc.intro ?? []) {
+    if (block.type === "p") {
+      writeLines(block.text, 11);
+      y += 4;
+    } else {
+      for (const item of block.items) {
+        writeLines(`•  ${item}`, 11, false, 14);
+      }
+      y += 4;
+    }
+  }
+
   for (const section of doc.sections) {
     y += 8;
     writeLines(section.heading, 13, true);
@@ -145,6 +157,32 @@ export function LegalPage({
             backdropFilter: "blur(6px)",
           }}
         >
+          {doc.intro && doc.intro.length > 0 && (
+            <div className="mb-8">
+              {doc.intro.map((b, i) =>
+                b.type === "p" ? (
+                  <p
+                    key={i}
+                    className="mb-3"
+                    style={{ color: ivory, fontSize: 14.5, lineHeight: 1.8, opacity: 0.9 }}
+                  >
+                    {b.text}
+                  </p>
+                ) : (
+                  <ul key={i} className="mb-3 pl-5 list-disc" style={{ color: ivory }}>
+                    {b.items.map((it, j) => (
+                      <li
+                        key={j}
+                        style={{ fontSize: 14.5, lineHeight: 1.8, opacity: 0.9, marginBottom: 2 }}
+                      >
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                ),
+              )}
+            </div>
+          )}
           {doc.sections.map((s) => (
             <section key={s.heading} className="mb-8 last:mb-0">
               <h2
