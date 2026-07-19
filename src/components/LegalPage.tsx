@@ -157,6 +157,32 @@ export function LegalPage({
             backdropFilter: "blur(6px)",
           }}
         >
+          {doc.intro && doc.intro.length > 0 && (
+            <div className="mb-8">
+              {doc.intro.map((b, i) =>
+                b.type === "p" ? (
+                  <p
+                    key={i}
+                    className="mb-3"
+                    style={{ color: ivory, fontSize: 14.5, lineHeight: 1.8, opacity: 0.9 }}
+                  >
+                    {b.text}
+                  </p>
+                ) : (
+                  <ul key={i} className="mb-3 pl-5 list-disc" style={{ color: ivory }}>
+                    {b.items.map((it, j) => (
+                      <li
+                        key={j}
+                        style={{ fontSize: 14.5, lineHeight: 1.8, opacity: 0.9, marginBottom: 2 }}
+                      >
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                ),
+              )}
+            </div>
+          )}
           {doc.sections.map((s) => (
             <section key={s.heading} className="mb-8 last:mb-0">
               <h2
