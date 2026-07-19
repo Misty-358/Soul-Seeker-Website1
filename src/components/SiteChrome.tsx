@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { toast } from "sonner";
+import { openCookieConsent } from "@/components/CookieConsent";
 const logo = "/images/soul-seeker-icon.jpeg";
 
 // Brand tokens
@@ -474,6 +475,24 @@ export function SiteFooter() {
           );
         })}
       </ul>
+      <div className="flex justify-center mb-4">
+        <button
+          type="button"
+          onClick={() => openCookieConsent()}
+          className="text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.25em] transition-colors hover:text-white"
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+            color: ivory,
+            opacity: 0.75,
+            fontFamily: "inherit",
+          }}
+        >
+          MANAGE COOKIE PREFERENCES
+        </button>
+      </div>
       <div className="flex justify-center gap-6 mb-4" style={{ color: goldBright }}>
         {(["instagram", "facebook", "twitter", "mail"] as const).map((n) => (
           <button
