@@ -273,6 +273,10 @@ export const termsDoc: LegalDoc = {
           type: "p",
           text: "Your use of Soul Seeker is also governed by our Privacy Policy, which explains how personal information is collected, stored, and processed.",
         },
+        {
+          type: "p",
+          text: "Our use of cookies and similar technologies is described in our Cookie Policy at https://www.soulseekertarot.com/cookies.",
+        },
       ],
     },
     {
