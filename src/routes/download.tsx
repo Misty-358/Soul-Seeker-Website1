@@ -118,13 +118,13 @@ function DownloadPage() {
             onSelect={() => setChoice("waitlist")}
           />
           <OptionCard
-            active={false}
-            title="Option 2 — Beta Preview (Maintenance Mode)"
-            body="Soul Seeker is currently undergoing a major content update. We are refreshing all card artwork and interpretations. Preview testing will reopen shortly. Thank you for your patience."
-            actionLabel=""
-            onSelect={() => { /* disabled during maintenance */ }}
-            hideSelectButton
-            maintenanceLabel="PREVIEW APP — UNAVAILABLE"
+            active={choice === "beta"}
+            title="Option 2 — Try the Beta Preview"
+            body="Experience the app early and help shape its future."
+            actionLabel={choice === "beta" ? "SELECTED" : "CHOOSE"}
+            onSelect={() => setChoice("beta")}
+            href="https://app.soulseekertarot.com"
+            hrefLabel="TRY PREVIEW APP"
           />
 
         </div>
