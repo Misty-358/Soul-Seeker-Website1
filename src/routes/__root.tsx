@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { CookieConsent } from "@/components/CookieConsent";
 
 function NotFoundComponent() {
   return (
@@ -94,6 +95,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        children:
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;" +
+          "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});" +
+          "try{var s=localStorage.getItem('ss_cookie_consent_v1');if(s){var c=JSON.parse(s);gtag('consent','update',{analytics_storage:c.analytics?'granted':'denied'});}}catch(e){}" +
+          "gtag('js', new Date());gtag('config','G-J32XW71B07',{anonymize_ip:true});",
+      },
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-J32XW71B07",
+        async: true,
+      },
+      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
@@ -168,6 +180,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }
