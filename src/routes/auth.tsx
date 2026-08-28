@@ -27,13 +27,22 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [mode, setMode] = React.useState<"signin" | "signup">("signin");
+  const [mode, setMode] = React.useState<"signin" | "signup" | "forgot" | "reset">("signin");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [busy, setBusy] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [notice, setNotice] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    // A password-recovery link lands here with tokens in the URL hash.
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    const isRecovery = hash.includes("type=recovery");
+    if (isRecovery) {
+      setMode("reset");
+      setNotice("Choose a new password for your developer account.");
+      return;
+    }
     supabase.auth.getSession().then(({ data }) => {
       if (data.session) navigate({ to: "/admin" });
     });
@@ -42,8 +51,24 @@ function AuthPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setNotice(null);
     setBusy(true);
     try {
+      if (mode === "forgot") {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/auth`,
+        });
+        if (error) throw error;
+        setNotice("Password reset link sent. Check your inbox (and spam folder).");
+        return;
+      }
+      if (mode === "reset") {
+        const { error } = await supabase.auth.updateUser({ password });
+        if (error) throw error;
+        setNotice("Password updated. Taking you to the developer area…");
+        navigate({ to: "/admin" });
+        return;
+      }
       if (mode === "signup") {
         const { error } = await supabase.auth.signUp({
           email,
@@ -62,6 +87,7 @@ function AuthPage() {
       setBusy(false);
     }
   };
+
 
   return (
     <div
