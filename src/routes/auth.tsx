@@ -82,7 +82,15 @@ function AuthPage() {
       }
       navigate({ to: "/admin" });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      const raw = err instanceof Error ? err.message : "Something went wrong";
+      const isNetwork =
+        /NetworkError|Failed to fetch|Load failed|network request failed/i.test(raw);
+      setError(
+        isNetwork
+          ? "Couldn't reach the login service from this browser. This is usually an ad-blocker, privacy extension, VPN or work/school network blocking the request — try a private window with extensions disabled, or another network."
+          : raw,
+      );
+
     } finally {
       setBusy(false);
     }
