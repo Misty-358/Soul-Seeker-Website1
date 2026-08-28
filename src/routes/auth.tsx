@@ -27,13 +27,22 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [mode, setMode] = React.useState<"signin" | "signup">("signin");
+  const [mode, setMode] = React.useState<"signin" | "signup" | "forgot" | "reset">("signin");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [busy, setBusy] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [notice, setNotice] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    // A password-recovery link lands here with tokens in the URL hash.
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    const isRecovery = hash.includes("type=recovery");
+    if (isRecovery) {
+      setMode("reset");
+      setNotice("Choose a new password for your developer account.");
+      return;
+    }
     supabase.auth.getSession().then(({ data }) => {
       if (data.session) navigate({ to: "/admin" });
     });
@@ -42,8 +51,24 @@ function AuthPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setNotice(null);
     setBusy(true);
     try {
+      if (mode === "forgot") {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/auth`,
+        });
+        if (error) throw error;
+        setNotice("Password reset link sent. Check your inbox (and spam folder).");
+        return;
+      }
+      if (mode === "reset") {
+        const { error } = await supabase.auth.updateUser({ password });
+        if (error) throw error;
+        setNotice("Password updated. Taking you to the developer area…");
+        navigate({ to: "/admin" });
+        return;
+      }
       if (mode === "signup") {
         const { error } = await supabase.auth.signUp({
           email,
@@ -62,6 +87,7 @@ function AuthPage() {
       setBusy(false);
     }
   };
+
 
   return (
     <div
@@ -88,7 +114,14 @@ function AuthPage() {
             letterSpacing: "0.03em",
           }}
         >
-          {mode === "signup" ? "Create Developer Account" : "Developer Login"}
+          {mode === "signup"
+            ? "Create Developer Account"
+            : mode === "forgot"
+              ? "Reset Your Password"
+              : mode === "reset"
+                ? "Set a New Password"
+                : "Developer Login"}
+
         </h1>
         <Divider width={80} />
 
@@ -103,36 +136,63 @@ function AuthPage() {
             backdropFilter: "blur(6px)",
           }}
         >
-          <label className="block">
-            <span style={labelStyle}>Email</span>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={inputStyle}
-              placeholder="you@example.com"
-              autoComplete="email"
-            />
-          </label>
+          {mode !== "reset" && (
+            <label className="block">
+              <span style={labelStyle}>Email</span>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={inputStyle}
+                placeholder="you@example.com"
+                autoComplete="email"
+              />
+            </label>
+          )}
 
-          <label className="block mt-5">
-            <span style={labelStyle}>Password</span>
-            <input
-              type="password"
-              required
-              minLength={8}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={inputStyle}
-              placeholder="At least 8 characters"
-              autoComplete={mode === "signup" ? "new-password" : "current-password"}
-            />
-          </label>
+          {mode !== "forgot" && (
+            <label className={mode === "reset" ? "block" : "block mt-5"}>
+              <span style={labelStyle}>{mode === "reset" ? "New Password" : "Password"}</span>
+              <input
+                type="password"
+                required
+                minLength={8}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                style={inputStyle}
+                placeholder="At least 8 characters"
+                autoComplete={mode === "signin" ? "current-password" : "new-password"}
+              />
+            </label>
+          )}
+
+          {mode === "signin" && (
+            <p className="mt-3 text-right">
+              <button
+                type="button"
+                onClick={() => {
+                  setMode("forgot");
+                  setError(null);
+                  setNotice(null);
+                }}
+                className="text-xs"
+                style={{ color: goldBright, textDecoration: "underline" }}
+              >
+                Forgot your password?
+              </button>
+            </p>
+          )}
 
           {error && (
             <p className="mt-4 text-sm" style={{ color: "#ff9c9c" }}>
               {error}
+            </p>
+          )}
+
+          {notice && (
+            <p className="mt-4 text-sm" style={{ color: goldBright }}>
+              {notice}
             </p>
           )}
 
@@ -148,22 +208,34 @@ function AuthPage() {
               boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
             }}
           >
-            {busy ? "PLEASE WAIT…" : mode === "signup" ? "CREATE ACCOUNT" : "SIGN IN"}
+            {busy
+              ? "PLEASE WAIT…"
+              : mode === "signup"
+                ? "CREATE ACCOUNT"
+                : mode === "forgot"
+                  ? "SEND RESET LINK"
+                  : mode === "reset"
+                    ? "UPDATE PASSWORD"
+                    : "SIGN IN"}
           </button>
 
-          <p className="mt-5 text-center text-sm" style={{ color: mystic }}>
-            {mode === "signup" ? "Already have an account? " : "Need to create your developer account? "}
-            <button
-              type="button"
-              onClick={() => {
-                setMode(mode === "signup" ? "signin" : "signup");
-                setError(null);
-              }}
-              style={{ color: goldBright, textDecoration: "underline" }}
-            >
-              {mode === "signup" ? "Sign in" : "Sign up"}
-            </button>
-          </p>
+          {mode !== "reset" && (
+            <p className="mt-5 text-center text-sm" style={{ color: mystic }}>
+              {mode === "signin" ? "Need to create your developer account? " : "Back to "}
+              <button
+                type="button"
+                onClick={() => {
+                  setMode(mode === "signin" ? "signup" : "signin");
+                  setError(null);
+                  setNotice(null);
+                }}
+                style={{ color: goldBright, textDecoration: "underline" }}
+              >
+                {mode === "signin" ? "Sign up" : "Sign in"}
+              </button>
+            </p>
+          )}
+
           <p className="mt-3 text-center text-xs" style={{ color: mystic, opacity: 0.75 }}>
             Only the account with email <span style={{ color: goldBright }}>soulseekertarot29@gmail.com</span>{" "}
             will have developer access.
