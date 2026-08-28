@@ -114,7 +114,14 @@ function AuthPage() {
             letterSpacing: "0.03em",
           }}
         >
-          {mode === "signup" ? "Create Developer Account" : "Developer Login"}
+          {mode === "signup"
+            ? "Create Developer Account"
+            : mode === "forgot"
+              ? "Reset Your Password"
+              : mode === "reset"
+                ? "Set a New Password"
+                : "Developer Login"}
+
         </h1>
         <Divider width={80} />
 
