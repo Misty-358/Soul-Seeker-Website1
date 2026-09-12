@@ -174,6 +174,17 @@ function BetaBanner() {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  // Password-recovery links can land on any page (the email service redirects
+  // to the site URL with tokens in the hash). Forward them to the login page,
+  // keeping the hash so the reset form can pick the session up.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash;
+    if (hash.includes("type=recovery") && window.location.pathname !== "/auth") {
+      window.location.replace(`/auth${hash}`);
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <BetaBanner />
