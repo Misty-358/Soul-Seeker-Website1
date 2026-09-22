@@ -18,13 +18,13 @@ import {
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Soul Seeker" },
+      { title: "About Soul Seeker Tarot | Modern Tarot Guidance" },
       {
         name: "description",
         content:
-          "Soul Seeker was born from a deep love of tarot and intuition. Discover our mission, vision, values and the artistry of our custom cards.",
+          "Discover the story and values behind Soul Seeker Tarot, a modern space for reflective online readings, traditional card meanings and personal insight.",
       },
-      { property: "og:title", content: "About Soul Seeker" },
+      { property: "og:title", content: "About Soul Seeker Tarot | Modern Tarot Guidance" },
       {
         property: "og:description",
         content: "Ancient wisdom, modern intuition and hand-crafted custom decks.",
@@ -706,7 +706,7 @@ function AboutPage() {
                 textShadow: "0 0 30px rgba(241,210,122,0.35)",
               }}
             >
-              About
+              About Soul Seeker Tarot
             </h1>
             <Divider width={90} />
             <p
@@ -718,12 +718,10 @@ function AboutPage() {
                 fontStyle: "italic",
               }}
             >
-              Soul Seeker was born from a deep love of tarot, intuition, and
-              the transformative power of self-awareness. Our mission is to
-              make ancient wisdom accessible by blending traditional tarot
-              knowledge with modern technology, creating a space where seekers
-              can explore self-reflection, gain meaningful insight, and nurture
-              their personal and spiritual journey.
+              Soul Seeker Tarot was born from a deep love of tarot, intuition and
+              the transformative power of self-awareness. Our mission is to make
+              traditional tarot card meanings accessible through thoughtful online
+              readings and modern tools for reflection.
             </p>
           </div>
 

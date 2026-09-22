@@ -26,13 +26,13 @@ import {
 export const Route = createFileRoute("/introduction")({
   head: () => ({
     meta: [
-      { title: "Introduction — Soul Seeker" },
+      { title: "How Online Tarot Readings Work | Soul Seeker Tarot" },
       {
         name: "description",
         content:
-          "Welcome to Soul Seeker — your sacred space for insight, creativity and transformation.",
+          "Learn how Soul Seeker Tarot combines card meanings, reflective questions and personalised insights across daily, one-card and three-card readings.",
       },
-      { property: "og:title", content: "Introduction — Soul Seeker" },
+      { property: "og:title", content: "How Online Tarot Readings Work | Soul Seeker Tarot" },
       {
         property: "og:description",
         content: "A sacred space for insight, creativity and transformation.",
@@ -315,7 +315,7 @@ function IntroductionPage() {
             textShadow: "0 0 40px rgba(241,210,122,0.25)",
           }}
         >
-          Soul Seeker — Your Introduction to Modern Tarot
+          How Online Tarot Readings Work with Soul Seeker
         </h1>
         <Divider width={90} />
         <p
@@ -328,9 +328,9 @@ function IntroductionPage() {
             maxWidth: 720,
           }}
         >
-          Welcome to Soul Seeker,
+          Soul Seeker offers a modern way to explore traditional tarot card meanings
           <br />
-          your sacred space for insight, creativity and transformation.
+          through daily readings, one-card guidance and three-card tarot spreads.
         </p>
       </section>
 
@@ -363,7 +363,7 @@ function IntroductionPage() {
                     letterSpacing: "0.02em",
                   }}
                 >
-                  Personalised Insights
+                  Personalised Tarot Insights
                   <br />
                   Tailored to You
                 </h2>

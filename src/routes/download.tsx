@@ -20,13 +20,13 @@ type Choice = "waitlist" | "beta";
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
-      { title: "Download Soul Seeker App — Coming Soon" },
+      { title: "Download Soul Seeker Tarot App | Coming Soon" },
       {
         name: "description",
         content:
-          "Soul Seeker is currently in development. Join the waiting list or sign up for beta testing to be first to explore the app.",
+          "Join the Soul Seeker Tarot waiting list or beta to explore daily, one-card and three-card tarot readings for relationships, career and reflection.",
       },
-      { property: "og:title", content: "Download Soul Seeker — Coming Soon" },
+      { property: "og:title", content: "Download Soul Seeker Tarot App | Coming Soon" },
       {
         property: "og:description",
         content:
@@ -90,7 +90,7 @@ function DownloadPage() {
             textShadow: "0 0 40px rgba(241,210,122,0.25)",
           }}
         >
-          Download Soul Seeker App
+          Download the Soul Seeker Tarot App
         </h1>
         <Divider width={90} />
         <p
@@ -103,9 +103,9 @@ function DownloadPage() {
             maxWidth: 640,
           }}
         >
-          Soul Seeker is currently in development and testing.
+          Soul Seeker Tarot is currently in development and testing.
           <br />
-          Choose how you would like to be part of the journey.
+          Join the journey to explore daily readings, one-card guidance and three-card spreads for relationship, career and personal reflection.
         </p>
 
         {/* Options */}
