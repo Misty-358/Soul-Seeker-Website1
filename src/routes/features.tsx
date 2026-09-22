@@ -21,13 +21,13 @@ const iconGold = goldBright;
 export const Route = createFileRoute("/features")({
   head: () => ({
     meta: [
-      { title: "Features — Soul Seeker" },
+      { title: "Tarot Reading Features & Spreads | Soul Seeker Tarot" },
       {
         name: "description",
         content:
-          "Every tool for your journey — intuitive readings, custom decks, journaling and personalised tarot insights.",
+          "Discover Soul Seeker Tarot features, from daily one-card readings and three-card spreads to relationship, career and personalised tarot guidance.",
       },
-      { property: "og:title", content: "Features — Soul Seeker" },
+      { property: "og:title", content: "Tarot Reading Features & Spreads | Soul Seeker Tarot" },
       {
         property: "og:description",
         content: "Ancient tarot wisdom meets modern technology.",
@@ -78,8 +78,8 @@ function Sparkle({ cx, cy, r = 1, id }: { cx: number; cy: number; r?: number; id
 
 const features = [
   {
-    title: "INTUITIVE READINGS",
-    body: "Choose from a variety of spreads. Get in-depth, personalised insights.",
+    title: "ONLINE TAROT READINGS",
+    body: "Choose a daily one-card reading or a three-card tarot spread for relationship, career or general reflection, with personalised insights to support reflection.",
     icon: (
       <>
         <GoldDefs id="i1" />
@@ -354,7 +354,7 @@ function FeaturesPage() {
             textShadow: "0 0 40px rgba(241,210,122,0.2)",
           }}
         >
-          Every Tool for Your Journey
+          Online Tarot Reading Features for Your Journey
         </h1>
         <Divider width={90} />
         <p
@@ -367,9 +367,9 @@ function FeaturesPage() {
             maxWidth: 720,
           }}
         >
-          Soul Seeker combines ancient tarot wisdom with modern technology
+          Soul Seeker combines traditional tarot card meanings with modern tools
           <br />
-          to support your path of discovery, insight and transformation.
+          for online readings, reflection and personal growth.
         </p>
       </section>
 

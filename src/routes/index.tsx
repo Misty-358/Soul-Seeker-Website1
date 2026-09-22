@@ -20,20 +20,20 @@ const cardImg = "/images/temperance-card.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Soul Seeker — Where Ancient Wisdom Meets Modern Intuition" },
+      { title: "Online Tarot Readings & Daily Guidance | Soul Seeker Tarot" },
       {
         name: "description",
         content:
-          "A luxury tarot and self-discovery platform. Personalised readings, custom decks and a journal for your journey.",
+          "Explore Soul Seeker Tarot for online tarot readings, including daily one-card guidance, three-card spreads, and relationship and career insight.",
       },
-      { property: "og:title", content: "Soul Seeker — Where Ancient Wisdom Meets Modern Intuition" },
+      { property: "og:title", content: "Online Tarot Readings & Daily Guidance | Soul Seeker Tarot" },
       {
         property: "og:description",
         content: "Where ancient wisdom meets modern intuition. Personalised tarot readings, custom decks and a journal for your soul's journey.",
       },
-      { property: "og:url", content: "https://glee-construct-lab.lovable.app/" },
+      { property: "og:url", content: "https://www.soulseekertarot.com/" },
     ],
-    links: [{ rel: "canonical", href: "https://glee-construct-lab.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://www.soulseekertarot.com/" }],
   }),
   component: HomePage,
 });
@@ -66,9 +66,9 @@ function HomePage() {
             textShadow: "0 0 40px rgba(241,210,122,0.2)",
           }}
         >
-          A Modern Path to
+          Soul Seeker Tarot:
           <br />
-          Timeless Wisdom
+          Online Readings for Reflection
         </h1>
         <Divider width={90} />
         <p
@@ -115,16 +115,17 @@ function HomePage() {
               letterSpacing: "0.02em",
             }}
           >
-            Your journey of discovery begins here.
+            Your daily tarot reading begins here.
           </h2>
           <p
             className="mt-6 mx-auto md:mx-0"
             style={{ color: ivory, fontSize: 15, lineHeight: 1.85, opacity: 0.85, maxWidth: 560 }}
           >
-            Soul Seeker brings the timeless art of tarot into a beautifully modern space —
-            intuitive readings, a personal journal, and tools crafted to reveal what your
-            soul already knows. Whether you seek clarity, direction, or a moment of stillness,
-            you are welcome here.
+            Explore online tarot readings designed for reflection and clarity. Begin with
+            a daily one-card reading, explore a three-card spread, or reflect on relationship
+            and career questions. Soul Seeker brings traditional tarot card meanings into a
+            modern, intuitive space, with personalised readings, a journal, and tools to
+            support your journey.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 items-center justify-center md:justify-start">
             <Link
