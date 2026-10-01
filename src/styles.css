@@ -199,6 +199,21 @@
   }
 }
 
+/* ---------- Featured Soul Seeker card ---------- */
+@keyframes ss-card-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-12px) rotate(-2deg); }
+}
+@keyframes ss-card-halo {
+  0%, 100% { opacity: 0.4;  transform: scale(0.96); }
+  50%      { opacity: 0.85; transform: scale(1.06); }
+}
+.ss-card-float { animation: ss-card-float 9s ease-in-out infinite; will-change: transform; }
+.ss-card-halo  { animation: ss-card-halo 7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .ss-card-float, .ss-card-halo { animation: none !important; }
+}
+
 /* Golden shine — Download button */
 @keyframes ss-gold-shine {
   0%, 100% {
