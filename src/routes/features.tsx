@@ -373,12 +373,12 @@ function FeaturesPage() {
         </p>
       </section>
 
-      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-20 grid grid-cols-[minmax(280px,360px)_1fr] gap-8 md:gap-14 items-center">
-        <div className="relative ss-decor-mobile">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-20">
+        <div className="relative ss-decor-mobile flex justify-center mb-10">
           <img
             src={archImg}
             alt="Mystic arch with moon and lotus"
-            className="w-full h-auto pointer-events-none select-none"
+            className="w-auto max-h-[240px] h-auto pointer-events-none select-none"
             style={{
               mixBlendMode: "screen",
               filter: "drop-shadow(0 0 40px rgba(124,77,255,0.35))",
@@ -390,7 +390,8 @@ function FeaturesPage() {
           />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-10 gap-y-10 lg:gap-y-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-10 lg:gap-x-14 gap-y-10 lg:gap-y-14">
+
           {features.map((f) => (
             <div key={f.title} className="flex items-start gap-5">
               <div
