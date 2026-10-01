@@ -51,22 +51,22 @@ const testimonials: { quote: string; name: string }[] = [
   {
     quote:
       "Soul Seeker Tarot application has a distinctive visual identity and an interesting tarot-focused concept. It has a strong visual design and the variety of tarot-related features, including readings, card decks, daily cards, customization, marketplace functionality.",
-    name: "Lee",
+    name: "Soul Seeker Beta Tester",
   },
   {
     quote:
       "I don't normally pay too much attention to this kind of stuff. But here I am shocked at how accurate Soul Seeker is. Highly recommend for those who are curious, and to others who take seriously.",
-    name: "Charlie",
+    name: "Lee",
   },
   {
     quote:
       "I look for insights into my life and I found this Tarot app to have some very in-depth information regarding my relationships with people. I don’t know how it seemed to know so much about me, but as I needed help and advice this seems as good a place as any to seek guidance. Will keep on it and look forward to further insights in the coming weeks.",
-    name: "Sarah",
+    name: "Charlie",
   },
   {
     quote:
       "I am enjoying Soul seeker app such a beautiful and thoughtfully designed tarot app. I love how easy it is to use, whether you’re completely new to tarot or already familiar with the cards. I especially enjoy being able to choose in depth readings and design my own deck with ease. The explanations are beautifully written, detailed without being overwhelming, and always finish with a really helpful summary.",
-    name: "Ian",
+    name: "Sarah",
   },
 ];
 
@@ -426,7 +426,7 @@ function BetaTestersPage() {
                 textShadow: "0 0 14px rgba(241,210,122,0.4)",
               }}
             >
-              SOUL SEEKER BETA TESTER
+              IAN
             </span>
             <span style={{ fontSize: 11, opacity: 0.8 }}>&#10022;</span>
           </div>
