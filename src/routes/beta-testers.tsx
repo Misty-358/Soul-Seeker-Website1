@@ -174,7 +174,15 @@ function StarRating() {
   );
 }
 
-function TestimonialCard({ quote, name }: { quote: string; name: string }) {
+function TestimonialCard({
+  quote,
+  name,
+  showStars = true,
+}: {
+  quote: string;
+  name: string;
+  showStars?: boolean;
+}) {
   return (
     <figure
       className="relative rounded-2xl px-6 sm:px-9 py-9 sm:py-10"
@@ -218,7 +226,7 @@ function TestimonialCard({ quote, name }: { quote: string; name: string }) {
       </blockquote>
 
       <figcaption className="mt-6 flex flex-col items-center gap-3">
-        <StarRating />
+        {showStars && <StarRating />}
         <span
           style={{
             fontFamily: "'Cinzel', serif",
@@ -346,8 +354,13 @@ function BetaTestersPage() {
 
         {/* Testimonials */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {testimonials.map((t) => (
-            <TestimonialCard key={t.name} quote={t.quote} name={t.name} />
+          {testimonials.map((t, i) => (
+            <TestimonialCard
+              key={t.name}
+              quote={t.quote}
+              name={t.name}
+              showStars={i > 0}
+            />
           ))}
         </section>
 
@@ -413,8 +426,12 @@ function BetaTestersPage() {
             {closingQuote}
           </blockquote>
 
+          <div className="mt-10 flex justify-center">
+            <StarRating />
+          </div>
+
           <div
-            className="mt-6 flex items-center justify-center gap-4"
+            className="mt-4 flex items-center justify-center gap-4"
             style={{ color: goldBright }}
           >
             <span style={{ fontSize: 11, opacity: 0.8 }}>&#10022;</span>
