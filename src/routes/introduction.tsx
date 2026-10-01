@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-const aceAsset = { url: "/images/ace-of-swords.jpg" };
 const aceOfCupsAsset = { url: "/images/ace-of-cups.png" };
 const chariotAsset = { url: "/images/the-chariot.jpg" };
 const strengthAsset = { url: "/images/strength.jpg" };
