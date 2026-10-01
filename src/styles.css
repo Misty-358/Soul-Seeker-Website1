@@ -239,6 +239,22 @@
 
 
 /* ---------- Mobile responsive overrides ---------- */
+:root { --ss-beta-banner-height: 44px; }
+
+.ss-beta-banner {
+  min-height: var(--ss-beta-banner-height);
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ss-site-nav { top: var(--ss-beta-banner-height); }
+
+@media (min-width: 640px) {
+  :root { --ss-beta-banner-height: 27px; }
+}
+
 html, body { max-width: 100%; overflow-x: hidden; }
 img { max-width: 100%; height: auto; }
 
