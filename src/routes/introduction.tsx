@@ -490,7 +490,7 @@ function IntroductionPage() {
         >
           <div className="grid grid-cols-[280px_1fr_170px] gap-6 items-center">
             {/* Left copy */}
-            <div className="relative z-20" style={{ textShadow: "0 1px 14px rgba(4,7,18,0.95)" }}>
+            <div className="relative z-20" style={{ textShadow: "0 0 10px rgba(3,6,16,0.92), 0 1px 2px rgba(3,6,16,0.92)" }}>
               <div className="flex items-center gap-4 mb-4">
                 <SectionEmblem>
                   <LotusIcon />
@@ -556,7 +556,7 @@ function IntroductionPage() {
             </div>
 
             {/* Right icon list */}
-            <div className="relative z-20 flex flex-col gap-5" style={{ textShadow: "0 1px 14px rgba(4,7,18,0.95)" }}>
+            <div className="relative z-20 flex flex-col gap-5 rounded-2xl px-3 py-3" style={{ background: "linear-gradient(180deg, rgba(5,9,20,0.45), rgba(5,9,20,0.6))", boxShadow: "inset 0 0 0 1px rgba(201,167,93,0.16)", backdropFilter: "blur(7px)", textShadow: "0 0 8px rgba(3,6,16,0.95), 0 1px 3px rgba(3,6,16,0.95)" }}>
               {[
                 { v: "app" as const, label: "USE IN APP" },
                 { v: "trophy" as const, label: "TOP\nLEADERBOARD" },
