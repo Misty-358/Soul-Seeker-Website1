@@ -17,6 +17,7 @@ import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as DownloadRouteImport } from './routes/download'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BetaTestersRouteImport } from './routes/beta-testers'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -64,6 +65,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BetaTestersRoute = BetaTestersRouteImport.update({
+  id: '/beta-testers',
+  path: '/beta-testers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/beta-testers': typeof BetaTestersRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/download': typeof DownloadRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/beta-testers': typeof BetaTestersRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/download': typeof DownloadRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/beta-testers': typeof BetaTestersRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/download': typeof DownloadRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/beta-testers'
     | '/contact'
     | '/cookies'
     | '/download'
@@ -163,6 +173,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/beta-testers'
     | '/contact'
     | '/cookies'
     | '/download'
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/about'
     | '/auth'
+    | '/beta-testers'
     | '/contact'
     | '/cookies'
     | '/download'
@@ -196,6 +208,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  BetaTestersRoute: typeof BetaTestersRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   DownloadRoute: typeof DownloadRoute
@@ -265,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/beta-testers': {
+      id: '/beta-testers'
+      path: '/beta-testers'
+      fullPath: '/beta-testers'
+      preLoaderRoute: typeof BetaTestersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -326,6 +346,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  BetaTestersRoute: BetaTestersRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   DownloadRoute: DownloadRoute,

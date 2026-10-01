@@ -8,6 +8,7 @@
 - [Introduction](/introduction): Overview of the Soul Seeker app and how the cards work.
 - [Features](/features): What the Soul Seeker Tarot app offers.
 - [About](/about): The story and philosophy behind Soul Seeker Tarot.
+- [What Our Beta Testers Say](/beta-testers): Feedback from beta testers who tried the Soul Seeker Tarot app.
 - [Contact Us](/contact): Get in touch with the Soul Seeker team.
 - [Terms & Conditions](/terms): Legal terms for using Soul Seeker Tarot.
 - [Privacy Policy](/privacy): How we handle your data.

@@ -20,6 +20,7 @@ const navItems: NavItem[] = [
   { label: "INTRODUCTION", to: "/introduction" },
   { label: "FEATURES", to: "/features" },
   { label: "ABOUT", to: "/about" },
+  { label: "BETA TESTERS", to: "/beta-testers" },
   { label: "TERMS", to: "/terms" },
   { label: "PRIVACY", to: "/privacy" },
   { label: "CONTACT US", to: "/contact" },
@@ -360,6 +361,7 @@ type FooterLink = { label: string; to?: string; href?: string };
 const footerLinks: FooterLink[] = [
   { label: "INTRODUCTION TO SOUL SEEKER", to: "/introduction" },
   { label: "FEATURES", to: "/features" },
+  { label: "WHAT OUR BETA TESTERS SAY", to: "/beta-testers" },
   { label: "TERMS & CONDITIONS", to: "/terms" },
   { label: "PRIVACY POLICY", to: "/privacy" },
   { label: "COOKIE POLICY", to: "/cookies" },
