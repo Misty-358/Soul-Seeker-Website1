@@ -423,8 +423,8 @@ function IntroductionPage() {
           </div>
 
           {/* Take-away summary + guidance below card */}
-          <div className="grid grid-cols-[1fr_260px] gap-10 mt-8 pl-[380px]">
-            <div>
+          <div className="mt-8 w-full">
+            <div className="w-full">
               <div
                 className="rounded-[14px] p-6"
                 style={{
@@ -472,7 +472,6 @@ function IntroductionPage() {
               </div>
             </div>
 
-            <div />
           </div>
         </div>
       </section>
