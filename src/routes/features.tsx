@@ -16,6 +16,8 @@ import {
 } from "@/components/SiteChrome";
 
 const archImg = "/images/mystic-arch.png";
+const soulCardImg = "/images/ace-of-swords-large.jpg";
+const flourishImg = "/images/mystic-flourish.jpg";
 const iconGold = goldBright;
 
 export const Route = createFileRoute("/features")({
