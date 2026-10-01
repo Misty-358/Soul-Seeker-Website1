@@ -131,7 +131,7 @@ export function SiteNav() {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden lg:flex items-center gap-8 xl:gap-10">
+        <nav className="ml-auto hidden xl:flex items-center gap-6 xl:gap-7 2xl:gap-10">
           {navItems.map((item) => renderLink(item))}
         </nav>
 
@@ -139,7 +139,7 @@ export function SiteNav() {
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="ml-auto lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md"
+          className="ml-auto xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-md"
           style={{ color: goldBright, border: `1px solid rgba(201,167,93,0.35)` }}
           onClick={() => setOpen((v) => !v)}
         >
@@ -162,7 +162,7 @@ export function SiteNav() {
 
       {open && (
         <div
-          className="lg:hidden absolute inset-x-0 top-full"
+          className="xl:hidden absolute inset-x-0 top-full"
           style={{
             background: "rgba(5,8,22,0.98)",
             backdropFilter: "blur(12px)",

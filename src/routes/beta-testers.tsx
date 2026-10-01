@@ -364,14 +364,20 @@ function BetaTestersPage() {
               height={768}
               loading="lazy"
               className="w-full h-[200px] sm:h-[280px] lg:h-[340px] object-cover"
-              style={{ mixBlendMode: "screen" }}
+              style={{
+                mixBlendMode: "screen",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at center, #000 62%, transparent 100%)",
+                maskImage:
+                  "radial-gradient(ellipse at center, #000 62%, transparent 100%)",
+              }}
             />
             <div
               aria-hidden
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, transparent 45%, rgba(5,8,22,0.75) 100%)",
+                  "radial-gradient(ellipse at center, transparent 55%, rgba(5,8,22,0.4) 100%)",
               }}
             />
           </div>
