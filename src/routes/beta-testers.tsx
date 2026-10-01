@@ -426,12 +426,12 @@ function BetaTestersPage() {
             {closingQuote}
           </blockquote>
 
-          <div className="mt-6 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <StarRating />
           </div>
 
           <div
-            className="mt-3 flex items-center justify-center gap-4"
+            className="mt-4 flex items-center justify-center gap-4"
             style={{ color: goldBright }}
           >
             <span style={{ fontSize: 11, opacity: 0.8 }}>&#10022;</span>
