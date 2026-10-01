@@ -242,7 +242,8 @@
 :root { --ss-beta-banner-height: 44px; }
 
 .ss-beta-banner {
-  min-height: var(--ss-beta-banner-height);
+  height: var(--ss-beta-banner-height);
+  box-sizing: border-box;
   padding: 6px 12px;
   display: flex;
   align-items: center;
@@ -252,7 +253,7 @@
 .ss-site-nav { top: var(--ss-beta-banner-height); }
 
 @media (min-width: 640px) {
-  :root { --ss-beta-banner-height: 27px; }
+  :root { --ss-beta-banner-height: 30px; }
 }
 
 html, body { max-width: 100%; overflow-x: hidden; }
