@@ -99,7 +99,7 @@ export function SiteNav() {
 
   return (
     <header
-      className="fixed top-0 inset-x-0 z-30"
+      className="ss-site-nav fixed inset-x-0 z-30"
       style={{
         background: "rgba(5,8,22,0.55)",
         backdropFilter: "blur(10px)",

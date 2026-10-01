@@ -149,6 +149,7 @@ function RootShell({ children }: { children: ReactNode }) {
 function BetaBanner() {
   return (
     <div
+      className="ss-beta-banner"
       style={{
         position: "fixed",
         top: 0,
@@ -162,7 +163,6 @@ function BetaBanner() {
         fontSize: 12,
         letterSpacing: "0.14em",
         fontWeight: 600,
-        padding: "6px 12px",
         boxShadow: "0 2px 12px rgba(0,0,0,0.35)",
       }}
     >
