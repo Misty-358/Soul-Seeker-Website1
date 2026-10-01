@@ -347,7 +347,7 @@ function IntroductionPage() {
               "0 30px 80px rgba(0,0,0,0.4), inset 0 0 40px rgba(241,210,122,0.05)",
           }}
         >
-          <div className="grid grid-cols-[340px_1fr_260px] gap-10 items-center">
+          <div className="grid grid-cols-[minmax(0,1fr)_320px] gap-10 items-center">
             {/* Left copy */}
             <div>
               <div className="flex items-center gap-4 mb-4">
@@ -386,21 +386,6 @@ function IntroductionPage() {
               </p>
             </div>
 
-            {/* Center — example tarot card */}
-            <div className="flex justify-center">
-              <img
-                src={aceAsset.url}
-                alt="Ace of Swords tarot card"
-                title="Soul Seeker card"
-                className="rounded-[10px]"
-                style={{
-                  width: 200,
-                  height: "auto",
-                  boxShadow:
-                    "0 20px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(241,210,122,0.4)",
-                }}
-              />
-            </div>
 
             {/* Right — mystical flourish (replaces hands/tablet) */}
             <div className="relative">
