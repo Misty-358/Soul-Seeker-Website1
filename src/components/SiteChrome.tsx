@@ -414,19 +414,6 @@ export function SiteFooter() {
           MANAGE COOKIE PREFERENCES
         </button>
       </div>
-      <div className="flex justify-center gap-6 mb-4" style={{ color: goldBright }}>
-        {(["instagram", "facebook", "twitter", "mail"] as const).map((n) => (
-          <button
-            key={n}
-            type="button"
-            aria-label={`Share this page on ${n}`}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            onClick={() => handleShare(n)}
-          >
-            <SocialIcon name={n} />
-          </button>
-        ))}
-      </div>
       <p
         className="text-center text-[10px] sm:text-[11px] tracking-[0.2em]"
         style={{ color: ivory, opacity: 0.5 }}
