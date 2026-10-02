@@ -690,7 +690,7 @@ function AboutPage() {
             alt="About Soul Seeker Tarot — a moonlit valley beneath a starlit sky, framed in gold with lotus flowers"
             width={1536}
             height={1024}
-            className="block mx-auto rounded-[10px]"
+            className="block mx-auto"
             style={{
               width: "auto",
               height: "auto",
