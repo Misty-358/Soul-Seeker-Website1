@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
 
 import {
   SiteNav,
@@ -347,96 +346,6 @@ function HomePage() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* BETA PREVIEW SECTION */}
-      <section className="relative z-10 max-w-[880px] mx-auto px-4 sm:px-6 lg:px-10 pb-24">
-        <div
-          className="mx-auto p-8 sm:p-10 text-center"
-          style={{
-            background: "rgba(9,20,34,0.6)",
-            border: `1px solid rgba(241,210,122,0.35)`,
-            borderRadius: 18,
-            boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-            backdropFilter: "blur(6px)",
-          }}
-        >
-          <span
-            className="inline-flex items-center px-3 py-1 text-[10px] tracking-[0.28em]"
-            style={{
-              color: midnight,
-              background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
-              borderRadius: 999,
-              fontWeight: 700,
-            }}
-          >
-            BETA PREVIEW
-          </span>
-          <h2
-            className="mt-5"
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              color: gold,
-              fontSize: 36,
-              lineHeight: 1.15,
-              fontWeight: 500,
-              letterSpacing: "0.02em",
-            }}
-          >
-            Try the Beta Preview
-          </h2>
-          <Divider width={70} />
-          <p
-            className="mx-auto"
-            style={{
-              color: ivory,
-              fontSize: 16,
-              lineHeight: 1.8,
-              opacity: 0.9,
-              maxWidth: 640,
-            }}
-          >
-            Soul Seeker is currently in development and testing. Be among the first to
-            experience the app and help shape its future.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4 items-center justify-center">
-            <button
-              type="button"
-              onClick={async () => {
-                try {
-                  await supabase.auth.signOut({ scope: "global" });
-                } catch {
-                  /* ignore */
-                }
-                window.open("https://app.soulseekertarot.com", "_blank", "noopener,noreferrer");
-              }}
-              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all hover:scale-[1.02]"
-              style={{
-                color: midnight,
-                background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
-                borderRadius: 999,
-                fontWeight: 700,
-                boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
-                cursor: "pointer",
-              }}
-            >
-              TRY THE BETA PREVIEW
-            </button>
-            <Link
-              to="/download"
-              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all"
-              style={{
-                color: goldBright,
-                background: "transparent",
-                border: `1px solid ${goldBright}`,
-                borderRadius: 999,
-                fontWeight: 600,
-              }}
-            >
-              JOIN WAITING LIST
-            </Link>
-          </div>
         </div>
       </section>
 
