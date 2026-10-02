@@ -300,7 +300,7 @@ function IntroductionPage() {
       <SiteNav />
 
       {/* BANNER HEADER */}
-      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-36 ss-top-mobile pb-6 text-center">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-28 ss-top-mobile pb-6 text-center">
         <Flourish label="WELCOME" />
         <h1
           className="mt-4 ss-h1-mobile"

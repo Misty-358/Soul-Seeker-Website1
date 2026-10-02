@@ -674,7 +674,7 @@ function AboutPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-32 ss-top-mobile pb-16">
+      <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 ss-top-mobile pb-16">
         {/* Hero */}
         <section className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] gap-8 items-center min-h-[520px]">
           {/* Left flourish — golden crescent cradling a tree of life, moon-phase crown, geometric pendant */}

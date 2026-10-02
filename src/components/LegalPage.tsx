@@ -101,7 +101,7 @@ export function LegalPage({
       <StarfieldBackdrop />
       <SiteNav />
 
-      <section className="relative z-10 max-w-[900px] mx-auto px-8 pt-36 pb-8 text-center">
+      <section className="relative z-10 max-w-[900px] mx-auto px-8 pt-28 pb-8 text-center">
         <Flourish label={eyebrow} />
         <h1
           className="mt-4"

@@ -109,7 +109,7 @@ function AuthPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <section className="relative z-10 max-w-[520px] mx-auto px-6 pt-36 pb-20 text-center">
+      <section className="relative z-10 max-w-[520px] mx-auto px-6 pt-28 pb-20 text-center">
         <Flourish label="DEVELOPER" />
         <h1
           className="mt-4"
