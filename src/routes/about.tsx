@@ -676,7 +676,7 @@ function AboutPage() {
         {/* Hero — the artwork carries the picture and the gold title; the
             mission words are real text so they stay bright and readable */}
         <section
-          className="relative w-fit mx-auto rounded-[22px]"
+          className="ss-hero-panel relative w-fit mx-auto rounded-[22px]"
           style={{
             maxWidth: "100%",
             padding: "clamp(10px, 1.5vw, 20px)",

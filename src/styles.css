@@ -333,8 +333,13 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 639px) {
   /* On phones the picture keeps its own space and the mission words sit
      beneath it, inside the same gold frame, at a comfortable reading size */
+  .ss-hero-panel {
+    width: 100%;
+    max-width: 560px;
+  }
+
   .ss-hero-art {
-    width: min(calc(100vw - 4rem), calc(72vh * 1.5));
+    width: 100%;
     aspect-ratio: auto;
   }
 
