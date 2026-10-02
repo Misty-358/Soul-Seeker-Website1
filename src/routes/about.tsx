@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import aboutHeroCosmic from "@/assets/about-hero-cosmic.png.asset.json";
 import {
   SiteNav,
   StarfieldBackdrop,
@@ -674,30 +673,29 @@ function AboutPage() {
       <SiteNav />
 
       <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 ss-top-mobile pb-16">
-        {/* Hero — cosmic moonlit scene with golden filigree frame */}
+        {/* Hero — the artwork carries the title and mission words, so it is
+            shown whole and centred, with the gold frame hugging it evenly */}
         <section
-          className="relative overflow-hidden rounded-3xl flex items-center justify-center min-h-[560px] sm:min-h-[640px]"
+          className="relative w-fit mx-auto rounded-[22px]"
           style={{
-            border: "1px solid rgba(212,175,55,0.35)",
+            maxWidth: "100%",
+            padding: "clamp(10px, 1.5vw, 20px)",
+            border: "1px solid rgba(212,175,55,0.45)",
             boxShadow:
-              "0 0 60px rgba(124,77,255,0.12), inset 0 0 80px rgba(2,4,13,0.35)",
+              "0 0 60px rgba(124,77,255,0.12), 0 0 26px rgba(212,175,55,0.12)",
           }}
         >
-          {/* Cosmic backdrop art */}
           <img
-            src={aboutHeroCosmic.url}
-            alt=""
-            aria-hidden
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: "center" }}
-          />
-          {/* Soft darkening so the words read clearly */}
-          <div
-            className="absolute inset-0"
-            aria-hidden
+            src="/images/about-hero-cosmic.jpg"
+            alt="About Soul Seeker Tarot — a moonlit valley beneath a starlit sky, framed in gold with lotus flowers"
+            width={1536}
+            height={1024}
+            className="block mx-auto rounded-[10px]"
             style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(5,8,22,0.42) 0%, rgba(5,8,22,0.18) 55%, rgba(5,8,22,0.35) 100%)",
+              width: "auto",
+              height: "auto",
+              maxWidth: "min(1120px, calc(100vw - 5rem))",
+              maxHeight: "72vh",
             }}
           />
 
