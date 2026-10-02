@@ -198,8 +198,8 @@ function HomePage() {
             >
               EXPLORE FEATURES
             </Link>
-            <Link
-              to="/download"
+            <a
+              href="https://app.soulseekertarot.com"
               className="ss-gold-button inline-flex items-center justify-center px-9 py-3.5 text-[12px] tracking-[0.28em] transition-transform hover:scale-[1.03]"
               style={{
                 color: midnight,
@@ -210,9 +210,9 @@ function HomePage() {
               }}
             >
               <span style={{ position: "relative", zIndex: 1 }}>
-                DOWNLOAD SOUL SEEKER APP
+                OPEN SOUL SEEKER APP
               </span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
