@@ -512,7 +512,7 @@ export function SiteFooter() {
         className="text-center text-[10px] sm:text-[11px] tracking-[0.2em]"
         style={{ color: ivory, opacity: 0.5 }}
       >
-        © 2024 Soul Seeker. All rights reserved.
+        © 2024–2026 Soul Seeker. All rights reserved.
       </p>
     </footer>
   );
