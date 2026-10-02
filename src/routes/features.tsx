@@ -373,6 +373,21 @@ function FeaturesPage() {
           <br />
           for online readings, reflection and personal growth.
         </p>
+        <p
+          className="mx-auto mt-6"
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            color: goldBright,
+            fontSize: 18,
+            lineHeight: 1.5,
+            letterSpacing: "0.05em",
+            maxWidth: 720,
+            textShadow: "0 0 26px rgba(241,210,122,0.22)",
+          }}
+        >
+          Start free, with optional subscriptions and credit packs for additional
+          features.
+        </p>
       </section>
 
       <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-20">
