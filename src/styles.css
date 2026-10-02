@@ -306,16 +306,16 @@ img { max-width: 100%; height: auto; }
 .ss-hero-mission {
   position: absolute;
   left: 50%;
-  top: 46.8%;
+  top: 45%;
   transform: translateX(-50%);
-  width: 54%;
+  width: 60%;
   margin: 0;
   text-align: center;
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-weight: 500;
-  font-size: 2.42cqw;
-  line-height: 1.55;
+  font-size: 2.95cqw;
+  line-height: 1.5;
   letter-spacing: 0.008em;
   color: #ffffff;
   text-shadow:
