@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { toast } from "sonner";
 import { openCookieConsent } from "@/components/CookieConsent";
 const logo = "/images/soul-seeker-icon.jpeg";
 
