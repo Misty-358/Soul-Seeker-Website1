@@ -673,10 +673,10 @@ function AboutPage() {
       <SiteNav />
 
       <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 ss-top-mobile pb-16">
-        {/* Hero — the artwork carries the title and mission words, so it is
-            shown whole and centred, with the gold frame hugging it evenly */}
+        {/* Hero — the artwork carries the picture and the gold title; the
+            mission words are real text so they stay bright and readable */}
         <section
-          className="relative w-fit mx-auto rounded-[22px]"
+          className="ss-hero-panel relative w-fit mx-auto rounded-[22px]"
           style={{
             maxWidth: "100%",
             padding: "clamp(10px, 1.5vw, 20px)",
@@ -685,32 +685,26 @@ function AboutPage() {
               "0 0 60px rgba(124,77,255,0.12), 0 0 26px rgba(212,175,55,0.12)",
           }}
         >
-          <img
-            src="/images/about-hero-cosmic.jpg"
-            alt="About Soul Seeker Tarot — a moonlit valley beneath a starlit sky, framed in gold with lotus flowers"
-            width={1536}
-            height={1024}
-            className="block mx-auto"
-            style={{
-              width: "auto",
-              height: "auto",
-              maxWidth: "min(1120px, calc(100vw - 5rem))",
-              maxHeight: "72vh",
-            }}
-          />
-
-          {/* The artwork itself carries the title and mission words; keep a
-              visually hidden heading + paragraph for search engines and
-              screen readers */}
-          <div className="sr-only">
-            <h1>About Soul Seeker Tarot</h1>
-            <p>
+          <div className="ss-hero-art">
+            <img
+              src="/images/about-hero-cosmic-clean.jpg"
+              alt="About Soul Seeker Tarot — a moonlit valley beneath a starlit sky, framed in gold with lotus flowers"
+              width={1536}
+              height={1024}
+              className="ss-hero-img"
+            />
+            <p className="ss-hero-mission">
               Soul Seeker Tarot was born from a deep love of tarot, intuition and
               the transformative power of self-awareness. Our mission is to make
               traditional tarot card meanings accessible through thoughtful online
               readings and modern tools for reflection.
             </p>
           </div>
+
+          {/* The words are carried by the artwork and the paragraph above, so the
+              page heading stays visually hidden for search engines and screen
+              readers */}
+          <h1 className="sr-only">About Soul Seeker Tarot</h1>
         </section>
 
         {/* Mission / Vision / Values */}
