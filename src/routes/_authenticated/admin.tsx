@@ -114,7 +114,7 @@ function AdminPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <section className="relative z-10 max-w-[1100px] mx-auto px-6 pt-32 pb-20">
+      <section className="relative z-10 max-w-[1100px] mx-auto px-6 pt-24 pb-20">
         <div className="text-center">
           <Flourish label="DEVELOPER AREA" />
           <h1

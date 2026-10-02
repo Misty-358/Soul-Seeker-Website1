@@ -116,7 +116,7 @@ function ContactPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <main className="relative z-10 pt-32 ss-top-mobile pb-20 px-4 sm:px-6">
+      <main className="relative z-10 pt-24 ss-top-mobile pb-20 px-4 sm:px-6">
         <div className="max-w-[1100px] mx-auto">
           <div id="contact" className="text-center mb-10">
             <Flourish label="REACH OUT" />

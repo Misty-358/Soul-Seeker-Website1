@@ -284,7 +284,7 @@ function BetaTestersPage() {
       <StarfieldBackdrop />
       <SiteNav />
 
-      <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-32 ss-top-mobile pb-16">
+      <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 ss-top-mobile pb-16">
         {/* Hero */}
         <section className="text-center">
           <div className="flex justify-center">
