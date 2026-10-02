@@ -299,10 +299,10 @@ const features = [
             const a = ((i * 30 - 90) * Math.PI) / 180;
             const inner = 13;
             const outer = 15.5;
-            const x1 = 24 + Math.cos(a) * inner;
-            const y1 = 24 + Math.sin(a) * inner;
-            const x2 = 24 + Math.cos(a) * outer;
-            const y2 = 24 + Math.sin(a) * outer;
+            const x1 = (24 + Math.cos(a) * inner).toFixed(3);
+            const y1 = (24 + Math.sin(a) * inner).toFixed(3);
+            const x2 = (24 + Math.cos(a) * outer).toFixed(3);
+            const y2 = (24 + Math.sin(a) * outer).toFixed(3);
             return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
           })}
         </g>
@@ -372,6 +372,21 @@ function FeaturesPage() {
           Soul Seeker combines traditional tarot card meanings with modern tools
           <br />
           for online readings, reflection and personal growth.
+        </p>
+        <p
+          className="mx-auto mt-6"
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            color: goldBright,
+            fontSize: 18,
+            lineHeight: 1.5,
+            letterSpacing: "0.05em",
+            maxWidth: 720,
+            textShadow: "0 0 26px rgba(241,210,122,0.22)",
+          }}
+        >
+          Start free, with optional subscriptions and credit packs for additional
+          features.
         </p>
       </section>
 
