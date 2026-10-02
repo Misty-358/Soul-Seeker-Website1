@@ -368,46 +368,8 @@ const footerLinks: FooterLink[] = [
   { label: "CONTACT US", to: "/contact" },
 ];
 
-function SocialIcon({ name }: { name: string }) {
-  const common = {
-    width: 18,
-    height: 18,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.5,
-  } as const;
-  switch (name) {
-    case "instagram":
-      return (
-        <svg {...common}>
-          <rect x="3" y="3" width="18" height="18" rx="5" />
-          <circle cx="12" cy="12" r="4" />
-          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-        </svg>
-      );
-    case "facebook":
-      return (
-        <svg {...common}>
-          <path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8.5c0-.3.2-.5.5-.5H14z" />
-        </svg>
-      );
-    case "twitter":
-      return (
-        <svg {...common}>
-          <path d="M4 4l7 9-7 7h2l6-6 5 6h4l-7.5-9L20 4h-2l-5 5-4-5z" />
-        </svg>
-      );
-    case "mail":
-      return (
-        <svg {...common}>
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <path d="M3 7l9 6 9-6" />
-        </svg>
-      );
-    default:
-      return null;
-  }
+export function SiteFooter() {
+  return (
     <footer className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-10">
       <ul className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 mb-6">
         {footerLinks.map((l, i) => {
