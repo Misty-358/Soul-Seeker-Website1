@@ -254,23 +254,48 @@ function HomePage() {
                 animationDelay: "1.4s",
               }}
             />
-            <h2
-              className="ss-h2-mobile"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 42,
-                lineHeight: 1.15,
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-                background: `linear-gradient(115deg, ${goldBright} 0%, #fff3cf 28%, ${gold} 58%, ${goldBright} 85%)`,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 0 22px rgba(241,210,122,0.35))",
-              }}
-            >
-              Soul Seeker Tarot is now LIVE on the web
-            </h2>
+            <div className="flex items-center justify-center gap-3 sm:gap-4">
+              <span
+                aria-hidden
+                className="ss-twinkle hidden sm:inline-block"
+                style={{
+                  color: goldBright,
+                  fontSize: 24,
+                  filter: "drop-shadow(0 0 10px rgba(241,210,122,0.65))",
+                }}
+              >
+                ✨
+              </span>
+              <h2
+                className="ss-h2-mobile"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: 42,
+                  lineHeight: 1.15,
+                  fontWeight: 600,
+                  letterSpacing: "0.04em",
+                  background: `linear-gradient(115deg, ${goldBright} 0%, #fff3cf 28%, ${gold} 58%, ${goldBright} 85%)`,
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  filter: "drop-shadow(0 0 22px rgba(241,210,122,0.35))",
+                }}
+              >
+                Soul Seeker Tarot is now LIVE on the web
+              </h2>
+              <span
+                aria-hidden
+                className="ss-twinkle hidden sm:inline-block"
+                style={{
+                  color: goldBright,
+                  fontSize: 24,
+                  animationDelay: "1.8s",
+                  filter: "drop-shadow(0 0 10px rgba(241,210,122,0.65))",
+                }}
+              >
+                ✨
+              </span>
+            </div>
             <img
               src="/images/the-chariot.jpg"
               alt="The Chariot tarot card"
