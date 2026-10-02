@@ -269,7 +269,7 @@ function HomePage() {
                 filter: "drop-shadow(0 0 22px rgba(241,210,122,0.35))",
               }}
             >
-              ✨ Soul Seeker Tarot is now LIVE on the web ✨
+              Soul Seeker Tarot is now LIVE on the web
             </h2>
             <img
               src="/images/the-chariot.jpg"
