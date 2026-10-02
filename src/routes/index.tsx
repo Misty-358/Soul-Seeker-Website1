@@ -18,6 +18,29 @@ import {
 
 const cardImg = "/images/temperance-card.jpg";
 
+function SparkleIcon({ size = 24, className = "", delay = "0s" }: { size?: number; className?: string; delay?: string }) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 40 40"
+      width={size}
+      height={size}
+      className={`ss-twinkle ${className}`}
+      style={{
+        animationDelay: delay,
+        color: goldBright,
+        filter: "drop-shadow(0 0 8px rgba(241,210,122,0.75))",
+      }}
+    >
+      <path
+        d="M20 2 C 21.5 13, 25 17.5, 37 20 C 25 22.5, 21.5 27, 20 38 C 18.5 27, 15 22.5, 3 20 C 15 17.5, 18.5 13, 20 2 Z"
+        fill="currentColor"
+      />
+      <circle cx="20" cy="20" r="2.4" fill="#fff6dc" />
+    </svg>
+  );
+}
+
 function CornerFlourish({ rotate, className = "" }: { rotate: number; className?: string }) {
   return (
     <svg
