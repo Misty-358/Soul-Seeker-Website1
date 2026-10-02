@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { toast } from "sonner";
 import { openCookieConsent } from "@/components/CookieConsent";
 const logo = "/images/soul-seeker-icon.jpeg";
 
@@ -368,88 +367,7 @@ const footerLinks: FooterLink[] = [
   { label: "CONTACT US", to: "/contact" },
 ];
 
-function SocialIcon({ name }: { name: string }) {
-  const common = {
-    width: 18,
-    height: 18,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.5,
-  } as const;
-  switch (name) {
-    case "instagram":
-      return (
-        <svg {...common}>
-          <rect x="3" y="3" width="18" height="18" rx="5" />
-          <circle cx="12" cy="12" r="4" />
-          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-        </svg>
-      );
-    case "facebook":
-      return (
-        <svg {...common}>
-          <path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8.5c0-.3.2-.5.5-.5H14z" />
-        </svg>
-      );
-    case "twitter":
-      return (
-        <svg {...common}>
-          <path d="M4 4l7 9-7 7h2l6-6 5 6h4l-7.5-9L20 4h-2l-5 5-4-5z" />
-        </svg>
-      );
-    case "mail":
-      return (
-        <svg {...common}>
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <path d="M3 7l9 6 9-6" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
-
 export function SiteFooter() {
-  const handleShare = async (network: "instagram" | "facebook" | "twitter" | "mail") => {
-    if (typeof window === "undefined") return;
-    const url = "https://www.soulseekertarot.com";
-    const title = "Soul Seeker Tarot";
-
-    const openPopup = (shareUrl: string) => {
-      window.open(shareUrl, "_blank", "noopener,noreferrer,width=600,height=600");
-    };
-    if (network === "facebook") {
-      openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-      return;
-    }
-    if (network === "twitter") {
-      openPopup(
-        `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-      );
-      return;
-    }
-    if (network === "mail") {
-      window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
-      return;
-    }
-    // instagram — no web share URL
-    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
-      try {
-        await navigator.share({ url, title });
-        return;
-      } catch {
-        // fall through to clipboard
-      }
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      toast.success("Link copied — paste into Instagram to share");
-    } catch {
-      toast.error("Couldn't copy link. Please copy the page URL manually.");
-    }
-  };
-
   return (
     <footer className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-10">
       <ul className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 mb-6">
@@ -494,19 +412,6 @@ export function SiteFooter() {
         >
           MANAGE COOKIE PREFERENCES
         </button>
-      </div>
-      <div className="flex justify-center gap-6 mb-4" style={{ color: goldBright }}>
-        {(["instagram", "facebook", "twitter", "mail"] as const).map((n) => (
-          <button
-            key={n}
-            type="button"
-            aria-label={`Share this page on ${n}`}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            onClick={() => handleShare(n)}
-          >
-            <SocialIcon name={n} />
-          </button>
-        ))}
       </div>
       <p
         className="text-center text-[10px] sm:text-[11px] tracking-[0.2em]"
