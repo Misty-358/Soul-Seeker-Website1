@@ -278,17 +278,7 @@ function HomePage() {
               }}
             />
             <div className="flex items-center justify-center gap-3 sm:gap-4">
-              <span
-                aria-hidden
-                className="ss-twinkle hidden sm:inline-block"
-                style={{
-                  color: goldBright,
-                  fontSize: 24,
-                  filter: "drop-shadow(0 0 10px rgba(241,210,122,0.65))",
-                }}
-              >
-                ✨
-              </span>
+              <SparkleIcon size={26} className="hidden sm:block" />
               <h2
                 className="ss-h2-mobile"
                 style={{
@@ -306,18 +296,7 @@ function HomePage() {
               >
                 Soul Seeker Tarot is now LIVE on the web
               </h2>
-              <span
-                aria-hidden
-                className="ss-twinkle hidden sm:inline-block"
-                style={{
-                  color: goldBright,
-                  fontSize: 24,
-                  animationDelay: "1.8s",
-                  filter: "drop-shadow(0 0 10px rgba(241,210,122,0.65))",
-                }}
-              >
-                ✨
-              </span>
+              <SparkleIcon size={26} className="hidden sm:block" delay="1.8s" />
             </div>
             <img
               src="/images/the-chariot.jpg"
