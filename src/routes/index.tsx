@@ -7,6 +7,7 @@ import {
   SiteFooter,
   Flourish,
   Divider,
+  Star,
   midnight,
   deepSpace,
   gold,
@@ -160,6 +161,133 @@ function HomePage() {
         </div>
       </section>
 
+
+      {/* SOUL SEEKER IS NOW LIVE — ANNOUNCEMENT */}
+      <section className="relative z-10 max-w-[980px] mx-auto px-4 sm:px-6 lg:px-10 pb-24">
+        <div
+          className="relative text-center px-6 py-12 sm:px-16 sm:py-16"
+          style={{
+            borderRadius: 30,
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(13,25,48,0.85) 0%, rgba(9,20,34,0.6) 100%)",
+            boxShadow:
+              "0 24px 70px rgba(0,0,0,0.45), inset 0 0 80px rgba(212,175,55,0.05)",
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          {/* Flourished double hairline (no boxy frame) */}
+          <span
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{ inset: 0, borderRadius: 30, border: "1px solid rgba(212,175,55,0.45)" }}
+          />
+          <span
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{ inset: 9, borderRadius: 22, border: "1px solid rgba(241,210,122,0.22)" }}
+          />
+
+          {/* Ornamental corner filigree */}
+          <CornerFlourish rotate={0} className="-top-5 -left-5" />
+          <CornerFlourish rotate={90} className="-top-5 -right-5" />
+          <CornerFlourish rotate={180} className="-bottom-5 -right-5" />
+          <CornerFlourish rotate={270} className="-bottom-5 -left-5" />
+
+          <Flourish label="NOW LIVE" />
+
+          {/* Twinkling stars around the headline */}
+          <span aria-hidden className="absolute ss-twinkle" style={{ top: "26%", left: "8%", color: goldBright, animationDelay: "0.2s" }}><Star size={14} /></span>
+          <span aria-hidden className="absolute ss-twinkle" style={{ top: "20%", left: "14%", color: "#a9c7ff", animationDelay: "1.6s", animationDuration: "5.2s" }}><Star size={9} /></span>
+          <span aria-hidden className="absolute ss-twinkle" style={{ top: "30%", right: "8%", color: goldBright, animationDelay: "0.9s" }}><Star size={14} /></span>
+          <span aria-hidden className="absolute ss-twinkle" style={{ top: "22%", right: "15%", color: "#c48bff", animationDelay: "2.4s", animationDuration: "6s" }}><Star size={9} /></span>
+          <span aria-hidden className="absolute ss-twinkle" style={{ top: "58%", left: "6%", color: gold, animationDelay: "1.1s", animationDuration: "5.5s" }}><Star size={10} /></span>
+          <span aria-hidden className="absolute ss-twinkle" style={{ top: "56%", right: "6%", color: gold, animationDelay: "3s" }}><Star size={10} /></span>
+          <span aria-hidden className="absolute ss-twinkle" style={{ bottom: "12%", left: "16%", color: "#a9c7ff", animationDelay: "0.6s", animationDuration: "4.8s" }}><Star size={8} /></span>
+          <span aria-hidden className="absolute ss-twinkle" style={{ bottom: "14%", right: "17%", color: goldBright, animationDelay: "2s", animationDuration: "5.8s" }}><Star size={8} /></span>
+
+          <div className="relative mt-5 flex items-center justify-center gap-5 sm:gap-10">
+            <img
+              src="/images/the-star.jpg"
+              alt="The Star tarot card"
+              title="The Star — Soul Seeker Tarot"
+              className="ss-decor-mobile ss-card-float hidden sm:block"
+              style={{
+                width: 96,
+                borderRadius: 10,
+                border: "1px solid rgba(241,210,122,0.55)",
+                boxShadow: "0 12px 34px rgba(0,0,0,0.5), 0 0 24px rgba(212,175,55,0.25)",
+                transform: "rotate(-5deg)",
+                animationDelay: "1.4s",
+              }}
+            />
+            <h2
+              className="ss-h2-mobile"
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 42,
+                lineHeight: 1.15,
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                background: `linear-gradient(115deg, ${goldBright} 0%, #fff3cf 28%, ${gold} 58%, ${goldBright} 85%)`,
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                filter: "drop-shadow(0 0 22px rgba(241,210,122,0.35))",
+              }}
+            >
+              ✨ Soul Seeker Tarot is now LIVE on the web ✨
+            </h2>
+            <img
+              src="/images/the-chariot.jpg"
+              alt="The Chariot tarot card"
+              title="The Chariot — Soul Seeker Tarot"
+              className="ss-decor-mobile ss-card-float hidden sm:block"
+              style={{
+                width: 96,
+                borderRadius: 10,
+                border: "1px solid rgba(241,210,122,0.55)",
+                boxShadow: "0 12px 34px rgba(0,0,0,0.5), 0 0 24px rgba(212,175,55,0.25)",
+                transform: "rotate(5deg)",
+                animationDelay: "3.2s",
+              }}
+            />
+          </div>
+
+          <Divider width={90} />
+
+          <p
+            className="mx-auto italic"
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              color: mystic,
+              fontSize: 19,
+              lineHeight: 1.7,
+              maxWidth: 620,
+            }}
+          >
+            You can now use Soul Seeker Tarot directly through our web app, with access to:
+          </p>
+
+          <ul className="mx-auto mt-7 max-w-[540px] text-left space-y-3">
+            {[
+              "Tarot readings and insights",
+              "Custom tarot card creation",
+              "Reading and Custom Card credit packs",
+              "Seeker, Pathfinder and Navigator subscriptions",
+              "Your saved readings and custom decks",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 shrink-0" style={{ color: goldBright }}>
+                  <Star size={11} className="ss-twinkle" />
+                </span>
+                <span style={{ color: ivory, fontSize: 16, lineHeight: 1.65, opacity: 0.92 }}>
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* BETA PREVIEW SECTION */}
       <section className="relative z-10 max-w-[880px] mx-auto px-4 sm:px-6 lg:px-10 pb-24">
