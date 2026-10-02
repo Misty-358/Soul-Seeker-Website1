@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import moonValleyArt from "@/assets/about-moon-valley.jpg";
-import lotusArchArt from "@/assets/about-lotus-arch.jpg";
+import aboutHeroCosmic from "@/assets/about-hero-cosmic.png.asset.json";
 import {
   SiteNav,
   StarfieldBackdrop,
@@ -675,68 +674,44 @@ function AboutPage() {
       <SiteNav />
 
       <main className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 ss-top-mobile pb-16">
-        {/* Hero */}
-        <section className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.15fr_1fr] gap-8 items-center min-h-[520px]">
-          {/* Left flourish — golden crescent cradling a tree of life, moon-phase crown, geometric pendant */}
-          <div className="relative hidden lg:block h-[520px]">
-            <img
-              src={moonValleyArt}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              className="w-full h-full object-contain ss-aura-pulse"
-              style={{
-                filter: "drop-shadow(0 0 40px rgba(241,210,122,0.25))",
-              }}
-            />
-          </div>
+        {/* Hero — cosmic moonlit scene with golden filigree frame */}
+        <section
+          className="relative overflow-hidden rounded-3xl flex items-center justify-center min-h-[560px] sm:min-h-[640px]"
+          style={{
+            border: "1px solid rgba(212,175,55,0.35)",
+            boxShadow:
+              "0 0 60px rgba(124,77,255,0.12), inset 0 0 80px rgba(2,4,13,0.35)",
+          }}
+        >
+          {/* Cosmic backdrop art */}
+          <img
+            src={aboutHeroCosmic.url}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "center" }}
+          />
+          {/* Soft darkening so the words read clearly */}
+          <div
+            className="absolute inset-0"
+            aria-hidden
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(5,8,22,0.42) 0%, rgba(5,8,22,0.18) 55%, rgba(5,8,22,0.35) 100%)",
+            }}
+          />
 
-
-
-
-          {/* Center headline */}
-          <div className="text-center">
-            <h1
-              className="ss-h1-mobile"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: goldBright,
-                fontSize: 68,
-                letterSpacing: "0.02em",
-                textShadow: "0 0 30px rgba(241,210,122,0.35)",
-              }}
-            >
-              About Soul Seeker Tarot
-            </h1>
-            <Divider width={90} />
-            <p
-              className="mx-auto max-w-[620px] text-[22px] leading-relaxed ss-lead-mobile"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: ivory,
-                opacity: 0.9,
-                fontStyle: "italic",
-              }}
-            >
+          {/* The artwork itself carries the title and mission words; keep a
+              visually hidden heading + paragraph for search engines and
+              screen readers */}
+          <div className="sr-only">
+            <h1>About Soul Seeker Tarot</h1>
+            <p>
               Soul Seeker Tarot was born from a deep love of tarot, intuition and
               the transformative power of self-awareness. Our mission is to make
               traditional tarot card meanings accessible through thoughtful online
               readings and modern tools for reflection.
             </p>
-          </div>
-
-          {/* Right custom art — lotus arch */}
-          <div className="relative hidden lg:block h-[520px]">
-            <img
-              src={lotusArchArt}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              className="w-full h-full object-contain ss-aura-pulse"
-              style={{
-                filter: "drop-shadow(0 0 50px rgba(155,107,255,0.35))",
-              }}
-            />
           </div>
         </section>
 
