@@ -701,31 +701,12 @@ function AboutPage() {
             }}
           />
 
-          {/* Center headline */}
-          <div className="relative z-10 text-center px-6 py-16 sm:py-24">
-            <h1
-              className="ss-h1-mobile"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: goldBright,
-                fontSize: 68,
-                letterSpacing: "0.02em",
-                textShadow:
-                  "0 0 30px rgba(241,210,122,0.45), 0 2px 18px rgba(2,4,13,0.8)",
-              }}
-            >
-              About Soul Seeker Tarot
-            </h1>
-            <Divider width={90} />
-            <p
-              className="mx-auto max-w-[640px] text-[22px] leading-relaxed ss-lead-mobile"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: ivory,
-                fontStyle: "italic",
-                textShadow: "0 1px 14px rgba(2,4,13,0.9)",
-              }}
-            >
+          {/* The artwork itself carries the title and mission words; keep a
+              visually hidden heading + paragraph for search engines and
+              screen readers */}
+          <div className="sr-only">
+            <h1>About Soul Seeker Tarot</h1>
+            <p>
               Soul Seeker Tarot was born from a deep love of tarot, intuition and
               the transformative power of self-awareness. Our mission is to make
               traditional tarot card meanings accessible through thoughtful online
