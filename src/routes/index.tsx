@@ -187,16 +187,17 @@ function HomePage() {
           <div className="mt-8 flex flex-wrap gap-4 items-center justify-center md:justify-start">
             <Link
               to="/features"
-              className="inline-flex items-center justify-center px-8 py-3 text-[12px] tracking-[0.28em] transition-all"
+              className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity underline underline-offset-[6px]"
               style={{
-                color: midnight,
-                background: `linear-gradient(135deg, ${goldBright}, ${gold})`,
-                borderRadius: 999,
-                fontWeight: 600,
-                boxShadow: "0 10px 30px rgba(241,210,122,0.3)",
+                color: mystic,
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 17,
+                fontWeight: 500,
+                letterSpacing: "0.02em",
+                textDecorationColor: "rgba(200,185,232,0.35)",
               }}
             >
-              EXPLORE FEATURES
+              Explore features
             </Link>
             <a
               href="https://app.soulseekertarot.com"
