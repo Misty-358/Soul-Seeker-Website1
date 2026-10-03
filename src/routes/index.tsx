@@ -343,7 +343,7 @@ function HomePage() {
               }}
             >
               <span style={{ position: "relative", zIndex: 1 }}>
-                OPEN SOUL SEEKER APP
+                Try Soul Seeker for Free
               </span>
             </a>
           </div>
