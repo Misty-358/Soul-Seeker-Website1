@@ -20,63 +20,6 @@ import liveBanner from "@/assets/home-live-banner.png.asset.json";
 
 const cardImg = "/images/temperance-card.jpg";
 
-function SparkleIcon({ size = 24, className = "", delay = "0s" }: { size?: number; className?: string; delay?: string }) {
-  return (
-    <svg
-      aria-hidden
-      viewBox="0 0 40 40"
-      width={size}
-      height={size}
-      className={`ss-twinkle ${className}`}
-      style={{
-        animationDelay: delay,
-        color: goldBright,
-        filter: "drop-shadow(0 0 8px rgba(241,210,122,0.75))",
-      }}
-    >
-      <path
-        d="M20 2 C 21.5 13, 25 17.5, 37 20 C 25 22.5, 21.5 27, 20 38 C 18.5 27, 15 22.5, 3 20 C 15 17.5, 18.5 13, 20 2 Z"
-        fill="currentColor"
-      />
-      <circle cx="20" cy="20" r="2.4" fill="#fff6dc" />
-    </svg>
-  );
-}
-
-function CornerFlourish({ rotate, className = "" }: { rotate: number; className?: string }) {
-  return (
-    <svg
-      aria-hidden
-      width={104}
-      height={104}
-      viewBox="0 0 100 100"
-      fill="none"
-      className={`absolute pointer-events-none ${className}`}
-      style={{
-        transform: `rotate(${rotate}deg)`,
-        color: gold,
-        filter: "drop-shadow(0 0 6px rgba(212,175,55,0.4))",
-      }}
-    >
-      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M4 64 C 4 30, 30 4, 64 4" opacity="0.9" />
-        <path d="M13 78 C 13 42, 42 13, 78 13" opacity="0.5" />
-        <path d="M26 54 C 30 42, 42 30, 54 26" opacity="0.7" />
-        <path d="M54 26 c 9 -7, 18 -3, 15 5 c -2 6, -10 5, -10 -1 c 0 -5, 6 -8, 11 -6" opacity="0.85" />
-        <path d="M26 54 c -7 9, -3 18, 5 15 c 6 -2, 5 -10, -1 -10 c -5 0, -8 6, -6 11" opacity="0.85" />
-        <path d="M34 88 C 46 94, 62 93, 74 84" opacity="0.45" />
-        <path d="M88 34 C 94 46, 93 62, 84 74" opacity="0.45" />
-      </g>
-      <circle cx="9" cy="9" r="2.2" fill="currentColor" opacity="0.95" />
-      <path
-        d="M24 24 l1.6 4.6 4.6 1.6 -4.6 1.6 -1.6 4.6 -1.6 -4.6 -4.6 -1.6 4.6 -1.6 z"
-        fill="currentColor"
-        opacity="0.8"
-      />
-    </svg>
-  );
-}
-
 const SHARE_TITLE = "Soul Seeker Tarot";
 const SHARE_TEXT =
   "Explore tarot readings for reflection, relationships, career and personal insight. Start for free.";
