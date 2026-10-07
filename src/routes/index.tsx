@@ -9,7 +9,6 @@ import {
   SiteFooter,
   Flourish,
   Divider,
-  Star,
   midnight,
   deepSpace,
   gold,
@@ -17,6 +16,7 @@ import {
   ivory,
   mystic,
 } from "@/components/SiteChrome";
+import liveBanner from "@/assets/home-live-banner.png.asset.json";
 
 const cardImg = "/images/temperance-card.jpg";
 
