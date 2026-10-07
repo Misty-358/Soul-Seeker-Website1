@@ -80,7 +80,7 @@ function CornerFlourish({ rotate, className = "" }: { rotate: number; className?
 const SHARE_TITLE = "Soul Seeker Tarot";
 const SHARE_TEXT =
   "Explore tarot readings for reflection, relationships, career and personal insight. Start for free.";
-const SHARE_URL = "https://www.soulseekertarot.com/";
+const SHARE_URL = "https://app.soulseekertarot.com/";
 const SHARE_DATA: ShareData = { title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL };
 
 const TOAST_STYLE: React.CSSProperties = {
