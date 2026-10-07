@@ -16,7 +16,7 @@ import {
   ivory,
   mystic,
 } from "@/components/SiteChrome";
-import liveBanner from "@/assets/home-live-banner.webp.asset.json";
+const liveBanner = { url: "/images/home-live-banner.webp" };
 
 const cardImg = "/images/temperance-card.jpg";
 
