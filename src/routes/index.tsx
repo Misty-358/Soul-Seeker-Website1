@@ -322,6 +322,8 @@ function HomePage() {
           <a
             href="https://play.google.com/store/apps/details?id=com.soulseekertarot.app.twa"
             aria-label="Get Soul Seeker Tarot on Google Play"
+            target="_blank"
+            rel="noopener noreferrer"
             className="absolute"
             style={{ left: "51.8%", top: "73.9%", width: "21.9%", height: "8.5%" }}
           />
