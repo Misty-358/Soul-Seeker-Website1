@@ -395,8 +395,9 @@ export const termsDoc: LegalDoc = {
 
 export const privacyDoc: LegalDoc = {
   title: "Privacy Policy",
-  lastUpdated: "19 July 2026",
+  lastUpdated: "20 November 2026",
   intro: [
+    { type: "p", text: "Effective Date: 19 July 2026" },
     {
       type: "p",
       text: 'Welcome to Soul Seeker Tarot, operated by Sovereign Entity Ltd ("we", "our" or "us").',
@@ -453,7 +454,10 @@ export const privacyDoc: LegalDoc = {
         },
         { type: "p", text: "This information is private to your account unless you choose to share it." },
         { type: "p", text: "Payment Information" },
-        { type: "p", text: "Payments are securely processed by Stripe." },
+        {
+          type: "p",
+          text: "Stripe processes payments made on our website. Google Play Billing processes purchases and subscriptions made through the Android app on Google Play.",
+        },
         { type: "p", text: "We never store your payment card details." },
         { type: "p", text: "Stripe may collect:" },
         {
@@ -465,7 +469,10 @@ export const privacyDoc: LegalDoc = {
             "Subscription information",
           ],
         },
-        { type: "p", text: "Please refer to Stripe's Privacy Policy for further information." },
+        {
+          type: "p",
+          text: "See Stripe’s Privacy Policy or Google’s Privacy Policy for details of how each payment provider handles your information.",
+        },
         { type: "p", text: "Technical Information" },
         { type: "p", text: "We may automatically collect:" },
         {
@@ -474,7 +481,7 @@ export const privacyDoc: LegalDoc = {
             "Device type",
             "Browser",
             "Operating system",
-            "Approximate location",
+            "Approximate location, such as your country or region",
             "Language",
             "Crash reports",
             "Diagnostic information",
@@ -624,7 +631,7 @@ export const privacyDoc: LegalDoc = {
       ],
     },
     {
-      heading: "7. Google Analytics",
+      heading: "7. Google Analytics and Lovable Visitor Analytics",
       blocks: [
         {
           type: "p",
@@ -647,6 +654,36 @@ export const privacyDoc: LegalDoc = {
         { type: "p", text: "We have enabled IP anonymisation." },
         { type: "p", text: "Analytics data is used only to improve Soul Seeker Tarot." },
         { type: "p", text: "We do not use Google Analytics to identify individual users." },
+        { type: "p", text: "Lovable Visitor Analytics" },
+        {
+          type: "p",
+          text: "We also use Lovable's visitor analytics on our published website. Lovable's analytics uses no cookies, stores nothing on your device, does not keep your IP address and does not identify you.",
+        },
+        {
+          type: "p",
+          text: "Lovable collects this data for us. Lovable's privacy policy at https://lovable.dev/privacy explains how it handles it.",
+        },
+        {
+          type: "p",
+          text: "It records the pages visited, where visitors came from, their country, browser, operating system and device type, how long they stay, how fast pages load, errors, and which buttons and links they click.",
+        },
+        {
+          type: "p",
+          text: "Clicks are recorded only after you accept analytics. They are never recorded if your browser sends Global Privacy Control, even after you accept. Your choice is saved in your browser for up to 12 months.",
+        },
+        {
+          type: "p",
+          text: "Page visits, time on page, page speed and errors are recorded for every visitor, without cookies and without identifying anyone.",
+        },
+        {
+          type: "p",
+          text: "Detailed data is kept for 90 days and daily summaries are kept for one year.",
+        },
+        { type: "p", text: "Website Fonts" },
+        {
+          type: "p",
+          text: "We use Google Fonts to display the website's lettering. Google receives the technical request information needed to deliver the fonts; we do not store that font-request information.",
+        },
       ],
     },
     {
@@ -668,10 +705,6 @@ export const privacyDoc: LegalDoc = {
           text: "Where required by law, analytics cookies are activated only after your consent.",
         },
         { type: "p", text: "You may change your cookie preferences at any time." },
-        {
-          type: "p",
-          text: "For full details of the cookies we use, please read our Cookie Policy at https://www.soulseekertarot.com/cookies.",
-        },
       ],
     },
     {
@@ -736,8 +769,10 @@ export const privacyDoc: LegalDoc = {
           type: "ul",
           items: [
             "Stripe",
+            "Google (for purchases and subscriptions through Google Play Billing)",
             "Supabase",
             "Google Analytics",
+            "Lovable",
             "AI service providers",
             "Email delivery providers",
           ],
@@ -851,7 +886,7 @@ export const privacyDoc: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Soul Seeker Tarot is intended for teenagers and adults in accordance with the age rating shown on the platform from which you downloaded the application. We do not knowingly collect personal information from children below the minimum age permitted by applicable law without any required parental consent.",
+          text: "Soul Seeker Tarot is intended for people aged 16 or over. If you believe someone under 16 has provided us with personal information, please contact us at admin@soulseekertarot.com so we can review it and take appropriate action.",
         },
       ],
     },
