@@ -16,7 +16,7 @@ export type LegalDoc = {
 
 export const termsDoc: LegalDoc = {
   title: "Terms and Conditions",
-  lastUpdated: "19 July 2026",
+  lastUpdated: "20 November 2026",
   intro: [
     {
       type: "p",
@@ -60,7 +60,7 @@ export const termsDoc: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "You must meet the minimum age shown on the platform from which you access Soul Seeker Tarot.",
+          text: "You must be aged 16 or over to use Soul Seeker Tarot.",
         },
         {
           type: "p",
